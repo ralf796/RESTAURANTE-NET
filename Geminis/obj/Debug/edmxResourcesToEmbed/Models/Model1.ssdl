@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Restaurante_BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cat_empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_tipo_empleado" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="salario" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="varchar" MaxLength="200" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+    <Property Name="creado_por" Type="varchar" MaxLength="25" />
+    <Property Name="fecha_creacion" Type="date" />
+  </EntityType>
+  <EntityType Name="cat_proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+    <Property Name="direccion" Type="varchar" MaxLength="200" />
+    <Property Name="referencia" Type="varchar" MaxLength="300" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+    <Property Name="creado_por" Type="varchar" MaxLength="25" />
+    <Property Name="fecha_creacion" Type="date" />
+  </EntityType>
+  <EntityType Name="cat_tipo_empleado">
+    <Key>
+      <PropertyRef Name="id_tipo_empleado" />
+    </Key>
+    <Property Name="id_tipo_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="300" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+    <Property Name="creado_por" Type="varchar" MaxLength="25" />
+    <Property Name="fecha_creacion" Type="date" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_cliente" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="nit" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="estado" Type="char" MaxLength="1" />
+    <Property Name="creado_por" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="fecha_creacion" Type="date" Nullable="false" />
+    <Property Name="correo_electronico" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__cat_emple__id_ti__2A4B4B5E">
+    <End Role="cat_tipo_empleado" Type="Self.cat_tipo_empleado" Multiplicity="1" />
+    <End Role="cat_empleado" Type="Self.cat_empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_tipo_empleado">
+        <PropertyRef Name="id_tipo_empleado" />
+      </Principal>
+      <Dependent Role="cat_empleado">
+        <PropertyRef Name="id_tipo_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Restaurante_BDModelStoreContainer">
+    <EntitySet Name="cat_empleado" EntityType="Self.cat_empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_proveedor" EntityType="Self.cat_proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cat_tipo_empleado" EntityType="Self.cat_tipo_empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__cat_emple__id_ti__2A4B4B5E" Association="Self.FK__cat_emple__id_ti__2A4B4B5E">
+      <End Role="cat_tipo_empleado" EntitySet="cat_tipo_empleado" />
+      <End Role="cat_empleado" EntitySet="cat_empleado" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

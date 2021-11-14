@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Restaurante_BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BANCO">
+    <Key>
+      <PropertyRef Name="ID_BANCO" />
+    </Key>
+    <Property Name="ID_BANCO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="CAJA">
+    <Key>
+      <PropertyRef Name="NO_CORTE" />
+    </Key>
+    <Property Name="NO_CORTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FECHA_CORTE" Type="date" />
+    <Property Name="TOTAL_CORTE" Type="int" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE_CLIENTE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
+    <Property Name="NIT" Type="varchar" MaxLength="15" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_EMPLEADO" />
+    </Key>
+    <Property Name="ID_EMPLEADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SALARIO" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+    <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_CREACION" Type="date" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="FACTURA_DETALLE">
+    <Key>
+      <PropertyRef Name="SERIE" />
+      <PropertyRef Name="NO_FACTURA" />
+      <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
+    </Key>
+    <Property Name="SERIE" Type="int" Nullable="false" />
+    <Property Name="NO_FACTURA" Type="int" Nullable="false" />
+    <Property Name="RESOLUCION" Type="varchar" MaxLength="50" />
+    <Property Name="ID_FACTURA_ENCABEZADO" Type="int" Nullable="false" />
+    <Property Name="NO_DETALLE" Type="int" />
+    <Property Name="PRODUCTO" Type="varchar" MaxLength="100" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="PRECIO_UNITARIO" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SUBTOTAL_DETALLE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CONCEPTO" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="FACTURA_ENCABEZADO">
+    <Key>
+      <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
+    </Key>
+    <Property Name="ID_FACTURA_ENCABEZADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERIE" Type="int" Nullable="false" />
+    <Property Name="NO_FACTURA" Type="int" Nullable="false" />
+    <Property Name="RESOLUCION" Type="varchar" MaxLength="50" />
+    <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="FECHA_FACTURA" Type="date" />
+    <Property Name="TOTAL_FACTURA" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TOTAL_IVA" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SUBTOTAL_FACTURA" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="NIT" Type="varchar" MaxLength="15" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
+    <Property Name="NOMBRE_CLIENTE" Type="varchar" MaxLength="100" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="INVENTARIO_BODEGA_GENERAL">
+    <Key>
+      <PropertyRef Name="ID_BODEGA_GENERAL" />
+    </Key>
+    <Property Name="ID_BODEGA_GENERAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE_PRODUCTO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="FECHA_INGRESO" Type="date" />
+    <Property Name="FECHA_SALIDA" Type="date" />
+    <Property Name="EXISTENCIA" Type="int" />
+    <Property Name="PRECIO" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID_MENU" />
+    </Key>
+    <Property Name="ID_MENU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_MENU" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="PRECIO" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="MENU_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_MENU_DETALLE" />
+    </Key>
+    <Property Name="ID_MENU_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_UNIDAD_MEDIDA" Type="int" Nullable="false" />
+    <Property Name="ID_MENU" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CANTIDAD" Type="int" />
+  </EntityType>
+  <EntityType Name="MESA">
+    <Key>
+      <PropertyRef Name="ID_MESA" />
+    </Key>
+    <Property Name="ID_MESA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NUMERO" Type="int" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="PAGO_MESA">
+    <Key>
+      <PropertyRef Name="ID_PAGO_MESA" />
+    </Key>
+    <Property Name="ID_PAGO_MESA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_MESA" Type="int" Nullable="false" />
+    <Property Name="MONTO" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ID_PEDIDO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PAGO_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="ID_PAGO_PROVEEDOR" />
+    </Key>
+    <Property Name="ID_PAGO_PROVEEDOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROVEEDOR" Type="int" Nullable="false" />
+    <Property Name="ID_BANCO" Type="int" Nullable="false" />
+    <Property Name="NO_CUENTA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE_CUENTA" Type="varchar" MaxLength="100" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="PEDIDO">
+    <Key>
+      <PropertyRef Name="ID_PEDIDO" />
+    </Key>
+    <Property Name="ID_PEDIDO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_MESA" Type="int" Nullable="false" />
+    <Property Name="ID_EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="TOTAL" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="PEDIDO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_DETALLE_PEDIDO" />
+    </Key>
+    <Property Name="ID_DETALLE_PEDIDO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PEDIDO" Type="int" Nullable="false" />
+    <Property Name="ID_MENU" Type="int" Nullable="false" />
+    <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
+    <Property Name="CANTIDAD" Type="int" />
+    <Property Name="OBSERVACIONES" Type="varchar" MaxLength="200" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="SUBTOTAL" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_PRODUCTO" />
+    </Key>
+    <Property Name="ID_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TIPO_PRODUCTO" Type="int" Nullable="false" />
+    <Property Name="ID_UNIDAD_MEDIDA" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="PRECIO" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="PROVEEDOR">
+    <Key>
+      <PropertyRef Name="ID_PROVEEDOR" />
+    </Key>
+    <Property Name="ID_PROVEEDOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
+    <Property Name="REFERENCIA" Type="varchar" MaxLength="300" />
+    <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_CREACION" Type="date" />
+  </EntityType>
+  <EntityType Name="TIPO_EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_EMPLEADO" />
+    </Key>
+    <Property Name="ID_TIPO_EMPLEADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_CREACION" Type="date" />
+  </EntityType>
+  <EntityType Name="TIPO_MENU">
+    <Key>
+      <PropertyRef Name="ID_TIPO_MENU" />
+    </Key>
+    <Property Name="ID_TIPO_MENU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="TIPO_PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_PRODUCTO" />
+    </Key>
+    <Property Name="ID_TIPO_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="UNIDAD_MEDIDA">
+    <Key>
+      <PropertyRef Name="ID_UNIDAD_MEDIDA" />
+    </Key>
+    <Property Name="ID_UNIDAD_MEDIDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="ABREVIATURA" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="100" />
+    <Property Name="CONTRASEÑA" Type="varchar" MaxLength="100" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+    <Property Name="FECHA_CREACION" Type="date" />
+  </EntityType>
+  <EntityType Name="VALES">
+    <Key>
+      <PropertyRef Name="ID_VALE" />
+    </Key>
+    <Property Name="ID_VALE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_EMPLEADO" Type="int" Nullable="false" />
+    <Property Name="TOTAL_VALE" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CONCEPTO" Type="varchar" MaxLength="300" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="ESTADO" Type="char" MaxLength="1" />
+    <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK__EMPLEADO__ID_TIP__4BAC3F29">
+    <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_EMPLEADO">
+        <PropertyRef Name="ID_TIPO_EMPLEADO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="ID_TIPO_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_D__ID_FA__4CA06362">
+    <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="1" />
+    <End Role="FACTURA_DETALLE" Type="Self.FACTURA_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FACTURA_ENCABEZADO">
+        <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
+      </Principal>
+      <Dependent Role="FACTURA_DETALLE">
+        <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FACTURA_E__ID_CL__4D94879B">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="FACTURA_ENCABEZADO">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MENU__ID_TIPO_ME__4E88ABD4">
+    <End Role="TIPO_MENU" Type="Self.TIPO_MENU" Multiplicity="1" />
+    <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_MENU">
+        <PropertyRef Name="ID_TIPO_MENU" />
+      </Principal>
+      <Dependent Role="MENU">
+        <PropertyRef Name="ID_TIPO_MENU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MENU_DETA__ID_ME__4F7CD00D">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+    <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="ID_MENU" />
+      </Principal>
+      <Dependent Role="MENU_DETALLE">
+        <PropertyRef Name="ID_MENU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MENU_DETA__ID_UN__5070F446">
+    <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
+    <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UNIDAD_MEDIDA">
+        <PropertyRef Name="ID_UNIDAD_MEDIDA" />
+      </Principal>
+      <Dependent Role="MENU_DETALLE">
+        <PropertyRef Name="ID_UNIDAD_MEDIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PAGO_MESA__ID_ME__5165187F">
+    <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
+    <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MESA">
+        <PropertyRef Name="ID_MESA" />
+      </Principal>
+      <Dependent Role="PAGO_MESA">
+        <PropertyRef Name="ID_MESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PAGO_MESA__ID_PE__52593CB8">
+    <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+    <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDO">
+        <PropertyRef Name="ID_PEDIDO" />
+      </Principal>
+      <Dependent Role="PAGO_MESA">
+        <PropertyRef Name="ID_PEDIDO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PAGO_PROV__ID_BA__534D60F1">
+    <End Role="BANCO" Type="Self.BANCO" Multiplicity="1" />
+    <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANCO">
+        <PropertyRef Name="ID_BANCO" />
+      </Principal>
+      <Dependent Role="PAGO_PROVEEDOR">
+        <PropertyRef Name="ID_BANCO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PAGO_PROV__ID_PR__5441852A">
+    <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
+    <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDOR">
+        <PropertyRef Name="ID_PROVEEDOR" />
+      </Principal>
+      <Dependent Role="PAGO_PROVEEDOR">
+        <PropertyRef Name="ID_PROVEEDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PEDIDO__ID_CLIEN__5535A963">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="PEDIDO">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PEDIDO__ID_EMPLE__5629CD9C">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+    <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Principal>
+      <Dependent Role="PEDIDO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PEDIDO__ID_MESA__571DF1D5">
+    <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
+    <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MESA">
+        <PropertyRef Name="ID_MESA" />
+      </Principal>
+      <Dependent Role="PEDIDO">
+        <PropertyRef Name="ID_MESA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PEDIDO_DE__ID_ME__5812160E">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+    <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="ID_MENU" />
+      </Principal>
+      <Dependent Role="PEDIDO_DETALLE">
+        <PropertyRef Name="ID_MENU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PEDIDO_DE__ID_PE__59FA5E80">
+    <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+    <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PEDIDO">
+        <PropertyRef Name="ID_PEDIDO" />
+      </Principal>
+      <Dependent Role="PEDIDO_DETALLE">
+        <PropertyRef Name="ID_PEDIDO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PEDIDO_DE__ID_PR__59063A47">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Principal>
+      <Dependent Role="PEDIDO_DETALLE">
+        <PropertyRef Name="ID_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRODUCTO__ID_TIP__5AEE82B9">
+    <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PRODUCTO">
+        <PropertyRef Name="ID_TIPO_PRODUCTO" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="ID_TIPO_PRODUCTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRODUCTO__ID_UNI__5BE2A6F2">
+    <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UNIDAD_MEDIDA">
+        <PropertyRef Name="ID_UNIDAD_MEDIDA" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="ID_UNIDAD_MEDIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USUARIO__ID_EMPL__5CD6CB2B">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VALES__ID_EMPLEA__5DCAEF64">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+    <End Role="VALES" Type="Self.VALES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Principal>
+      <Dependent Role="VALES">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Restaurante_BDModelStoreContainer">
+    <EntitySet Name="BANCO" EntityType="Self.BANCO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CAJA" EntityType="Self.CAJA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACTURA_ENCABEZADO" EntityType="Self.FACTURA_ENCABEZADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INVENTARIO_BODEGA_GENERAL" EntityType="Self.INVENTARIO_BODEGA_GENERAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU_DETALLE" EntityType="Self.MENU_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MESA" EntityType="Self.MESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAGO_MESA" EntityType="Self.PAGO_MESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAGO_PROVEEDOR" EntityType="Self.PAGO_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PEDIDO_DETALLE" EntityType="Self.PEDIDO_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_EMPLEADO" EntityType="Self.TIPO_EMPLEADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_MENU" EntityType="Self.TIPO_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VALES" EntityType="Self.VALES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACTURA_DETALLE" EntityType="Self.FACTURA_DETALLE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [FACTURA_DETALLE].[SERIE] AS [SERIE], 
+    [FACTURA_DETALLE].[NO_FACTURA] AS [NO_FACTURA], 
+    [FACTURA_DETALLE].[RESOLUCION] AS [RESOLUCION], 
+    [FACTURA_DETALLE].[ID_FACTURA_ENCABEZADO] AS [ID_FACTURA_ENCABEZADO], 
+    [FACTURA_DETALLE].[NO_DETALLE] AS [NO_DETALLE], 
+    [FACTURA_DETALLE].[PRODUCTO] AS [PRODUCTO], 
+    [FACTURA_DETALLE].[CANTIDAD] AS [CANTIDAD], 
+    [FACTURA_DETALLE].[PRECIO_UNITARIO] AS [PRECIO_UNITARIO], 
+    [FACTURA_DETALLE].[SUBTOTAL_DETALLE] AS [SUBTOTAL_DETALLE], 
+    [FACTURA_DETALLE].[CONCEPTO] AS [CONCEPTO]
+    FROM [dbo].[FACTURA_DETALLE] AS [FACTURA_DETALLE]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__EMPLEADO__ID_TIP__4BAC3F29" Association="Self.FK__EMPLEADO__ID_TIP__4BAC3F29">
+      <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_D__ID_FA__4CA06362" Association="Self.FK__FACTURA_D__ID_FA__4CA06362">
+      <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
+      <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FACTURA_E__ID_CL__4D94879B" Association="Self.FK__FACTURA_E__ID_CL__4D94879B">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MENU__ID_TIPO_ME__4E88ABD4" Association="Self.FK__MENU__ID_TIPO_ME__4E88ABD4">
+      <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
+      <End Role="MENU" EntitySet="MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MENU_DETA__ID_ME__4F7CD00D" Association="Self.FK__MENU_DETA__ID_ME__4F7CD00D">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MENU_DETA__ID_UN__5070F446" Association="Self.FK__MENU_DETA__ID_UN__5070F446">
+      <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
+      <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PAGO_MESA__ID_ME__5165187F" Association="Self.FK__PAGO_MESA__ID_ME__5165187F">
+      <End Role="MESA" EntitySet="MESA" />
+      <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PAGO_MESA__ID_PE__52593CB8" Association="Self.FK__PAGO_MESA__ID_PE__52593CB8">
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+      <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PAGO_PROV__ID_BA__534D60F1" Association="Self.FK__PAGO_PROV__ID_BA__534D60F1">
+      <End Role="BANCO" EntitySet="BANCO" />
+      <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PAGO_PROV__ID_PR__5441852A" Association="Self.FK__PAGO_PROV__ID_PR__5441852A">
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+      <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PEDIDO__ID_CLIEN__5535A963" Association="Self.FK__PEDIDO__ID_CLIEN__5535A963">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PEDIDO__ID_EMPLE__5629CD9C" Association="Self.FK__PEDIDO__ID_EMPLE__5629CD9C">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PEDIDO__ID_MESA__571DF1D5" Association="Self.FK__PEDIDO__ID_MESA__571DF1D5">
+      <End Role="MESA" EntitySet="MESA" />
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PEDIDO_DE__ID_ME__5812160E" Association="Self.FK__PEDIDO_DE__ID_ME__5812160E">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PEDIDO_DE__ID_PE__59FA5E80" Association="Self.FK__PEDIDO_DE__ID_PE__59FA5E80">
+      <End Role="PEDIDO" EntitySet="PEDIDO" />
+      <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PEDIDO_DE__ID_PR__59063A47" Association="Self.FK__PEDIDO_DE__ID_PR__59063A47">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRODUCTO__ID_TIP__5AEE82B9" Association="Self.FK__PRODUCTO__ID_TIP__5AEE82B9">
+      <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRODUCTO__ID_UNI__5BE2A6F2" Association="Self.FK__PRODUCTO__ID_UNI__5BE2A6F2">
+      <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USUARIO__ID_EMPL__5CD6CB2B" Association="Self.FK__USUARIO__ID_EMPL__5CD6CB2B">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VALES__ID_EMPLEA__5DCAEF64" Association="Self.FK__VALES__ID_EMPLEA__5DCAEF64">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="VALES" EntitySet="VALES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Restaurante_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cat_empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_tipo_empleado" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="salario" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="correo_electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="creado_por" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="cat_tipo_empleado" Relationship="Self.FK__cat_emple__id_ti__2A4B4B5E" FromRole="cat_empleado" ToRole="cat_tipo_empleado" />
+  </EntityType>
+  <EntityType Name="cat_proveedor">
+    <Key>
+      <PropertyRef Name="id_proveedor" />
+    </Key>
+    <Property Name="id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="referencia" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="creado_por" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="cat_tipo_empleado">
+    <Key>
+      <PropertyRef Name="id_tipo_empleado" />
+    </Key>
+    <Property Name="id_tipo_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="creado_por" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="cat_empleado" Relationship="Self.FK__cat_emple__id_ti__2A4B4B5E" FromRole="cat_tipo_empleado" ToRole="cat_empleado" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nit" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="creado_por" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="correo_electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__cat_emple__id_ti__2A4B4B5E">
+    <End Role="cat_tipo_empleado" Type="Self.cat_tipo_empleado" Multiplicity="1" />
+    <End Role="cat_empleado" Type="Self.cat_empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cat_tipo_empleado">
+        <PropertyRef Name="id_tipo_empleado" />
+      </Principal>
+      <Dependent Role="cat_empleado">
+        <PropertyRef Name="id_tipo_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Restaurante_BDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cat_empleado" EntityType="Self.cat_empleado" />
+    <EntitySet Name="cat_proveedor" EntityType="Self.cat_proveedor" />
+    <EntitySet Name="cat_tipo_empleado" EntityType="Self.cat_tipo_empleado" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <AssociationSet Name="FK__cat_emple__id_ti__2A4B4B5E" Association="Self.FK__cat_emple__id_ti__2A4B4B5E">
+      <End Role="cat_tipo_empleado" EntitySet="cat_tipo_empleado" />
+      <End Role="cat_empleado" EntitySet="cat_empleado" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

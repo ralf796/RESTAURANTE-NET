@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Restaurante_BDModelStoreContainer" CdmEntityContainer="Restaurante_BDEntities">
+    <EntitySetMapping Name="BANCO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.BANCO">
+        <MappingFragment StoreEntitySet="BANCO">
+          <ScalarProperty Name="ID_BANCO" ColumnName="ID_BANCO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CAJA">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.CAJA">
+        <MappingFragment StoreEntitySet="CAJA">
+          <ScalarProperty Name="NO_CORTE" ColumnName="NO_CORTE" />
+          <ScalarProperty Name="FECHA_CORTE" ColumnName="FECHA_CORTE" />
+          <ScalarProperty Name="TOTAL_CORTE" ColumnName="TOTAL_CORTE" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.EMPLEADO">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTURA_ENCABEZADO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.FACTURA_ENCABEZADO">
+        <MappingFragment StoreEntitySet="FACTURA_ENCABEZADO">
+          <ScalarProperty Name="ID_FACTURA_ENCABEZADO" ColumnName="ID_FACTURA_ENCABEZADO" />
+          <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+          <ScalarProperty Name="NO_FACTURA" ColumnName="NO_FACTURA" />
+          <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
+          <ScalarProperty Name="TOTAL_FACTURA" ColumnName="TOTAL_FACTURA" />
+          <ScalarProperty Name="TOTAL_IVA" ColumnName="TOTAL_IVA" />
+          <ScalarProperty Name="SUBTOTAL_FACTURA" ColumnName="SUBTOTAL_FACTURA" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INVENTARIO_BODEGA_GENERAL">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL">
+        <MappingFragment StoreEntitySet="INVENTARIO_BODEGA_GENERAL">
+          <ScalarProperty Name="ID_BODEGA_GENERAL" ColumnName="ID_BODEGA_GENERAL" />
+          <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+          <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+          <ScalarProperty Name="EXISTENCIA" ColumnName="EXISTENCIA" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.MENU">
+        <MappingFragment StoreEntitySet="MENU">
+          <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+          <ScalarProperty Name="ID_TIPO_MENU" ColumnName="ID_TIPO_MENU" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_DETALLE">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.MENU_DETALLE">
+        <MappingFragment StoreEntitySet="MENU_DETALLE">
+          <ScalarProperty Name="ID_MENU_DETALLE" ColumnName="ID_MENU_DETALLE" />
+          <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+          <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESA">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.MESA">
+        <MappingFragment StoreEntitySet="MESA">
+          <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
+          <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAGO_MESA">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.PAGO_MESA">
+        <MappingFragment StoreEntitySet="PAGO_MESA">
+          <ScalarProperty Name="ID_PAGO_MESA" ColumnName="ID_PAGO_MESA" />
+          <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAGO_PROVEEDOR">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.PAGO_PROVEEDOR">
+        <MappingFragment StoreEntitySet="PAGO_PROVEEDOR">
+          <ScalarProperty Name="ID_PAGO_PROVEEDOR" ColumnName="ID_PAGO_PROVEEDOR" />
+          <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+          <ScalarProperty Name="ID_BANCO" ColumnName="ID_BANCO" />
+          <ScalarProperty Name="NO_CUENTA" ColumnName="NO_CUENTA" />
+          <ScalarProperty Name="NOMBRE_CUENTA" ColumnName="NOMBRE_CUENTA" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.PEDIDO">
+        <MappingFragment StoreEntitySet="PEDIDO">
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+          <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+          <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDO_DETALLE">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.PEDIDO_DETALLE">
+        <MappingFragment StoreEntitySet="PEDIDO_DETALLE">
+          <ScalarProperty Name="ID_DETALLE_PEDIDO" ColumnName="ID_DETALLE_PEDIDO" />
+          <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+          <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+          <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+          <ScalarProperty Name="ID_TIPO_PRODUCTO" ColumnName="ID_TIPO_PRODUCTO" />
+          <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDOR">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.PROVEEDOR">
+        <MappingFragment StoreEntitySet="PROVEEDOR">
+          <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_EMPLEADO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_EMPLEADO">
+        <MappingFragment StoreEntitySet="TIPO_EMPLEADO">
+          <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_MENU">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_MENU">
+        <MappingFragment StoreEntitySet="TIPO_MENU">
+          <ScalarProperty Name="ID_TIPO_MENU" ColumnName="ID_TIPO_MENU" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PRODUCTO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_PRODUCTO">
+        <MappingFragment StoreEntitySet="TIPO_PRODUCTO">
+          <ScalarProperty Name="ID_TIPO_PRODUCTO" ColumnName="ID_TIPO_PRODUCTO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNIDAD_MEDIDA">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.UNIDAD_MEDIDA">
+        <MappingFragment StoreEntitySet="UNIDAD_MEDIDA">
+          <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ABREVIATURA" ColumnName="ABREVIATURA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VALES">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.VALES">
+        <MappingFragment StoreEntitySet="VALES">
+          <ScalarProperty Name="ID_VALE" ColumnName="ID_VALE" />
+          <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+          <ScalarProperty Name="TOTAL_VALE" ColumnName="TOTAL_VALE" />
+          <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+          <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACTURA_DETALLE">
+      <EntityTypeMapping TypeName="Restaurante_BDModel.FACTURA_DETALLE">
+        <MappingFragment StoreEntitySet="FACTURA_DETALLE">
+          <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+          <ScalarProperty Name="NO_FACTURA" ColumnName="NO_FACTURA" />
+          <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
+          <ScalarProperty Name="ID_FACTURA_ENCABEZADO" ColumnName="ID_FACTURA_ENCABEZADO" />
+          <ScalarProperty Name="NO_DETALLE" ColumnName="NO_DETALLE" />
+          <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
+          <ScalarProperty Name="SUBTOTAL_DETALLE" ColumnName="SUBTOTAL_DETALLE" />
+          <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
