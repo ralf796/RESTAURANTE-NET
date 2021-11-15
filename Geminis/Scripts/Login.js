@@ -28,8 +28,8 @@
 
     $('#btnLogin').on('click', function (e) {
         e.preventDefault();
-        //window.location.href = data["URL"];
-        /*if ($('#frmLogin').valid()) {
+        
+        if ($('#frmLogin').valid()) {
             $.ajax({
                 type: 'POST',
                 url: '/Home/IniciarSesion',
@@ -53,6 +53,6 @@
                     getErrorMessage(jqXHR, ex);
                 }
             });
-        }*/
+        }
     });
 });

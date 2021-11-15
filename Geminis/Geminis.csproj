@@ -124,8 +124,12 @@
     <Content Include="assets\img\flags\el-salvador.png" />
     <Content Include="assets\img\header-doc.jpg" />
     <Content Include="assets\img\image_placeholder.jpg" />
+    <Content Include="assets\img\imgs1.jpg" />
     <Content Include="assets\img\lock.jpg" />
     <Content Include="assets\img\login.jpg" />
+    <Content Include="assets\img\login1.jpg" />
+    <Content Include="assets\img\login2.jpg" />
+    <Content Include="assets\img\login3.jpg" />
     <Content Include="assets\img\mask.png" />
     <Content Include="assets\img\new_logo.png" />
     <Content Include="assets\img\oracle-aotonomous-blanco.png" />
@@ -388,10 +392,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Clases\Encrypt.cs" />
     <Compile Include="Clases\Home.cs" />
+    <Compile Include="Clases\SessionExpireFilterAttribute.cs" />
+    <Compile Include="Clases\Utils.cs" />
     <Compile Include="Controllers\Administracion\ADMClienteController.cs" />
+    <Compile Include="Controllers\Administracion\ADMDefaultController.cs" />
     <Compile Include="Controllers\Administracion\ADMTipoEmpleadoController.cs" />
+    <Compile Include="Controllers\Caja\CAJDefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Inventario\INVDefaultController.cs" />
+    <Compile Include="Controllers\Pedidos\PEDDefaultController.cs" />
+    <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -519,6 +531,11 @@
     <Content Include="Views\ADMCliente\Index.cshtml" />
     <Content Include="Views\ADMTipoEmpleado\Index.cshtml" />
     <Content Include="Views\ADMEmpleado\Index.cshtml" />
+    <Content Include="Views\ADMDefault\Index.cshtml" />
+    <Content Include="Views\CAJDefault\Index.cshtml" />
+    <Content Include="Views\PEDDefault\Index.cshtml" />
+    <Content Include="Views\REPDefault\Index.cshtml" />
+    <Content Include="Views\INVDefault\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -528,10 +545,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Caja\" />
-    <Folder Include="Controllers\Inventario\" />
-    <Folder Include="Controllers\Pedidos\" />
-    <Folder Include="Controllers\Reportes\" />
     <Folder Include="Scripts\Caja\" />
     <Folder Include="Scripts\Inventario\" />
     <Folder Include="Scripts\Pedidos\" />

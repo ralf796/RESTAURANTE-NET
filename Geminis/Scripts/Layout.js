@@ -2,8 +2,8 @@
 
     var listModulo = [];
     var niveles = 0;
-    //CargarMenu();
-    //CargarModulos();
+    CargarMenu();
+    CargarModulos();
 
     function CargarMenu() {
         $.ajax({
@@ -39,6 +39,7 @@
                 if (listModulo.length > 1) {
                     $("#liModulos").removeClass('d-none');
                     listModulo.forEach(function (modulo) {
+                        debugger;
                         AgregarModulo(modulo);
                     });
                 }
@@ -53,6 +54,7 @@
     }
 
     function AgregarModulo(modulo) {
+        debugger;
         $('#divModulos').append(
             '<a class="dropdown-item" href="' + modulo.URL + '">' +
             '   <i class="material-icons d-lg-none d-md-block">' + modulo.ICONO + '</i> ' + modulo.NOMBRE +
@@ -80,7 +82,7 @@
      */
     function ArmarMenu() {
         niveles = Math.max.apply(Math, listModulo.map(function (menu) { return menu.NIVEL; }));
-
+        debugger;
         if (listModulo.length > 0) {
             listModulo.forEach(function (menu) {
                 if (menu.NIVEL == 1) {

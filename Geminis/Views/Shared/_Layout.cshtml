@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="~/assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        GEMINIS
+        RESTAURANTE
     </title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -112,16 +112,16 @@
 
 <body onload="startclock()">
     <div class="wrapper ">
-        <div class="sidebar" data-color="deep-orange" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="danger" data-background-color="black" data-image="../assets/img/imgs1.jpg">
             <div class="logo">
                 <a class="simple-text logo-mini">
                     <img src="~/assets/img/favicon.png" alt="GN" style="max-width:32px;" />
                 </a>
                 <a class="simple-text logo-normal" style="letter-spacing:6px;">
-                    GEMINIS
+                    RESTAURANTE
                 </a>
-                <a class="simple-text logo-normal text-gray" style="letter-spacing:4px; font-size:14px; ">
-                    AQUI VA LA TIENDA
+                <a class="simple-text logo-normal text-danger" style="letter-spacing:4px; font-size:14px; ">
+                    @Session["nombre_restaurante"]
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -201,81 +201,41 @@
                 </div>
             </div>
 
-            <footer class="footer footer-brand fixed-bottom footer-gray d-none d-xl-block" style="padding: 0 0 !important;">
-                <div class="copyright float-left">
+            <footer class="footer footer-brand fixed-bottom footer-black  d-none d-xl-block" style="padding: 0 0 !important;">
+                <div class="copyright float-left text-danger">
                     &copy;
-                    Grupo Tomza Internacional -
+                    Ingeniería de software (IOS) -
                     <script>
                         document.write(new Date().getFullYear())
                     </script>
-
-                    
                 </div>
-                <div class="float-right">
+                <div class="float-right" style="padding-top:15px">
                     <ul>
-                        <li>
-                            <a class="text-secondary">SRV:</a>
-                        </li>
-                        <li>
-                            <label class="text-deep-orange">AQUI VA LA HORA Y FECHA ACTUAL</label>
-                        </li>
                         <li>
                             <label class="text-secondary">VERSIÓN:</label>
                         </li>
                         <li>
-                            <label class="text-deep-orange">VERSION</label>
+                            <label class="text-danger">1.0</label>
                         </li>
                         <li>
                             <label class="text-secondary">USUARIO:</label>
                         </li>
                         <li>
-                            <label class="text-deep-orange">AQUI VA EL USUARIO</label>
+                            <label class="text-danger">[@Session["usuario"]]</label>
                         </li>
                         <li>
                             <label class="text-secondary">FECHA:</label>
                         </li>
                         <li>
-                            <label class="text-deep-orange">AQUI VA LA HORA Y FECHA ACTUAL </label>
+                            <label class="text-danger">@Geminis.Clases.Utils.ObtenerFecha() </label>
                         </li>
                         <li>
-                            <label class="text-deep-orange" id="lblHora"></label>
+                            <label class="text-danger" id="lblHora"></label>
                         </li>
                     </ul>
                 </div>
             </footer>
-            <footer class="footer d-lg-block d-xl-none">
-                <div class="float-right">
-                    <ul>
-                        <li>
-                            <a class="text-secondary">SRV:</a>
-                        </li>
-                        <li>
-                            <label class="text-deep-orange">AQUI VA LA HORA Y FECHA ACTUAL</label>
-                        </li>
-                        <li>
-                            <label class="text-secondary">VERSIÓN:</label>
-                        </li>
-                        <li>
-                            <label class="text-deep-orange">VERSION</label>
-                        </li>
-                        <li>
-                            <label class="text-secondary">USUARIO:</label>
-                        </li>
-                        <li>
-                            <label class="text-deep-orange">AQUI VA EL USUARIO</label>
-                        </li>
-                        <li>
-                            <label class="text-secondary">FECHA:</label>
-                        </li>
-                        <li>
-                            <label class="text-deep-orange">AQUI VA LA HORA Y FECHA ACTUAL</label>
-                        </li>
-                        <li>
-                            <label class="text-deep-orange" id="lblHora"></label>
-                        </li>
-                    </ul>
-                </div>
-            </footer>
+            
         </div>
     </div>
     <!--   Core JS Files   -->

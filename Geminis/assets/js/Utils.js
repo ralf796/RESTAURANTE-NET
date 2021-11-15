@@ -47,7 +47,7 @@ function getErrorMessage(jqXHR, exception) {
         msg = 'Sin Conexión.\n Verifique su red.';
     } else if (jqXHR.status == 401) {
         execute = false;
-        $(location).attr('href', "/Home/Login?expirado=true");
+        $(location).attr('href', "/Index?expirado=true");
     } else if (jqXHR.status == 403) {
         icon = 'warning';
         msg = 'Se nego el acceso a este sitio por que no posee los permisos necesarios, si desea obtener mas informacion por favor contacte al administrador del sistema';
