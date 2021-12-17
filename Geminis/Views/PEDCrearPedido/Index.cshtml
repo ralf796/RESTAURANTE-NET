@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section scripts{
+    <script src="~/Scripts/Pedidos/PEDCrearPedido.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
+    <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
+}
+
+
+<div class="row">
+    <div class="col-md-12 ml-auto mr-auto" style="margin-top:-24px;">
+        <div class="page-categories">
+            <ul class="nav nav-pills" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkComida" role="tablist" id="linkSopas">
+                        <i class="material-icons">soup_kitchen</i> SOPAS
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkBebidas" role="tablist">
+                        <i class="material-icons">ramen_dining</i> SOPAS MEIN
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkDomicilio" role="tablist">
+                        <i class="material-icons">takeout_dining</i> CHAO MEIN Y LAO MEIN
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">food_bank</i> CHAO MEIN (CANTONÉS)
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">bakery_dining</i> CAMARONES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">takeout_dining</i> TACOS Y WANTAN
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">wb_twilight</i> ARROZ FRITO
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">dining</i> CHAP SUEY
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">savings</i> LOMITO
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">outdoor_grill</i> CARNES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">lunch_dining</i> REFACCIONES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">breakfast_dining</i> ESPECIALIDADES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">set_meal</i> FILETES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#linkLlevar" role="tablist">
+                        <i class="material-icons">outdoor_grill</i> CHURRASCOS
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content tab-space tab-subcategories" style="margin-top:-25px;">
+                <div class="tab-pane active" id="linkCreados">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">PEDIDOS ACTIVOS</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="material-datatables">
+                                <table id="tblPedidosCreados" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%; margin-top:-35px">
+                                    <thead>
+                                        <tr>
+                                            <th class="hidden" style="display:none">PEDIDO_ENC</th>
+                                            <th class="font-weight-bold" title="NÚMERO DE PEDIDO">PEDIDO</th>
+                                            <th class="font-weight-bold">TELÉFONO</th>
+                                            <th class="font-weight-bold">CLIENTE</th>
+                                            <th class="font-weight-bold">NIT</th>
+                                            <th class="font-weight-bold">DIRECCIÓN ENTREGA</th>
+                                            <th class="font-weight-bold">TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* MODAL CREAR*@
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">AGREGAR MENU</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formCrearTipoEmpleado" class="formValida">
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-shopping">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center"></th>
+                                        <th class="text-center">DESCRIPCIÓN</th>
+                                        <th class="text-center">PRECIO</th>
+                                        <th class="text-center">CANTIDAD</th>
+                                        <th class="text-center">SUBTOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="img-container">
+                                                <img src="../../assets/img/sopa_1.jpg" alt="...">
+                                            </div>
+                                        </td>
+                                        <td class="td-name">
+                                            <a href="#jacket">SOPA MEIN POLLO</a>
+                                            <br />
+                                            <small>DESCRIPCION</small>
+                                        </td>
+                                        <td class="td-number text-right">
+                                            <small>GTQ</small>50
+                                        </td>
+                                        <td class="td-number">
+                                            1
+                                            <div class="btn-group btn-group-sm">
+                                                <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
+                                                <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
+                                            </div>
+                                        </td>
+                                        <td class="td-number">
+                                            <small>GTQ</small>50
+                                        </td>
+                                        <td class="td-actions">
+                                            <button type="button" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-link">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="img-container">
+                                                <img src="../../assets/img/sopa_2.jpg" alt="...">
+                                            </div>
+                                        </td>
+                                        <td class="td-name">
+                                            <a href="#jacket">SOPA MEIN MIXTA</a>
+                                            <br />
+                                            <small>DESCRIPCION</small>
+                                        </td>
+                                        <td class="td-number text-right">
+                                            <small>GTQ</small>60
+                                        </td>
+                                        <td class="td-number">
+                                            1
+                                            <div class="btn-group btn-group-sm">
+                                                <button class="btn btn-round btn-info"> <i class="material-icons">remove</i> </button>
+                                                <button class="btn btn-round btn-info"> <i class="material-icons">add</i> </button>
+                                            </div>
+                                        </td>
+                                        <td class="td-number">
+                                            <small>GTQ</small>549
+                                        </td>
+                                        <td class="td-actions">
+                                            <button type="button" rel="tooltip" data-placement="left" title="Remove item" class="btn btn-link">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info btn-round">AGREGAR PEDIDO<i class="material-icons">keyboard_arrow_right</i></button>
+                <button type="button" class="btn btn-danger btn-round" data-dismiss="modal">CANCELAR<i class="material-icons">close</i></button>
+            </div>
+        </div>
+    </div>
+</div>
