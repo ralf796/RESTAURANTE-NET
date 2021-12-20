@@ -24,14 +24,16 @@ namespace Geminis.Models
         public int ID_PEDIDO { get; set; }
         public int ID_MESA { get; set; }
         public int ID_EMPLEADO { get; set; }
-        public int ID_CLIENTE { get; set; }
+        public Nullable<int> ID_CLIENTE { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
         public string ESTADO { get; set; }
         public string CREADO_POR { get; set; }
+        public Nullable<int> ID_ESTADO_PEDIDO { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
+        public virtual ESTADO_PEDIDO ESTADO_PEDIDO { get; set; }
         public virtual MESA MESA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PAGO_MESA> PAGO_MESA { get; set; }

@@ -24,6 +24,7 @@ namespace Geminis.Models
         public Nullable<decimal> PRECIO_UNITARIO { get; set; }
         public Nullable<decimal> SUBTOTAL_DETALLE { get; set; }
         public string CONCEPTO { get; set; }
+        public int ID_FACTURA_DETALLE { get; set; }
     
         public virtual FACTURA_ENCABEZADO FACTURA_ENCABEZADO { get; set; }
     }

@@ -17,13 +17,14 @@ namespace Geminis.Models
         public int ID_DETALLE_PEDIDO { get; set; }
         public int ID_PEDIDO { get; set; }
         public int ID_MENU { get; set; }
-        public int ID_PRODUCTO { get; set; }
+        public Nullable<int> ID_PRODUCTO { get; set; }
         public Nullable<int> CANTIDAD { get; set; }
         public string OBSERVACIONES { get; set; }
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
         public string ESTADO { get; set; }
         public string CREADO_POR { get; set; }
         public Nullable<decimal> SUBTOTAL { get; set; }
+        public Nullable<decimal> PRECIO { get; set; }
     
         public virtual MENU MENU { get; set; }
         public virtual PEDIDO PEDIDO { get; set; }

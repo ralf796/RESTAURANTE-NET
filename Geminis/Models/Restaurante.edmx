@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Restaurante_BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Restaurante_BDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BANCO">
           <Key>
             <PropertyRef Name="ID_BANCO" />
@@ -53,13 +53,16 @@
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
           <Property Name="FECHA_CREACION" Type="date" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ESTADO_PEDIDO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_PEDIDO" />
+          </Key>
+          <Property Name="ID_ESTADO_PEDIDO" Type="int" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="FACTURA_DETALLE">
           <Key>
-            <PropertyRef Name="SERIE" />
-            <PropertyRef Name="NO_FACTURA" />
-            <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
+            <PropertyRef Name="ID_FACTURA_DETALLE" />
           </Key>
           <Property Name="SERIE" Type="int" Nullable="false" />
           <Property Name="NO_FACTURA" Type="int" Nullable="false" />
@@ -71,6 +74,7 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="PRECIO_UNITARIO" Type="decimal" Precision="18" Scale="0" />
           <Property Name="SUBTOTAL_DETALLE" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CONCEPTO" Type="varchar" MaxLength="300" />
+          <Property Name="ID_FACTURA_DETALLE" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="FACTURA_ENCABEZADO">
           <Key>
@@ -137,6 +141,17 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ESTADO" Type="char" MaxLength="1" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
         </EntityType>
+        <EntityType Name="MODULO">
+          <Key>
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="ID_MODULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+          <Property Name="ICONO" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="FECHA_CREACION" Type="date" />
+        </EntityType>
         <EntityType Name="PAGO_MESA">
           <Key>
             <PropertyRef Name="ID_PAGO_MESA" />
@@ -161,6 +176,22 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ESTADO" Type="char" MaxLength="1" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
         </EntityType>
+        <EntityType Name="PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PANTALLA" />
+          </Key>
+          <Property Name="ID_PANTALLA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="URL_PANTALLA" Type="varchar" MaxLength="100" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" />
+          <Property Name="ID_MODULO" Type="int" Nullable="false" />
+          <Property Name="NIVEL" Type="int" />
+          <Property Name="PADRE" Type="int" />
+          <Property Name="ORDEN" Type="int" />
+          <Property Name="ICONO" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" />
+          <Property Name="PRINCIPAL" Type="int" />
+        </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
             <PropertyRef Name="ID_PEDIDO" />
@@ -168,11 +199,12 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_PEDIDO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_MESA" Type="int" Nullable="false" />
           <Property Name="ID_EMPLEADO" Type="int" Nullable="false" />
-          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="int" />
           <Property Name="TOTAL" Type="decimal" Precision="18" Scale="0" />
           <Property Name="FECHA_CREACION" Type="date" />
           <Property Name="ESTADO" Type="char" MaxLength="1" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+          <Property Name="ID_ESTADO_PEDIDO" Type="int" />
         </EntityType>
         <EntityType Name="PEDIDO_DETALLE">
           <Key>
@@ -181,13 +213,23 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_DETALLE_PEDIDO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_PEDIDO" Type="int" Nullable="false" />
           <Property Name="ID_MENU" Type="int" Nullable="false" />
-          <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="int" />
           <Property Name="CANTIDAD" Type="int" />
           <Property Name="OBSERVACIONES" Type="varchar" MaxLength="200" />
           <Property Name="FECHA_CREACION" Type="date" />
           <Property Name="ESTADO" Type="char" MaxLength="1" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
           <Property Name="SUBTOTAL" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PRECIO" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="PERMISO_PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="ID_PERMISO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" />
+          <Property Name="ID_PANTALLA" Type="int" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -213,6 +255,16 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="REFERENCIA" Type="varchar" MaxLength="300" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
+          <Property Name="FECHA_CREACION" Type="date" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="FECHA_CREACION" Type="date" />
         </EntityType>
         <EntityType Name="TIPO_EMPLEADO">
@@ -265,6 +317,7 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="CONTRASEÑA" Type="varchar" MaxLength="100" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
           <Property Name="FECHA_CREACION" Type="date" />
+          <Property Name="ID_MODULO" Type="int" />
         </EntityType>
         <EntityType Name="VALES">
           <Key>
@@ -398,8 +451,20 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PANTALLA__ID_MOD__73BA3083">
+          <End Role="MODULO" Type="Self.MODULO" Multiplicity="1" />
+          <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODULO">
+              <PropertyRef Name="ID_MODULO" />
+            </Principal>
+            <Dependent Role="PANTALLA">
+              <PropertyRef Name="ID_MODULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PEDIDO__ID_CLIEN__5535A963">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
@@ -419,6 +484,18 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Principal>
             <Dependent Role="PEDIDO">
               <PropertyRef Name="ID_EMPLEADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PEDIDO__ID_ESTAD__02FC7413">
+          <End Role="ESTADO_PEDIDO" Type="Self.ESTADO_PEDIDO" Multiplicity="0..1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_PEDIDO">
+              <PropertyRef Name="ID_ESTADO_PEDIDO" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_ESTADO_PEDIDO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -459,7 +536,7 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PEDIDO_DE__ID_PR__59063A47">
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
           <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PRODUCTO">
@@ -467,6 +544,30 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Principal>
             <Dependent Role="PEDIDO_DETALLE">
               <PropertyRef Name="ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERMISO_P__ID_PA__797309D9">
+          <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="0..1" />
+          <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PANTALLA">
+              <PropertyRef Name="ID_PANTALLA" />
+            </Principal>
+            <Dependent Role="PERMISO_PANTALLA">
+              <PropertyRef Name="ID_PANTALLA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERMISO_P__USUAR__787EE5A0">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
+          <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="PERMISO_PANTALLA">
+              <PropertyRef Name="ID_ROL" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -523,37 +624,29 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <EntitySet Name="CAJA" EntityType="Self.CAJA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADO_PEDIDO" EntityType="Self.ESTADO_PEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACTURA_DETALLE" EntityType="Self.FACTURA_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FACTURA_ENCABEZADO" EntityType="Self.FACTURA_ENCABEZADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INVENTARIO_BODEGA_GENERAL" EntityType="Self.INVENTARIO_BODEGA_GENERAL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MENU_DETALLE" EntityType="Self.MENU_DETALLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MESA" EntityType="Self.MESA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODULO" EntityType="Self.MODULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAGO_MESA" EntityType="Self.PAGO_MESA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAGO_PROVEEDOR" EntityType="Self.PAGO_PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PANTALLA" EntityType="Self.PANTALLA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDO_DETALLE" EntityType="Self.PEDIDO_DETALLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERMISO_PANTALLA" EntityType="Self.PERMISO_PANTALLA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_EMPLEADO" EntityType="Self.TIPO_EMPLEADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_MENU" EntityType="Self.TIPO_MENU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VALES" EntityType="Self.VALES" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FACTURA_DETALLE" EntityType="Self.FACTURA_DETALLE" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [FACTURA_DETALLE].[SERIE] AS [SERIE], 
-    [FACTURA_DETALLE].[NO_FACTURA] AS [NO_FACTURA], 
-    [FACTURA_DETALLE].[RESOLUCION] AS [RESOLUCION], 
-    [FACTURA_DETALLE].[ID_FACTURA_ENCABEZADO] AS [ID_FACTURA_ENCABEZADO], 
-    [FACTURA_DETALLE].[NO_DETALLE] AS [NO_DETALLE], 
-    [FACTURA_DETALLE].[PRODUCTO] AS [PRODUCTO], 
-    [FACTURA_DETALLE].[CANTIDAD] AS [CANTIDAD], 
-    [FACTURA_DETALLE].[PRECIO_UNITARIO] AS [PRECIO_UNITARIO], 
-    [FACTURA_DETALLE].[SUBTOTAL_DETALLE] AS [SUBTOTAL_DETALLE], 
-    [FACTURA_DETALLE].[CONCEPTO] AS [CONCEPTO]
-    FROM [dbo].[FACTURA_DETALLE] AS [FACTURA_DETALLE]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__EMPLEADO__ID_TIP__4BAC3F29" Association="Self.FK__EMPLEADO__ID_TIP__4BAC3F29">
             <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
@@ -594,12 +687,20 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
           </AssociationSet>
+          <AssociationSet Name="FK__PANTALLA__ID_MOD__73BA3083" Association="Self.FK__PANTALLA__ID_MOD__73BA3083">
+            <End Role="MODULO" EntitySet="MODULO" />
+            <End Role="PANTALLA" EntitySet="PANTALLA" />
+          </AssociationSet>
           <AssociationSet Name="FK__PEDIDO__ID_CLIEN__5535A963" Association="Self.FK__PEDIDO__ID_CLIEN__5535A963">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
           <AssociationSet Name="FK__PEDIDO__ID_EMPLE__5629CD9C" Association="Self.FK__PEDIDO__ID_EMPLE__5629CD9C">
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__ID_ESTAD__02FC7413" Association="Self.FK__PEDIDO__ID_ESTAD__02FC7413">
+            <End Role="ESTADO_PEDIDO" EntitySet="ESTADO_PEDIDO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
           <AssociationSet Name="FK__PEDIDO__ID_MESA__571DF1D5" Association="Self.FK__PEDIDO__ID_MESA__571DF1D5">
@@ -618,6 +719,14 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
+          <AssociationSet Name="FK__PERMISO_P__ID_PA__797309D9" Association="Self.FK__PERMISO_P__ID_PA__797309D9">
+            <End Role="PANTALLA" EntitySet="PANTALLA" />
+            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERMISO_P__USUAR__787EE5A0" Association="Self.FK__PERMISO_P__USUAR__787EE5A0">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
+          </AssociationSet>
           <AssociationSet Name="FK__PRODUCTO__ID_TIP__5AEE82B9" Association="Self.FK__PRODUCTO__ID_TIP__5AEE82B9">
             <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
@@ -635,21 +744,145 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             <End Role="VALES" EntitySet="VALES" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Restaurante_BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Restaurante_BDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BANCO" EntityType="Restaurante_BDModel.BANCO" />
+          <EntitySet Name="CAJA" EntityType="Restaurante_BDModel.CAJA" />
+          <EntitySet Name="CLIENTE" EntityType="Restaurante_BDModel.CLIENTE" />
+          <EntitySet Name="EMPLEADO" EntityType="Restaurante_BDModel.EMPLEADO" />
+          <EntitySet Name="ESTADO_PEDIDO" EntityType="Restaurante_BDModel.ESTADO_PEDIDO" />
+          <EntitySet Name="FACTURA_DETALLE" EntityType="Restaurante_BDModel.FACTURA_DETALLE" />
+          <EntitySet Name="FACTURA_ENCABEZADO" EntityType="Restaurante_BDModel.FACTURA_ENCABEZADO" />
+          <EntitySet Name="INVENTARIO_BODEGA_GENERAL" EntityType="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" />
+          <EntitySet Name="MENU" EntityType="Restaurante_BDModel.MENU" />
+          <EntitySet Name="MENU_DETALLE" EntityType="Restaurante_BDModel.MENU_DETALLE" />
+          <EntitySet Name="MESA" EntityType="Restaurante_BDModel.MESA" />
+          <EntitySet Name="MODULO" EntityType="Restaurante_BDModel.MODULO" />
+          <EntitySet Name="PAGO_MESA" EntityType="Restaurante_BDModel.PAGO_MESA" />
+          <EntitySet Name="PAGO_PROVEEDOR" EntityType="Restaurante_BDModel.PAGO_PROVEEDOR" />
+          <EntitySet Name="PANTALLA" EntityType="Restaurante_BDModel.PANTALLA" />
+          <EntitySet Name="PEDIDO" EntityType="Restaurante_BDModel.PEDIDO" />
+          <EntitySet Name="PEDIDO_DETALLE" EntityType="Restaurante_BDModel.PEDIDO_DETALLE" />
+          <EntitySet Name="PERMISO_PANTALLA" EntityType="Restaurante_BDModel.PERMISO_PANTALLA" />
+          <EntitySet Name="PRODUCTO" EntityType="Restaurante_BDModel.PRODUCTO" />
+          <EntitySet Name="PROVEEDOR" EntityType="Restaurante_BDModel.PROVEEDOR" />
+          <EntitySet Name="ROL" EntityType="Restaurante_BDModel.ROL" />
+          <EntitySet Name="TIPO_EMPLEADO" EntityType="Restaurante_BDModel.TIPO_EMPLEADO" />
+          <EntitySet Name="TIPO_MENU" EntityType="Restaurante_BDModel.TIPO_MENU" />
+          <EntitySet Name="TIPO_PRODUCTO" EntityType="Restaurante_BDModel.TIPO_PRODUCTO" />
+          <EntitySet Name="UNIDAD_MEDIDA" EntityType="Restaurante_BDModel.UNIDAD_MEDIDA" />
+          <EntitySet Name="USUARIO" EntityType="Restaurante_BDModel.USUARIO" />
+          <EntitySet Name="VALES" EntityType="Restaurante_BDModel.VALES" />
+          <AssociationSet Name="FK__PAGO_PROV__ID_BA__534D60F1" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__534D60F1">
+            <End Role="BANCO" EntitySet="BANCO" />
+            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACTURA_E__ID_CL__4D94879B" Association="Restaurante_BDModel.FK__FACTURA_E__ID_CL__4D94879B">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__ID_CLIEN__5535A963" Association="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EMPLEADO__ID_TIP__4BAC3F29" Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__4BAC3F29">
+            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__ID_EMPLE__5629CD9C" Association="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIO__ID_EMPL__5CD6CB2B" Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__5CD6CB2B">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VALES__ID_EMPLEA__5DCAEF64" Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__5DCAEF64">
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="VALES" EntitySet="VALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__ID_ESTAD__02FC7413" Association="Restaurante_BDModel.FK__PEDIDO__ID_ESTAD__02FC7413">
+            <End Role="ESTADO_PEDIDO" EntitySet="ESTADO_PEDIDO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FACTURA_D__ID_FA__4CA06362" Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__4CA06362">
+            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
+            <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MENU__ID_TIPO_ME__4E88ABD4" Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__4E88ABD4">
+            <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
+            <End Role="MENU" EntitySet="MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MENU_DETA__ID_ME__4F7CD00D" Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__4F7CD00D">
+            <End Role="MENU" EntitySet="MENU" />
+            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__5812160E" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__5812160E">
+            <End Role="MENU" EntitySet="MENU" />
+            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MENU_DETA__ID_UN__5070F446" Association="Restaurante_BDModel.FK__MENU_DETA__ID_UN__5070F446">
+            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
+            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAGO_MESA__ID_ME__5165187F" Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__5165187F">
+            <End Role="MESA" EntitySet="MESA" />
+            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO__ID_MESA__571DF1D5" Association="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5">
+            <End Role="MESA" EntitySet="MESA" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PANTALLA__ID_MOD__73BA3083" Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__73BA3083">
+            <End Role="MODULO" EntitySet="MODULO" />
+            <End Role="PANTALLA" EntitySet="PANTALLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAGO_MESA__ID_PE__52593CB8" Association="Restaurante_BDModel.FK__PAGO_MESA__ID_PE__52593CB8">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAGO_PROV__ID_PR__5441852A" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__5441852A">
+            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERMISO_P__ID_PA__797309D9" Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__797309D9">
+            <End Role="PANTALLA" EntitySet="PANTALLA" />
+            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO_DE__ID_PE__59FA5E80" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PE__59FA5E80">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__59063A47" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__59063A47">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERMISO_P__USUAR__787EE5A0" Association="Restaurante_BDModel.FK__PERMISO_P__USUAR__787EE5A0">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTO__ID_TIP__5AEE82B9" Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__5AEE82B9">
+            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTO__ID_UNI__5BE2A6F2" Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__5BE2A6F2">
+            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="BANCO">
           <Key>
             <PropertyRef Name="ID_BANCO" />
           </Key>
           <Property Name="ID_BANCO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Self.FK__PAGO_PROV__ID_BA__534D60F1" FromRole="BANCO" ToRole="PAGO_PROVEEDOR" />
+          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__534D60F1" FromRole="BANCO" ToRole="PAGO_PROVEEDOR" />
         </EntityType>
         <EntityType Name="CAJA">
           <Key>
@@ -665,7 +898,7 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             <PropertyRef Name="ID_CLIENTE" />
           </Key>
           <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE_CLIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_CLIENTE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="NIT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -673,8 +906,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FACTURA_ENCABEZADO" Relationship="Self.FK__FACTURA_E__ID_CL__4D94879B" FromRole="CLIENTE" ToRole="FACTURA_ENCABEZADO" />
-          <NavigationProperty Name="PEDIDO" Relationship="Self.FK__PEDIDO__ID_CLIEN__5535A963" FromRole="CLIENTE" ToRole="PEDIDO" />
+          <NavigationProperty Name="FACTURA_ENCABEZADO" Relationship="Restaurante_BDModel.FK__FACTURA_E__ID_CL__4D94879B" FromRole="CLIENTE" ToRole="FACTURA_ENCABEZADO" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963" FromRole="CLIENTE" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
@@ -682,7 +915,7 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </Key>
           <Property Name="ID_EMPLEADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_TIPO_EMPLEADO" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SALARIO" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -690,10 +923,35 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="TIPO_EMPLEADO" Relationship="Self.FK__EMPLEADO__ID_TIP__4BAC3F29" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
-          <NavigationProperty Name="PEDIDO" Relationship="Self.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="EMPLEADO" ToRole="PEDIDO" />
-          <NavigationProperty Name="USUARIO" Relationship="Self.FK__USUARIO__ID_EMPL__5CD6CB2B" FromRole="EMPLEADO" ToRole="USUARIO" />
-          <NavigationProperty Name="VALES" Relationship="Self.FK__VALES__ID_EMPLEA__5DCAEF64" FromRole="EMPLEADO" ToRole="VALES" />
+          <NavigationProperty Name="TIPO_EMPLEADO" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__4BAC3F29" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="EMPLEADO" ToRole="PEDIDO" />
+          <NavigationProperty Name="USUARIO" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__5CD6CB2B" FromRole="EMPLEADO" ToRole="USUARIO" />
+          <NavigationProperty Name="VALES" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__5DCAEF64" FromRole="EMPLEADO" ToRole="VALES" />
+        </EntityType>
+        <EntityType Name="ESTADO_PEDIDO">
+          <Key>
+            <PropertyRef Name="ID_ESTADO_PEDIDO" />
+          </Key>
+          <Property Name="ID_ESTADO_PEDIDO" Type="Int32" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_ESTAD__02FC7413" FromRole="ESTADO_PEDIDO" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="FACTURA_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_FACTURA_DETALLE" />
+          </Key>
+          <Property Name="SERIE" Type="Int32" Nullable="false" />
+          <Property Name="NO_FACTURA" Type="Int32" Nullable="false" />
+          <Property Name="RESOLUCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_FACTURA_ENCABEZADO" Type="Int32" Nullable="false" />
+          <Property Name="NO_DETALLE" Type="Int32" />
+          <Property Name="PRODUCTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CANTIDAD" Type="Int32" />
+          <Property Name="PRECIO_UNITARIO" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SUBTOTAL_DETALLE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CONCEPTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ID_FACTURA_DETALLE" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FACTURA_ENCABEZADO" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__4CA06362" FromRole="FACTURA_DETALLE" ToRole="FACTURA_ENCABEZADO" />
         </EntityType>
         <EntityType Name="FACTURA_ENCABEZADO">
           <Key>
@@ -714,15 +972,15 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CLIENTE" Relationship="Self.FK__FACTURA_E__ID_CL__4D94879B" FromRole="FACTURA_ENCABEZADO" ToRole="CLIENTE" />
-          <NavigationProperty Name="FACTURA_DETALLE" Relationship="Self.FK__FACTURA_D__ID_FA__4CA06362" FromRole="FACTURA_ENCABEZADO" ToRole="FACTURA_DETALLE" />
+          <NavigationProperty Name="CLIENTE" Relationship="Restaurante_BDModel.FK__FACTURA_E__ID_CL__4D94879B" FromRole="FACTURA_ENCABEZADO" ToRole="CLIENTE" />
+          <NavigationProperty Name="FACTURA_DETALLE" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__4CA06362" FromRole="FACTURA_ENCABEZADO" ToRole="FACTURA_DETALLE" />
         </EntityType>
         <EntityType Name="INVENTARIO_BODEGA_GENERAL">
           <Key>
             <PropertyRef Name="ID_BODEGA_GENERAL" />
           </Key>
           <Property Name="ID_BODEGA_GENERAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="CANTIDAD" Type="Int32" />
           <Property Name="FECHA_INGRESO" Type="DateTime" Precision="0" />
@@ -736,14 +994,14 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </Key>
           <Property Name="ID_MENU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_TIPO_MENU" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="TIPO_MENU" Relationship="Self.FK__MENU__ID_TIPO_ME__4E88ABD4" FromRole="MENU" ToRole="TIPO_MENU" />
-          <NavigationProperty Name="MENU_DETALLE" Relationship="Self.FK__MENU_DETA__ID_ME__4F7CD00D" FromRole="MENU" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Self.FK__PEDIDO_DE__ID_ME__5812160E" FromRole="MENU" ToRole="PEDIDO_DETALLE" />
+          <NavigationProperty Name="TIPO_MENU" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__4E88ABD4" FromRole="MENU" ToRole="TIPO_MENU" />
+          <NavigationProperty Name="MENU_DETALLE" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__4F7CD00D" FromRole="MENU" ToRole="MENU_DETALLE" />
+          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__5812160E" FromRole="MENU" ToRole="PEDIDO_DETALLE" />
         </EntityType>
         <EntityType Name="MENU_DETALLE">
           <Key>
@@ -752,10 +1010,10 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_MENU_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_UNIDAD_MEDIDA" Type="Int32" Nullable="false" />
           <Property Name="ID_MENU" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CANTIDAD" Type="Int32" />
-          <NavigationProperty Name="MENU" Relationship="Self.FK__MENU_DETA__ID_ME__4F7CD00D" FromRole="MENU_DETALLE" ToRole="MENU" />
-          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Self.FK__MENU_DETA__ID_UN__5070F446" FromRole="MENU_DETALLE" ToRole="UNIDAD_MEDIDA" />
+          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__4F7CD00D" FromRole="MENU_DETALLE" ToRole="MENU" />
+          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_UN__5070F446" FromRole="MENU_DETALLE" ToRole="UNIDAD_MEDIDA" />
         </EntityType>
         <EntityType Name="MESA">
           <Key>
@@ -766,8 +1024,20 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PAGO_MESA" Relationship="Self.FK__PAGO_MESA__ID_ME__5165187F" FromRole="MESA" ToRole="PAGO_MESA" />
-          <NavigationProperty Name="PEDIDO" Relationship="Self.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="MESA" ToRole="PEDIDO" />
+          <NavigationProperty Name="PAGO_MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__5165187F" FromRole="MESA" ToRole="PAGO_MESA" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="MESA" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="MODULO">
+          <Key>
+            <PropertyRef Name="ID_MODULO" />
+          </Key>
+          <Property Name="ID_MODULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PANTALLA" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__73BA3083" FromRole="MODULO" ToRole="PANTALLA" />
         </EntityType>
         <EntityType Name="PAGO_MESA">
           <Key>
@@ -777,8 +1047,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_MESA" Type="Int32" Nullable="false" />
           <Property Name="MONTO" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ID_PEDIDO" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MESA" Relationship="Self.FK__PAGO_MESA__ID_ME__5165187F" FromRole="PAGO_MESA" ToRole="MESA" />
-          <NavigationProperty Name="PEDIDO" Relationship="Self.FK__PAGO_MESA__ID_PE__52593CB8" FromRole="PAGO_MESA" ToRole="PEDIDO" />
+          <NavigationProperty Name="MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__5165187F" FromRole="PAGO_MESA" ToRole="MESA" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_PE__52593CB8" FromRole="PAGO_MESA" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="PAGO_PROVEEDOR">
           <Key>
@@ -794,8 +1064,26 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="BANCO" Relationship="Self.FK__PAGO_PROV__ID_BA__534D60F1" FromRole="PAGO_PROVEEDOR" ToRole="BANCO" />
-          <NavigationProperty Name="PROVEEDOR" Relationship="Self.FK__PAGO_PROV__ID_PR__5441852A" FromRole="PAGO_PROVEEDOR" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="BANCO" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__534D60F1" FromRole="PAGO_PROVEEDOR" ToRole="BANCO" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__5441852A" FromRole="PAGO_PROVEEDOR" ToRole="PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PANTALLA" />
+          </Key>
+          <Property Name="ID_PANTALLA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="URL_PANTALLA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ID_MODULO" Type="Int32" Nullable="false" />
+          <Property Name="NIVEL" Type="Int32" />
+          <Property Name="PADRE" Type="Int32" />
+          <Property Name="ORDEN" Type="Int32" />
+          <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PRINCIPAL" Type="Int32" />
+          <NavigationProperty Name="MODULO" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__73BA3083" FromRole="PANTALLA" ToRole="MODULO" />
+          <NavigationProperty Name="PERMISO_PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__797309D9" FromRole="PANTALLA" ToRole="PERMISO_PANTALLA" />
         </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
@@ -804,16 +1092,18 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_PEDIDO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_MESA" Type="Int32" Nullable="false" />
           <Property Name="ID_EMPLEADO" Type="Int32" Nullable="false" />
-          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="Int32" />
           <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CLIENTE" Relationship="Self.FK__PEDIDO__ID_CLIEN__5535A963" FromRole="PEDIDO" ToRole="CLIENTE" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="PEDIDO" ToRole="EMPLEADO" />
-          <NavigationProperty Name="MESA" Relationship="Self.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="PEDIDO" ToRole="MESA" />
-          <NavigationProperty Name="PAGO_MESA" Relationship="Self.FK__PAGO_MESA__ID_PE__52593CB8" FromRole="PEDIDO" ToRole="PAGO_MESA" />
-          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Self.FK__PEDIDO_DE__ID_PE__59FA5E80" FromRole="PEDIDO" ToRole="PEDIDO_DETALLE" />
+          <Property Name="ID_ESTADO_PEDIDO" Type="Int32" />
+          <NavigationProperty Name="CLIENTE" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963" FromRole="PEDIDO" ToRole="CLIENTE" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="PEDIDO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="ESTADO_PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_ESTAD__02FC7413" FromRole="PEDIDO" ToRole="ESTADO_PEDIDO" />
+          <NavigationProperty Name="MESA" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="PEDIDO" ToRole="MESA" />
+          <NavigationProperty Name="PAGO_MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_PE__52593CB8" FromRole="PEDIDO" ToRole="PAGO_MESA" />
+          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PE__59FA5E80" FromRole="PEDIDO" ToRole="PEDIDO_DETALLE" />
         </EntityType>
         <EntityType Name="PEDIDO_DETALLE">
           <Key>
@@ -822,16 +1112,28 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_DETALLE_PEDIDO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_PEDIDO" Type="Int32" Nullable="false" />
           <Property Name="ID_MENU" Type="Int32" Nullable="false" />
-          <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="Int32" />
           <Property Name="CANTIDAD" Type="Int32" />
           <Property Name="OBSERVACIONES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="SUBTOTAL" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MENU" Relationship="Self.FK__PEDIDO_DE__ID_ME__5812160E" FromRole="PEDIDO_DETALLE" ToRole="MENU" />
-          <NavigationProperty Name="PEDIDO" Relationship="Self.FK__PEDIDO_DE__ID_PE__59FA5E80" FromRole="PEDIDO_DETALLE" ToRole="PEDIDO" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PEDIDO_DE__ID_PR__59063A47" FromRole="PEDIDO_DETALLE" ToRole="PRODUCTO" />
+          <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__5812160E" FromRole="PEDIDO_DETALLE" ToRole="MENU" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PE__59FA5E80" FromRole="PEDIDO_DETALLE" ToRole="PEDIDO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__59063A47" FromRole="PEDIDO_DETALLE" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="PERMISO_PANTALLA">
+          <Key>
+            <PropertyRef Name="ID_PERMISO" />
+          </Key>
+          <Property Name="ID_PERMISO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROL" Type="Int32" />
+          <Property Name="ID_PANTALLA" Type="Int32" />
+          <Property Name="USUARIO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__797309D9" FromRole="PERMISO_PANTALLA" ToRole="PANTALLA" />
+          <NavigationProperty Name="ROL" Relationship="Restaurante_BDModel.FK__PERMISO_P__USUAR__787EE5A0" FromRole="PERMISO_PANTALLA" ToRole="ROL" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -840,40 +1142,51 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_TIPO_PRODUCTO" Type="Int32" Nullable="false" />
           <Property Name="ID_UNIDAD_MEDIDA" Type="Int32" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Self.FK__PEDIDO_DE__ID_PR__59063A47" FromRole="PRODUCTO" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Self.FK__PRODUCTO__ID_TIP__5AEE82B9" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
-          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Self.FK__PRODUCTO__ID_UNI__5BE2A6F2" FromRole="PRODUCTO" ToRole="UNIDAD_MEDIDA" />
+          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__59063A47" FromRole="PRODUCTO" ToRole="PEDIDO_DETALLE" />
+          <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__5AEE82B9" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
+          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__5BE2A6F2" FromRole="PRODUCTO" ToRole="UNIDAD_MEDIDA" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
             <PropertyRef Name="ID_PROVEEDOR" />
           </Key>
           <Property Name="ID_PROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="REFERENCIA" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Self.FK__PAGO_PROV__ID_PR__5441852A" FromRole="PROVEEDOR" ToRole="PAGO_PROVEEDOR" />
+          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__5441852A" FromRole="PROVEEDOR" ToRole="PAGO_PROVEEDOR" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PERMISO_PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__USUAR__787EE5A0" FromRole="ROL" ToRole="PERMISO_PANTALLA" />
         </EntityType>
         <EntityType Name="TIPO_EMPLEADO">
           <Key>
             <PropertyRef Name="ID_TIPO_EMPLEADO" />
           </Key>
           <Property Name="ID_TIPO_EMPLEADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__EMPLEADO__ID_TIP__4BAC3F29" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__4BAC3F29" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
         </EntityType>
         <EntityType Name="TIPO_MENU">
           <Key>
@@ -884,18 +1197,18 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="MENU" Relationship="Self.FK__MENU__ID_TIPO_ME__4E88ABD4" FromRole="TIPO_MENU" ToRole="MENU" />
+          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__4E88ABD4" FromRole="TIPO_MENU" ToRole="MENU" />
         </EntityType>
         <EntityType Name="TIPO_PRODUCTO">
           <Key>
             <PropertyRef Name="ID_TIPO_PRODUCTO" />
           </Key>
           <Property Name="ID_TIPO_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__ID_TIP__5AEE82B9" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__5AEE82B9" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="UNIDAD_MEDIDA">
           <Key>
@@ -905,8 +1218,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="ABREVIATURA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MENU_DETALLE" Relationship="Self.FK__MENU_DETA__ID_UN__5070F446" FromRole="UNIDAD_MEDIDA" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__ID_UNI__5BE2A6F2" FromRole="UNIDAD_MEDIDA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="MENU_DETALLE" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_UN__5070F446" FromRole="UNIDAD_MEDIDA" ToRole="MENU_DETALLE" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__5BE2A6F2" FromRole="UNIDAD_MEDIDA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -918,7 +1231,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="CONTRASEÑA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__USUARIO__ID_EMPL__5CD6CB2B" FromRole="USUARIO" ToRole="EMPLEADO" />
+          <Property Name="ID_MODULO" Type="Int32" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__5CD6CB2B" FromRole="USUARIO" ToRole="EMPLEADO" />
         </EntityType>
         <EntityType Name="VALES">
           <Key>
@@ -931,29 +1245,11 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK__VALES__ID_EMPLEA__5DCAEF64" FromRole="VALES" ToRole="EMPLEADO" />
-        </EntityType>
-        <EntityType Name="FACTURA_DETALLE">
-          <Key>
-            <PropertyRef Name="SERIE" />
-            <PropertyRef Name="NO_FACTURA" />
-            <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-          </Key>
-          <Property Name="SERIE" Type="Int32" Nullable="false" />
-          <Property Name="NO_FACTURA" Type="Int32" Nullable="false" />
-          <Property Name="RESOLUCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ID_FACTURA_ENCABEZADO" Type="Int32" Nullable="false" />
-          <Property Name="NO_DETALLE" Type="Int32" />
-          <Property Name="PRODUCTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CANTIDAD" Type="Int32" />
-          <Property Name="PRECIO_UNITARIO" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="SUBTOTAL_DETALLE" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CONCEPTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="FACTURA_ENCABEZADO" Relationship="Self.FK__FACTURA_D__ID_FA__4CA06362" FromRole="FACTURA_DETALLE" ToRole="FACTURA_ENCABEZADO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__5DCAEF64" FromRole="VALES" ToRole="EMPLEADO" />
         </EntityType>
         <Association Name="FK__PAGO_PROV__ID_BA__534D60F1">
-          <End Role="BANCO" Type="Self.BANCO" Multiplicity="1" />
-          <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.BANCO" Role="BANCO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BANCO">
               <PropertyRef Name="ID_BANCO" />
@@ -964,8 +1260,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__FACTURA_E__ID_CL__4D94879B">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
-          <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.FACTURA_ENCABEZADO" Role="FACTURA_ENCABEZADO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
               <PropertyRef Name="ID_CLIENTE" />
@@ -976,8 +1272,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PEDIDO__ID_CLIEN__5535A963">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
               <PropertyRef Name="ID_CLIENTE" />
@@ -988,8 +1284,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__EMPLEADO__ID_TIP__4BAC3F29">
-          <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.TIPO_EMPLEADO" Role="TIPO_EMPLEADO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_EMPLEADO">
               <PropertyRef Name="ID_TIPO_EMPLEADO" />
@@ -1000,8 +1296,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PEDIDO__ID_EMPLE__5629CD9C">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPLEADO">
               <PropertyRef Name="ID_EMPLEADO" />
@@ -1012,8 +1308,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__USUARIO__ID_EMPL__5CD6CB2B">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.USUARIO" Role="USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPLEADO">
               <PropertyRef Name="ID_EMPLEADO" />
@@ -1024,8 +1320,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__VALES__ID_EMPLEA__5DCAEF64">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="VALES" Type="Self.VALES" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.VALES" Role="VALES" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EMPLEADO">
               <PropertyRef Name="ID_EMPLEADO" />
@@ -1035,9 +1331,21 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PEDIDO__ID_ESTAD__02FC7413">
+          <End Type="Restaurante_BDModel.ESTADO_PEDIDO" Role="ESTADO_PEDIDO" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_PEDIDO">
+              <PropertyRef Name="ID_ESTADO_PEDIDO" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ID_ESTADO_PEDIDO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__FACTURA_D__ID_FA__4CA06362">
-          <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="1" />
-          <End Role="FACTURA_DETALLE" Type="Self.FACTURA_DETALLE" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.FACTURA_ENCABEZADO" Role="FACTURA_ENCABEZADO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.FACTURA_DETALLE" Role="FACTURA_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FACTURA_ENCABEZADO">
               <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
@@ -1048,8 +1356,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MENU__ID_TIPO_ME__4E88ABD4">
-          <End Role="TIPO_MENU" Type="Self.TIPO_MENU" Multiplicity="1" />
-          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.TIPO_MENU" Role="TIPO_MENU" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_MENU">
               <PropertyRef Name="ID_TIPO_MENU" />
@@ -1060,8 +1368,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MENU_DETA__ID_ME__4F7CD00D">
-          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
-          <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MENU">
               <PropertyRef Name="ID_MENU" />
@@ -1072,8 +1380,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PEDIDO_DE__ID_ME__5812160E">
-          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MENU">
               <PropertyRef Name="ID_MENU" />
@@ -1084,8 +1392,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MENU_DETA__ID_UN__5070F446">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
-          <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UNIDAD_MEDIDA">
               <PropertyRef Name="ID_UNIDAD_MEDIDA" />
@@ -1096,8 +1404,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PAGO_MESA__ID_ME__5165187F">
-          <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
-          <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.MESA" Role="MESA" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PAGO_MESA" Role="PAGO_MESA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MESA">
               <PropertyRef Name="ID_MESA" />
@@ -1108,8 +1416,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PEDIDO__ID_MESA__571DF1D5">
-          <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.MESA" Role="MESA" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MESA">
               <PropertyRef Name="ID_MESA" />
@@ -1119,9 +1427,21 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PANTALLA__ID_MOD__73BA3083">
+          <End Type="Restaurante_BDModel.MODULO" Role="MODULO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODULO">
+              <PropertyRef Name="ID_MODULO" />
+            </Principal>
+            <Dependent Role="PANTALLA">
+              <PropertyRef Name="ID_MODULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PAGO_MESA__ID_PE__52593CB8">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
-          <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PAGO_MESA" Role="PAGO_MESA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PEDIDO">
               <PropertyRef Name="ID_PEDIDO" />
@@ -1132,8 +1452,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PAGO_PROV__ID_PR__5441852A">
-          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
-          <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PROVEEDOR">
               <PropertyRef Name="ID_PROVEEDOR" />
@@ -1143,9 +1463,21 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PERMISO_P__ID_PA__797309D9">
+          <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PANTALLA">
+              <PropertyRef Name="ID_PANTALLA" />
+            </Principal>
+            <Dependent Role="PERMISO_PANTALLA">
+              <PropertyRef Name="ID_PANTALLA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PEDIDO_DE__ID_PE__59FA5E80">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PEDIDO">
               <PropertyRef Name="ID_PEDIDO" />
@@ -1156,8 +1488,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PEDIDO_DE__ID_PR__59063A47">
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PRODUCTO">
               <PropertyRef Name="ID_PRODUCTO" />
@@ -1167,9 +1499,21 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PERMISO_P__USUAR__787EE5A0">
+          <End Type="Restaurante_BDModel.ROL" Role="ROL" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="PERMISO_PANTALLA">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PRODUCTO__ID_TIP__5AEE82B9">
-          <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.TIPO_PRODUCTO" Role="TIPO_PRODUCTO" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_PRODUCTO">
               <PropertyRef Name="ID_TIPO_PRODUCTO" />
@@ -1180,8 +1524,8 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PRODUCTO__ID_UNI__5BE2A6F2">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="1" />
+          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UNIDAD_MEDIDA">
               <PropertyRef Name="ID_UNIDAD_MEDIDA" />
@@ -1191,111 +1535,7 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Restaurante_BDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BANCO" EntityType="Self.BANCO" />
-          <EntitySet Name="CAJA" EntityType="Self.CAJA" />
-          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
-          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
-          <EntitySet Name="FACTURA_ENCABEZADO" EntityType="Self.FACTURA_ENCABEZADO" />
-          <EntitySet Name="INVENTARIO_BODEGA_GENERAL" EntityType="Self.INVENTARIO_BODEGA_GENERAL" />
-          <EntitySet Name="MENU" EntityType="Self.MENU" />
-          <EntitySet Name="MENU_DETALLE" EntityType="Self.MENU_DETALLE" />
-          <EntitySet Name="MESA" EntityType="Self.MESA" />
-          <EntitySet Name="PAGO_MESA" EntityType="Self.PAGO_MESA" />
-          <EntitySet Name="PAGO_PROVEEDOR" EntityType="Self.PAGO_PROVEEDOR" />
-          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" />
-          <EntitySet Name="PEDIDO_DETALLE" EntityType="Self.PEDIDO_DETALLE" />
-          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
-          <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" />
-          <EntitySet Name="TIPO_EMPLEADO" EntityType="Self.TIPO_EMPLEADO" />
-          <EntitySet Name="TIPO_MENU" EntityType="Self.TIPO_MENU" />
-          <EntitySet Name="TIPO_PRODUCTO" EntityType="Self.TIPO_PRODUCTO" />
-          <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" />
-          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
-          <EntitySet Name="VALES" EntityType="Self.VALES" />
-          <EntitySet Name="FACTURA_DETALLE" EntityType="Self.FACTURA_DETALLE" />
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__534D60F1" Association="Self.FK__PAGO_PROV__ID_BA__534D60F1">
-            <End Role="BANCO" EntitySet="BANCO" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_E__ID_CL__4D94879B" Association="Self.FK__FACTURA_E__ID_CL__4D94879B">
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO__ID_CLIEN__5535A963" Association="Self.FK__PEDIDO__ID_CLIEN__5535A963">
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__4BAC3F29" Association="Self.FK__EMPLEADO__ID_TIP__4BAC3F29">
-            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO__ID_EMPLE__5629CD9C" Association="Self.FK__PEDIDO__ID_EMPLE__5629CD9C">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__5CD6CB2B" Association="Self.FK__USUARIO__ID_EMPL__5CD6CB2B">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__5DCAEF64" Association="Self.FK__VALES__ID_EMPLEA__5DCAEF64">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="VALES" EntitySet="VALES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__4CA06362" Association="Self.FK__FACTURA_D__ID_FA__4CA06362">
-            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
-            <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__4E88ABD4" Association="Self.FK__MENU__ID_TIPO_ME__4E88ABD4">
-            <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
-            <End Role="MENU" EntitySet="MENU" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__4F7CD00D" Association="Self.FK__MENU_DETA__ID_ME__4F7CD00D">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__5812160E" Association="Self.FK__PEDIDO_DE__ID_ME__5812160E">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_UN__5070F446" Association="Self.FK__MENU_DETA__ID_UN__5070F446">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__5165187F" Association="Self.FK__PAGO_MESA__ID_ME__5165187F">
-            <End Role="MESA" EntitySet="MESA" />
-            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO__ID_MESA__571DF1D5" Association="Self.FK__PEDIDO__ID_MESA__571DF1D5">
-            <End Role="MESA" EntitySet="MESA" />
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_PE__52593CB8" Association="Self.FK__PAGO_MESA__ID_PE__52593CB8">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__5441852A" Association="Self.FK__PAGO_PROV__ID_PR__5441852A">
-            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PE__59FA5E80" Association="Self.FK__PEDIDO_DE__ID_PE__59FA5E80">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__59063A47" Association="Self.FK__PEDIDO_DE__ID_PR__59063A47">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__5AEE82B9" Association="Self.FK__PRODUCTO__ID_TIP__5AEE82B9">
-            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__5BE2A6F2" Association="Self.FK__PRODUCTO__ID_UNI__5BE2A6F2">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1304,291 +1544,353 @@ advertencia 6002: La tabla o vista 'Restaurante_BD.dbo.FACTURA_DETALLE' no tiene
           <EntitySetMapping Name="BANCO">
             <EntityTypeMapping TypeName="Restaurante_BDModel.BANCO">
               <MappingFragment StoreEntitySet="BANCO">
-                <ScalarProperty Name="ID_BANCO" ColumnName="ID_BANCO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_BANCO" ColumnName="ID_BANCO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CAJA">
             <EntityTypeMapping TypeName="Restaurante_BDModel.CAJA">
               <MappingFragment StoreEntitySet="CAJA">
-                <ScalarProperty Name="NO_CORTE" ColumnName="NO_CORTE" />
-                <ScalarProperty Name="FECHA_CORTE" ColumnName="FECHA_CORTE" />
-                <ScalarProperty Name="TOTAL_CORTE" ColumnName="TOTAL_CORTE" />
                 <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="TOTAL_CORTE" ColumnName="TOTAL_CORTE" />
+                <ScalarProperty Name="FECHA_CORTE" ColumnName="FECHA_CORTE" />
+                <ScalarProperty Name="NO_CORTE" ColumnName="NO_CORTE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="Restaurante_BDModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
-                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
-                <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="NIT" ColumnName="NIT" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
                 <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPLEADO">
             <EntityTypeMapping TypeName="Restaurante_BDModel.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
-                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
-                <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
                 <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FACTURA_ENCABEZADO">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.FACTURA_ENCABEZADO">
-              <MappingFragment StoreEntitySet="FACTURA_ENCABEZADO">
-                <ScalarProperty Name="ID_FACTURA_ENCABEZADO" ColumnName="ID_FACTURA_ENCABEZADO" />
-                <ScalarProperty Name="SERIE" ColumnName="SERIE" />
-                <ScalarProperty Name="NO_FACTURA" ColumnName="NO_FACTURA" />
-                <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
-                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
-                <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
-                <ScalarProperty Name="TOTAL_FACTURA" ColumnName="TOTAL_FACTURA" />
-                <ScalarProperty Name="TOTAL_IVA" ColumnName="TOTAL_IVA" />
-                <ScalarProperty Name="SUBTOTAL_FACTURA" ColumnName="SUBTOTAL_FACTURA" />
-                <ScalarProperty Name="NIT" ColumnName="NIT" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="INVENTARIO_BODEGA_GENERAL">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL">
-              <MappingFragment StoreEntitySet="INVENTARIO_BODEGA_GENERAL">
-                <ScalarProperty Name="ID_BODEGA_GENERAL" ColumnName="ID_BODEGA_GENERAL" />
-                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
-                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
-                <ScalarProperty Name="EXISTENCIA" ColumnName="EXISTENCIA" />
-                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MENU">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.MENU">
-              <MappingFragment StoreEntitySet="MENU">
-                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
-                <ScalarProperty Name="ID_TIPO_MENU" ColumnName="ID_TIPO_MENU" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MENU_DETALLE">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.MENU_DETALLE">
-              <MappingFragment StoreEntitySet="MENU_DETALLE">
-                <ScalarProperty Name="ID_MENU_DETALLE" ColumnName="ID_MENU_DETALLE" />
-                <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
-                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MESA">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.MESA">
-              <MappingFragment StoreEntitySet="MESA">
-                <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
-                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PAGO_MESA">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.PAGO_MESA">
-              <MappingFragment StoreEntitySet="PAGO_MESA">
-                <ScalarProperty Name="ID_PAGO_MESA" ColumnName="ID_PAGO_MESA" />
-                <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
-                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
-                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PAGO_PROVEEDOR">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.PAGO_PROVEEDOR">
-              <MappingFragment StoreEntitySet="PAGO_PROVEEDOR">
-                <ScalarProperty Name="ID_PAGO_PROVEEDOR" ColumnName="ID_PAGO_PROVEEDOR" />
-                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
-                <ScalarProperty Name="ID_BANCO" ColumnName="ID_BANCO" />
-                <ScalarProperty Name="NO_CUENTA" ColumnName="NO_CUENTA" />
-                <ScalarProperty Name="NOMBRE_CUENTA" ColumnName="NOMBRE_CUENTA" />
                 <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PEDIDO">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.PEDIDO">
-              <MappingFragment StoreEntitySet="PEDIDO">
-                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
-                <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
-                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
-                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
-                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PEDIDO_DETALLE">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.PEDIDO_DETALLE">
-              <MappingFragment StoreEntitySet="PEDIDO_DETALLE">
-                <ScalarProperty Name="ID_DETALLE_PEDIDO" ColumnName="ID_DETALLE_PEDIDO" />
-                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
-                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
-                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
-                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCTO">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.PRODUCTO">
-              <MappingFragment StoreEntitySet="PRODUCTO">
-                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
-                <ScalarProperty Name="ID_TIPO_PRODUCTO" ColumnName="ID_TIPO_PRODUCTO" />
-                <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+                <ScalarProperty Name="SALARIO" ColumnName="SALARIO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PROVEEDOR">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.PROVEEDOR">
-              <MappingFragment StoreEntitySet="PROVEEDOR">
-                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
-                <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
-                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TIPO_EMPLEADO">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_EMPLEADO">
-              <MappingFragment StoreEntitySet="TIPO_EMPLEADO">
                 <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TIPO_MENU">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_MENU">
-              <MappingFragment StoreEntitySet="TIPO_MENU">
-                <ScalarProperty Name="ID_TIPO_MENU" ColumnName="ID_TIPO_MENU" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TIPO_PRODUCTO">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_PRODUCTO">
-              <MappingFragment StoreEntitySet="TIPO_PRODUCTO">
-                <ScalarProperty Name="ID_TIPO_PRODUCTO" ColumnName="ID_TIPO_PRODUCTO" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UNIDAD_MEDIDA">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.UNIDAD_MEDIDA">
-              <MappingFragment StoreEntitySet="UNIDAD_MEDIDA">
-                <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="ABREVIATURA" ColumnName="ABREVIATURA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USUARIO">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.USUARIO">
-              <MappingFragment StoreEntitySet="USUARIO">
-                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
                 <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
-                <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
-                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VALES">
-            <EntityTypeMapping TypeName="Restaurante_BDModel.VALES">
-              <MappingFragment StoreEntitySet="VALES">
-                <ScalarProperty Name="ID_VALE" ColumnName="ID_VALE" />
-                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
-                <ScalarProperty Name="TOTAL_VALE" ColumnName="TOTAL_VALE" />
-                <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
-                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+          <EntitySetMapping Name="ESTADO_PEDIDO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.ESTADO_PEDIDO">
+              <MappingFragment StoreEntitySet="ESTADO_PEDIDO">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_ESTADO_PEDIDO" ColumnName="ID_ESTADO_PEDIDO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FACTURA_DETALLE">
             <EntityTypeMapping TypeName="Restaurante_BDModel.FACTURA_DETALLE">
               <MappingFragment StoreEntitySet="FACTURA_DETALLE">
-                <ScalarProperty Name="SERIE" ColumnName="SERIE" />
-                <ScalarProperty Name="NO_FACTURA" ColumnName="NO_FACTURA" />
-                <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
-                <ScalarProperty Name="ID_FACTURA_ENCABEZADO" ColumnName="ID_FACTURA_ENCABEZADO" />
-                <ScalarProperty Name="NO_DETALLE" ColumnName="NO_DETALLE" />
-                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
-                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
-                <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
-                <ScalarProperty Name="SUBTOTAL_DETALLE" ColumnName="SUBTOTAL_DETALLE" />
+                <ScalarProperty Name="ID_FACTURA_DETALLE" ColumnName="ID_FACTURA_DETALLE" />
                 <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+                <ScalarProperty Name="SUBTOTAL_DETALLE" ColumnName="SUBTOTAL_DETALLE" />
+                <ScalarProperty Name="PRECIO_UNITARIO" ColumnName="PRECIO_UNITARIO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="NO_DETALLE" ColumnName="NO_DETALLE" />
+                <ScalarProperty Name="ID_FACTURA_ENCABEZADO" ColumnName="ID_FACTURA_ENCABEZADO" />
+                <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
+                <ScalarProperty Name="NO_FACTURA" ColumnName="NO_FACTURA" />
+                <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACTURA_ENCABEZADO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.FACTURA_ENCABEZADO">
+              <MappingFragment StoreEntitySet="FACTURA_ENCABEZADO">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="SUBTOTAL_FACTURA" ColumnName="SUBTOTAL_FACTURA" />
+                <ScalarProperty Name="TOTAL_IVA" ColumnName="TOTAL_IVA" />
+                <ScalarProperty Name="TOTAL_FACTURA" ColumnName="TOTAL_FACTURA" />
+                <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="RESOLUCION" ColumnName="RESOLUCION" />
+                <ScalarProperty Name="NO_FACTURA" ColumnName="NO_FACTURA" />
+                <ScalarProperty Name="SERIE" ColumnName="SERIE" />
+                <ScalarProperty Name="ID_FACTURA_ENCABEZADO" ColumnName="ID_FACTURA_ENCABEZADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVENTARIO_BODEGA_GENERAL">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL">
+              <MappingFragment StoreEntitySet="INVENTARIO_BODEGA_GENERAL">
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="EXISTENCIA" ColumnName="EXISTENCIA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+                <ScalarProperty Name="FECHA_INGRESO" ColumnName="FECHA_INGRESO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+                <ScalarProperty Name="ID_BODEGA_GENERAL" ColumnName="ID_BODEGA_GENERAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENU">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.MENU">
+              <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_TIPO_MENU" ColumnName="ID_TIPO_MENU" />
+                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENU_DETALLE">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.MENU_DETALLE">
+              <MappingFragment StoreEntitySet="MENU_DETALLE">
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+                <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+                <ScalarProperty Name="ID_MENU_DETALLE" ColumnName="ID_MENU_DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESA">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.MESA">
+              <MappingFragment StoreEntitySet="MESA">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODULO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.MODULO">
+              <MappingFragment StoreEntitySet="MODULO">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGO_MESA">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PAGO_MESA">
+              <MappingFragment StoreEntitySet="PAGO_MESA">
+                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
+                <ScalarProperty Name="ID_PAGO_MESA" ColumnName="ID_PAGO_MESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGO_PROVEEDOR">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PAGO_PROVEEDOR">
+              <MappingFragment StoreEntitySet="PAGO_PROVEEDOR">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="NOMBRE_CUENTA" ColumnName="NOMBRE_CUENTA" />
+                <ScalarProperty Name="NO_CUENTA" ColumnName="NO_CUENTA" />
+                <ScalarProperty Name="ID_BANCO" ColumnName="ID_BANCO" />
+                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+                <ScalarProperty Name="ID_PAGO_PROVEEDOR" ColumnName="ID_PAGO_PROVEEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PANTALLA">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PANTALLA">
+              <MappingFragment StoreEntitySet="PANTALLA">
+                <ScalarProperty Name="PRINCIPAL" ColumnName="PRINCIPAL" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="PADRE" ColumnName="PADRE" />
+                <ScalarProperty Name="NIVEL" ColumnName="NIVEL" />
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="URL_PANTALLA" ColumnName="URL_PANTALLA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_PANTALLA" ColumnName="ID_PANTALLA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="ID_ESTADO_PEDIDO" ColumnName="ID_ESTADO_PEDIDO" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="ID_MESA" ColumnName="ID_MESA" />
+                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO_DETALLE">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PEDIDO_DETALLE">
+              <MappingFragment StoreEntitySet="PEDIDO_DETALLE">
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="SUBTOTAL" ColumnName="SUBTOTAL" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="ID_MENU" ColumnName="ID_MENU" />
+                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+                <ScalarProperty Name="ID_DETALLE_PEDIDO" ColumnName="ID_DETALLE_PEDIDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERMISO_PANTALLA">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PERMISO_PANTALLA">
+              <MappingFragment StoreEntitySet="PERMISO_PANTALLA">
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID_PANTALLA" ColumnName="ID_PANTALLA" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+                <ScalarProperty Name="ID_TIPO_PRODUCTO" ColumnName="ID_TIPO_PRODUCTO" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVEEDOR">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.PROVEEDOR">
+              <MappingFragment StoreEntitySet="PROVEEDOR">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="REFERENCIA" ColumnName="REFERENCIA" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_PROVEEDOR" ColumnName="ID_PROVEEDOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_EMPLEADO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_EMPLEADO">
+              <MappingFragment StoreEntitySet="TIPO_EMPLEADO">
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_TIPO_EMPLEADO" ColumnName="ID_TIPO_EMPLEADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_MENU">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_MENU">
+              <MappingFragment StoreEntitySet="TIPO_MENU">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_TIPO_MENU" ColumnName="ID_TIPO_MENU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_PRODUCTO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.TIPO_PRODUCTO">
+              <MappingFragment StoreEntitySet="TIPO_PRODUCTO">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_TIPO_PRODUCTO" ColumnName="ID_TIPO_PRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNIDAD_MEDIDA">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.UNIDAD_MEDIDA">
+              <MappingFragment StoreEntitySet="UNIDAD_MEDIDA">
+                <ScalarProperty Name="ABREVIATURA" ColumnName="ABREVIATURA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ID_UNIDAD_MEDIDA" ColumnName="ID_UNIDAD_MEDIDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID_MODULO" ColumnName="ID_MODULO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+                <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VALES">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.VALES">
+              <MappingFragment StoreEntitySet="VALES">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+                <ScalarProperty Name="TOTAL_VALE" ColumnName="TOTAL_VALE" />
+                <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
+                <ScalarProperty Name="ID_VALE" ColumnName="ID_VALE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

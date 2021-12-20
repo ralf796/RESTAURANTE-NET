@@ -12,16 +12,18 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class ESTADO_PEDIDO
     {
-        public int ID_USUARIO { get; set; }
-        public int ID_EMPLEADO { get; set; }
-        public string USUARIO1 { get; set; }
-        public string CONTRASEÑA { get; set; }
-        public string CREADO_POR { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
-        public Nullable<int> ID_MODULO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ESTADO_PEDIDO()
+        {
+            this.PEDIDO = new HashSet<PEDIDO>();
+        }
     
-        public virtual EMPLEADO EMPLEADO { get; set; }
+        public int ID_ESTADO_PEDIDO { get; set; }
+        public string DESCRIPCION { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }
 }

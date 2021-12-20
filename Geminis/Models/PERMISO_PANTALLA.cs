@@ -12,16 +12,14 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class PERMISO_PANTALLA
     {
-        public int ID_USUARIO { get; set; }
-        public int ID_EMPLEADO { get; set; }
-        public string USUARIO1 { get; set; }
-        public string CONTRASEÑA { get; set; }
-        public string CREADO_POR { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
-        public Nullable<int> ID_MODULO { get; set; }
+        public int ID_PERMISO { get; set; }
+        public Nullable<int> ID_ROL { get; set; }
+        public Nullable<int> ID_PANTALLA { get; set; }
+        public string USUARIO { get; set; }
     
-        public virtual EMPLEADO EMPLEADO { get; set; }
+        public virtual PANTALLA PANTALLA { get; set; }
+        public virtual ROL ROL { get; set; }
     }
 }

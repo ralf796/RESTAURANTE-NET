@@ -29,23 +29,28 @@ namespace Geminis.Models
         public virtual DbSet<CAJA> CAJA { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<EMPLEADO> EMPLEADO { get; set; }
+        public virtual DbSet<ESTADO_PEDIDO> ESTADO_PEDIDO { get; set; }
+        public virtual DbSet<FACTURA_DETALLE> FACTURA_DETALLE { get; set; }
         public virtual DbSet<FACTURA_ENCABEZADO> FACTURA_ENCABEZADO { get; set; }
         public virtual DbSet<INVENTARIO_BODEGA_GENERAL> INVENTARIO_BODEGA_GENERAL { get; set; }
         public virtual DbSet<MENU> MENU { get; set; }
         public virtual DbSet<MENU_DETALLE> MENU_DETALLE { get; set; }
         public virtual DbSet<MESA> MESA { get; set; }
+        public virtual DbSet<MODULO> MODULO { get; set; }
         public virtual DbSet<PAGO_MESA> PAGO_MESA { get; set; }
         public virtual DbSet<PAGO_PROVEEDOR> PAGO_PROVEEDOR { get; set; }
+        public virtual DbSet<PANTALLA> PANTALLA { get; set; }
         public virtual DbSet<PEDIDO> PEDIDO { get; set; }
         public virtual DbSet<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
+        public virtual DbSet<PERMISO_PANTALLA> PERMISO_PANTALLA { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
+        public virtual DbSet<ROL> ROL { get; set; }
         public virtual DbSet<TIPO_EMPLEADO> TIPO_EMPLEADO { get; set; }
         public virtual DbSet<TIPO_MENU> TIPO_MENU { get; set; }
         public virtual DbSet<TIPO_PRODUCTO> TIPO_PRODUCTO { get; set; }
         public virtual DbSet<UNIDAD_MEDIDA> UNIDAD_MEDIDA { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<VALES> VALES { get; set; }
-        public virtual DbSet<FACTURA_DETALLE> FACTURA_DETALLE { get; set; }
     }
 }

@@ -1,19 +1,200 @@
 ﻿$(document).ready(function () {
 
-    DevExpress.localization.locale(navigator.language);
     fillAllInputs();
+    
 
     function fillAllInputs() {
         $(".formValida .bmd-form-group").each(function () {
             $(this).addClass("is-filled");
         });
     }
+    function ShowShortMessage(type, title, text) {
+        Swal.fire({
+            position: 'inherit',
+            type: type,
+            title: title,
+            text: text,
+            showConfirmButton: false,
+            timer: 5000
+        })
+    }
+    function GetMesas() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDCrearPedido/GetMesasDisponibles',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: {},
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    $('#selMesa').empty();
+                    traerDatos.forEach(function (dato) {
+                        $('#selMesa').append('<option value="' + dato.ID_MESA + '">' + dato.NUMERO + '</option>');
+                    });
+                    $('#selMesa').selectpicker();
+                    $('#selMesa').selectpicker('refresh');
+                    resolve(1);
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
+    function GetTipoMenu() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDCrearPedido/GetTipoMenu',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: {},
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    $('#selCategoria').empty();
+                    traerDatos.forEach(function (dato) {
+                        $('#selCategoria').append('<option value="' + dato.ID_TIPO_MENU + '">' + dato.NOMBRE + '</option>');
+                    });
+                    $('#selCategoria').selectpicker();
+                    $('#selCategoria').selectpicker('refresh');
 
+                    $('#modalCrearDetalleProducto').modal('show');
+                    resolve(1);
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
+    function GetMenu(idTipoMenu) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDCrearPedido/GetMenu',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: { idTipoMenu },
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    $('#selMenu').empty();
+                    traerDatos.forEach(function (dato) {
+                        $('#selMenu').append('<option data-precio="' + dato.PRECIO + '" value="' + dato.ID_MENU + '">' + dato.NOMBRE + ' - Q.' + dato.PRECIO + '</option>');
+                    });
+                    $('#selMenu').selectpicker();
+                    $('#selMenu').selectpicker('refresh');
+
+                    resolve(1);
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
+    function AgregarProducto(cantidad, idproducto, producto, precio, observaciones) {
+        var subtotal = parseFloat(cantidad) * parseFloat(precio);
+        var eliminarDetalle = '<a title="Eliminar detalle" class="btn btn-link btn-danger QuitarDetalle" style="margin: 0 0 !important"><i class="material-icons">close</i></a>';
+
+        tableDetalles.row.add([
+            cantidad,
+            idproducto,
+            producto,
+            precio,
+            subtotal,
+            observaciones
+        ]).draw(false);
+    }
+    function ActualizarTotalPedido() {
+        var totalPedido = 0;
+        tableDetalles.rows().every(function () {
+            var row = this.data();
+            totalPedido += parseFloat(row[4]);
+        });
+
+        $('#txtTotalPedido').val(totalPedido.toFixed(2));
+    }
+
+    /*
     $('#linkSopas').on('click', function (e) {
         e.preventDefault();
         $('#modalCrear').modal('show');
     });
+    */
 
+    $('#btnAbrirModalCrearRefactura').on('click', function (e) {
+        e.preventDefault();
+        GetMesas();
+        $('#modalCrearRefactura').modal('show');
+    });
+    $('#btnBuscarProducto').on('click', function (e) {
+        e.preventDefault();
+        if ($('#formRefactura').valid()) {
+            GetTipoMenu();
+        }
+    });
+    $('#selCategoria').on('change', function (e) {
+        e.preventDefault();
+        var tipomenu = $(this).val();
+        GetMenu(tipomenu);
+    });
+    $('#selMenu').on('change', function (e) {
+        e.preventDefault();
+        var precio = $('#selMenu option:selected').attr('data-precio');
+        $("#txtProductoPrecio").val(precio);
+    });
+    $('#btnAgregarProducto').on('click', function (e) {
+        e.preventDefault();
+        if ($('#formProducto').valid()) {
+            AgregarProducto($('#txtProductoCantidad').val(), $('#selMenu').val(), $("#selMenu option:selected").text(), $('#txtProductoPrecio').val().replace(",", ""), $('#txtObservaciones').val())
+            $('#modalCrearDetalleProducto').modal('hide');
+            ActualizarTotalPedido();
+        }
+    });
+    var tableDetalles = $('#tblDetallesPedido').DataTable({
+        columns: [
+            { title: 'CANTIDAD' },
+            { title: 'ID_PRODUCTO', visible: false },
+            { title: 'PRODUCTO' },
+            { title: 'PRECIO' },
+            { title: 'SUBTOTAL' },
+            { title: 'OBSERVACIONES' },
+            {
+                render: function () {
+                    return '<a title="ELIMINAR DETALLE" class="btn btn-link btn-danger btn-just-icon remove" style="margin: 0 0 !important"><i class="material-icons">clear</i></a>';
+                }
+            }
+        ],
+        "lengthMenu": [
+            [5, 10, 15, 20, 25, 50, -1],
+            [5, 10, 15, 20, 25, 50, "Todo"]
+        ],
+        "searching": false,
+        "bLengthChange": false, //thought this line could hide the LengthMenu        
+        responsive: true,
+        language: {
+            url: "/assets/datatable-spanish.json"
+        }
+    });
+
+    function PEDIDO(ID_MESA, TOTAL) {
+        this.ID_MESA = ID_MESA;
+        this.TOTAL = TOTAL;
+    }
+    function PEDIDO_DETALLE(ID_MENU, CANTIDAD, OBSERVACIONES, PRECIO, SUBTOTAL) {
+        this.ID_MENU = ID_MENU;
+        this.CANTIDAD = CANTIDAD;
+        this.OBSERVACIONES = OBSERVACIONES;
+        this.PRECIO = PRECIO;
+        this.SUBTOTAL = SUBTOTAL;
+    }
     function GuardarPedido(pEncabezado, pDetalles) {
         CallLoadingFire();
         $.ajax({
@@ -24,16 +205,16 @@
                 detallePedido: JSON.stringify(pDetalles)
             },
             success: function (data) {
-                //----------------ERROR CATCH----------------
                 if (data["Estado"] == -1) {
-                    showNotification('top', 'right', 'error', data["MENSAJE"], 'danger');
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
                     return;
                 }
-                //----------------PEDIDO GUARDADO----------------
                 else if (data["Estado"] == 1) {
                     var vMensaje = 'PEDIDO CREADO';
-                    var vMensaje2 = '<div><br />NO. PEDIDO: ' + data["PEDIDO"] + '</div>';
+                    var vMensaje2 = '<div><br />No.: ' + data['PEDIDO'] + '<br /></div>';
                     swal(vMensaje, vMensaje2, "success");
+                    habilitartablePedidos();
+                    LimpiarTodo();
                 }
             },
             error: function (jqXHR, ex) {
@@ -42,94 +223,137 @@
         });
     }
 
-    $('#btnGuardarNCRefacturación').on('click', function (e) {
+    $('#btnCrearPedido').on('click', function (e) {
         e.preventDefault();
 
         //----------------VALIDACION DE FORMULARIO----------------
-        if ($('#formNCRefacturacion').valid()) {
-            var totalRefactura = $('#txtTotalRefacturas').val().replace(",", "");
-            var total = $('#tdTotalFactura1Refac').val().replace(",", "");
+        if ($('#formRefactura').valid()) {
+            var idmesa = $('#selMesa').val();
+            var total = $('#txtTotalPedido').val();
+            var encabezado = new PEDIDO(idmesa, total);
+            var listDetalles = [];
 
-            //if (parseFloat(totalRefactura) != parseFloat(total))
-            //    showNotification('top', 'right', 'warning', 'El total de refacturas no coincide con el saldo disponible.', 'warning');
-            //else {
-
-            //----------------DEFINIR VARIABLES----------------
-            var corporacion = $('#txtCorporacionRefac').val();
-            var tipoNC = 2;
-            var serieNC = $('#selSerieNCPorRefactura').val();
-            var resolucionNC = $('#selSerieNCPorRefactura option:selected').attr('data-resolucion');
-            var noNC = $('#selSerieNCPorRefactura option:selected').attr('data-noSiguiente');
-            var serieF = $('#txtSerieFacRefac').val();
-            var resolucionF = $('#txtNoresolucionFacRefactura').val();
-            var noF = $('#txtNoFacturaRefac').val();
-            var iva = $('#txtTotalIvaFacRefactura').val().replace(",", "");
-            var serieFelF = $('#txtSerieFel1Refac').val();
-            var noFelF = $('#txtNoFel1Refac').val();
-            var motivo = 'Por refacturacion de factura: ' + serieF + ' - ' + noF + ' (' + serieFelF + '  -  ' + noFelF + ')';
-            var uuidFelF = $('#txtUuid1Refac').val();
-            var nit = $('#txtNit1Refac').val();
-            var nombre = $('#txtNombreCliente1Refac').val();
-            var direccion = $('#txtDireccionFacRefactura').val();
-            var totalGalones = $('#txtTotalGalonesFacRefactura').val();
-            var idp = parseFloat($('#txtTotalIdpFacRefactura').val().replace(",", ""));
-            var fechaF = $('#txtFechaFactura1Refac').val();
-
-            //----------------ENCAPSULAMIENTO ENCABEZADO NC----------------        
-            var encabezado = new JSON_ENCABEZADO(corporacion, tipoNC, serieNC, resolucionNC, noNC, serieF,
-                resolucionF, noF, iva, total, motivo, serieFelF, noFelF, uuidFelF,
-                nit, nombre, direccion, totalGalones, idp, fechaF);
-
-            //----------------ENCAPSULAMIENTO DETALLE REFACTURA----------------
-            var listRefacturas = [];
-            $('#tbodyDatosFactura tr').each(function () {
-                var vCliente = $(this).find("td").eq(0).text();
-                var vNombreCliente = $(this).find("td").eq(1).text();
-                var vNit = $(this).find("td").eq(2).text();
-                var vDireccion = $(this).find("td").eq(3).text();
-                var vSerie = $(this).find("td").eq(4).text();
-                var vResolucion = $(this).find("td").eq(5).text();
-                var vNoFac = $(this).find("td").eq(6).text();
-                var vListaCantidades = $(this).find("td").eq(7).text();
-                var vListaProductos = $(this).find("td").eq(8).text();
-                var vListaPrecios = $(this).find("td").eq(9).text();
-                var vTotal = $(this).find("td").eq(10).text();
-                var vIVA = $(this).find("td").eq(11).text();
-                var vAplica = $(this).find("td").eq(13).text();
-                var vMonto = $(this).find("td").eq(14).text();
-
-                var dpi = '';
-                if (cuiIsValid(vNit))
-                    dpi = vNit;
-
-                var listado = new JSON_REFACTURAS(vCliente, vNombreCliente, vNit, vDireccion, vSerie, vResolucion, vNoFac, vListaCantidades, vListaProductos, vListaPrecios, vTotal, vIVA, vAplica, vMonto, dpi);
-                listRefacturas.push(listado);
+            tableDetalles.rows().every(function (rowIdx) {
+                var row = this.data();
+                var vidmenu = parseFloat(row[1]);
+                var vcantidad = parseFloat(row[0]);
+                var vobservaciones = (row[5]);
+                var vprecio = parseFloat(row[3]);
+                var vsubtotal = parseFloat(row[4]);
+                var detalle = new PEDIDO_DETALLE(vidmenu, vcantidad, vobservaciones, vprecio, vsubtotal);
+                listDetalles.push(detalle);
             });
 
-            //----------------ENCAPSULAMIENTO DETALLE NC---------------- 
-            var listDetalleNC = [];
-            $('#tbodyDatosFactura tr').each(function () {
-                var vSerie = $(this).find("td").eq(4).text();
-                var vResolucion = $(this).find("td").eq(5).text();
-                var vNoFac = $(this).find("td").eq(6).text();
-                var listado = new CYC_NOTA_CREDITO_FACTURA(1, vSerie, vNoFac, vResolucion);
-                listDetalleNC.push(listado);
-            });
-
-            var nitFacAplicada = $("#txtNit1Refac").val().trim();
-            var dpiFac = '';
-            if (cuiIsValid(nitFacAplicada))
-                dpiFac = nitFacAplicada;
-
-            //----------------MANDAR A LLAMAR A LA FUNCION PARA GUARDAR NC DESCUENTO----------------
-            if (listRefacturas.length > 0)
-                FirmarNotaCreditoRefactura(encabezado, listRefacturas, listDetalleNC, dpiFac);
+            if (listDetalles.length > 0)
+                GuardarPedido(encabezado, listDetalles);
             else
                 showNotification('top', 'right', 'warning', 'Debe de ingresar como mínimo una refactura', 'warning');
             //}
         }
     });
 
-
-
+    var iniciciarTablePedidos = false;
+    function habilitartablePedidos() {
+        CallLoadingFire();
+        iniciciarTablePedidos = true;
+        tablaDatosPedidos.clear().draw();
+        $('#tblPedidosCreados').DataTable().ajax.reload();
+    }
+    var tablaDatosPedidos = $('#tblPedidosCreados').DataTable({
+        ajax: function (data, callback, settings) {
+            tablaDatodataSourcePedidos().then(function (_data) {
+                callback(_data);
+            });
+        },
+        columns: [
+            {
+                "class": "remover-control",
+                "orderable": false,
+                "data": null,
+                "defaultContent": "",
+            },
+            { data: 'ID_PEDIDO' },
+            { data: 'NUMERO' },
+            { data: 'DESCRIPCION' },
+            { data: 'TOTAL' },
+            {
+                data: null,
+                className: "center",
+                render: function (data, type, row, full, meta) {
+                    var editar = '';
+                    var eliminar = '';
+                    editar = '<a title="MODIFICAR" class="btn btn-link btn-info btn-just-icon modificarPedido" style="margin: 0 0 !important"><i class="material-icons">edit</i></a>'
+                    eliminar = '<a title="ANULAR" class="btn btn-link btn-danger btn-just-icon anularPedido" style="margin: 0 0 !important"><i class="material-icons">close</i></a>';
+                    return editar + eliminar;
+                }
+            }
+        ],
+        columnDefs: [
+            {
+                targets: 3,
+                render: $.fn.dataTable.render.number(',', '.', 2)
+            },
+            {
+                targets: [0,1,2,3,4],
+                className: 'text-center'
+            },
+        ],
+        dom: 'Blfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: '',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn-sm btn-link',
+                filename: '',
+                sheetName: 'Reporte',
+                title: '',
+                init: function (api, node, config) {
+                    $(node).removeClass('btn-secondary btn-default')
+                }
+            }
+        ],
+        "scrollX": true,
+        "order": [[1, 'asc']],
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+            [7, 10, 15, 20, 25, 50, -1],
+            [7, 10, 15, 20, 25, 50, "Todo"]
+        ],
+        responsive: false,
+        language: {
+            url: "/assets/datatable-spanish.json"
+        },
+        initComplete: function () {
+            iniciciarTablePedidos = true;
+        }
+    });
+    function tablaDatodataSourcePedidos() {
+        return new Promise(function (resolve, reject) {
+            if (!iniciciarTablePedidos) {
+                resolve({
+                    data: {},
+                });
+            }
+            else {
+                $.ajax({
+                    url: "/PEDCrearPedido/GetPedidos",
+                    dataType: 'json',
+                    data: {},
+                    success: function (json) {
+                        var data = json["DATA"];
+                        resolve({
+                            data: data,
+                        });
+                    },
+                    error: function (jqXHR, ex) {
+                        getErrorMessage(jqXHR, ex);
+                        reject();
+                    }
+                });
+            }
+        });
+    }
+    
+    habilitartablePedidos();
 });
