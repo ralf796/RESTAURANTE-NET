@@ -31,7 +31,7 @@ namespace Geminis.Controllers
                     string urlDefault = "";
                     var modulos = Home.Instance.ListarModulos(catUsuario.USUARIO);
                     if (modulos.Count > 0)
-                        urlDefault = Home.Instance.ObtenerModulo(Convert.ToInt32(modulos[0].ID_MODULO)).URL;
+                        urlDefault = Home.Instance.ObtenerModulo(Convert.ToInt32(catUsuario.MODULO)).URL;
                     else
                     {
                         urlDefault = "/Home/Index";
@@ -61,7 +61,7 @@ namespace Geminis.Controllers
             var codigoModulo = 0L;
             if (Session["CodigoModulo"] != null)
                 codigoModulo = Convert.ToInt64(Session["CodigoModulo"]);
-            var mod = Home.Instance.ObtenerModulo(codigoModulo);
+            var mod = Home.Instance.ObtenerModulo(Convert.ToInt32(codigoModulo));
             var listadoMenu = Home.Instance.ListarMenu(usuario, codigoModulo);
             return Json(new
             {

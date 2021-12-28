@@ -376,11 +376,15 @@
     <Content Include="Scripts\Administracion\ADMCliente.js" />
     <Content Include="Scripts\Administracion\ADMEmpleado.js" />
     <Content Include="Scripts\Administracion\ADMTipoEmpleado.js" />
+    <Content Include="Scripts\Administracion\ADMUsuario.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\dx-quill.min.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\dx.all.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.en.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.es.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.fr.js" />
+    <Content Include="Scripts\Inventario\INVBodega.js" />
+    <Content Include="Scripts\Inventario\INVMenu.js" />
+    <Content Include="Scripts\Inventario\INVTipoMenu.js" />
     <Content Include="Scripts\Layout.js" />
     <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\Reporte\Financieros\dx.all.js" />
@@ -401,9 +405,13 @@
     <Compile Include="Controllers\Administracion\ADMClienteController.cs" />
     <Compile Include="Controllers\Administracion\ADMDefaultController.cs" />
     <Compile Include="Controllers\Administracion\ADMTipoEmpleadoController.cs" />
+    <Compile Include="Controllers\Administracion\ADMUsuarioController.cs" />
     <Compile Include="Controllers\Caja\CAJDefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Inventario\INVBodegaController.cs" />
     <Compile Include="Controllers\Inventario\INVDefaultController.cs" />
+    <Compile Include="Controllers\Inventario\INVMenuController.cs" />
+    <Compile Include="Controllers\Inventario\INVTipoMenuController.cs" />
     <Compile Include="Controllers\Pedidos\PEDCrearPedidoController.cs" />
     <Compile Include="Controllers\Pedidos\PEDDefaultController.cs" />
     <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
@@ -420,6 +428,9 @@
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EMPLEADO.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ESTADO_PEDIDO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FACTURA_DETALLE.cs">
@@ -440,16 +451,25 @@
     <Compile Include="Models\MESA.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MODULO.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PAGO_MESA.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PAGO_PROVEEDOR.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PANTALLA.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PEDIDO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PEDIDO_DETALLE.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PERMISO_PANTALLA.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PRODUCTO.cs">
@@ -472,6 +492,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Restaurante.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ROL.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TIPO_EMPLEADO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
@@ -541,6 +567,10 @@
     <Content Include="Views\REPDefault\Index.cshtml" />
     <Content Include="Views\INVDefault\Index.cshtml" />
     <Content Include="Views\PEDCrearPedido\Index.cshtml" />
+    <Content Include="Views\INVBodega\index.cshtml" />
+    <Content Include="Views\INVMenu\index.cshtml" />
+    <Content Include="Views\INVTipoMenu\Index.cshtml" />
+    <Content Include="Views\ADMUsuario\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -551,7 +581,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\Caja\" />
-    <Folder Include="Scripts\Inventario\" />
     <Folder Include="Scripts\Reportes\" />
     <Folder Include="Views\ADMTipoProveedor\" />
   </ItemGroup>

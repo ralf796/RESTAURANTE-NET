@@ -56,7 +56,7 @@ namespace Geminis.Clases
             return db.Database.SqlQuery<Menu>(queryMenu).ToList();
         }
 
-        public Modulo ObtenerModulo(long modulo)
+        public Modulo ObtenerModulo(int modulo)
         {
             // string cosito = null;
 
@@ -69,7 +69,7 @@ namespace Geminis.Clases
                               me.url_PANTALLA AS url
                             FROM modulo mo
                             LEFT JOIN PANTALLA me
-                              ON mo.id_modulo = me.id_PANTALLA
+                              ON mo.id_modulo = me.id_modulo
                               AND me.principal = 1
                               AND me.estado = 'A'
                             WHERE mo.id_modulo = " + modulo;

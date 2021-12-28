@@ -24,7 +24,7 @@ namespace Geminis.Controllers.Administracion
                 try
                 {
                     var obtenerDatos = JsonConvert.DeserializeObject<TIPO_EMPLEADO>(datos);
-                    obtenerDatos.CREADO_POR= "RALOPEZ";
+                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     obtenerDatos.FECHA_CREACION= DateTime.Now;
                     obtenerDatos.ESTADO= "A";
                     db.TIPO_EMPLEADO.Add(obtenerDatos);

@@ -46,6 +46,7 @@ namespace Geminis.Models
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public virtual DbSet<ROL> ROL { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TIPO_EMPLEADO> TIPO_EMPLEADO { get; set; }
         public virtual DbSet<TIPO_MENU> TIPO_MENU { get; set; }
         public virtual DbSet<TIPO_PRODUCTO> TIPO_PRODUCTO { get; set; }

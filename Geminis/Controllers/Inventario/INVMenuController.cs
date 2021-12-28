@@ -6,13 +6,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-namespace Geminis.Scripts.Administracion
+namespace Geminis.Controllers.Inventario
 {
-    public class ADMEmpleadoController : Controller
+    public class INVMenuController : Controller
     {
         readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
-        // GET: ADMEmpleado
+        // GET: INVMenu
         public ActionResult Index()
         {
             return View();
@@ -22,12 +21,12 @@ namespace Geminis.Scripts.Administracion
         /// LLENAR SELECTS TIPO_EMPLEADO
         /// </summary>
         /// <returns></returns>
-        public JsonResult ObtenerTipoEmpleadoSelect()
+        public JsonResult ObtenerTipoMenuSelect()
         {
             try
             {
-                string query = "SELECT * FROM tipo_empleado WHERE estado = 'A' ";
-                var lista = db.Database.SqlQuery<TIPO_EMPLEADO>(query).ToList();
+                string query = "SELECT * FROM TIPO_MENU WHERE ESTADO = 'A' ";
+                var lista = db.Database.SqlQuery<TIPO_MENU>(query).ToList();
                 return Json(new { ESTADO = 1, DATA = lista }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -47,11 +46,11 @@ namespace Geminis.Scripts.Administracion
             {
                 try
                 {
-                    var obtenerDatos = JsonConvert.DeserializeObject<EMPLEADO>(datos);
+                    var obtenerDatos = JsonConvert.DeserializeObject<MENU>(datos);
                     obtenerDatos.ESTADO = "A";
                     obtenerDatos.FECHA_CREACION = DateTime.Now;
-                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
-                    db.EMPLEADO.Add(obtenerDatos);
+                    obtenerDatos.CREADO_POR = "LUIS G";
+                    db.MENU.Add(obtenerDatos);
                     db.SaveChanges();
                     transaccion.Commit();
                     return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
@@ -75,17 +74,13 @@ namespace Geminis.Scripts.Administracion
             {
                 try
                 {
-                    var obtenerDatos = JsonConvert.DeserializeObject<EMPLEADO>(datos);
+                    var obtenerDatos = JsonConvert.DeserializeObject<MENU>(datos);
 
-                    string query = "SELECT * FROM EMPLEADO WHERE ID_EMPLEADO = " + obtenerDatos.ID_EMPLEADO;
-                    var editarTabla = db.Database.SqlQuery<EMPLEADO>(query).SingleOrDefault();
-                    editarTabla.ID_TIPO_EMPLEADO = obtenerDatos.ID_TIPO_EMPLEADO;
+                    string query = "SELECT * FROM MENU WHERE ID_MENU = " + obtenerDatos.ID_MENU;
+                    var editarTabla = db.Database.SqlQuery<MENU>(query).SingleOrDefault();
+                    editarTabla.ID_TIPO_MENU = obtenerDatos.ID_TIPO_MENU;
                     editarTabla.NOMBRE = obtenerDatos.NOMBRE;
-                    editarTabla.DIRECCION = obtenerDatos.DIRECCION;
-                    editarTabla.TELEFONO = obtenerDatos.TELEFONO;
-                    editarTabla.SALARIO = obtenerDatos.SALARIO;
-                    editarTabla.DIRECCION = obtenerDatos.DIRECCION;
-                    editarTabla.CORREO_ELECTRONICO = obtenerDatos.CORREO_ELECTRONICO;
+                    editarTabla.PRECIO = obtenerDatos.PRECIO;
                     db.Entry(editarTabla).State = EntityState.Modified;
                     db.SaveChanges();
                     transaccion.Commit();
@@ -105,8 +100,8 @@ namespace Geminis.Scripts.Administracion
             {
                 try
                 {
-                    string query = "SELECT * FROM EMPLEADO WHERE ID_EMPLEADO = " + id;
-                    var editarTabla = db.Database.SqlQuery<EMPLEADO>(query).SingleOrDefault();
+                    string query = "SELECT * FROM MENU WHERE ID_MENU = " + id;
+                    var editarTabla = db.Database.SqlQuery<MENU>(query).SingleOrDefault();
                     editarTabla.ESTADO = "I";
                     db.Entry(editarTabla).State = EntityState.Modified;
                     db.SaveChanges();
@@ -125,24 +120,24 @@ namespace Geminis.Scripts.Administracion
         /// CARGAR DATOS DE EMPLEADOS EN DEVEXTREME
         /// </summary>
         /// <returns></returns>
-        public JsonResult CargarTablaEmpleado()
+        public JsonResult CargarTablaMenu()
         {
             try
             {
                 string query = @"SELECT 
-                                A.ID_EMPLEADO,
-	                            B.ID_TIPO_EMPLEADO,
-                                B.NOMBRE AS TIPO_EMPLEADO, 
-	                            A.NOMBRE,A.TELEFONO, 
-	                            A.DIRECCION, A.SALARIO, 
-	                            A.CORREO_ELECTRONICO,
-	                            A.ESTADO,
+                                A.ID_MENU,
+	                            B.ID_TIPO_MENU,
+                                B.NOMBRE AS TIPO_MENU, 
+	                            A.NOMBRE,
 	                            CONVERT(VARCHAR(20),
                                 A.FECHA_CREACION) AS FECHA_CREACION, 
-	                            A.CREADO_POR 
-                            FROM EMPLEADO A 
-                            INNER JOIN TIPO_EMPLEADO B ON A.ID_TIPO_EMPLEADO=B.ID_TIPO_EMPLEADO";
-                var lista = db.Database.SqlQuery<TABLA_EMPLEADO_>(query).ToList();
+	                            A.CREADO_POR,
+                                CONVERT(VARCHAR(20),
+								A.PRECIO) AS PRECIO,
+								A.ESTADO
+                            FROM MENU A 
+                            INNER JOIN TIPO_MENU B ON A.ID_TIPO_MENU=B.ID_TIPO_MENU";
+                var lista = db.Database.SqlQuery<TABLA_MENU_>(query).ToList();
                 return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -152,19 +147,16 @@ namespace Geminis.Scripts.Administracion
         }
 
 
-        public class TABLA_EMPLEADO_
+        public class TABLA_MENU_
         {
-            public int? ID_EMPLEADO { set; get; }
-            public int? ID_TIPO_EMPLEADO { set; get; }
-            public string TIPO_EMPLEADO { set; get; }
+            public int? ID_MENU { set; get; }
+            public int? ID_TIPO_MENU { set; get; }
+            public string TIPO_MENU { set; get; }
             public string NOMBRE { set; get; }
-            public string TELEFONO { set; get; }
-            public string DIRECCION { set; get; }
-            public decimal? SALARIO { set; get; }
-            public string CORREO_ELECTRONICO { set; get; }
-            public string ESTADO { set; get; }
             public string FECHA_CREACION { set; get; }
             public string CREADO_POR { set; get; }
+            public string PRECIO { set; get; }
+            public string ESTADO { set; get; }
         }
     }
 }

@@ -12,16 +12,12 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class INVENTARIO_BODEGA_GENERAL
+    public partial class sysdiagrams
     {
-        public int ID_BODEGA_GENERAL { get; set; }
-        public string NOMBRE_PRODUCTO { get; set; }
-        public string DESCRIPCION { get; set; }
-        public Nullable<int> CANTIDAD { get; set; }
-        public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
-        public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
-        public Nullable<int> EXISTENCIA { get; set; }
-        public Nullable<decimal> PRECIO { get; set; }
-        public string INGRESADO_POR { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

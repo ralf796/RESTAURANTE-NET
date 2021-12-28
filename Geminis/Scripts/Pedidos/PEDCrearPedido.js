@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     fillAllInputs();
-    
+
 
     function fillAllInputs() {
         $(".formValida .bmd-form-group").each(function () {
@@ -72,6 +72,34 @@
             });
         });
     }
+    function GetTipoMenuEditar() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDCrearPedido/GetTipoMenu',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: {},
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    $('#selCategoriaEditar').empty();
+                    traerDatos.forEach(function (dato) {
+                        $('#selCategoriaEditar').append('<option value="' + dato.ID_TIPO_MENU + '">' + dato.NOMBRE + '</option>');
+                    });
+                    $('#selCategoriaEditar').selectpicker();
+                    $('#selCategoriaEditar').selectpicker('refresh');
+
+                    $('#ModalMenuEditar').modal('show');
+                    resolve(1);
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
     function GetMenu(idTipoMenu) {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -99,6 +127,33 @@
             });
         });
     }
+    function GetMenuEditar(idTipoMenu) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDCrearPedido/GetMenu',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: { idTipoMenu },
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    $('#selMenuEditar').empty();
+                    traerDatos.forEach(function (dato) {
+                        $('#selMenuEditar').append('<option data-precio="' + dato.PRECIO + '" value="' + dato.ID_MENU + '">' + dato.NOMBRE + ' - Q.' + dato.PRECIO + '</option>');
+                    });
+                    $('#selMenuEditar').selectpicker();
+                    $('#selMenuEditar').selectpicker('refresh');
+
+                    resolve(1);
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
     function AgregarProducto(cantidad, idproducto, producto, precio, observaciones) {
         var subtotal = parseFloat(cantidad) * parseFloat(precio);
         var eliminarDetalle = '<a title="Eliminar detalle" class="btn btn-link btn-danger QuitarDetalle" style="margin: 0 0 !important"><i class="material-icons">close</i></a>';
@@ -111,6 +166,33 @@
             subtotal,
             observaciones
         ]).draw(false);
+
+        $('#txtProductoCantidad').val('');
+        $('#txtProductoPrecio').val('');
+        $('#txtObservaciones').val('');
+        $('#selMenu').empty();
+        $('#selMenu').selectpicker();
+        $('#selMenu').selectpicker('refresh');
+    }
+    function AgregarProductoEditar(cantidad, idproducto, producto, precio, observaciones) {
+        var subtotal = parseFloat(cantidad) * parseFloat(precio);
+        var eliminarDetalle = '<a title="Eliminar detalle" class="btn btn-link btn-danger QuitarDetalle" style="margin: 0 0 !important"><i class="material-icons">close</i></a>';
+
+        tableDetallesEditar.row.add([
+            cantidad,
+            idproducto,
+            producto,
+            precio,
+            subtotal,
+            observaciones
+        ]).draw(false);
+
+        $('#txtCantidadEditar').val('');
+        $('#txtObservacionesEditar').val('');
+        $('#txtPrecioEditar').val('');
+        $('#selMenuEditar').empty();
+        $('#selMenuEditar').selectpicker();
+        $('#selMenuEditar').selectpicker('refresh');
     }
     function ActualizarTotalPedido() {
         var totalPedido = 0;
@@ -121,19 +203,59 @@
 
         $('#txtTotalPedido').val(totalPedido.toFixed(2));
     }
+    function AbrirModalPedido() {
+        CallLoadingFire();
+        $.ajax({
+            type: 'POST',
+            url: '/PEDCrearPedido/ContMesas',
+            data: {},
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
+                }
+                else if (data["ESTADO"] == 1) {
+                    if (data["CONTADOR"] > 0) {
+                        GetMesas();
+                        $('#modalCrearRefactura').modal('show');
+                    }
+                    else {
+                        showNotification('top', 'right', 'warning', 'No hay mesas disponibles para crear un pedido.', 'warning');
+                    }
+                }
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+            }
+        });
+    }
+    function AbrirModalPedidoEditar() {
+        CallLoadingFire();
+        $.ajax({
+            type: 'POST',
+            url: '/PEDCrearPedido/ContMesas',
+            data: {},
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
+                }
+                else if (data["ESTADO"] == 1) {
+                    if (data["CONTADOR"] > 0) {
+                        GetMesas();
+                        $('#ModalEditarPedido').modal('show');
+                    }
+                    else {
+                        showNotification('top', 'right', 'warning', 'No hay mesas disponibles para crear un pedido.', 'warning');
+                    }
+                }
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+            }
+        });
+    }
 
-    /*
-    $('#linkSopas').on('click', function (e) {
-        e.preventDefault();
-        $('#modalCrear').modal('show');
-    });
-    */
-
-    $('#btnAbrirModalCrearRefactura').on('click', function (e) {
-        e.preventDefault();
-        GetMesas();
-        $('#modalCrearRefactura').modal('show');
-    });
     $('#btnBuscarProducto').on('click', function (e) {
         e.preventDefault();
         if ($('#formRefactura').valid()) {
@@ -183,6 +305,31 @@
             url: "/assets/datatable-spanish.json"
         }
     });
+    var tableDetallesEditar = $('#tblDetallesPedidoEditar').DataTable({
+        columns: [
+            { title: 'CANTIDAD' },
+            { title: 'ID_PRODUCTO', visible: false },
+            { title: 'PRODUCTO' },
+            { title: 'PRECIO' },
+            { title: 'SUBTOTAL' },
+            { title: 'OBSERVACIONES' },
+            {
+                render: function () {
+                    return '<a title="ELIMINAR DETALLE" class="btn btn-link btn-danger btn-just-icon removeEditar" style="margin: 0 0 !important"><i class="material-icons">clear</i></a>';
+                }
+            }
+        ],
+        "lengthMenu": [
+            [5, 10, 15, 20, 25, 50, -1],
+            [5, 10, 15, 20, 25, 50, "Todo"]
+        ],
+        "searching": false,
+        "bLengthChange": false, //thought this line could hide the LengthMenu        
+        responsive: true,
+        language: {
+            url: "/assets/datatable-spanish.json"
+        }
+    });
 
     function PEDIDO(ID_MESA, TOTAL) {
         this.ID_MESA = ID_MESA;
@@ -213,8 +360,9 @@
                     var vMensaje = 'PEDIDO CREADO';
                     var vMensaje2 = '<div><br />No.: ' + data['PEDIDO'] + '<br /></div>';
                     swal(vMensaje, vMensaje2, "success");
-                    habilitartablePedidos();
-                    LimpiarTodo();
+                    llenarReporte();
+                    tableDetalles.clear().draw();
+                    $('#modalCrearRefactura').modal('hide');
                 }
             },
             error: function (jqXHR, ex) {
@@ -222,7 +370,32 @@
             }
         });
     }
-
+    function EditarPedido(pPedido, pDetalles) {
+        CallLoadingFire();
+        $.ajax({
+            type: 'POST',
+            url: '/PEDCrearPedido/EditarPedido',
+            data: {
+                pedido: pPedido,
+                detallePedido: JSON.stringify(pDetalles)
+            },
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
+                }
+                else if (data["Estado"] == 1) {
+                    showNotification('top', 'right', 'success', 'Pedido actualizado satisfactoriamente.', 'success');
+                    llenarReporte()
+                    tableDetallesEditar.clear().draw();
+                    $('#ModalEditarPedido').modal('hide');
+                }
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+            }
+        });
+    }
     $('#btnCrearPedido').on('click', function (e) {
         e.preventDefault();
 
@@ -247,113 +420,329 @@
             if (listDetalles.length > 0)
                 GuardarPedido(encabezado, listDetalles);
             else
-                showNotification('top', 'right', 'warning', 'Debe de ingresar como mínimo una refactura', 'warning');
+                showNotification('top', 'right', 'warning', 'Debe de ingresar como mínimo un detalle', 'warning');
             //}
         }
     });
 
-    var iniciciarTablePedidos = false;
-    function habilitartablePedidos() {
+    var idPedidoEditar;
+    function QuitarDetallePedido(idDetallePedido) {
         CallLoadingFire();
-        iniciciarTablePedidos = true;
-        tablaDatosPedidos.clear().draw();
-        $('#tblPedidosCreados').DataTable().ajax.reload();
-    }
-    var tablaDatosPedidos = $('#tblPedidosCreados').DataTable({
-        ajax: function (data, callback, settings) {
-            tablaDatodataSourcePedidos().then(function (_data) {
-                callback(_data);
-            });
-        },
-        columns: [
-            {
-                "class": "remover-control",
-                "orderable": false,
-                "data": null,
-                "defaultContent": "",
-            },
-            { data: 'ID_PEDIDO' },
-            { data: 'NUMERO' },
-            { data: 'DESCRIPCION' },
-            { data: 'TOTAL' },
-            {
-                data: null,
-                className: "center",
-                render: function (data, type, row, full, meta) {
-                    var editar = '';
-                    var eliminar = '';
-                    editar = '<a title="MODIFICAR" class="btn btn-link btn-info btn-just-icon modificarPedido" style="margin: 0 0 !important"><i class="material-icons">edit</i></a>'
-                    eliminar = '<a title="ANULAR" class="btn btn-link btn-danger btn-just-icon anularPedido" style="margin: 0 0 !important"><i class="material-icons">close</i></a>';
-                    return editar + eliminar;
+        $.ajax({
+            type: 'POST',
+            url: '/PEDCrearPedido/QuitarDetalle',
+            data: { idDetallePedido },
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
                 }
-            }
-        ],
-        columnDefs: [
-            {
-                targets: 3,
-                render: $.fn.dataTable.render.number(',', '.', 2)
-            },
-            {
-                targets: [0,1,2,3,4],
-                className: 'text-center'
-            },
-        ],
-        dom: 'Blfrtip',
-        buttons: [
-            {
-                extend: 'excelHtml5',
-                text: '',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn-sm btn-link',
-                filename: '',
-                sheetName: 'Reporte',
-                title: '',
-                init: function (api, node, config) {
-                    $(node).removeClass('btn-secondary btn-default')
+                else if (data["Estado"] == 1) {
+                    showNotification('top', 'right', 'success', 'Se eliminó el detalle satisfactoriamente.', 'success');
+                    llenarReporte();
                 }
-            }
-        ],
-        "scrollX": true,
-        "order": [[1, 'asc']],
-        "pagingType": "full_numbers",
-        "lengthMenu": [
-            [7, 10, 15, 20, 25, 50, -1],
-            [7, 10, 15, 20, 25, 50, "Todo"]
-        ],
-        responsive: false,
-        language: {
-            url: "/assets/datatable-spanish.json"
-        },
-        initComplete: function () {
-            iniciciarTablePedidos = true;
-        }
-    });
-    function tablaDatodataSourcePedidos() {
-        return new Promise(function (resolve, reject) {
-            if (!iniciciarTablePedidos) {
-                resolve({
-                    data: {},
-                });
-            }
-            else {
-                $.ajax({
-                    url: "/PEDCrearPedido/GetPedidos",
-                    dataType: 'json',
-                    data: {},
-                    success: function (json) {
-                        var data = json["DATA"];
-                        resolve({
-                            data: data,
-                        });
-                    },
-                    error: function (jqXHR, ex) {
-                        getErrorMessage(jqXHR, ex);
-                        reject();
-                    }
-                });
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
             }
         });
     }
-    
-    habilitartablePedidos();
+    function EntregarPedido(pedido) {
+        CallLoadingFire();
+        $.ajax({
+            type: 'POST',
+            url: '/PEDCrearPedido/EntregarPedido',
+            data: { pedido },
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
+                }
+                else if (data["Estado"] == 1) {
+                    showNotification('top', 'right', 'success', 'Se anuló el pedido satisfactoriamente.', 'success');
+                    llenarReporte();
+                }
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+            }
+        });
+    }
+    function AnularPedido(pedido) {
+        CallLoadingFire();
+        $.ajax({
+            type: 'POST',
+            url: '/PEDCrearPedido/CancelarPedido',
+            data: { pedido },
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
+                }
+                else if (data["Estado"] == 1) {
+                    showNotification('top', 'right', 'success', 'Se anuló el pedido satisfactoriamente.', 'success');
+                    llenarReporte();
+                }
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+            }
+        });
+    }
+
+    $('#btnBuscarMenuEditar').on('click', function (e) {
+        e.preventDefault();
+        GetTipoMenuEditar();
+    });
+    $('#selCategoriaEditar').on('change', function (e) {
+        e.preventDefault();
+        var tipomenu = $(this).val();
+        GetMenuEditar(tipomenu);
+    });
+    $('#selMenuEditar').on('change', function (e) {
+        e.preventDefault();
+        var precio = $('#selMenuEditar option:selected').attr('data-precio');
+        $("#txtPrecioEditar").val(precio);
+    });
+    $('#btnAgregarMenuEditar').on('click', function (e) {
+        e.preventDefault();
+        if ($('#formProductoEditar').valid()) {
+            AgregarProductoEditar($('#txtCantidadEditar').val(), $('#selMenuEditar').val(), $("#selMenuEditar option:selected").text(), $('#txtPrecioEditar').val().replace(",", ""), $('#txtObservacionesEditar').val())
+            $('#ModalMenuEditar').modal('hide');
+        }
+    });
+    $('#btnEditarPedido').on('click', function (e) {
+        e.preventDefault();
+        var listDetalles = [];
+        tableDetallesEditar.rows().every(function (rowIdx) {
+            var row = this.data();
+            var vidmenu = parseFloat(row[1]);
+            var vcantidad = parseFloat(row[0]);
+            var vobservaciones = (row[5]);
+            var vprecio = parseFloat(row[3]);
+            var vsubtotal = parseFloat(row[4]);
+            var detalle = new PEDIDO_DETALLE(vidmenu, vcantidad, vobservaciones, vprecio, vsubtotal);
+            listDetalles.push(detalle);
+        });
+
+        console.log(listDetalles);
+        if (listDetalles.length > 0)
+            EditarPedido(idPedidoEditar, listDetalles);
+        else
+            showNotification('top', 'right', 'warning', 'Debe de ingresar como mínimo un detalle', 'warning');
+
+    });
+
+
+
+
+    llenarReporte();
+    var ppedido;
+    DevExpress.localization.locale(navigator.language);
+    function llenarReporte() { //ESTO ES PARA EL PULL
+        var customStore = new DevExpress.data.CustomStore({
+            load: function (loadOptions) {
+                var d = $.Deferred();
+                $.ajax({
+                    type: 'GET',
+                    url: '/PEDCrearPedido/GetPedidos',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: {},
+                    cache: false,
+                    success: function (data) {
+                        data = JSON && JSON.parse(JSON.stringify(data)) || $.parseJSON(data);
+                        d.resolve(data);
+                    },
+                    error: function (jqXHR, exception) {
+                    }
+                });
+                return d.promise();
+            },
+            byKey: function (key, extra) {
+            },
+            update: function (key, values) {
+            }
+        });
+        var store = new DevExpress.data.CustomStore({
+            load: function (loadOptions) {
+                var d = $.Deferred();
+                $.ajax({
+                    type: 'GET',
+                    url: '/PEDCrearPedido/GetDetallePedido',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: { pedido: ppedido },
+                    cache: false,
+                    success: function (data) {
+                        debugger;
+                        var state = data["ESTADO"];
+                        if (state == 1) {
+                            data = JSON && JSON.parse(JSON.stringify(data)) || $.parseJSON(data);
+                            d.resolve(data);
+                        }
+                        else if (state == 2)
+                            ShowShortMessage('warning', '¡Advertencia!', 'No se encuentran refacturas para la nota seleccionada.');
+                        else if (state == -1)
+                            ShowShortMessage('warning', '¡Advertencia!', data['Mensaje']);
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log(exception);
+                    }
+                });
+                return d.promise();
+            },
+            byKey: function (key, extra) { },
+            update: function (key, values) { }
+        });
+        var salesPivotGrid = $("#gridContainer").dxDataGrid({
+            dataSource: new DevExpress.data.DataSource(customStore),
+            showBorders: true,
+            rowAlternationEnabled: true,
+            pager: {
+                showPageSizeSelector: true,
+                allowedPageSizes: [10, 20, 50, 100],
+                showNavigationButtons: true,
+                showInfo: true,
+                infoText: "Pagina {0} de {1} ({2} items)"
+            },
+            summary: {
+                totalItems: [
+                    {
+                        column: 'TOTAL',
+                        summaryType: 'sum',
+                        displayFormat: "{0}",
+                        valueFormat: {
+                            type: "fixedPoint",
+                            precision: 2
+                        }
+                    }
+                ]
+            },
+            columns: [
+                {
+                    dataField: "ID_PEDIDO",
+                    caption: "NO. PEDIDO"
+                },
+                {
+                    dataField: "NUMERO",
+                    caption: "MESA"
+                },
+                {
+                    dataField: "DESCRIPCION",
+                    caption: "ESTADO"
+                },
+                {
+                    dataField: "TOTAL",
+                    caption: "TOTAL",
+                    dataType: "number",
+                    format: { type: 'fixedPoint', precision: 2 }
+                },
+                {
+                    type: "buttons",
+                    width: 50,
+                    buttons: [{
+                        icon: "add",
+                        onClick: function (e) {
+                            idPedidoEditar = e.row.data['ID_PEDIDO'];
+                            AbrirModalPedidoEditar();
+                        }
+                    }]
+                },
+                {
+                    type: "buttons",
+                    width: 50,
+                    buttons: [{
+                        icon: "todo",
+                        onClick: function (e) {
+                            var valor = e.row.data['ID_PEDIDO'];
+                            EntregarPedido(valor);
+                        }
+                    }]
+                },
+                {
+                    type: "buttons",
+                    width: 50,
+                    buttons: [{
+                        icon: "trash",
+                        onClick: function (e) {
+                            var valor = e.row.data['ID_PEDIDO'];
+                            AnularPedido(valor);
+                        }
+                    }]
+                }
+            ],
+            onToolbarPreparing: function (e) {
+                var dataGrid = e.component;
+                e.toolbarOptions.items.unshift(
+                    {
+                        location: "after",
+                        widget: "dxButton",
+                        options: {
+                            icon: "add",
+                            text: "",
+                            onClick: function (e) {
+                                AbrirModalPedido();
+                            }
+                        }
+                    })
+            },
+            masterDetail: {
+                enabled: true,
+                template: function (container, options) {
+                    var traerData = options.data;
+                    ppedido = traerData.ID_PEDIDO;
+
+                    $("<div>").addClass("master-detail-caption").text("DETALLE DE PEDIDO: ").appendTo(container);
+
+                    $("<div id='gridContainerDet'>")
+                        .dxDataGrid({
+                            columnAutoWidth: true,
+                            showBorders: true,
+                            columns: [
+                                {
+                                    dataField: "ID_DETALLE_PEDIDO",
+                                    caption: "ID_DETALLE",
+                                    visible: false
+                                },
+                                {
+                                    dataField: "MENU",
+                                    caption: "MENU"
+                                },
+                                {
+                                    dataField: "OBSERVACIONES",
+                                    caption: "OBSERVACIONES"
+                                },
+                                {
+                                    dataField: "CANTIDAD",
+                                    caption: "CANTIDAD"
+                                },
+                                {
+                                    dataField: "PRECIO",
+                                    caption: "PRECIO"
+                                },
+                                {
+                                    dataField: "SUBTOTAL",
+                                    caption: "SUBTOTAL",
+                                    dataType: "number",
+                                    format: { type: 'fixedPoint', precision: 2 }
+                                },
+                                {
+                                    type: "buttons",
+                                    width: 50,
+                                    buttons: [{
+                                        icon: "trash",
+                                        onClick: function (e) {
+                                            var valor = e.row.data['ID_DETALLE_PEDIDO'];
+                                            QuitarDetallePedido(valor);
+                                        }
+                                    }]
+                                }
+                            ],
+                            dataSource: new DevExpress.data.DataSource(store)
+                        }).appendTo(container);
+                }
+            }
+        });
+    }
 });
