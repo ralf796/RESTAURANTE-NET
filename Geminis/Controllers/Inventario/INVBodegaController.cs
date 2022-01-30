@@ -34,7 +34,7 @@ namespace Geminis.Controllers.Inventario
                     var obtenerDatos = JsonConvert.DeserializeObject<INVENTARIO_BODEGA_GENERAL>(datos);
                     obtenerDatos.EXISTENCIA = 1;
                     obtenerDatos.FECHA_INGRESO = DateTime.Now;
-                    obtenerDatos.INGRESADO_POR = Session["usuario"].ToString();
+                    //obtenerDatos.INGRESADO_POR = Session["usuario"].ToString();
                     db.INVENTARIO_BODEGA_GENERAL.Add(obtenerDatos);
                     db.SaveChanges();
                     transaccion.Commit();

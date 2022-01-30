@@ -20,6 +20,18 @@ namespace Geminis.Clases
         {
             return DateTime.Now.ToShortDateString();
         }
+        public static DateTime ObtenerFechaServidor()
+        {
+            string query = "SELECT SYSDATETIME()";
+            DateTime fechaServidor = db.Database.SqlQuery<DateTime>(query).FirstOrDefault();
+            return fechaServidor;
+        }
+        public static TimeSpan ObtenerHoraServidor()
+        {
+            string query = "Select CONVERT(nvarchar(10), GETDATE(), 108)";
+            TimeSpan fechaServidor = db.Database.SqlQuery<TimeSpan>(query).FirstOrDefault();
+            return fechaServidor;
+        }
 
         public static List<MOTIVO_ANULACION_> getMotivoAnulacion()
         {

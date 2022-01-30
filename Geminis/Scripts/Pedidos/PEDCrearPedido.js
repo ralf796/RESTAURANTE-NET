@@ -230,6 +230,7 @@
         });
     }
     function AbrirModalPedidoEditar() {
+        $('#txtTotalPedido').val('0.00');
         CallLoadingFire();
         $.ajax({
             type: 'POST',
@@ -459,7 +460,7 @@
                     return;
                 }
                 else if (data["Estado"] == 1) {
-                    showNotification('top', 'right', 'success', 'Se anuló el pedido satisfactoriamente.', 'success');
+                    showNotification('top', 'right', 'success', 'El pedido se envió a caja.', 'success');
                     llenarReporte();
                 }
             },

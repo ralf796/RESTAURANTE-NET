@@ -34,7 +34,8 @@ namespace Geminis.Controllers.Pedidos
                     obtenerDatos.ID_PEDIDO = siguientePedido;
                     obtenerDatos.ESTADO = "A";
                     obtenerDatos.ID_ESTADO_PEDIDO = 1;
-                    obtenerDatos.FECHA_CREACION = DateTime.Now;
+                    obtenerDatos.FECHA_CREACION = Utils.ObtenerFechaServidor();
+                    //obtenerDatos.HORA_CREACION = Utils.ObtenerHoraServidor();
                     obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     obtenerDatos.ID_EMPLEADO = idEmpleado;
                     db.PEDIDO.Add(obtenerDatos);
@@ -50,11 +51,11 @@ namespace Geminis.Controllers.Pedidos
                         {
                             ID_PEDIDO = siguientePedido,
                             ID_MENU = TRAER_DATO.ID_MENU,
-                            //ID_PRODUCTO = TRAER_DATO.ID_PRODUCTO,
                             CANTIDAD = TRAER_DATO.CANTIDAD,
                             OBSERVACIONES = TRAER_DATO.OBSERVACIONES,
                             PRECIO = TRAER_DATO.PRECIO,
-                            FECHA_CREACION = DateTime.Now,
+                            FECHA_CREACION = Utils.ObtenerFechaServidor(),
+                            //HORA_CREACION = Utils.ObtenerHoraServidor(),
                             ESTADO = "A",
                             CREADO_POR = usuario,
                             SUBTOTAL = Convert.ToDecimal(TRAER_DATO.SUBTOTAL)

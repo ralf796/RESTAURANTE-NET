@@ -27,7 +27,8 @@ namespace Geminis.Clases
                                     INNER JOIN USUARIO B
                                       ON A.ID_EMPLEADO = B.ID_EMPLEADO
                                     WHERE USUARIO = '" + usuario + @"'
-                                    AND CONTRASEÑA = '" + password + "'";
+                                    AND CONTRASEÑA = '" + password + "'" +
+                                    "AND A.ESTADO='A'";
 
             return db.Database.SqlQuery<USUARIO_>(queryUsuario).FirstOrDefault();
         }
