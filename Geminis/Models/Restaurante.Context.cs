@@ -26,13 +26,16 @@ namespace Geminis.Models
         }
     
         public virtual DbSet<BANCO> BANCO { get; set; }
+        public virtual DbSet<BITACORA_COCINA> BITACORA_COCINA { get; set; }
         public virtual DbSet<CAJA> CAJA { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
+        public virtual DbSet<CLIENTE_DATOS_ADICIONALES> CLIENTE_DATOS_ADICIONALES { get; set; }
         public virtual DbSet<EMPLEADO> EMPLEADO { get; set; }
         public virtual DbSet<ESTADO_PEDIDO> ESTADO_PEDIDO { get; set; }
         public virtual DbSet<FACTURA_DETALLE> FACTURA_DETALLE { get; set; }
         public virtual DbSet<FACTURA_ENCABEZADO> FACTURA_ENCABEZADO { get; set; }
         public virtual DbSet<INVENTARIO_BODEGA_GENERAL> INVENTARIO_BODEGA_GENERAL { get; set; }
+        public virtual DbSet<INVENTARIO_COCINA> INVENTARIO_COCINA { get; set; }
         public virtual DbSet<MENU> MENU { get; set; }
         public virtual DbSet<MENU_DETALLE> MENU_DETALLE { get; set; }
         public virtual DbSet<MESA> MESA { get; set; }
@@ -42,13 +45,15 @@ namespace Geminis.Models
         public virtual DbSet<PANTALLA> PANTALLA { get; set; }
         public virtual DbSet<PEDIDO> PEDIDO { get; set; }
         public virtual DbSet<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
+        public virtual DbSet<PEDIDO_FORMA_PAGO> PEDIDO_FORMA_PAGO { get; set; }
+        public virtual DbSet<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET { get; set; }
         public virtual DbSet<PERMISO_PANTALLA> PERMISO_PANTALLA { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
         public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public virtual DbSet<ROL> ROL { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TIPO_EMPLEADO> TIPO_EMPLEADO { get; set; }
         public virtual DbSet<TIPO_MENU> TIPO_MENU { get; set; }
+        public virtual DbSet<TIPO_PEDIDO> TIPO_PEDIDO { get; set; }
         public virtual DbSet<TIPO_PRODUCTO> TIPO_PRODUCTO { get; set; }
         public virtual DbSet<UNIDAD_MEDIDA> UNIDAD_MEDIDA { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }

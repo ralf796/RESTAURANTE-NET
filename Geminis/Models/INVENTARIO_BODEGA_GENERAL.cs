@@ -14,14 +14,28 @@ namespace Geminis.Models
     
     public partial class INVENTARIO_BODEGA_GENERAL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public INVENTARIO_BODEGA_GENERAL()
+        {
+            this.BITACORA_COCINA = new HashSet<BITACORA_COCINA>();
+            this.INVENTARIO_COCINA = new HashSet<INVENTARIO_COCINA>();
+        }
+    
         public int ID_BODEGA_GENERAL { get; set; }
         public string NOMBRE_PRODUCTO { get; set; }
         public string DESCRIPCION { get; set; }
         public Nullable<int> CANTIDAD { get; set; }
         public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
-        public Nullable<System.DateTime> FECHA_SALIDA { get; set; }
-        public Nullable<int> EXISTENCIA { get; set; }
         public Nullable<decimal> PRECIO { get; set; }
-        public string INGRESADO_POR { get; set; }
+        public Nullable<int> ID_UNIDAD_MEDIDA { get; set; }
+        public Nullable<decimal> SUBTOTAL { get; set; }
+        public string CREADO_POR { get; set; }
+        public string ESTADO { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BITACORA_COCINA> BITACORA_COCINA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INVENTARIO_COCINA> INVENTARIO_COCINA { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA { get; set; }
     }
 }

@@ -17,7 +17,8 @@ namespace Geminis.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UNIDAD_MEDIDA()
         {
-            this.MENU_DETALLE = new HashSet<MENU_DETALLE>();
+            this.INVENTARIO_BODEGA_GENERAL = new HashSet<INVENTARIO_BODEGA_GENERAL>();
+            this.INVENTARIO_COCINA = new HashSet<INVENTARIO_COCINA>();
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
@@ -27,7 +28,9 @@ namespace Geminis.Models
         public string ABREVIATURA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU_DETALLE> MENU_DETALLE { get; set; }
+        public virtual ICollection<INVENTARIO_BODEGA_GENERAL> INVENTARIO_BODEGA_GENERAL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INVENTARIO_COCINA> INVENTARIO_COCINA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }

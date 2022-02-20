@@ -32,7 +32,7 @@ namespace Geminis.Controllers.Inventario
                 try
                 {
                     var obtenerDatos = JsonConvert.DeserializeObject<INVENTARIO_BODEGA_GENERAL>(datos);
-                    obtenerDatos.EXISTENCIA = 1;
+                    //obtenerDatos.EXISTENCIA = 1;
                     obtenerDatos.FECHA_INGRESO = DateTime.Now;
                     //obtenerDatos.INGRESADO_POR = Session["usuario"].ToString();
                     db.INVENTARIO_BODEGA_GENERAL.Add(obtenerDatos);
@@ -66,7 +66,7 @@ namespace Geminis.Controllers.Inventario
                     
                     editarTabla.NOMBRE_PRODUCTO = obtenerDatos.NOMBRE_PRODUCTO;
                     editarTabla.CANTIDAD += obtenerDatos.CANTIDAD;
-                    editarTabla.EXISTENCIA = 1;
+                    //editarTabla.EXISTENCIA = 1;
                     db.Entry(editarTabla).State = EntityState.Modified;
                     db.SaveChanges();
                     transaccion.Commit();
@@ -96,7 +96,7 @@ namespace Geminis.Controllers.Inventario
                     {
                         editarTabla.NOMBRE_PRODUCTO = obtenerDatos.NOMBRE_PRODUCTO;
                         editarTabla.CANTIDAD -=obtenerDatos.CANTIDAD;
-                        editarTabla.FECHA_SALIDA = DateTime.Now;
+                        //editarTabla.FECHA_SALIDA = DateTime.Now;
                         db.Entry(editarTabla).State = EntityState.Modified;
                         db.SaveChanges();
                         transaccion.Commit();
@@ -106,8 +106,8 @@ namespace Geminis.Controllers.Inventario
                     {
                         editarTabla.NOMBRE_PRODUCTO = obtenerDatos.NOMBRE_PRODUCTO;
                         editarTabla.CANTIDAD = editarTabla.CANTIDAD - obtenerDatos.CANTIDAD;
-                        editarTabla.FECHA_SALIDA = DateTime.Now;
-                        editarTabla.EXISTENCIA = 0;
+                        //editarTabla.FECHA_SALIDA = DateTime.Now;
+                        //editarTabla.EXISTENCIA = 0;
                         db.Entry(editarTabla).State = EntityState.Modified;
                         db.SaveChanges();
                         transaccion.Commit();

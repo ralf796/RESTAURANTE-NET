@@ -12,17 +12,19 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MENU_DETALLE
+    public partial class TIPO_PEDIDO
     {
-        public int ID_MENU_DETALLE { get; set; }
-        public Nullable<int> ID_MENU { get; set; }
-        public Nullable<int> ID_INVENTARIO_COCINA { get; set; }
-        public Nullable<decimal> CANTIDAD { get; set; }
-        public string ESTADO { get; set; }
-        public string CREADO_POR { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TIPO_PEDIDO()
+        {
+            this.PEDIDO = new HashSet<PEDIDO>();
+        }
     
-        public virtual INVENTARIO_COCINA INVENTARIO_COCINA { get; set; }
-        public virtual MENU MENU { get; set; }
+        public int ID_TIPO_PEDIDO { get; set; }
+        public string NOMBRE { get; set; }
+        public string ESTADO { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }
 }

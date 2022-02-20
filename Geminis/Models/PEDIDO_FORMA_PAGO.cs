@@ -12,28 +12,19 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MENU
+    public partial class PEDIDO_FORMA_PAGO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MENU()
+        public PEDIDO_FORMA_PAGO()
         {
-            this.MENU_DETALLE = new HashSet<MENU_DETALLE>();
-            this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
+            this.PEDIDO_FORMA_PAGO_DET = new HashSet<PEDIDO_FORMA_PAGO_DET>();
         }
     
-        public int ID_MENU { get; set; }
-        public int ID_TIPO_MENU { get; set; }
+        public int ID_PEDIDO_FORMA_PAGO { get; set; }
         public string NOMBRE { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
         public string ESTADO { get; set; }
-        public string CREADO_POR { get; set; }
-        public Nullable<decimal> PRECIO { get; set; }
-        public Nullable<decimal> PRECIO_COSTO { get; set; }
     
-        public virtual TIPO_MENU TIPO_MENU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU_DETALLE> MENU_DETALLE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
+        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET { get; set; }
     }
 }

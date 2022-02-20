@@ -12,28 +12,27 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MENU
+    public partial class INVENTARIO_COCINA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MENU()
+        public INVENTARIO_COCINA()
         {
             this.MENU_DETALLE = new HashSet<MENU_DETALLE>();
-            this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
         }
     
-        public int ID_MENU { get; set; }
-        public int ID_TIPO_MENU { get; set; }
+        public int ID_INVENTARIO_COCINA { get; set; }
         public string NOMBRE { get; set; }
-        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
-        public string ESTADO { get; set; }
-        public string CREADO_POR { get; set; }
+        public Nullable<decimal> CANTIDAD_NETA { get; set; }
+        public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
         public Nullable<decimal> PRECIO { get; set; }
-        public Nullable<decimal> PRECIO_COSTO { get; set; }
+        public Nullable<decimal> SUBTOTAL { get; set; }
+        public Nullable<decimal> CANTIDAD_CONVERSION { get; set; }
+        public Nullable<int> ID_UNIDAD_MEDIDA { get; set; }
+        public Nullable<int> ID_BODEGA_GENERAL { get; set; }
     
-        public virtual TIPO_MENU TIPO_MENU { get; set; }
+        public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MENU_DETALLE> MENU_DETALLE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
     }
 }

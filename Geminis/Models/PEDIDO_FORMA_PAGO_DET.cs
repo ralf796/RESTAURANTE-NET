@@ -12,12 +12,16 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class PEDIDO_FORMA_PAGO_DET
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int ID_PEDIDO_PAGO { get; set; }
+        public Nullable<int> ID_PEDIDO { get; set; }
+        public Nullable<int> ID_PEDIDO_FORMA_PAGO { get; set; }
+        public Nullable<decimal> MONTO { get; set; }
+        public string REFERENCIA { get; set; }
+        public string AUTORIZACION { get; set; }
+    
+        public virtual PEDIDO PEDIDO { get; set; }
+        public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO { get; set; }
     }
 }

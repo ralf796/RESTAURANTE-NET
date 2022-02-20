@@ -19,10 +19,11 @@ namespace Geminis.Models
         {
             this.PAGO_MESA = new HashSet<PAGO_MESA>();
             this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
+            this.PEDIDO_FORMA_PAGO_DET = new HashSet<PEDIDO_FORMA_PAGO_DET>();
         }
     
         public int ID_PEDIDO { get; set; }
-        public int ID_MESA { get; set; }
+        public Nullable<int> ID_MESA { get; set; }
         public int ID_EMPLEADO { get; set; }
         public Nullable<int> ID_CLIENTE { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
@@ -30,6 +31,13 @@ namespace Geminis.Models
         public string ESTADO { get; set; }
         public string CREADO_POR { get; set; }
         public Nullable<int> ID_ESTADO_PEDIDO { get; set; }
+        public Nullable<int> ID_TIPO_PEDIDO { get; set; }
+        public string NOMBRE { get; set; }
+        public string NIT { get; set; }
+        public string DIRECCION { get; set; }
+        public Nullable<int> REPARTIDOR { get; set; }
+        public string NOMBRE_RECIBE { get; set; }
+        public string TELEFONO { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
@@ -37,7 +45,10 @@ namespace Geminis.Models
         public virtual MESA MESA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PAGO_MESA> PAGO_MESA { get; set; }
+        public virtual TIPO_PEDIDO TIPO_PEDIDO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET { get; set; }
     }
 }
