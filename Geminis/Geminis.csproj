@@ -377,16 +377,22 @@
     <Content Include="Scripts\Administracion\ADMEmpleado.js" />
     <Content Include="Scripts\Administracion\ADMTipoEmpleado.js" />
     <Content Include="Scripts\Administracion\ADMUsuario.js" />
+    <Content Include="Scripts\Caja\CAJCobro.js" />
+    <Content Include="Scripts\Caja\CAJCorte.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\dx-quill.min.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\dx.all.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.en.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.es.js" />
     <Content Include="Scripts\DevExtreme\21.1.5\localization\dx.messages.fr.js" />
     <Content Include="Scripts\Inventario\INVBodega.js" />
+    <Content Include="Scripts\Inventario\INVBodegaCocina.js" />
+    <Content Include="Scripts\Inventario\INVBodegaGeneral.js" />
+    <Content Include="Scripts\Inventario\INVDetalleMenu.js" />
     <Content Include="Scripts\Inventario\INVMenu.js" />
     <Content Include="Scripts\Inventario\INVTipoMenu.js" />
     <Content Include="Scripts\Layout.js" />
     <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\Pedidos\PEDPedidos.js" />
     <Content Include="Scripts\Reporte\Financieros\dx.all.js" />
     <Content Include="Scripts\Reporte\Financieros\jquery.rowspanizer.js" />
     <Content Include="Scripts\Reporte\Financieros\jspdf.plugin.autotable.min.js" />
@@ -406,14 +412,20 @@
     <Compile Include="Controllers\Administracion\ADMDefaultController.cs" />
     <Compile Include="Controllers\Administracion\ADMTipoEmpleadoController.cs" />
     <Compile Include="Controllers\Administracion\ADMUsuarioController.cs" />
+    <Compile Include="Controllers\Caja\CAJCobroController.cs" />
+    <Compile Include="Controllers\Caja\CAJCorteController.cs" />
     <Compile Include="Controllers\Caja\CAJDefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Inventario\INVBodegaCocinaController.cs" />
     <Compile Include="Controllers\Inventario\INVBodegaController.cs" />
+    <Compile Include="Controllers\Inventario\INVBodegaGeneralController.cs" />
     <Compile Include="Controllers\Inventario\INVDefaultController.cs" />
+    <Compile Include="Controllers\Inventario\INVDetalleMenuController.cs" />
     <Compile Include="Controllers\Inventario\INVMenuController.cs" />
     <Compile Include="Controllers\Inventario\INVTipoMenuController.cs" />
     <Compile Include="Controllers\Pedidos\PEDCrearPedidoController.cs" />
     <Compile Include="Controllers\Pedidos\PEDDefaultController.cs" />
+    <Compile Include="Controllers\Pedidos\PEDPedidosController.cs" />
     <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -421,10 +433,16 @@
     <Compile Include="Models\BANCO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BITACORA_COCINA.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CAJA.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CLIENTE.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLIENTE_DATOS_ADICIONALES.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EMPLEADO.cs">
@@ -440,6 +458,9 @@
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\INVENTARIO_BODEGA_GENERAL.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INVENTARIO_COCINA.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MENU.cs">
@@ -469,6 +490,12 @@
     <Compile Include="Models\PEDIDO_DETALLE.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PEDIDO_FORMA_PAGO.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PEDIDO_FORMA_PAGO_DET.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PERMISO_PANTALLA.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
@@ -496,13 +523,13 @@
     <Compile Include="Models\ROL.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TIPO_EMPLEADO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TIPO_MENU.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TIPO_PEDIDO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TIPO_PRODUCTO.cs">
@@ -571,6 +598,12 @@
     <Content Include="Views\INVMenu\index.cshtml" />
     <Content Include="Views\INVTipoMenu\Index.cshtml" />
     <Content Include="Views\ADMUsuario\Index.cshtml" />
+    <Content Include="Views\CAJCobro\Index.cshtml" />
+    <Content Include="Views\CAJCorte\Index.cshtml" />
+    <Content Include="Views\INVBodegaCocina\Index.cshtml" />
+    <Content Include="Views\INVBodegaGeneral\Index.cshtml" />
+    <Content Include="Views\INVDetalleMenu\Index.cshtml" />
+    <Content Include="Views\PEDPedidos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -580,7 +613,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Caja\" />
     <Folder Include="Scripts\Reportes\" />
     <Folder Include="Views\ADMTipoProveedor\" />
   </ItemGroup>

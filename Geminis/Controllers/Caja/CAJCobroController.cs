@@ -26,10 +26,9 @@ namespace Geminis.Controllers.Caja
                                   D.USUARIO,
                                   C.NOMBRE EMPLEADO,
                                   E.ID_TIPO_PEDIDO,
-                                  E.DESCRIPCION AS TIPO_PEDIDO,
+                                  E.nombre AS TIPO_PEDIDO,
                                   A.TOTAL,
-                                  CONVERT(varchar, a.FECHA_CREACION, 23)+' '+CONVERT(varchar, A.HORA_CREACION, 22) FECHA_CREACION,
-                                  CONVERT(varchar, A.HORA_CREACION, 22) HORA_CREACION  
+                                    FORMAT(A.FECHA_CREACION,'dd/MM/yyyy hh:mm tt') AS FECHA_CREACION
                                 FROM PEDIDO A
                                 INNER JOIN MESA B ON A.ID_MESA = B.ID_MESA
                                 INNER JOIN EMPLEADO C ON C.ID_EMPLEADO = A.ID_EMPLEADO

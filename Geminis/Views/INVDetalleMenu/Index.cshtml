@@ -1,12 +1,27 @@
 ﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
 @section scripts{
-    <script src="~/Scripts/Caja/CAJCorte.js"></script>
+    <script src="~/Scripts/Inventario/INVDetalleMenu.js"></script>
     <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
     <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
     <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
 }
-
 <style>
+    #gridContainer .dx-scrollable-scroll {
+        height: 50px !important;
+    }
+
+    #gridContainer .dx-scrollable-scroll-content {
+        background-color: #FE650D !important;
+    }
+
+    table thead tr th {
+        font-size: 12px !important;
+    }
 
     table tbody tr td {
         font-size: 12px !important;
@@ -21,24 +36,6 @@
 
     .dataTables_length {
         float: left;
-    }
-
-    td.remover-control {
-        background: url('../../assets/img/open.png') no-repeat center center !important;
-        cursor: pointer !important;
-    }
-
-    tr.remover td.remover-control {
-        background: url('../../assets/img/close.png') no-repeat center center !important;
-        cursor: pointer !important;
-    }
-
-    #gridContainer .dx-scrollable-scroll {
-        height: 50px !important;
-    }
-
-    #gridContainer .dx-scrollable-scroll-content {
-        background-color: #FE650D !important;
     }
 
     #gridContainer span.current-value {
@@ -110,22 +107,70 @@
         }
 </style>
 
-<div class="col-md-12" style="margin-top:-10px;">
-    <div class="card" style="margin-top:-12px;">
-        <div class="card-header card-header-deep-orange card-header-text">
-            <div class="card-text">
-                <h4 class="card-title">COBRO</h4>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="margin-top:-20px!important;">
+
+            <div class="card-header card-header-danger card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">RECETARIO</h4>
+                </div>
             </div>
-        </div>
-        <div class="card-body">
-            <form class="formValida">
-                <div class="row" style="margin-top:-80px">
-                    <div class="long-title col-md-12"><h3 id="tituloRep"></h3></div>
+            <div class="card-body">
+                @* TABLA*@
+                <div class="row">
                     <div class="demo-container col-md-12">
-                        <div id="gridContainer"></div>@* ESTO ES PARA EL PULL*@
+                        <div id="gridContainer"></div>
                     </div>
                 </div>
-            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* MODAL CREAR*@
+<div class="modal fade" id="modalDetalleMenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">RECETARIO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formCrearBodega" class="formValida">
+                    <div class="row">
+                        @***HIDEN PARA GUARDAR EL ID DEL OBJETO*@
+                        <input type="hidden" id="hfIDDetalleMenu">
+                        @***HIDEN PARA GUARDAR EL ID DEL OBJETO*@
+                        <input type="hidden" id="hfControlador">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                            <div class="form-group">
+                                <label for="selMenu" class="bmd-label-floating label-with-selectpicker">MENU:</label>
+                                <select id="selMenu" name="selMenu" class="selectpicker" data-style="select-with-transition" data-live-search="true" title="Seleccione Tipo" required></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                            <div class="form-group">
+                                <label for="selCocina" class="bmd-label-floating label-with-selectpicker">NOMBRE PRODUCTO:</label>
+                                <select id="selCocina" name="selCocina" class="selectpicker" data-style="select-with-transition" data-live-search="true" title="Seleccione Tipo" required></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
+                            <div class="form-group">
+                                <label for="txtCantidad" class="bmd-label-floating">CANTIDAD</label>
+                                <input type="text" class="form-control" id="txtCantidad" name="txtCantidad" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-link btn-deep-orange">Guardar</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
         </div>
     </div>
 </div>

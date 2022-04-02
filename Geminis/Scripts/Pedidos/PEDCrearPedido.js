@@ -623,21 +623,30 @@
             columns: [
                 {
                     dataField: "ID_PEDIDO",
-                    caption: "NO. PEDIDO"
+                    caption: "NO. PEDIDO",
+                    alignment: "center"
                 },
                 {
                     dataField: "NUMERO",
-                    caption: "MESA"
+                    caption: "MESA",
+                    alignment: "center"
                 },
                 {
                     dataField: "DESCRIPCION",
-                    caption: "ESTADO"
+                    caption: "ESTADO",
+                    alignment: "center"
+                },
+                {
+                    dataField: "FECHA_CREACION",
+                    caption: "FECHA Y HORA",
+                    alignment:"center"
                 },
                 {
                     dataField: "TOTAL",
                     caption: "TOTAL",
                     dataType: "number",
-                    format: { type: 'fixedPoint', precision: 2 }
+                    format: { type: 'fixedPoint', precision: 2 },
+                    alignment: "center"
                 },
                 {
                     type: "buttons",
@@ -646,7 +655,8 @@
                         icon: "add",
                         onClick: function (e) {
                             idPedidoEditar = e.row.data['ID_PEDIDO'];
-                            AbrirModalPedidoEditar();
+                            $('#ModalEditarPedido').modal('show');
+                            //AbrirModalPedidoEditar();
                         }
                     }]
                 },

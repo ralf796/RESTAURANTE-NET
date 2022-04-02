@@ -38,6 +38,7 @@ namespace Geminis.Controllers.Pedidos
                     //obtenerDatos.HORA_CREACION = Utils.ObtenerHoraServidor();
                     obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     obtenerDatos.ID_EMPLEADO = idEmpleado;
+                    obtenerDatos.ID_TIPO_PEDIDO = 1;
                     db.PEDIDO.Add(obtenerDatos);
                     db.SaveChanges();
 
@@ -170,7 +171,8 @@ namespace Geminis.Controllers.Pedidos
                                   A.ID_PEDIDO,
                                   B.NUMERO,
                                   C.DESCRIPCION,
-                                  ISNULL(D.SUBTOTAL, 0) TOTAL
+                                  ISNULL(D.SUBTOTAL, 0) TOTAL,
+                                    FORMAT(A.FECHA_CREACION,'dd/MM/yyyy hh:mm tt') AS FECHA_CREACION
                                 FROM PEDIDO A
                                 INNER JOIN MESA B
                                   ON A.ID_MESA = B.ID_MESA
@@ -184,7 +186,7 @@ namespace Geminis.Controllers.Pedidos
                                 GROUP BY X.ID_PEDIDO) D
                                   ON D.ID_PEDIDO = A.ID_PEDIDO
                                 WHERE A.ESTADO = 'A'
-                                AND A.FECHA_CREACION = CONVERT(varchar, GETDATE(), 23)
+                                AND CONVERT(varchar, A.FECHA_CREACION, 23)= CONVERT(varchar, GETDATE(), 23)
                                 AND a.ID_ESTADO_PEDIDO IN (1)";
                 var lista = db.Database.SqlQuery<PEDIDOS>(query).ToList();
                 return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
@@ -281,6 +283,35 @@ namespace Geminis.Controllers.Pedidos
 
                     string query = @"UPDATE PEDIDO SET ID_ESTADO_PEDIDO = 2 WHERE ID_PEDIDO=" + pedido;
                     db.Database.ExecuteSqlCommand(query);
+
+                    string queryMenu = "select  B.ID_MENU, SUM(B.CANTIDAD)AS CANTIDAD_PEDIDO, C.ID_INVENTARIO_COCINA, C.CANTIDAD AS CANTIDAD_MENU from PEDIDO A inner join PEDIDO_DETALLE B ON A.ID_PEDIDO = B.ID_PEDIDO INNER JOIN MENU_DETALLE C ON C.ID_MENU = B.ID_MENU WHERE A.ID_PEDIDO ="+pedido+@" AND B.ESTADO = 'A' GROUP BY B.ID_MENU, C.ID_INVENTARIO_COCINA, C.CANTIDAD";
+                    var obtenerPedido = db.Database.SqlQuery<DESCUENTO>(queryMenu).ToList();
+                    int idCocina=0;
+                    decimal cantidad_pedido = 0;
+                    decimal cantidad_menu = 0;
+                    decimal diferencia = 0;
+                    foreach (var item in obtenerPedido)
+                    {
+                        idCocina = item.ID_INVENTARIO_COCINA;
+                        cantidad_pedido = item.CANTIDAD_PEDIDO;
+                        cantidad_menu = item.CANTIDAD_MENU;
+                        diferencia = cantidad_pedido * cantidad_menu;
+                        string queryCocina = "update INVENTARIO_COCINA SET CANTIDAD_NETA =CANTIDAD_NETA-"+diferencia+" WHERE ID_INVENTARIO_COCINA="+idCocina;
+                        db.Database.ExecuteSqlCommand(queryCocina);
+                        string querySubtotal = "UPDATE INVENTARIO_COCINA SET SUBTOTAL = CANTIDAD_NETA * PRECIO WHERE ID_INVENTARIO_COCINA ="+idCocina;
+                        db.Database.ExecuteSqlCommand(querySubtotal);
+                    }
+
+                   
+             
+                   //for(int i = 0; i < obtenerPedido.Count;i++)
+                   // {
+                   //     for(int j=2; j < 4; j++)
+                   //     {
+                   //         cantidad = obtenerPedido[i][j];
+                   //     }
+                   // }
+
                     db.SaveChanges();
                     transaccion.Commit();
                     return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
@@ -329,6 +360,7 @@ namespace Geminis.Controllers.Pedidos
             public int? NUMERO { set; get; }
             public string DESCRIPCION { set; get; }
             public decimal TOTAL { set; get; }
+            public string FECHA_CREACION { set; get; }
         }
         public class DETALLE_PEDIDOS
         {
@@ -338,6 +370,13 @@ namespace Geminis.Controllers.Pedidos
             public decimal CANTIDAD { set; get; }
             public decimal PRECIO { set; get; }
             public decimal SUBTOTAL { set; get; }
+        }
+        public class DESCUENTO
+        {
+            public int ID_MENU { get; set; }
+            public int CANTIDAD_PEDIDO { get; set; }
+            public int ID_INVENTARIO_COCINA { get; set; }
+            public decimal CANTIDAD_MENU { get; set; }
         }
     }
 }

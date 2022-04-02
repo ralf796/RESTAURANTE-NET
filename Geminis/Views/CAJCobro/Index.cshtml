@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form class="formValida">                
+            <form class="formValida">
                 <div class="row" style="margin-top:-80px">
                     <div class="long-title col-md-12"><h3 id="tituloRep"></h3></div>
                     <div class="demo-container col-md-12">
@@ -126,6 +126,80 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade ps-child" id="modalCobro" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">REALIZAR COBRO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida" id="formProducto">
+                    @*DIV PARA AGREGAR LA FORMA DE PAGO*@
+                    <div class="row" style="margin-top:20px">
+                        @*----------SELECT TIPO----------*@
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div class="form-group">
+                                <label for="selTipo" class="bmd-label-floating label-with-selectpicker">TIPO</label>
+                                <select id="selTipo" name="selTipo" class="selectpicker" data-style="select-with-transition" data-live-search="true" title="Seleccione Tipo"></select>
+                            </div>
+                        </div>
+                        @*----------# DOCUMENTO----------*@
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 d-none" id="divRef">
+                            <div class="form-group">
+                                <label for="txtReferencia" class="bmd-label-floating">NÚMERO</label>
+                                <input autocomplete="off" type="text" class="form-control" id="txtReferencia" name="txtReferencia">
+                            </div>
+                        </div>
+                        @*----------IMPORTE----------*@
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div class="form-group">
+                                <label for="txtImporte" class="bmd-label-floating">MONTO</label>
+                                <input autocomplete="off" type="number" class="form-control input-number" id="txtImporte" name="txtImporte" step="0.00" min="0.00">
+                            </div>
+                        </div>
+                        @*----------BOTON DE AGREGAR DOCUMENTO----------*@
+                        <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                            <button id="btnAgregarDocumento" class="btn btn-primary btn-round btn-fab" title="Agregar Documento">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="material-datatables">
+                        <table id="tblDocumentos" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th class="font-weight-bold">ID FORMA PAGO</th>
+                                    <th class="font-weight-bold">FORMA PAGO</th>
+                                    <th class="font-weight-bold">REFERENCIA</th>
+                                    <th class="font-weight-bold">MONTO</th>
+                                    <th class="font-weight-bold">ACCIONES</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="row justify-content-end" style="margin-top:20px">
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right justify-content-end">
+                            <div class="form-group text-right">
+                                <label for="txtTotalCobro" class="bmd-label-floating">COBRO</label>
+                                <input type="text" class="form-control" id="txtTotalCobro" name="txtTotalCobro" disabled>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right justify-content-end">
+                            <div class="form-group text-right">
+                                <label for="txtTotalPedido" class="bmd-label-floating">TOTAL PEDIDO</label>
+                                <input type="text" class="form-control" id="txtTotaA" type="submit" class="btn btn-deep-orange float-right">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CrystalDecisions.CrystalReports.Engine;
+//using CrystalDecisions.CrystalReports.Engine;
 using System.IO;
 
 namespace Geminis.Controllers.Pedidos
@@ -205,7 +205,7 @@ namespace Geminis.Controllers.Pedidos
             }
             return listImpresion;
         }
-
+        /*
         [SessionExpireFilter]
         public void ImprimirTicketPortatil(int cobro)
         {
@@ -223,7 +223,7 @@ namespace Geminis.Controllers.Pedidos
             rd.Close();
             rd.Dispose();
         }
-
+        */
         public class DATOS_CLIENTE
         {
             public int? ID_CLIENTE { set; get; }

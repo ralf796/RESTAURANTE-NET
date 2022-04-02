@@ -24,7 +24,7 @@ namespace Geminis.Models
         public int ID_BODEGA_GENERAL { get; set; }
         public string NOMBRE_PRODUCTO { get; set; }
         public string DESCRIPCION { get; set; }
-        public Nullable<int> CANTIDAD { get; set; }
+        public Nullable<decimal> CANTIDAD { get; set; }
         public Nullable<System.DateTime> FECHA_INGRESO { get; set; }
         public Nullable<decimal> PRECIO { get; set; }
         public Nullable<int> ID_UNIDAD_MEDIDA { get; set; }
