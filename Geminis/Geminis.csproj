@@ -445,6 +445,15 @@
     <Compile Include="Models\CLIENTE_DATOS_ADICIONALES.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\COBRO.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\COBRO_DETALLE.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CORTE.cs">
+      <DependentUpon>Restaurante.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EMPLEADO.cs">
       <DependentUpon>Restaurante.tt</DependentUpon>
     </Compile>

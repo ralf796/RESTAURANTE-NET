@@ -119,7 +119,7 @@
         </div>
         <div class="card-body">
             <form class="formValida">
-                <div class="row" style="margin-top:-80px">
+                <div class="row" style="margin-top:-10px">
                     <div class="long-title col-md-12"><h3 id="tituloRep"></h3></div>
                     <div class="demo-container col-md-12">
                         <div id="gridContainer"></div>@* ESTO ES PARA EL PULL*@
@@ -162,11 +162,12 @@
                             <div class="form-group">
                                 <label for="txtImporte" class="bmd-label-floating">MONTO</label>
                                 <input autocomplete="off" type="number" class="form-control input-number" id="txtImporte" name="txtImporte" step="0.00" min="0.00">
+                                <input type="hidden" id="hfIdCobro">
                             </div>
                         </div>
                         @*----------BOTON DE AGREGAR DOCUMENTO----------*@
                         <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
-                            <button id="btnAgregarDocumento" class="btn btn-primary btn-round btn-fab" title="Agregar Documento">
+                            <button id="btnAgregarDocumento" class="btn btn-primary btn-round btn-fab" title="Agregar pago">
                                 <i class="material-icons">add</i>
                             </button>
                         </div>
@@ -187,18 +188,22 @@
                     <div class="row justify-content-end" style="margin-top:20px">
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right justify-content-end">
                             <div class="form-group text-right">
-                                <label for="txtTotalCobro" class="bmd-label-floating">COBRO</label>
+                                <label for="txtTotalCobro" class="bmd-label-floating">DINERO</label>
                                 <input type="text" class="form-control" id="txtTotalCobro" name="txtTotalCobro" disabled>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-right justify-content-end">
                             <div class="form-group text-right">
                                 <label for="txtTotalPedido" class="bmd-label-floating">TOTAL PEDIDO</label>
-                                <input type="text" class="form-control" id="txtTotaA" type="submit" class="btn btn-deep-orange float-right">Guardar</button>
+                                <input type="text" class="form-control text-center" id="txtTotalPedido" name="txtTotalPedido" text-align:center" disabled>
                             </div>
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnCrearPago" class="btn btn-link btn-deep-orange">Guardar pago</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>

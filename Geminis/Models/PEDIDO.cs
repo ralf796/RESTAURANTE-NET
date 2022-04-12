@@ -17,6 +17,7 @@ namespace Geminis.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PEDIDO()
         {
+            this.COBRO = new HashSet<COBRO>();
             this.PAGO_MESA = new HashSet<PAGO_MESA>();
             this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
             this.PEDIDO_FORMA_PAGO_DET = new HashSet<PEDIDO_FORMA_PAGO_DET>();
@@ -40,6 +41,8 @@ namespace Geminis.Models
         public string TELEFONO { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO> COBRO { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
         public virtual ESTADO_PEDIDO ESTADO_PEDIDO { get; set; }
         public virtual MESA MESA { get; set; }

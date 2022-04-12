@@ -38,7 +38,7 @@
           <Key>
             <PropertyRef Name="ID_CLIENTE" />
           </Key>
-          <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CLIENTE" Type="int" Nullable="false" />
           <Property Name="NOMBRE_CLIENTE" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="300" />
           <Property Name="NIT" Type="varchar" MaxLength="15" />
@@ -56,6 +56,36 @@
           <Property Name="ID_CLIENTE" Type="int" />
           <Property Name="DIRECCION" Type="varchar" MaxLength="255" />
           <Property Name="TELEFONO" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="COBRO">
+          <Key>
+            <PropertyRef Name="ID_COBRO" />
+          </Key>
+          <Property Name="ID_COBRO" Type="int" Nullable="false" />
+          <Property Name="ID_PEDIDO" Type="int" />
+          <Property Name="MONTO" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FECHA_CREACION" Type="datetime" />
+          <Property Name="CREADO_POR" Type="varchar" MaxLength="30" />
+          <Property Name="ID_CORTE" Type="int" />
+        </EntityType>
+        <EntityType Name="COBRO_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_COBRO_DETALLE" />
+          </Key>
+          <Property Name="ID_COBRO_DETALLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_COBRO" Type="int" />
+          <Property Name="ID_PEDIDO_FORMA_PAGO" Type="int" />
+          <Property Name="MONTO" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DOCUMENTO" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CORTE">
+          <Key>
+            <PropertyRef Name="ID_CORTE" />
+          </Key>
+          <Property Name="ID_CORTE" Type="int" Nullable="false" />
+          <Property Name="TOTAL" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FECHA_CREACION" Type="datetime" />
+          <Property Name="CREADO_POR" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
@@ -427,6 +457,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__COBRO__ID_CORTE__1CBC4616">
+          <End Role="CORTE" Type="Self.CORTE" Multiplicity="0..1" />
+          <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CORTE">
+              <PropertyRef Name="ID_CORTE" />
+            </Principal>
+            <Dependent Role="COBRO">
+              <PropertyRef Name="ID_CORTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO__ID_PEDIDO__123EB7A3">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
+          <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Principal>
+            <Dependent Role="COBRO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO_DET__ID_CO__17F790F9">
+          <End Role="COBRO" Type="Self.COBRO" Multiplicity="0..1" />
+          <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COBRO">
+              <PropertyRef Name="ID_COBRO" />
+            </Principal>
+            <Dependent Role="COBRO_DETALLE">
+              <PropertyRef Name="ID_COBRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO_DET__ID_PE__18EBB532">
+          <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
+          <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO_FORMA_PAGO">
+              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
+            </Principal>
+            <Dependent Role="COBRO_DETALLE">
+              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__EMPLEADO__ID_TIP__6383C8BA">
           <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
           <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
@@ -793,6 +871,9 @@
           <EntitySet Name="CAJA" EntityType="Self.CAJA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE_DATOS_ADICIONALES" EntityType="Self.CLIENTE_DATOS_ADICIONALES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COBRO" EntityType="Self.COBRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COBRO_DETALLE" EntityType="Self.COBRO_DETALLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CORTE" EntityType="Self.CORTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ESTADO_PEDIDO" EntityType="Self.ESTADO_PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FACTURA_DETALLE" EntityType="Self.FACTURA_DETALLE" Schema="dbo" store:Type="Tables" />
@@ -828,6 +909,22 @@
           <AssociationSet Name="FK__CLIENTE_D__ID_CL__628FA481" Association="Self.FK__CLIENTE_D__ID_CL__628FA481">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="CLIENTE_DATOS_ADICIONALES" EntitySet="CLIENTE_DATOS_ADICIONALES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO__ID_CORTE__1CBC4616" Association="Self.FK__COBRO__ID_CORTE__1CBC4616">
+            <End Role="CORTE" EntitySet="CORTE" />
+            <End Role="COBRO" EntitySet="COBRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO__ID_PEDIDO__123EB7A3" Association="Self.FK__COBRO__ID_PEDIDO__123EB7A3">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="COBRO" EntitySet="COBRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO_DET__ID_CO__17F790F9" Association="Self.FK__COBRO_DET__ID_CO__17F790F9">
+            <End Role="COBRO" EntitySet="COBRO" />
+            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO_DET__ID_PE__18EBB532" Association="Self.FK__COBRO_DET__ID_PE__18EBB532">
+            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
+            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
           </AssociationSet>
           <AssociationSet Name="FK__EMPLEADO__ID_TIP__6383C8BA" Association="Self.FK__EMPLEADO__ID_TIP__6383C8BA">
             <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
@@ -960,6 +1057,9 @@
           <EntitySet Name="CAJA" EntityType="Restaurante_BDModel.CAJA" />
           <EntitySet Name="CLIENTE" EntityType="Restaurante_BDModel.CLIENTE" />
           <EntitySet Name="CLIENTE_DATOS_ADICIONALES" EntityType="Restaurante_BDModel.CLIENTE_DATOS_ADICIONALES" />
+          <EntitySet Name="COBRO" EntityType="Restaurante_BDModel.COBRO" />
+          <EntitySet Name="COBRO_DETALLE" EntityType="Restaurante_BDModel.COBRO_DETALLE" />
+          <EntitySet Name="CORTE" EntityType="Restaurante_BDModel.CORTE" />
           <EntitySet Name="EMPLEADO" EntityType="Restaurante_BDModel.EMPLEADO" />
           <EntitySet Name="ESTADO_PEDIDO" EntityType="Restaurante_BDModel.ESTADO_PEDIDO" />
           <EntitySet Name="FACTURA_DETALLE" EntityType="Restaurante_BDModel.FACTURA_DETALLE" />
@@ -1007,6 +1107,22 @@
           <AssociationSet Name="FK__PEDIDO__ID_CLIEN__5535A963" Association="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963">
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO__ID_CORTE__1CBC4616" Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616">
+            <End Role="CORTE" EntitySet="CORTE" />
+            <End Role="COBRO" EntitySet="COBRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO__ID_PEDIDO__123EB7A3" Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="COBRO" EntitySet="COBRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO_DET__ID_CO__17F790F9" Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9">
+            <End Role="COBRO" EntitySet="COBRO" />
+            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__COBRO_DET__ID_PE__18EBB532" Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532">
+            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
+            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
           </AssociationSet>
           <AssociationSet Name="FK__EMPLEADO__ID_TIP__6383C8BA" Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6383C8BA">
             <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
@@ -1152,7 +1268,7 @@
           <Key>
             <PropertyRef Name="ID_CLIENTE" />
           </Key>
-          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE_CLIENTE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="NIT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -1174,6 +1290,42 @@
           <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CLIENTE" Relationship="Restaurante_BDModel.FK__CLIENTE_D__ID_CL__628FA481" FromRole="CLIENTE_DATOS_ADICIONALES" ToRole="CLIENTE" />
+        </EntityType>
+        <EntityType Name="COBRO">
+          <Key>
+            <PropertyRef Name="ID_COBRO" />
+          </Key>
+          <Property Name="ID_COBRO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PEDIDO" Type="Int32" />
+          <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="3" />
+          <Property Name="CREADO_POR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_CORTE" Type="Int32" />
+          <NavigationProperty Name="CORTE" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616" FromRole="COBRO" ToRole="CORTE" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3" FromRole="COBRO" ToRole="PEDIDO" />
+          <NavigationProperty Name="COBRO_DETALLE" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9" FromRole="COBRO" ToRole="COBRO_DETALLE" />
+        </EntityType>
+        <EntityType Name="COBRO_DETALLE">
+          <Key>
+            <PropertyRef Name="ID_COBRO_DETALLE" />
+          </Key>
+          <Property Name="ID_COBRO_DETALLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_COBRO" Type="Int32" />
+          <Property Name="ID_PEDIDO_FORMA_PAGO" Type="Int32" />
+          <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9" FromRole="COBRO_DETALLE" ToRole="COBRO" />
+          <NavigationProperty Name="PEDIDO_FORMA_PAGO" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532" FromRole="COBRO_DETALLE" ToRole="PEDIDO_FORMA_PAGO" />
+        </EntityType>
+        <EntityType Name="CORTE">
+          <Key>
+            <PropertyRef Name="ID_CORTE" />
+          </Key>
+          <Property Name="ID_CORTE" Type="Int32" Nullable="false" />
+          <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Precision="3" />
+          <Property Name="CREADO_POR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616" FromRole="CORTE" ToRole="COBRO" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
@@ -1397,6 +1549,7 @@
           <Property Name="NOMBRE_RECIBE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CLIENTE" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963" FromRole="PEDIDO" ToRole="CLIENTE" />
+          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3" FromRole="PEDIDO" ToRole="COBRO" />
           <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="PEDIDO" ToRole="EMPLEADO" />
           <NavigationProperty Name="ESTADO_PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_ESTAD__02FC7413" FromRole="PEDIDO" ToRole="ESTADO_PEDIDO" />
           <NavigationProperty Name="MESA" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="PEDIDO" ToRole="MESA" />
@@ -1431,6 +1584,7 @@
           <Property Name="ID_PEDIDO_FORMA_PAGO" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="COBRO_DETALLE" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532" FromRole="PEDIDO_FORMA_PAGO" ToRole="COBRO_DETALLE" />
           <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__797309D9" FromRole="PEDIDO_FORMA_PAGO" ToRole="PEDIDO_FORMA_PAGO_DET" />
         </EntityType>
         <EntityType Name="PEDIDO_FORMA_PAGO_DET">
@@ -1636,6 +1790,54 @@
             </Principal>
             <Dependent Role="PEDIDO">
               <PropertyRef Name="ID_CLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO__ID_CORTE__1CBC4616">
+          <End Type="Restaurante_BDModel.CORTE" Role="CORTE" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CORTE">
+              <PropertyRef Name="ID_CORTE" />
+            </Principal>
+            <Dependent Role="COBRO">
+              <PropertyRef Name="ID_CORTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO__ID_PEDIDO__123EB7A3">
+          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Principal>
+            <Dependent Role="COBRO">
+              <PropertyRef Name="ID_PEDIDO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO_DET__ID_CO__17F790F9">
+          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COBRO">
+              <PropertyRef Name="ID_COBRO" />
+            </Principal>
+            <Dependent Role="COBRO_DETALLE">
+              <PropertyRef Name="ID_COBRO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__COBRO_DET__ID_PE__18EBB532">
+          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
+          <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO_FORMA_PAGO">
+              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
+            </Principal>
+            <Dependent Role="COBRO_DETALLE">
+              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2023,6 +2225,39 @@
                 <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
                 <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
                 <ScalarProperty Name="ID_CLIENTE_DATO_ADICIONAL" ColumnName="ID_CLIENTE_DATO_ADICIONAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COBRO">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.COBRO">
+              <MappingFragment StoreEntitySet="COBRO">
+                <ScalarProperty Name="ID_CORTE" ColumnName="ID_CORTE" />
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="ID_PEDIDO" ColumnName="ID_PEDIDO" />
+                <ScalarProperty Name="ID_COBRO" ColumnName="ID_COBRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COBRO_DETALLE">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.COBRO_DETALLE">
+              <MappingFragment StoreEntitySet="COBRO_DETALLE">
+                <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="ID_PEDIDO_FORMA_PAGO" ColumnName="ID_PEDIDO_FORMA_PAGO" />
+                <ScalarProperty Name="ID_COBRO" ColumnName="ID_COBRO" />
+                <ScalarProperty Name="ID_COBRO_DETALLE" ColumnName="ID_COBRO_DETALLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CORTE">
+            <EntityTypeMapping TypeName="Restaurante_BDModel.CORTE">
+              <MappingFragment StoreEntitySet="CORTE">
+                <ScalarProperty Name="CREADO_POR" ColumnName="CREADO_POR" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="ID_CORTE" ColumnName="ID_CORTE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

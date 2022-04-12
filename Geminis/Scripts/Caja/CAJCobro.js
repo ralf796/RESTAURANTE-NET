@@ -2,7 +2,36 @@
 
     fillAllInputs();
 
-
+    function GetFormaPago() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDPedidos/GetFormaPago',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: {},
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    if (!isNullOrEmpty(traerDatos)) {
+                        $('#selTipo').empty();
+                        traerDatos.forEach(function (dato) {
+                            $('#selTipo').append('<option value="' + dato.ID_PEDIDO_FORMA_PAGO + '">' + dato.NOMBRE + '</option>');
+                        });
+                        $('#selTipo').selectpicker();
+                        $('#selTipo').selectpicker('refresh');
+                        resolve(1);
+                    }
+                    else
+                        showNotification('top', 'right', 'warning', 'No existen forma de pagos disponibles.', 'warning');
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
     function fillAllInputs() {
         $(".formValida .bmd-form-group").each(function () {
             $(this).addClass("is-filled");
@@ -46,7 +75,7 @@
             },
             update: function (key, values) {
             }
-        });        
+        });
         var salesPivotGrid = $("#gridContainer").dxDataGrid({
             dataSource: new DevExpress.data.DataSource(customStore),
             showBorders: true,
@@ -96,7 +125,7 @@
                 {
                     dataField: "ID_TIPO_PEDIDO",
                     caption: "ID_TIPO_PEDIDO",
-                    visible:false
+                    visible: false
                 },
                 {
                     dataField: "TIPO_PEDIDO",
@@ -123,6 +152,9 @@
                         onClick: function (e) {
                             //var valor = e.row.data['ID_PEDIDO'];
                             $('#modalCobro').modal('show');
+                            $('#hfIdCobro').val((e.row.data['ID_PEDIDO']));
+                            $('#txtTotalPedido').val((e.row.data['TOTAL']).toFixed(2));
+                            GetFormaPago();
                         }
                     }]
                 }
@@ -209,10 +241,23 @@
         $('#txtTotalCobro').val(suma.toFixed(2));
     }
 
+    //$('#btnCrearPago').on('click', function (e) {
+    //    e.preventDefault();
+    //    if (Number($('#txtTotalCobro').val()) != Number($('#txtTotalPedido').val())) {
+    //        ShowShortMessage('warning', 'No se puede realizar el cobro', 'El total del dinero no puede ser diferente al total del pedido.')
+    //    }
+    //});
     $('#btnAgregarDocumento').on('click', function (e) {
         e.preventDefault();
-        if (!isNullOrEmpty($('#selTipo').val()) && !isNullOrEmpty($('#txtImporte').val())) {
-            AgregarFormaPago($('#selTipo').val(), $("#selTipo option:selected").text(), $('#txtReferencia').val(), $('#txtImporte').val().replace(",", ""))
+        if (!isNullOrEmpty($('#selTipo').val()) && !isNullOrEmpty($('#txtImporte').val()) && Number($('#txtImporte').val()) > 0) {
+            var cobrado = Number($('#txtTotalCobro').val());
+            var cobroGuardar = Number($('#txtImporte').val());
+            var pedido = Number($('#txtTotalPedido').val());
+
+            if ((cobrado + cobroGuardar) > pedido)
+                ShowShortMessage('warning', 'No se puede guardar el dinero', 'El total del dinero( Q' + (cobrado + cobroGuardar).toFixed(2) + ') no puede ser mayor al total del pedido ( Q' + pedido.toFixed(2) + ').')
+            else
+                AgregarFormaPago($('#selTipo').val(), $("#selTipo option:selected").text(), $('#txtReferencia').val(), $('#txtImporte').val().replace(",", ""))
         }
     });
     $('#selTipo').on('change', function () {
@@ -222,5 +267,77 @@
         else
             $('#divRef').removeClass('d-none');
     });
+
+    function COBRO(ID_PEDIDO, MONTO) {
+        this.ID_PEDIDO = ID_PEDIDO;
+        this.MONTO = MONTO;
+    }
+    function COBRO_DETALLE(ID_PEDIDO_FORMA_PAGO, MONTO, DOCUMENTO) {
+        this.ID_PEDIDO_FORMA_PAGO = ID_PEDIDO_FORMA_PAGO;
+        this.MONTO = MONTO;
+        this.DOCUMENTO = DOCUMENTO;
+    }
+    function GuardarCobro(pEncabezado, pDetalles) {
+        CallLoadingFire();
+        $.ajax({
+            type: 'POST',
+            url: '/CAJCobro/GuardarCobro',
+            data: {
+                encabezado: JSON.stringify(pEncabezado),
+                detalle: JSON.stringify(pDetalles)
+            },
+            success: function (data) {
+                if (data["Estado"] == -1) {
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+                    return;
+                }
+                else if (data["Estado"] == 1) {
+                    var vMensaje = 'COBRO REALIZADO';
+                    var vMensaje2 = '<div><br />El cobro se realizó correctamente.<br /></div>';
+                    swal(vMensaje, vMensaje2, "success");
+                    llenarReporte();
+                    tableDodumentos.clear().draw();
+                    $('#modalCobro').modal('hide');
+                }
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+            }
+        });
+    }
+    $('#btnCrearPago').on('click', function (e) {
+        e.preventDefault();
+
+        var pedido = $('#hfIdCobro').val();
+        var total = $('#txtTotalPedido').val();
+        var encabezado = new COBRO(pedido, total);
+
+
+        var cobrado = Number($('#txtTotalCobro').val());
+
+
+        var listDetalles = [];
+
+        tableDodumentos.rows().every(function (rowIdx) {
+            var row = this.data();
+            var formaPago = parseFloat(row[0]);
+            var monto = parseFloat(row[3]);
+            var documento = parseFloat(row[2]);
+            var detalle = new COBRO_DETALLE(formaPago, monto, documento);
+            listDetalles.push(detalle);
+        });
+
+        if (listDetalles.length > 0) {
+            if (Number($('#txtTotalCobro').val()) != Number($('#txtTotalPedido').val()))
+                ShowShortMessage('warning', 'No se puede guardar el dinero', 'El total del dinero( Q' + cobrado.toFixed(2) + ') no puede ser mayor al total del pedido ( Q' + Number(total).toFixed(2) + ').')
+            else
+                GuardarCobro(encabezado, listDetalles);
+        }
+        else
+            showNotification('top', 'right', 'warning', 'Debe datos de cobro', 'warning');
+
+    });
+
+
 
 });

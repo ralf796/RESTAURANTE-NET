@@ -2,6 +2,10 @@
 
     fillAllInputs();
 
+    $('#btnAbrirModalCrearPedido').on('click', function (e) {
+        e.preventDefault();
+        AbrirModalPedido();
+    });
 
     function fillAllInputs() {
         $(".formValida .bmd-form-group").each(function () {
@@ -31,7 +35,7 @@
                     var traerDatos = data["DATA"];
                     $('#selMesa').empty();
                     traerDatos.forEach(function (dato) {
-                        $('#selMesa').append('<option value="' + dato.ID_MESA + '">' + dato.NUMERO + '</option>');
+                        $('#selMesa').append('<option class="text-center" value="' + dato.ID_MESA + '">' + dato.NUMERO + '</option>');
                     });
                     $('#selMesa').selectpicker();
                     $('#selMesa').selectpicker('refresh');
@@ -281,6 +285,7 @@
             ActualizarTotalPedido();
         }
     });
+
     var tableDetalles = $('#tblDetallesPedido').DataTable({
         columns: [
             { title: 'CANTIDAD' },
@@ -293,6 +298,12 @@
                 render: function () {
                     return '<a title="ELIMINAR DETALLE" class="btn btn-link btn-danger btn-just-icon remove" style="margin: 0 0 !important"><i class="material-icons">clear</i></a>';
                 }
+            }
+        ],
+        columnDefs: [
+            {
+                targets: [0, 1, 2, 3, 4, 5, 6],
+                className: 'text-center'
             }
         ],
         "lengthMenu": [
@@ -639,7 +650,7 @@
                 {
                     dataField: "FECHA_CREACION",
                     caption: "FECHA Y HORA",
-                    alignment:"center"
+                    alignment: "center"
                 },
                 {
                     dataField: "TOTAL",
@@ -674,15 +685,31 @@
                 {
                     type: "buttons",
                     width: 50,
-                    buttons: [{
-                        icon: "trash",
-                        onClick: function (e) {
-                            var valor = e.row.data['ID_PEDIDO'];
-                            AnularPedido(valor);
+                    buttons: [
+                        {
+                            icon: "trash",
+                            onClick: function (e) {
+                                var valor = e.row.data['ID_PEDIDO'];
+                                AnularPedido(valor);
+                            }
                         }
-                    }]
+                    ]
+                },
+                {
+                    type: "buttons",
+                    width: 50,
+                    buttons: [
+                        {
+                            icon: "food",
+                            onClick: function (e) {
+                                var valor = e.row.data['ID_PEDIDO'];
+                                
+                            }
+                        }
+                    ]
                 }
             ],
+            /*
             onToolbarPreparing: function (e) {
                 var dataGrid = e.component;
                 e.toolbarOptions.items.unshift(
@@ -698,6 +725,7 @@
                         }
                     })
             },
+            */
             masterDetail: {
                 enabled: true,
                 template: function (container, options) {

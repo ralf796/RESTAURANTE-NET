@@ -12,22 +12,24 @@ namespace Geminis.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PEDIDO_FORMA_PAGO
+    public partial class COBRO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PEDIDO_FORMA_PAGO()
+        public COBRO()
         {
             this.COBRO_DETALLE = new HashSet<COBRO_DETALLE>();
-            this.PEDIDO_FORMA_PAGO_DET = new HashSet<PEDIDO_FORMA_PAGO_DET>();
         }
     
-        public int ID_PEDIDO_FORMA_PAGO { get; set; }
-        public string NOMBRE { get; set; }
-        public string ESTADO { get; set; }
+        public int ID_COBRO { get; set; }
+        public Nullable<int> ID_PEDIDO { get; set; }
+        public Nullable<decimal> MONTO { get; set; }
+        public Nullable<System.DateTime> FECHA_CREACION { get; set; }
+        public string CREADO_POR { get; set; }
+        public Nullable<int> ID_CORTE { get; set; }
     
+        public virtual CORTE CORTE { get; set; }
+        public virtual PEDIDO PEDIDO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET { get; set; }
     }
 }

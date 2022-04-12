@@ -114,34 +114,36 @@
                     dataField: "FECHA_CREACION",
                     caption: "FECHA PEDIDO",
                     alignment: "center"
-                },
-                {
-                    type: "buttons",
-                    width: 50,
-                    buttons: [{
-                        icon: "money",
-                        onClick: function (e) {
-                            var valor = e.row.data['ID_PEDIDO'];
-                            //EntregarPedido(valor);
-                        }
-                    }]
                 }
-            ],
-            onToolbarPreparing: function (e) {
-                var dataGrid = e.component;
-                e.toolbarOptions.items.unshift(
-                    {
-                        location: "after",
-                        widget: "dxButton",
-                        options: {
-                            icon: "add",
-                            text: "",
-                            onClick: function (e) {
-                                //AbrirModalPedido();
-                            }
-                        }
-                    })
+            ]
+        });
+    }
+
+    function GuardarCorte() {
+        $.ajax({
+            type: 'GET',
+            url: '/CAJCorte/GuardarCorte',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: {},
+            cache: false,
+            success: function (data) {
+                if (data['Estado'] == 1) {
+                    llenarReporte();
+                    showNotification('top', 'right', 'success', 'Se ha creado un nuevo corte de venta.', 'success');
+                }
+                else
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+                reject(ex);
             }
         });
     }
+
+    $('#btnCrearCorte').on('click', function (e) {
+        e.preventDefault();
+        GuardarCorte();
+    });
 });

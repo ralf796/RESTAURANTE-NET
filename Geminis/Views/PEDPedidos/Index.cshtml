@@ -178,46 +178,51 @@
                             </div>
                         </div>
                         @*----------DIRECCIÓN DE ENTREGA----------*@
-                        <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+                        <div class="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                             <div class="form-group">
                                 <label for="txtDireccion" class="bmd-label-floating">DIRECCIÓN ENTREGA</label>
                                 <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" required readonly>
                             </div>
                         </div>
-                        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                        <div class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                             <button id="btnDireccionesCliente" class="btn btn-primary btn-round btn-fab" title="BUSCAR DIRECCIONES" formnovalidate>
                                 <i class="material-icons">search</i>
                             </button>
                         </div>
+                        <div class="col-12 col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                            <button id="btnAbrirModalCrearCliente" class="btn btn-success btn-round btn-fab" title="CREAR CLIENTE" formnovalidate>
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
                     </div>
                     @*DIV PARA ABRIR MODAL DE MENUS Y AGREGAR DETALLES A TABLA*@
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="toolbar" style="margin-top:-15px">
-                                <a id="btnBuscarProducto" class="btn btn-link btn-info btn-just-icon add" title="Agregar"><i class="material-icons">add</i></a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:-23px;">
-                            <div class="material-datatables">
-                                <table id="tblDetallesPedido" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th class="font-weight-bold" style="text-align:center">CANTIDAD</th>
-                                            <th class="font-weight-bold" style="text-align:center">PRODUCTO</th>
-                                            <th class="font-weight-bold" style="text-align:center">DESCRIPCIÓN</th>
-                                            <th class="font-weight-bold" style="text-align:center">PRECIO</th>
-                                            <th class="font-weight-bold" style="text-align:center">SUBTOTAL</th>
-                                            <th class="font-weight-bold" style="text-align:center">OBSERVACIONES</th>
-                                            <th class="font-weight-bold" style="text-align:center"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyDatosDetalleProductos"></tbody>
-                                </table>
-                            </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left justify-content-end">
+                        <div class="form-group text-left">
+                            <button id="btnBuscarProducto" type="submit" class="btn btn-primary float-left"><i class="material-icons">add</i>  Agregar menu</button>
                         </div>
                     </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:-10px;">
+                        <div class="material-datatables">
+                            <table id="tblDetallesPedido" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="font-weight-bold" style="text-align:center">CANTIDAD</th>
+                                        <th class="font-weight-bold" style="text-align:center">PRODUCTO</th>
+                                        <th class="font-weight-bold" style="text-align:center">DESCRIPCIÓN</th>
+                                        <th class="font-weight-bold" style="text-align:center">PRECIO</th>
+                                        <th class="font-weight-bold" style="text-align:center">SUBTOTAL</th>
+                                        <th class="font-weight-bold" style="text-align:center">OBSERVACIONES</th>
+                                        <th class="font-weight-bold" style="text-align:center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyDatosDetalleProductos"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                     @*DIV PARA AGREGAR LA FORMA DE PAGO*@
-                    <div class="row" style="margin-top:20px">
+                    <div class="row d-none" style="margin-top:20px">
                         @*----------SELECT TIPO----------*@
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="form-group">
@@ -246,7 +251,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="material-datatables">
+                    <div class="material-datatables d-none" >
                         <table id="tblDocumentos" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%">
                             <thead>
                                 <tr>
@@ -298,6 +303,11 @@
             <div class="modal-body">
                 <form id="formBusquedaCliente">
                     <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right justify-content-end">
+                            <div class="form-group text-right">
+                                <button id="btnAbrirModalCrearDireccion" type="submit" class="btn btn-success float-right"><i class="material-icons">add</i>  Agregar dirección</button>
+                            </div>
+                        </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="demo-container">
                                 <div id="gridDirecciones"></div>
@@ -346,7 +356,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="form-group">
                                 <label for="txtProductoPrecio" class="bmd-label-floating"> PRECIO</label>
-                                <input type="number" class="form-control .input-number text-center" id="txtProductoPrecio" disabled name="txtProductoPrecio" required>
+                                <input type="number" class="form-control input-number text-center" id="txtProductoPrecio" disabled name="txtProductoPrecio" required>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -357,6 +367,85 @@
                         </div>
                         <div class="modal-footer justify-content-around">
                             <button type="button" id="btnAgregarProducto" class="btn btn-link btn-deep-orange">Agregar</button>
+                            <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL CREAR DIRECCION*@
+<div class="modal fade modal-mini modal-primary" id="modalCrearDireccion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-small">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">CREAR DIRECCIÓN</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida" id="formCrearDireccion">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtDireccionCrear" class="bmd-label-floating"> OBSERVACIONES</label>
+                                <textarea name="txtDireccionCrear" id="txtDireccionCrear" rows="5" cols="23"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-around">
+                            <button type="button" id="btnCrearDireccion" class="btn btn-link btn-deep-orange">Crear</button>
+                            <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*MODAL CREAR CLIENTE*@
+<div class="modal fade modal-mini modal-primary" id="modalCrearCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-small">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">CREAR CLIENTE</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida" id="formCrearCliente">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtNombreClienteCrear" class="bmd-label-floating"> NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombreClienteCrear" name="txtNombreClienteCrear" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtNitClienteCrear" class="bmd-label-floating"> NIT</label>
+                                <input type="text" class="form-control" id="txtNitClienteCrear" name="txtNitClienteCrear" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtTelefonoClienteCrear" class="bmd-label-floating"> TELÉFONO</label>
+                                <input type="number" class="form-control" id="txtTelefonoClienteCrear" name="txtTelefonoClienteCrear" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtDireccionCrearCliente" class="bmd-label-floating"> DIRECCIÓN</label>
+                                <textarea name="txtDireccionCrearCliente" id="txtDireccionCrearCliente" rows="4" cols="23"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-around">
+                            <button type="button" id="btnCrearCliente" class="btn btn-link btn-deep-orange">Crear</button>
                             <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>

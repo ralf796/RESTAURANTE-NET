@@ -432,7 +432,7 @@
     });
 
     function PEDIDO(ID_MESA, TOTAL, ID_TIPO_PEDIDO, NOMBRE,
-        NIT, DIRECCION, REPARTIDOR, NOMBRE_RECIBE, TELEFONO) {
+        NIT, DIRECCION, REPARTIDOR, NOMBRE_RECIBE, TELEFONO, ID_CLIENTE) {
         this.ID_MESA = ID_MESA;
         this.TOTAL = TOTAL;
         this.ID_TIPO_PEDIDO = ID_TIPO_PEDIDO;
@@ -442,6 +442,7 @@
         this.REPARTIDOR = REPARTIDOR;
         this.NOMBRE_RECIBE = NOMBRE_RECIBE;
         this.TELEFONO = TELEFONO;
+        this.ID_CLIENTE= ID_CLIENTE;
     }
     function PEDIDO_DETALLE(ID_MENU, CANTIDAD, OBSERVACIONES, PRECIO, SUBTOTAL) {
         this.ID_MENU = ID_MENU;
@@ -467,7 +468,7 @@
                 else if (data["Estado"] == 1) {
                     var vMensaje = 'PEDIDO CREADO';
                     var vMensaje2 = '<div><br />No.: ' + data['PEDIDO'] + '<br /></div>';
-                    swal(vMensaje, vMensaje2, "success");                    
+                    swal(vMensaje, vMensaje2, "success");
                     tableDetalles.clear().draw();
                     tableDodumentos.clear().draw();
                     //location.reload();
@@ -496,7 +497,8 @@
             var repartidor = $('#selRepartidor').val();
             var nombrerecibe = $('#txtNombreRecibe').val();
             var telefono = $('#txtTelefono').val();
-            var encabezado = new PEDIDO(idmesa, total, idtipopedido, nombre, nit, direccion, repartidor, nombrerecibe, telefono);
+            var idCliente = $('#txtClienteID').val();
+            var encabezado = new PEDIDO(idmesa, total, idtipopedido, nombre, nit, direccion, repartidor, nombrerecibe, telefono, idCliente);
             var listDetalles = [];
 
             tableDetalles.rows().every(function (rowIdx) {
@@ -512,16 +514,98 @@
 
 
             if (listDetalles.length > 0) {
-                if (cobro == total) {
-
+                //if (cobro == total)
                     GuardarPedido(encabezado, listDetalles);
-                }
-                else
-                    ShowShortMessage('warning', 'Advertencia!', 'El cobro ingresado no coincide con el total del pedido.');
+                //else
+                    //ShowShortMessage('warning', 'Advertencia!', 'El cobro ingresado no coincide con el total del pedido.');
             }
             else
                 showNotification('top', 'right', 'warning', 'Debe de ingresar como mínimo un detalle', 'warning');
 
         }
     });
+
+
+    function GuardarDireccion(idCliente, direccion) {
+        $.ajax({
+            type: 'GET',
+            url: '/PEDPedidos/GuardarDireccion',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: { idCliente, direccion },
+            cache: false,
+            success: function (data) {
+                if (data['Estado'] == 1) {
+                    GetTableDirecciones();
+                    $('#modalCrearDireccion').modal('hide');
+                    showNotification('top', 'right', 'success', 'Se ha creado una dirección nueva.', 'success');
+                }
+                else
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+                reject(ex);
+            }
+        });
+    }
+    function GuardarCliente(nombre, nit, telefono, direccion) {
+        $.ajax({
+            type: 'GET',
+            url: '/PEDPedidos/GuardarCliente',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            data: { nombre, nit, telefono, direccion },
+            cache: false,
+            success: function (data) {
+                if (data['Estado'] == 1) {
+                    $('#modalCrearCliente').modal('hide');
+                    $('#txtNombre').val(nombre);
+                    $('#txtNombreRecibe').val(nombre);
+                    $('#txtNit').val(nit);
+                    $('#txtTelefono').val(telefono);
+                    $('#txtDireccion').val(direccion);
+                    $('#txtClienteID').val(data['IDCLIENTE']);
+                    showNotification('top', 'right', 'success', 'Se ha creado una dirección nueva.', 'success');
+
+                    $('#txtNombreClienteCrear').val('');
+                    $('#txtNitClienteCrear').val('');
+                    $('#txtTelefonoClienteCrear').val('');
+                    $('#txtDireccionCrearCliente').val('');
+                }
+                else
+                    showNotification('top', 'right', 'error', data["Mensaje"], 'danger');
+            },
+            error: function (jqXHR, ex) {
+                getErrorMessage(jqXHR, ex);
+                reject(ex);
+            }
+        });
+    }
+
+    $('#btnAbrirModalCrearCliente').on('click', function (e) {
+        e.preventDefault();
+        $('#modalCrearCliente').modal('show');
+    });
+    $('#btnCrearCliente').on('click', function (e) {
+        e.preventDefault();
+        var nombre = $('#txtNombreClienteCrear').val();
+        var nit = $('#txtNitClienteCrear').val();
+        var telefono = $('#txtTelefonoClienteCrear').val();
+        var direccion = $('#txtDireccionCrearCliente').val();
+        GuardarCliente(nombre, nit, telefono, direccion);
+    });
+
+
+    $('#btnAbrirModalCrearDireccion').on('click', function (e) {
+        e.preventDefault();
+        $('#modalCrearDireccion').modal('show');
+    });
+    $('#btnCrearDireccion').on('click', function (e) {
+        e.preventDefault();
+        var idCliente = $('#txtClienteID').val();
+        var direccion = $('#txtDireccionCrear').val();
+        GuardarDireccion(idCliente, direccion);
+    });
+
 });

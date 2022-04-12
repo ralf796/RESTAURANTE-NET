@@ -130,7 +130,7 @@ namespace Geminis.Controllers.Pedidos
 
                     obtenerDatos.ID_PEDIDO = siguientePedido;
                     obtenerDatos.ESTADO = "A";
-                    obtenerDatos.ID_ESTADO_PEDIDO = 1;
+                    obtenerDatos.ID_ESTADO_PEDIDO = 2;
                     obtenerDatos.FECHA_CREACION = Utils.ObtenerFechaServidor();
                     obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     obtenerDatos.ID_EMPLEADO = idEmpleado;
@@ -172,15 +172,75 @@ namespace Geminis.Controllers.Pedidos
             }
         }
 
+
+        [SessionExpireFilter]
+        public JsonResult GuardarDireccion(int idcliente, string direccion)
+        {
+            using (var transaccion = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    int idSiguiente = db.Database.SqlQuery<int>("SELECT ISNULL(MAX(ID_CLIENTE_DATO_ADICIONAL),0)+1 FROM CLIENTE_DATOS_ADICIONALES").FirstOrDefault();
+                    var entidad = new CLIENTE_DATOS_ADICIONALES
+                    {
+                        ID_CLIENTE_DATO_ADICIONAL = idSiguiente,
+                        ID_CLIENTE = idcliente,
+                        DIRECCION = direccion
+                    };
+                    db.CLIENTE_DATOS_ADICIONALES.Add(entidad);
+                    db.SaveChanges();
+
+                    transaccion.Commit();
+                    return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    transaccion.Rollback();
+                    return Json(new { Estado = -1, MENSAJE = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+        [SessionExpireFilter]
+        public JsonResult GuardarCliente(string nombre, string nit, string telefono, string direccion)
+        {
+            using (var transaccion = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    int idSiguiente = db.Database.SqlQuery<int>("SELECT ISNULL(MAX(ID_CLIENTE),0)+1 FROM CLIENTE").FirstOrDefault();
+                    var entidad = new CLIENTE
+                    {
+                        ID_CLIENTE = idSiguiente,
+                        NOMBRE_CLIENTE = nombre,
+                        NIT = nit,
+                        TELEFONO = telefono,
+                        DIRECCION = direccion
+                    };
+                    db.CLIENTE.Add(entidad);
+                    db.SaveChanges();
+
+                    transaccion.Commit();
+                    return Json(new { Estado = 1, IDCLIENTE = idSiguiente }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    transaccion.Rollback();
+                    return Json(new { Estado = -1, MENSAJE = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+                }
+            }
+        }
+
+
         private List<ImpresionTicketCajaPortatil> BuscaDatosReporte(int pedido)
         {
-            string query= @"SELECT a.ID_PEDIDO, CONVERT(varchar, a.fecha_creacion, 23) as fecha_creacion, d.NOMBRE AS REPARTIDOR, a.NOMBRE_RECIBE, a.TELEFONO, a.DIRECCION
+            string query = @"SELECT a.ID_PEDIDO, CONVERT(varchar, a.fecha_creacion, 23) as fecha_creacion, d.NOMBRE AS REPARTIDOR, a.NOMBRE_RECIBE, a.TELEFONO, a.DIRECCION
                     , b.CANTIDAD, e.NOMBRE as MENU, b.SUBTOTAL, a.TOTAL from PEDIDO A
                     INNER JOIN PEDIDO_DETALLE B ON A.ID_PEDIDO=B.ID_PEDIDO
                     INNER JOIN ESTADO_PEDIDO C ON C.ID_ESTADO_PEDIDO=A.ID_ESTADO_PEDIDO
                     left join EMPLEADO d on d.ID_EMPLEADO=a.REPARTIDOR
                     inner join MENU e on e.ID_MENU=b.ID_MENU
-                    where a.ID_PEDIDO="+pedido;
+                    where a.ID_PEDIDO=" + pedido;
             var lista = db.Database.SqlQuery<PEDIDO_REP>(query).ToList();
 
             List<ImpresionTicketCajaPortatil> listImpresion = new List<ImpresionTicketCajaPortatil>();
@@ -198,7 +258,7 @@ namespace Geminis.Controllers.Pedidos
                     Presentacion = lista[i].SUBTOTAL,
                     UnidadMedida = lista[i].MENU,
                     Remision = 45,
-                    NOMBRE_CLIENTE= lista[i].NOMBRE_RECIBE,
+                    NOMBRE_CLIENTE = lista[i].NOMBRE_RECIBE,
                     Liquidacion = lista[i].TELEFONO
                 };
                 listImpresion.Add(impresion);
@@ -278,7 +338,7 @@ namespace Geminis.Controllers.Pedidos
             public string UnidadMedida { get; set; }
             public string TotalRemision { get; set; }
             public decimal Remision { get; set; }
-            public string NOMBRE_CLIENTE{ get; set; }
+            public string NOMBRE_CLIENTE { get; set; }
         }
         public class RecargaPortatil
         {
@@ -305,7 +365,7 @@ namespace Geminis.Controllers.Pedidos
             public string MENU { get; set; }
             public decimal PRECIO { get; set; }
             public decimal SUBTOTAL { get; set; }
-            public decimal TOTAL{ get; set; }
+            public decimal TOTAL { get; set; }
         }
     }
 }

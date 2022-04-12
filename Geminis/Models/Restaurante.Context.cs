@@ -30,6 +30,9 @@ namespace Geminis.Models
         public virtual DbSet<CAJA> CAJA { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<CLIENTE_DATOS_ADICIONALES> CLIENTE_DATOS_ADICIONALES { get; set; }
+        public virtual DbSet<COBRO> COBRO { get; set; }
+        public virtual DbSet<COBRO_DETALLE> COBRO_DETALLE { get; set; }
+        public virtual DbSet<CORTE> CORTE { get; set; }
         public virtual DbSet<EMPLEADO> EMPLEADO { get; set; }
         public virtual DbSet<ESTADO_PEDIDO> ESTADO_PEDIDO { get; set; }
         public virtual DbSet<FACTURA_DETALLE> FACTURA_DETALLE { get; set; }
