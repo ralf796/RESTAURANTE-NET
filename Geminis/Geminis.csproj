@@ -394,6 +394,7 @@
     <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\Pedidos\PEDPedidos.js" />
     <Content Include="Scripts\Reportes\REPClientes.js" />
+    <Content Include="Scripts\Reportes\REPGanancias.js" />
     <Content Include="Scripts\Reportes\REPGastos.js" />
     <Content Include="Scripts\Reportes\REPMeseros.js" />
     <Content Include="Scripts\Reportes\REPProductos.js" />
@@ -435,6 +436,7 @@
     <Compile Include="Controllers\Pedidos\PEDPedidosController.cs" />
     <Compile Include="Controllers\Reportes\REPClientesController.cs" />
     <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
+    <Compile Include="Controllers\Reportes\REPGananciasController.cs" />
     <Compile Include="Controllers\Reportes\REPGastosController.cs" />
     <Compile Include="Controllers\Reportes\REPMeserosController.cs" />
     <Compile Include="Controllers\Reportes\REPProductosController.cs" />
@@ -634,6 +636,7 @@
     <Content Include="Views\REPGastos\Index.cshtml" />
     <Content Include="Views\REPProveedores\Index.cshtml" />
     <Content Include="Views\REPRepartidores\Index.cshtml" />
+    <Content Include="Views\REPGanancias\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,5 +1,4 @@
-﻿using Geminis.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,11 +6,9 @@ using System.Web.Mvc;
 
 namespace Geminis.Controllers.Reportes
 {
-    public class REPVentasController : Controller
+    public class REPGananciasController : Controller
     {
-        readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
-
-        // GET: REPVentas
+        // GET: REPGanancias
         public ActionResult Index()
         {
             return View();
@@ -21,13 +18,22 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
-                string query = @"SELECT Format(A.fecha_creacion, 'dd/MM/yyyy') FECHA,
-                                       A.id_tipo_pedido ID_TIPO_PEDIDO,
-                                       B.nombre TIPO_PEDIDO,
-                                       Sum(A.total) TOTAL
+                string query = @" SELECT Format(A.fecha_creacion, 'dd/MM/yyyy')       FECHA,
+                                       A.id_tipo_pedido                             ID_TIPO_PEDIDO,
+                                       B.nombre                                     TIPO_PEDIDO,
+                                       Sum(C.subtotal)                              TOTAL,
+                                       Sum(C.subtotal) - Sum(e.cantidad * f.precio) ganancias
                                 FROM   pedido A
                                        INNER JOIN tipo_pedido B
                                                ON A.id_tipo_pedido = B.id_tipo_pedido
+                                       INNER JOIN pedido_detalle C
+                                               ON C.id_pedido = A.id_pedido
+                                       INNER JOIN menu D
+                                               ON D.id_menu = C.id_menu
+                                       INNER JOIN menu_detalle e
+                                               ON e.id_menu = d.id_menu
+                                       INNER JOIN inventario_cocina f
+                                               ON f.id_inventario_cocina = e.id_inventario_cocina
                                 WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = 2022 * 100 + 5
                                 GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                           A.id_tipo_pedido,
@@ -43,10 +49,10 @@ namespace Geminis.Controllers.Reportes
 
         public class REPORTE
         {
+            public int? ID_EMPLEADO { set; get; }
+            public int? PEDIDOS { set; get; }
+            public string NOMBRE { set; get; }
             public string FECHA { set; get; }
-            public int? ID_TIPO_PEDIDO{ set; get; }
-            public string TIPO_PEDIDO{ set; get; }
-            public string TOTAL{ set; get; }
         }
 
     }
