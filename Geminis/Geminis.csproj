@@ -393,6 +393,13 @@
     <Content Include="Scripts\Layout.js" />
     <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\Pedidos\PEDPedidos.js" />
+    <Content Include="Scripts\Reportes\REPClientes.js" />
+    <Content Include="Scripts\Reportes\REPGastos.js" />
+    <Content Include="Scripts\Reportes\REPMeseros.js" />
+    <Content Include="Scripts\Reportes\REPProductos.js" />
+    <Content Include="Scripts\Reportes\REPProveedores.js" />
+    <Content Include="Scripts\Reportes\REPRepartidores.js" />
+    <Content Include="Scripts\Reportes\REPVentas.js" />
     <Content Include="Scripts\Reporte\Financieros\dx.all.js" />
     <Content Include="Scripts\Reporte\Financieros\jquery.rowspanizer.js" />
     <Content Include="Scripts\Reporte\Financieros\jspdf.plugin.autotable.min.js" />
@@ -426,7 +433,14 @@
     <Compile Include="Controllers\Pedidos\PEDCrearPedidoController.cs" />
     <Compile Include="Controllers\Pedidos\PEDDefaultController.cs" />
     <Compile Include="Controllers\Pedidos\PEDPedidosController.cs" />
+    <Compile Include="Controllers\Reportes\REPClientesController.cs" />
     <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
+    <Compile Include="Controllers\Reportes\REPGastosController.cs" />
+    <Compile Include="Controllers\Reportes\REPMeserosController.cs" />
+    <Compile Include="Controllers\Reportes\REPProductosController.cs" />
+    <Compile Include="Controllers\Reportes\REPProveedoresController.cs" />
+    <Compile Include="Controllers\Reportes\REPRepartidoresController.cs" />
+    <Compile Include="Controllers\Reportes\REPVentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -613,6 +627,13 @@
     <Content Include="Views\INVBodegaGeneral\Index.cshtml" />
     <Content Include="Views\INVDetalleMenu\Index.cshtml" />
     <Content Include="Views\PEDPedidos\Index.cshtml" />
+    <Content Include="Views\REPClientes\Index.cshtml" />
+    <Content Include="Views\REPMeseros\Index.cshtml" />
+    <Content Include="Views\REPVentas\Index.cshtml" />
+    <Content Include="Views\REPProductos\Index.cshtml" />
+    <Content Include="Views\REPGastos\Index.cshtml" />
+    <Content Include="Views\REPProveedores\Index.cshtml" />
+    <Content Include="Views\REPRepartidores\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -622,7 +643,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Reportes\" />
     <Folder Include="Views\ADMTipoProveedor\" />
   </ItemGroup>
   <ItemGroup>

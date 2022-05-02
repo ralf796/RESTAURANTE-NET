@@ -110,7 +110,8 @@
                 },
                 {
                     dataField: "CREADO_POR",
-                    caption: "CREADO POR"
+                    caption: "CREADO POR",
+                    visible: false
                 },
                 {
                     dataField: "ESTADO",
@@ -198,11 +199,7 @@
                             }
                         }
                     })
-            },
-            export: {
-                enabled: true,
-                fileName: 'lISTADO B'
-            },
+            }
         });
     }
     // --------------------funcion de llenado de reporte---------------------------

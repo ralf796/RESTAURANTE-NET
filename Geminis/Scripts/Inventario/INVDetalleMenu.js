@@ -174,11 +174,13 @@
                 },
                 {
                     dataField: "CREADO_POR",
-                    caption: "CREADO_POR"
+                    caption: "CREADO_POR",
+                    visible: false
                 },
                 {
                     dataField: "FECHA_CREACION",
                     caption: "FECHA_CREACION",
+                    visible: false
                 },
                 {
                     dataField: "ESTADO",
@@ -241,11 +243,7 @@
                             }
                         }
                     })
-            },
-            export: {
-                enabled: true,
-                fileName: 'lISTADO B'
-            },
+            }
         });
     }
 

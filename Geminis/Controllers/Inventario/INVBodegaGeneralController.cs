@@ -37,6 +37,7 @@ namespace Geminis.Controllers.Inventario
             }
         }
         //GUARDAR BODEGA GENERAL
+        [SessionExpireFilter]
         public JsonResult Guardar(string datos)
         {
             using (var transaccion = bd.Database.BeginTransaction())
@@ -47,7 +48,7 @@ namespace Geminis.Controllers.Inventario
                     obtenerDatos.ESTADO = "A";
                     obtenerDatos.FECHA_INGRESO = DateTime.Now;
                     obtenerDatos.SUBTOTAL = obtenerDatos.CANTIDAD * obtenerDatos.PRECIO;
-                    obtenerDatos.CREADO_POR = "EVASQUEZ";
+                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     bd.INVENTARIO_BODEGA_GENERAL.Add(obtenerDatos);
                     bd.SaveChanges();
                     transaccion.Commit();

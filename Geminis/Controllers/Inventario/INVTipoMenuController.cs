@@ -1,4 +1,5 @@
-﻿using Geminis.Models;
+﻿using Geminis.Clases;
+using Geminis.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Geminis.Controllers.Inventario
         {
             return View();
         }
-
+        [SessionExpireFilter]
         public JsonResult Guardar(string datos)
         {
             using (var transaccion = db.Database.BeginTransaction())
@@ -27,7 +28,7 @@ namespace Geminis.Controllers.Inventario
                     var obtenerDatos = JsonConvert.DeserializeObject<TIPO_MENU>(datos);
                     obtenerDatos.ESTADO = "A";
                     obtenerDatos.FECHA_CREACION = DateTime.Now;
-                    obtenerDatos.CREADO_POR = "LUISG";
+                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     db.TIPO_MENU.Add(obtenerDatos);
                     db.SaveChanges();
                     transaccion.Commit();

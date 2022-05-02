@@ -40,6 +40,7 @@ namespace Geminis.Controllers.Inventario
         /// </summary>
         /// <param name="datos"> DEVUELVE EL JSON DESDE EL JS</param>
         /// <returns></returns>
+         [SessionExpireFilter]
         public JsonResult Guardar(string datos)
         {
             using (var transaccion = db.Database.BeginTransaction())
@@ -49,7 +50,7 @@ namespace Geminis.Controllers.Inventario
                     var obtenerDatos = JsonConvert.DeserializeObject<MENU>(datos);
                     obtenerDatos.ESTADO = "A";
                     obtenerDatos.FECHA_CREACION = DateTime.Now;
-                    obtenerDatos.CREADO_POR = "LUIS G";
+                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     db.MENU.Add(obtenerDatos);
                     db.SaveChanges();
                     transaccion.Commit();

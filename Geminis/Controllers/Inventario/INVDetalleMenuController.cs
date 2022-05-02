@@ -48,6 +48,7 @@ namespace Geminis.Controllers.Inventario
             }
         }
         //FUNCION GUARDAR
+        [SessionExpireFilter]
         public JsonResult Guardar(string datos)
         {
             using (var transaccion = bd.Database.BeginTransaction())
@@ -56,7 +57,7 @@ namespace Geminis.Controllers.Inventario
                 {
                     var obtenerDatos = JsonConvert.DeserializeObject<MENU_DETALLE>(datos);
                     obtenerDatos.ESTADO = "A";
-                    obtenerDatos.CREADO_POR = "EVASQUEZ";
+                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     obtenerDatos.FECHA_CREACION = DateTime.Now;
                     bd.MENU_DETALLE.Add(obtenerDatos);
                     bd.SaveChanges();

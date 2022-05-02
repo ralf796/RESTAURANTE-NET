@@ -178,8 +178,7 @@
                     }
                 },
                 {
-                    type: "buttons",
-                    width: 100,
+                    type: "buttons",                    
                     alignment: "center",
                     buttons: [
                         {
@@ -236,11 +235,7 @@
                             }
                         }
                     })
-            },
-            export: {
-                enabled: true,
-                fileName: 'LISTADO DE PRODUCTOS'
-            },
+            }
         });
     }
 

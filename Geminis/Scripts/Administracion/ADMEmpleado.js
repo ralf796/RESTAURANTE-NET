@@ -83,7 +83,7 @@
         })
     }
 
-    function EMPLEADO(ID_EMPLEADO,ID_TIPO_EMPLEADO, NOMBRE, SALARIO, TELEFONO, CORREO_ELECTRONICO, DIRECCION) {
+    function EMPLEADO(ID_EMPLEADO, ID_TIPO_EMPLEADO, NOMBRE, SALARIO, TELEFONO, CORREO_ELECTRONICO, DIRECCION) {
         this.ID_EMPLEADO = ID_EMPLEADO;
         this.ID_TIPO_EMPLEADO = ID_TIPO_EMPLEADO;
         this.NOMBRE = NOMBRE;
@@ -219,11 +219,13 @@
                 },
                 {
                     dataField: "FECHA_CREACION",
-                    caption: "FECHA CREACION"
+                    caption: "FECHA CREACION",
+                    visible: false
                 },
                 {
                     dataField: "CREADO_POR",
-                    caption: "CREADO POR"
+                    caption: "CREADO POR",
+                    visible: false
                 },
                 {
                     dataField: "ESTADO",
@@ -293,11 +295,7 @@
                             }
                         }
                     })
-            },
-            export: {
-                enabled: true,
-                fileName: 'LISTADO DE EMPLEADOS'
-            },
+            }
         });
     }
 

@@ -193,11 +193,13 @@
                 },
                 {
                     dataField: "FECHA_CREACION",
-                    caption: "FECHA CREACION"
+                    caption: "FECHA CREACION",
+                    visible: false
                 },
                 {
                     dataField: "CREADO_POR",
-                    caption: "CREADO POR"
+                    caption: "CREADO POR",
+                    visible: false
                 },
                 {
                     dataField: "PRECIO",
@@ -268,11 +270,7 @@
                             }
                         }
                     })
-            },
-            export: {
-                enabled: true,
-                fileName: 'LISTADO DE MENUS'
-            },
+            }
         });
     }
 

@@ -152,12 +152,14 @@
 
                 {
                     dataField: "CREADO_POR",
-                    caption: "CREADO POR"
+                    caption: "CREADO POR",
+                    visible: false
                 },
 
                 {
                     dataField: "FECHA_CREACION",
-                    caption: "FECHA CREACION"
+                    caption: "FECHA CREACION",
+                    visible: false
                 },
                 {
                     dataField: "ESTADO",
@@ -221,11 +223,7 @@
                             }
                         }
                     })
-            },
-            export: {
-                enabled: true,
-                fileName: 'LISTADO DE TIPOS DE MENU'
-            },
+            }
         });
     }
 
