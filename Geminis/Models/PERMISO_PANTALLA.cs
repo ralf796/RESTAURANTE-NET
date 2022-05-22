@@ -20,6 +20,10 @@ namespace Geminis.Models
         public string USUARIO { get; set; }
     
         public virtual PANTALLA PANTALLA { get; set; }
+        public virtual PANTALLA PANTALLA1 { get; set; }
+        public virtual PANTALLA PANTALLA2 { get; set; }
         public virtual ROL ROL { get; set; }
+        public virtual ROL ROL1 { get; set; }
+        public virtual ROL ROL2 { get; set; }
     }
 }

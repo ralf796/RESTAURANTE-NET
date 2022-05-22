@@ -22,16 +22,37 @@ namespace Geminis.Controllers.Reportes
             try
             {
                 string query = @"SELECT Format(A.fecha_creacion, 'dd/MM/yyyy') FECHA,
-                                       A.id_tipo_pedido ID_TIPO_PEDIDO,
                                        B.nombre TIPO_PEDIDO,
                                        Sum(A.total) TOTAL
                                 FROM   pedido A
                                        INNER JOIN tipo_pedido B
                                                ON A.id_tipo_pedido = B.id_tipo_pedido
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = 2022 * 100 + 5
+                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + " * 100 + " + mes + @"
                                 GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                           A.id_tipo_pedido,
-                                          B.nombre  ";
+                                          B.nombre 
+                                ORDER BY 1";
+                var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
+                return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult GenerarGrafica(int anio, int mes)
+        {
+            try
+            {
+                string query = @"SELECT B.nombre                               TIPO_PEDIDO,
+                                       Sum(A.total)                           TOTAL
+                                FROM   pedido A
+                                       INNER JOIN tipo_pedido B
+                                               ON A.id_tipo_pedido = B.id_tipo_pedido
+                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = "+anio+" * 100 + "+mes+@"
+                                GROUP  BY A.id_tipo_pedido,
+                                          B.nombre
+                                ORDER  BY 1 ";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
                 return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
             }
@@ -44,9 +65,8 @@ namespace Geminis.Controllers.Reportes
         public class REPORTE
         {
             public string FECHA { set; get; }
-            public int? ID_TIPO_PEDIDO{ set; get; }
-            public string TIPO_PEDIDO{ set; get; }
-            public string TOTAL{ set; get; }
+            public string TIPO_PEDIDO { set; get; }
+            public decimal TOTAL { set; get; }
         }
 
     }

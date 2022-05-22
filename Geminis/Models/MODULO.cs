@@ -18,6 +18,8 @@ namespace Geminis.Models
         public MODULO()
         {
             this.PANTALLA = new HashSet<PANTALLA>();
+            this.PANTALLA1 = new HashSet<PANTALLA>();
+            this.PANTALLA2 = new HashSet<PANTALLA>();
         }
     
         public int ID_MODULO { get; set; }
@@ -29,5 +31,9 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PANTALLA> PANTALLA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PANTALLA> PANTALLA1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PANTALLA> PANTALLA2 { get; set; }
     }
 }

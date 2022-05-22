@@ -21,18 +21,37 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
-                string query = @" SELECT A.id_empleado ID_EMPLEADO,
-                                       Count(*)                               PEDIDOS,
-                                       B.nombre NOMBRE,
+                string query = @" SELECT Count(*)                               PEDIDOS,
+                                       B.nombre                               NOMBRE,
                                        Format(A.fecha_creacion, 'dd/MM/yyyy') AS FECHA
                                 FROM   pedido A
                                        INNER JOIN empleado B
-                                               ON A.REPARTIDOR = B.id_empleado
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = 2022 * 100 + 5
+                                               ON A.repartidor = B.id_empleado
+                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + " * 100 + " + mes + @"
                                 GROUP  BY A.id_empleado,
                                           B.nombre,
                                           Format(A.fecha_creacion, 'dd/MM/yyyy')
-                                ORDER  BY Format(A.fecha_creacion, 'dd/MM/yyyy') DESC  ";
+                                ORDER  BY Format(A.fecha_creacion, 'dd/MM/yyyy') ASC ";
+                var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
+                return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult GenerarGrafica(int anio, int mes)
+        {
+            try
+            {
+                string query = @"SELECT Count(*) PEDIDOS,
+                                       B.nombre NOMBRE
+                                FROM   pedido A
+                                       INNER JOIN empleado B
+                                               ON A.repartidor = B.id_empleado
+                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + " * 100 + " + mes + @"
+                                GROUP  BY B.nombre
+                                ORDER  BY b.nombre ASC ";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
                 return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
             }

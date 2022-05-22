@@ -18,6 +18,8 @@ namespace Geminis.Models
         public TIPO_MENU()
         {
             this.MENU = new HashSet<MENU>();
+            this.MENU1 = new HashSet<MENU>();
+            this.MENU2 = new HashSet<MENU>();
         }
     
         public int ID_TIPO_MENU { get; set; }
@@ -28,5 +30,9 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MENU> MENU { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MENU> MENU1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MENU> MENU2 { get; set; }
     }
 }

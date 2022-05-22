@@ -18,7 +18,11 @@ namespace Geminis.Models
         public INVENTARIO_BODEGA_GENERAL()
         {
             this.BITACORA_COCINA = new HashSet<BITACORA_COCINA>();
+            this.BITACORA_COCINA1 = new HashSet<BITACORA_COCINA>();
+            this.BITACORA_COCINA2 = new HashSet<BITACORA_COCINA>();
             this.INVENTARIO_COCINA = new HashSet<INVENTARIO_COCINA>();
+            this.INVENTARIO_COCINA1 = new HashSet<INVENTARIO_COCINA>();
+            this.INVENTARIO_COCINA2 = new HashSet<INVENTARIO_COCINA>();
         }
     
         public int ID_BODEGA_GENERAL { get; set; }
@@ -35,7 +39,17 @@ namespace Geminis.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BITACORA_COCINA> BITACORA_COCINA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BITACORA_COCINA> BITACORA_COCINA1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BITACORA_COCINA> BITACORA_COCINA2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INVENTARIO_COCINA> INVENTARIO_COCINA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INVENTARIO_COCINA> INVENTARIO_COCINA1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INVENTARIO_COCINA> INVENTARIO_COCINA2 { get; set; }
         public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA1 { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA2 { get; set; }
     }
 }

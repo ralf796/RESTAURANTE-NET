@@ -23,6 +23,10 @@ namespace Geminis.Models
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
     
         public virtual INVENTARIO_COCINA INVENTARIO_COCINA { get; set; }
+        public virtual INVENTARIO_COCINA INVENTARIO_COCINA1 { get; set; }
+        public virtual INVENTARIO_COCINA INVENTARIO_COCINA2 { get; set; }
         public virtual MENU MENU { get; set; }
+        public virtual MENU MENU1 { get; set; }
+        public virtual MENU MENU2 { get; set; }
     }
 }

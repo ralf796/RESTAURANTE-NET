@@ -27,5 +27,7 @@ namespace Geminis.Models
         public int ID_FACTURA_DETALLE { get; set; }
     
         public virtual FACTURA_ENCABEZADO FACTURA_ENCABEZADO { get; set; }
+        public virtual FACTURA_ENCABEZADO FACTURA_ENCABEZADO1 { get; set; }
+        public virtual FACTURA_ENCABEZADO FACTURA_ENCABEZADO2 { get; set; }
     }
 }

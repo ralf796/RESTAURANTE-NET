@@ -18,6 +18,8 @@ namespace Geminis.Models
         public CORTE()
         {
             this.COBRO = new HashSet<COBRO>();
+            this.COBRO1 = new HashSet<COBRO>();
+            this.COBRO2 = new HashSet<COBRO>();
         }
     
         public int ID_CORTE { get; set; }
@@ -27,5 +29,9 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COBRO> COBRO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO> COBRO1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO> COBRO2 { get; set; }
     }
 }

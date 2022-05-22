@@ -5,78 +5,132 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="62b99fdfb6c3455db5f2a50bdcf99232" Name="Diagram1">
-        <EntityTypeShape EntityType="Restaurante_BDModel.BANCO" Width="1.5" PointX="0.75" PointY="5.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.BITACORA_COCINA" Width="1.5" PointX="11.25" PointY="28.875" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.CAJA" Width="1.5" PointX="2.75" PointY="5.75" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.CLIENTE" Width="1.5" PointX="0.75" PointY="10.875" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.CLIENTE_DATOS_ADICIONALES" Width="1.5" PointX="3" PointY="20.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.COBRO" Width="1.5" PointX="8.25" PointY="11.125" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.COBRO_DETALLE" Width="1.5" PointX="10.5" PointY="11.25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.CORTE" Width="1.5" PointX="6" PointY="6.5" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.EMPLEADO" Width="1.5" PointX="3.75" PointY="24.25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.ESTADO_PEDIDO" Width="1.5" PointX="3.75" PointY="28.75" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.FACTURA_DETALLE" Width="1.5" PointX="5.25" PointY="9.5" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.FACTURA_ENCABEZADO" Width="1.5" PointX="3" PointY="9" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Width="1.5" PointX="9" PointY="28.25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.INVENTARIO_COCINA" Width="1.5" PointX="11.25" PointY="24.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.MENU" Width="1.5" PointX="9" PointY="1.875" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.MENU_DETALLE" Width="1.5" PointX="13.5" PointY="13.5" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.MESA" Width="1.5" PointX="3.75" PointY="17.125" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.MODULO" Width="1.5" PointX="11.75" PointY="1.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PAGO_MESA" Width="1.5" PointX="8.25" PointY="19.375" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PAGO_PROVEEDOR" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PANTALLA" Width="1.5" PointX="14" PointY="1" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO" Width="1.5" PointX="6" PointY="13.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO_DETALLE" Width="1.5" PointX="11.25" PointY="14.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Width="1.5" PointX="8.25" PointY="7.5" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Width="1.5" PointX="8.25" PointY="15.25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PERMISO_PANTALLA" Width="1.5" PointX="16.25" PointY="1.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PRODUCTO" Width="1.5" PointX="9" PointY="23.875" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="1.25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.ROL" Width="1.5" PointX="14" PointY="5.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_EMPLEADO" Width="1.5" PointX="1.5" PointY="25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_MENU" Width="1.5" PointX="6.75" PointY="2.375" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_PEDIDO" Width="1.5" PointX="3.75" PointY="14.625" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_PRODUCTO" Width="1.5" PointX="6.75" PointY="25.875" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.UNIDAD_MEDIDA" Width="1.5" PointX="6.75" PointY="22.75" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.USUARIO" Width="1.5" PointX="6" PointY="29.25" />
-        <EntityTypeShape EntityType="Restaurante_BDModel.VALES" Width="1.5" PointX="6" PointY="32.5" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__6E01572D" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__BITACORA___ID_BO__619B8048" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.BANCO" Width="1.5" PointX="13.75" PointY="32.875" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.BITACORA_COCINA" Width="1.5" PointX="11.25" PointY="21.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.CAJA" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.CLIENTE" Width="1.5" PointX="3.75" PointY="20.25" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.CLIENTE_DATOS_ADICIONALES" Width="1.5" PointX="6" PointY="33.25" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.COBRO" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.COBRO_DETALLE" Width="1.5" PointX="13.5" PointY="10.5" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.CORTE" Width="1.5" PointX="6" PointY="16.875" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.EMPLEADO" Width="1.5" PointX="3.75" PointY="14.625" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.ESTADO_PEDIDO" Width="1.5" PointX="3.75" PointY="24.375" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.FACTURA_DETALLE" Width="1.5" PointX="8.25" PointY="36.375" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.FACTURA_ENCABEZADO" Width="1.5" PointX="6" PointY="36" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Width="1.5" PointX="9" PointY="15.5" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.INVENTARIO_COCINA" Width="1.5" PointX="11.25" PointY="16.25" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.MENU" Width="1.5" PointX="9" PointY="28.625" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.MENU_DETALLE" Width="1.5" PointX="13.5" PointY="22.875" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.MESA" Width="1.5" PointX="0.75" PointY="10.625" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.MODULO" Width="1.5" PointX="10.75" PointY="3.875" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PAGO_MESA" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PAGO_PROVEEDOR" Width="1.5" PointX="16" PointY="15.125" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PANTALLA" Width="1.5" PointX="13" PointY="3.125" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO" Width="1.5" PointX="6" PointY="8.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO_DETALLE" Width="1.5" PointX="11.25" PointY="9.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Width="1.5" PointX="6" PointY="4.625" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Width="1.5" PointX="8.25" PointY="5.375" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PERMISO_PANTALLA" Width="1.5" PointX="15.25" PointY="3.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PRODUCTO" Width="1.5" PointX="9" PointY="21.375" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.PROVEEDOR" Width="1.5" PointX="13.75" PointY="15.625" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.ROL" Width="1.5" PointX="13" PointY="28" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_EMPLEADO" Width="1.5" PointX="1.5" PointY="15.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_MENU" Width="1.5" PointX="6.75" PointY="29.5" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_PEDIDO" Width="1.5" PointX="3.75" PointY="5.125" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.TIPO_PRODUCTO" Width="1.5" PointX="6.75" PointY="24.375" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.UNIDAD_MEDIDA" Width="1.5" PointX="6.75" PointY="20.125" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.USUARIO" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="Restaurante_BDModel.VALES" Width="1.5" PointX="6" PointY="41.5" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__3A4CA8FD" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__778AC167" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__7D0E9093" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__BITACORA___ID_BO__2CF2ADDF" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__BITACORA___ID_BO__6754599E" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__BITACORA___ID_BO__6FB49575" />
         <AssociationConnector Association="Restaurante_BDModel.FK__CLIENTE_D__ID_CL__628FA481" />
         <AssociationConnector Association="Restaurante_BDModel.FK__FACTURA_E__ID_CL__656C112C" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6383C8BA" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__2DE6D218" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__693CA210" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__70A8B9AE" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__2EDAF651" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__6A30C649" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__719CDDE7" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__2FCF1A8A" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__6B24EA82" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__72910220" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__30C33EC3" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__6C190EBB" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__73852659" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__31B762FC" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6D0D32F4" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__74794A92" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__7E37BEF6" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__7F2BE32F" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__078C1F06" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__07C12930" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__44CA3770" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__0880433F" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__08B54D69" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__45BE5BA9" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO__ID_ESTAD__02FC7413" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6477ECF3" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__6754599E" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__66603565" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__68487DD7" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__6A30C649" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__693CA210" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__6B24EA82" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__75A278F5" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__6C190EBB" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__32AB8735" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6E01572D" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__756D6ECB" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__3493CFA7" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__70DDC3D8" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__7755B73D" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__339FAB6E" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__6FE99F9F" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__76619304" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__3587F3E0" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__71D1E811" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__7849DB76" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__37703C52" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__73BA3083" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__7A3223E8" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__367C1819" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__72C60C4A" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__793DFFAF" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__3864608B" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__74AE54BC" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__7B264821" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__3D2915A8" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7F2BE32F" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7FEAFD3E" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__395884C4" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__75A278F5" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__7C1A6C5A" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__6FE99F9F" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__3C34F16F" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__797309D9" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__7EF6D905" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_MESA__ID_PE__52593CB8" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__6EF57B66" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__7A672E12" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__3B40CD36" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__787EE5A0" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__7E02B4CC" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03BB8E22" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03F0984C" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__40F9A68C" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO__ID_TIPO___160F4887" />
         <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PE__59FA5E80" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__787EE5A0" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__778AC167" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__797309D9" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__7B5B524B" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__7C4F7684" />
-        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__7D439ABD" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__01D345B0" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02084FDA" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__3F115E1A" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__00DF2177" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__01142BA1" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__3E1D39E1" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02C769E9" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02FC7413" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__40058253" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04AFB25B" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04E4BC85" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__41EDCAC5" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05A3D694" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05D8E0BE" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__42E1EEFE" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__0697FACD" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__06CD04F7" />
+        <AssociationConnector Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__43D61337" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,8 @@ namespace Geminis.Models
         public PRODUCTO()
         {
             this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
+            this.PEDIDO_DETALLE1 = new HashSet<PEDIDO_DETALLE>();
+            this.PEDIDO_DETALLE2 = new HashSet<PEDIDO_DETALLE>();
         }
     
         public int ID_PRODUCTO { get; set; }
@@ -31,7 +33,15 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE2 { get; set; }
         public virtual TIPO_PRODUCTO TIPO_PRODUCTO { get; set; }
+        public virtual TIPO_PRODUCTO TIPO_PRODUCTO1 { get; set; }
+        public virtual TIPO_PRODUCTO TIPO_PRODUCTO2 { get; set; }
         public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA1 { get; set; }
+        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA2 { get; set; }
     }
 }

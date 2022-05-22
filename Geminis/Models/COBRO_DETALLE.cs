@@ -21,6 +21,10 @@ namespace Geminis.Models
         public string DOCUMENTO { get; set; }
     
         public virtual COBRO COBRO { get; set; }
+        public virtual COBRO COBRO1 { get; set; }
+        public virtual COBRO COBRO2 { get; set; }
         public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO { get; set; }
+        public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO1 { get; set; }
+        public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO2 { get; set; }
     }
 }

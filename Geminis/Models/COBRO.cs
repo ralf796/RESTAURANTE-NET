@@ -18,6 +18,8 @@ namespace Geminis.Models
         public COBRO()
         {
             this.COBRO_DETALLE = new HashSet<COBRO_DETALLE>();
+            this.COBRO_DETALLE1 = new HashSet<COBRO_DETALLE>();
+            this.COBRO_DETALLE2 = new HashSet<COBRO_DETALLE>();
         }
     
         public int ID_COBRO { get; set; }
@@ -28,8 +30,16 @@ namespace Geminis.Models
         public Nullable<int> ID_CORTE { get; set; }
     
         public virtual CORTE CORTE { get; set; }
+        public virtual CORTE CORTE1 { get; set; }
+        public virtual CORTE CORTE2 { get; set; }
         public virtual PEDIDO PEDIDO { get; set; }
+        public virtual PEDIDO PEDIDO1 { get; set; }
+        public virtual PEDIDO PEDIDO2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE2 { get; set; }
     }
 }

@@ -55,7 +55,7 @@ namespace Geminis.Controllers.Caja
             {
                 try
                 {
-                    int idCorte = db.Database.SqlQuery<int>("SELECT ISNULL(MAX(ID_CORTE),1) FROM CORTE").FirstOrDefault();
+                    int idCorte = db.Database.SqlQuery<int>("SELECT ISNULL(MAX(ID_CORTE),1)+1 FROM CORTE").FirstOrDefault();
                     decimal totalCorte = db.Database.SqlQuery<decimal>("SELECT isnull(sum(TOTAL),0) FROM PEDIDO where ID_ESTADO_PEDIDO=4").FirstOrDefault();
                     var entidad = new CORTE
                     {

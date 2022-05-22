@@ -26,6 +26,10 @@ namespace Geminis.Models
         public string CREADO_POR { get; set; }
     
         public virtual BANCO BANCO { get; set; }
+        public virtual BANCO BANCO1 { get; set; }
+        public virtual BANCO BANCO2 { get; set; }
         public virtual PROVEEDOR PROVEEDOR { get; set; }
+        public virtual PROVEEDOR PROVEEDOR1 { get; set; }
+        public virtual PROVEEDOR PROVEEDOR2 { get; set; }
     }
 }

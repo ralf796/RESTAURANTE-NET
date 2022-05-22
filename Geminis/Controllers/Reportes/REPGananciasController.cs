@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Geminis.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace Geminis.Controllers.Reportes
 {
     public class REPGananciasController : Controller
     {
+        readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
+
         // GET: REPGanancias
         public ActionResult Index()
         {

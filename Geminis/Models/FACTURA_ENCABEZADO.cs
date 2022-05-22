@@ -18,6 +18,8 @@ namespace Geminis.Models
         public FACTURA_ENCABEZADO()
         {
             this.FACTURA_DETALLE = new HashSet<FACTURA_DETALLE>();
+            this.FACTURA_DETALLE1 = new HashSet<FACTURA_DETALLE>();
+            this.FACTURA_DETALLE2 = new HashSet<FACTURA_DETALLE>();
         }
     
         public int ID_FACTURA_ENCABEZADO { get; set; }
@@ -39,5 +41,9 @@ namespace Geminis.Models
         public virtual CLIENTE CLIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FACTURA_DETALLE> FACTURA_DETALLE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FACTURA_DETALLE> FACTURA_DETALLE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FACTURA_DETALLE> FACTURA_DETALLE2 { get; set; }
     }
 }

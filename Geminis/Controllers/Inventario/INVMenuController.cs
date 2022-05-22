@@ -1,4 +1,5 @@
-﻿using Geminis.Models;
+﻿using Geminis.Clases;
+using Geminis.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

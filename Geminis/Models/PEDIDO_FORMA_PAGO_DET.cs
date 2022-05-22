@@ -22,6 +22,10 @@ namespace Geminis.Models
         public string AUTORIZACION { get; set; }
     
         public virtual PEDIDO PEDIDO { get; set; }
+        public virtual PEDIDO PEDIDO1 { get; set; }
+        public virtual PEDIDO PEDIDO2 { get; set; }
         public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO { get; set; }
+        public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO1 { get; set; }
+        public virtual PEDIDO_FORMA_PAGO PEDIDO_FORMA_PAGO2 { get; set; }
     }
 }

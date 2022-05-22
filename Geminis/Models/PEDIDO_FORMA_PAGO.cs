@@ -18,7 +18,11 @@ namespace Geminis.Models
         public PEDIDO_FORMA_PAGO()
         {
             this.COBRO_DETALLE = new HashSet<COBRO_DETALLE>();
+            this.COBRO_DETALLE1 = new HashSet<COBRO_DETALLE>();
+            this.COBRO_DETALLE2 = new HashSet<COBRO_DETALLE>();
             this.PEDIDO_FORMA_PAGO_DET = new HashSet<PEDIDO_FORMA_PAGO_DET>();
+            this.PEDIDO_FORMA_PAGO_DET1 = new HashSet<PEDIDO_FORMA_PAGO_DET>();
+            this.PEDIDO_FORMA_PAGO_DET2 = new HashSet<PEDIDO_FORMA_PAGO_DET>();
         }
     
         public int ID_PEDIDO_FORMA_PAGO { get; set; }
@@ -28,6 +32,14 @@ namespace Geminis.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COBRO_DETALLE> COBRO_DETALLE2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET2 { get; set; }
     }
 }
