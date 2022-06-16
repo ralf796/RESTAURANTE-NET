@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -375,6 +378,8 @@
     </Content>
     <Content Include="Scripts\Administracion\ADMCliente.js" />
     <Content Include="Scripts\Administracion\ADMEmpleado.js" />
+    <Content Include="Scripts\Administracion\ADMMovimiento.js" />
+    <Content Include="Scripts\Administracion\ADMProveedor.js" />
     <Content Include="Scripts\Administracion\ADMTipoEmpleado.js" />
     <Content Include="Scripts\Administracion\ADMUsuario.js" />
     <Content Include="Scripts\Caja\CAJCobro.js" />
@@ -392,6 +397,7 @@
     <Content Include="Scripts\Inventario\INVTipoMenu.js" />
     <Content Include="Scripts\Layout.js" />
     <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\Pedidos\PEDCliente.js" />
     <Content Include="Scripts\Pedidos\PEDPedidos.js" />
     <Content Include="Scripts\Reportes\REPClientes.js" />
     <Content Include="Scripts\Reportes\REPGanancias.js" />
@@ -418,6 +424,8 @@
     <Compile Include="Clases\Utils.cs" />
     <Compile Include="Controllers\Administracion\ADMClienteController.cs" />
     <Compile Include="Controllers\Administracion\ADMDefaultController.cs" />
+    <Compile Include="Controllers\Administracion\ADMMovimientoController.cs" />
+    <Compile Include="Controllers\Administracion\ADMProveedorController.cs" />
     <Compile Include="Controllers\Administracion\ADMTipoEmpleadoController.cs" />
     <Compile Include="Controllers\Administracion\ADMUsuarioController.cs" />
     <Compile Include="Controllers\Caja\CAJCobroController.cs" />
@@ -431,6 +439,7 @@
     <Compile Include="Controllers\Inventario\INVDetalleMenuController.cs" />
     <Compile Include="Controllers\Inventario\INVMenuController.cs" />
     <Compile Include="Controllers\Inventario\INVTipoMenuController.cs" />
+    <Compile Include="Controllers\Pedidos\PEDClienteController.cs" />
     <Compile Include="Controllers\Pedidos\PEDCrearPedidoController.cs" />
     <Compile Include="Controllers\Pedidos\PEDDefaultController.cs" />
     <Compile Include="Controllers\Pedidos\PEDPedidosController.cs" />
@@ -637,6 +646,9 @@
     <Content Include="Views\REPProveedores\Index.cshtml" />
     <Content Include="Views\REPRepartidores\Index.cshtml" />
     <Content Include="Views\REPGanancias\Index.cshtml" />
+    <Content Include="Views\PEDCliente\Index.cshtml" />
+    <Content Include="Views\ADMProveedor\Index.cshtml" />
+    <Content Include="Views\ADMMovimiento\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -650,6 +662,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

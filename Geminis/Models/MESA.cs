@@ -18,8 +18,6 @@ namespace Geminis.Models
         public MESA()
         {
             this.PAGO_MESA = new HashSet<PAGO_MESA>();
-            this.PAGO_MESA1 = new HashSet<PAGO_MESA>();
-            this.PAGO_MESA2 = new HashSet<PAGO_MESA>();
             this.PEDIDO = new HashSet<PEDIDO>();
         }
     
@@ -31,10 +29,6 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PAGO_MESA> PAGO_MESA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PAGO_MESA> PAGO_MESA1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PAGO_MESA> PAGO_MESA2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
     }

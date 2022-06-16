@@ -17,7 +17,7 @@ namespace Geminis.Controllers.Reportes
             return View();
         }
 
-        public JsonResult GenerarReporte(int anio, int mes)
+        public JsonResult GenerarReporte(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN tipo_pedido B
                                                ON A.id_tipo_pedido = B.id_tipo_pedido
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + " * 100 + " + mes + @"
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
                                 GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                           A.id_tipo_pedido,
                                           B.nombre 
@@ -40,7 +40,7 @@ namespace Geminis.Controllers.Reportes
                 return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
-        public JsonResult GenerarGrafica(int anio, int mes)
+        public JsonResult GenerarGrafica(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN tipo_pedido B
                                                ON A.id_tipo_pedido = B.id_tipo_pedido
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = "+anio+" * 100 + "+mes+@"
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
                                 GROUP  BY A.id_tipo_pedido,
                                           B.nombre
                                 ORDER  BY 1 ";

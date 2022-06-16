@@ -20,8 +20,6 @@ namespace Geminis.Models
         public int ID_PEDIDO { get; set; }
     
         public virtual MESA MESA { get; set; }
-        public virtual MESA MESA1 { get; set; }
-        public virtual MESA MESA2 { get; set; }
         public virtual PEDIDO PEDIDO { get; set; }
     }
 }

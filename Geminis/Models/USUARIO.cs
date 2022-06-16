@@ -23,7 +23,5 @@ namespace Geminis.Models
         public Nullable<int> ID_MODULO { get; set; }
     
         public virtual EMPLEADO EMPLEADO { get; set; }
-        public virtual EMPLEADO EMPLEADO1 { get; set; }
-        public virtual EMPLEADO EMPLEADO2 { get; set; }
     }
 }

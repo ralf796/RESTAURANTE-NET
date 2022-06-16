@@ -18,11 +18,7 @@ namespace Geminis.Models
         public MENU()
         {
             this.MENU_DETALLE = new HashSet<MENU_DETALLE>();
-            this.MENU_DETALLE1 = new HashSet<MENU_DETALLE>();
-            this.MENU_DETALLE2 = new HashSet<MENU_DETALLE>();
             this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
-            this.PEDIDO_DETALLE1 = new HashSet<PEDIDO_DETALLE>();
-            this.PEDIDO_DETALLE2 = new HashSet<PEDIDO_DETALLE>();
         }
     
         public int ID_MENU { get; set; }
@@ -35,19 +31,9 @@ namespace Geminis.Models
         public Nullable<decimal> PRECIO_COSTO { get; set; }
     
         public virtual TIPO_MENU TIPO_MENU { get; set; }
-        public virtual TIPO_MENU TIPO_MENU1 { get; set; }
-        public virtual TIPO_MENU TIPO_MENU2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MENU_DETALLE> MENU_DETALLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU_DETALLE> MENU_DETALLE1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU_DETALLE> MENU_DETALLE2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE2 { get; set; }
     }
 }

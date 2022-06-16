@@ -16,7 +16,7 @@ namespace Geminis.Controllers.Reportes
             return View();
         }
 
-        public JsonResult GenerarReporte(int anio, int mes)
+        public JsonResult GenerarReporte(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN empleado B
                                                ON A.id_empleado = B.id_empleado
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + " * 100 + " + mes + @"
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
                                 GROUP BY A.id_empleado,
                                           B.nombre,
                                           Format(A.fecha_creacion, 'dd/MM/yyyy')
@@ -42,7 +42,7 @@ namespace Geminis.Controllers.Reportes
         }
 
 
-        public JsonResult GenerarGrafica(int anio, int mes)
+        public JsonResult GenerarGrafica(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN empleado B
                                                ON A.id_empleado = B.id_empleado
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + " * 100 + " + mes + @"
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
                                 GROUP  BY B.nombre
                                 ORDER  BY b.nombre DESC  ";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();

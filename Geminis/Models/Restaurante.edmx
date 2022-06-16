@@ -433,31 +433,7 @@
           <Property Name="ESTADO" Type="char" MaxLength="1" />
           <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
         </EntityType>
-        <Association Name="FK__BITACORA___ID_BO__2CF2ADDF">
-          <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Role="BITACORA_COCINA" Type="Self.BITACORA_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="BITACORA_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BITACORA___ID_BO__6754599E">
-          <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Role="BITACORA_COCINA" Type="Self.BITACORA_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="BITACORA_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BITACORA___ID_BO__6FB49575">
+        <Association Name="FK__BITACORA___ID_BO__619B8048">
           <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
           <End Role="BITACORA_COCINA" Type="Self.BITACORA_COCINA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -481,7 +457,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO__ID_CORTE__2DE6D218">
+        <Association Name="FK__COBRO__ID_CORTE__1CBC4616">
           <End Role="CORTE" Type="Self.CORTE" Multiplicity="0..1" />
           <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -493,31 +469,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO__ID_CORTE__693CA210">
-          <End Role="CORTE" Type="Self.CORTE" Multiplicity="0..1" />
-          <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CORTE">
-              <PropertyRef Name="ID_CORTE" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_CORTE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO__ID_CORTE__70A8B9AE">
-          <End Role="CORTE" Type="Self.CORTE" Multiplicity="0..1" />
-          <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CORTE">
-              <PropertyRef Name="ID_CORTE" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_CORTE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO__ID_PEDIDO__2EDAF651">
+        <Association Name="FK__COBRO__ID_PEDIDO__123EB7A3">
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
           <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -529,31 +481,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO__ID_PEDIDO__6A30C649">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
-          <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO__ID_PEDIDO__719CDDE7">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
-          <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_CO__2FCF1A8A">
+        <Association Name="FK__COBRO_DET__ID_CO__17F790F9">
           <End Role="COBRO" Type="Self.COBRO" Multiplicity="0..1" />
           <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -565,31 +493,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO_DET__ID_CO__6B24EA82">
-          <End Role="COBRO" Type="Self.COBRO" Multiplicity="0..1" />
-          <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COBRO">
-              <PropertyRef Name="ID_COBRO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_COBRO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_CO__72910220">
-          <End Role="COBRO" Type="Self.COBRO" Multiplicity="0..1" />
-          <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COBRO">
-              <PropertyRef Name="ID_COBRO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_COBRO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_PE__30C33EC3">
+        <Association Name="FK__COBRO_DET__ID_PE__18EBB532">
           <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
           <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -601,31 +505,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO_DET__ID_PE__6C190EBB">
-          <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_PE__73852659">
-          <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EMPLEADO__ID_TIP__31B762FC">
+        <Association Name="FK__EMPLEADO__ID_TIP__6383C8BA">
           <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
           <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -637,55 +517,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__EMPLEADO__ID_TIP__6D0D32F4">
-          <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Principal>
-            <Dependent Role="EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EMPLEADO__ID_TIP__74794A92">
-          <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Principal>
-            <Dependent Role="EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FACTURA_D__ID_FA__32AB8735">
-          <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="1" />
-          <End Role="FACTURA_DETALLE" Type="Self.FACTURA_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FACTURA_ENCABEZADO">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Principal>
-            <Dependent Role="FACTURA_DETALLE">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FACTURA_D__ID_FA__6E01572D">
-          <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="1" />
-          <End Role="FACTURA_DETALLE" Type="Self.FACTURA_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FACTURA_ENCABEZADO">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Principal>
-            <Dependent Role="FACTURA_DETALLE">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FACTURA_D__ID_FA__756D6ECB">
+        <Association Name="FK__FACTURA_D__ID_FA__6477ECF3">
           <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="1" />
           <End Role="FACTURA_DETALLE" Type="Self.FACTURA_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -709,7 +541,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_BO__3493CFA7">
+        <Association Name="FK__INVENTARI__ID_BO__6754599E">
           <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
           <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -721,31 +553,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_BO__70DDC3D8">
-          <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_BO__7755B73D">
-          <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__339FAB6E">
+        <Association Name="FK__INVENTARI__ID_UN__66603565">
           <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
           <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -757,7 +565,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_UN__3587F3E0">
+        <Association Name="FK__INVENTARI__ID_UN__68487DD7">
           <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
           <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -769,55 +577,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_UN__6FE99F9F">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__71D1E811">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__76619304">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__7849DB76">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU__ID_TIPO_ME__367C1819">
+        <Association Name="FK__MENU__ID_TIPO_ME__693CA210">
           <End Role="TIPO_MENU" Type="Self.TIPO_MENU" Multiplicity="1" />
           <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -829,31 +589,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU__ID_TIPO_ME__72C60C4A">
-          <End Role="TIPO_MENU" Type="Self.TIPO_MENU" Multiplicity="1" />
-          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Principal>
-            <Dependent Role="MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU__ID_TIPO_ME__793DFFAF">
-          <End Role="TIPO_MENU" Type="Self.TIPO_MENU" Multiplicity="1" />
-          <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Principal>
-            <Dependent Role="MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_IN__37703C52">
+        <Association Name="FK__MENU_DETA__ID_IN__6A30C649">
           <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="0..1" />
           <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -865,31 +601,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU_DETA__ID_IN__73BA3083">
-          <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="0..1" />
-          <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_IN__7A3223E8">
-          <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="0..1" />
-          <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_ME__3864608B">
+        <Association Name="FK__MENU_DETA__ID_ME__6B24EA82">
           <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
           <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -901,55 +613,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU_DETA__ID_ME__74AE54BC">
-          <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
-          <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_ME__7B264821">
-          <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
-          <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_MESA__ID_ME__395884C4">
-          <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
-          <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Principal>
-            <Dependent Role="PAGO_MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_MESA__ID_ME__75A278F5">
-          <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
-          <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Principal>
-            <Dependent Role="PAGO_MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_MESA__ID_ME__7C1A6C5A">
+        <Association Name="FK__PAGO_MESA__ID_ME__6C190EBB">
           <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
           <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -973,7 +637,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PAGO_PROV__ID_BA__3A4CA8FD">
+        <Association Name="FK__PAGO_PROV__ID_BA__6E01572D">
           <End Role="BANCO" Type="Self.BANCO" Multiplicity="1" />
           <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -985,31 +649,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PAGO_PROV__ID_BA__778AC167">
-          <End Role="BANCO" Type="Self.BANCO" Multiplicity="1" />
-          <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANCO">
-              <PropertyRef Name="ID_BANCO" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_BANCO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_PROV__ID_BA__7D0E9093">
-          <End Role="BANCO" Type="Self.BANCO" Multiplicity="1" />
-          <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANCO">
-              <PropertyRef Name="ID_BANCO" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_BANCO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_PROV__ID_PR__3B40CD36">
+        <Association Name="FK__PAGO_PROV__ID_PR__6EF57B66">
           <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
           <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1021,55 +661,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PAGO_PROV__ID_PR__787EE5A0">
-          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
-          <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_PROV__ID_PR__7E02B4CC">
-          <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
-          <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PANTALLA__ID_MOD__3C34F16F">
-          <End Role="MODULO" Type="Self.MODULO" Multiplicity="1" />
-          <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MODULO">
-              <PropertyRef Name="ID_MODULO" />
-            </Principal>
-            <Dependent Role="PANTALLA">
-              <PropertyRef Name="ID_MODULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PANTALLA__ID_MOD__797309D9">
-          <End Role="MODULO" Type="Self.MODULO" Multiplicity="1" />
-          <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MODULO">
-              <PropertyRef Name="ID_MODULO" />
-            </Principal>
-            <Dependent Role="PANTALLA">
-              <PropertyRef Name="ID_MODULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PANTALLA__ID_MOD__7EF6D905">
+        <Association Name="FK__PANTALLA__ID_MOD__6FE99F9F">
           <End Role="MODULO" Type="Self.MODULO" Multiplicity="1" />
           <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1141,31 +733,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_DE__ID_ME__3D2915A8">
-          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_ME__7F2BE32F">
-          <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_ME__7FEAFD3E">
+        <Association Name="FK__PEDIDO_DE__ID_ME__75A278F5">
           <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
           <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1189,7 +757,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_DE__ID_PR__00DF2177">
+        <Association Name="FK__PEDIDO_DE__ID_PR__778AC167">
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
           <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1201,31 +769,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_DE__ID_PR__01142BA1">
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_PR__3E1D39E1">
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
-          <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__01D345B0">
+        <Association Name="FK__PEDIDO_FO__ID_PE__787EE5A0">
           <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
           <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1237,19 +781,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__02084FDA">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
-          <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__02C769E9">
+        <Association Name="FK__PEDIDO_FO__ID_PE__797309D9">
           <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
           <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1261,43 +793,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__02FC7413">
-          <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__3F115E1A">
-          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
-          <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__40058253">
-          <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_PA__03BB8E22">
+        <Association Name="FK__PERMISO_P__ID_PA__7A672E12">
           <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="0..1" />
           <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1309,31 +805,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PERMISO_P__ID_PA__03F0984C">
-          <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="0..1" />
-          <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_PA__40F9A68C">
-          <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="0..1" />
-          <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_RO__04AFB25B">
+        <Association Name="FK__PERMISO_P__ID_RO__7B5B524B">
           <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
           <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1345,31 +817,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PERMISO_P__ID_RO__04E4BC85">
-          <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
-          <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ROL">
-              <PropertyRef Name="ID_ROL" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_ROL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_RO__41EDCAC5">
-          <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
-          <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ROL">
-              <PropertyRef Name="ID_ROL" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_ROL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_TIP__05A3D694">
+        <Association Name="FK__PRODUCTO__ID_TIP__7C4F7684">
           <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1381,31 +829,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__ID_TIP__05D8E0BE">
-          <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_TIP__42E1EEFE">
-          <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_UNI__0697FACD">
+        <Association Name="FK__PRODUCTO__ID_UNI__7D439ABD">
           <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1417,31 +841,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__ID_UNI__06CD04F7">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_UNI__43D61337">
-          <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
-          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USUARIO__ID_EMPL__078C1F06">
+        <Association Name="FK__USUARIO__ID_EMPL__7E37BEF6">
           <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
           <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1453,55 +853,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIO__ID_EMPL__07C12930">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USUARIO__ID_EMPL__44CA3770">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VALES__ID_EMPLEA__0880433F">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="VALES" Type="Self.VALES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="VALES">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VALES__ID_EMPLEA__08B54D69">
-          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
-          <End Role="VALES" Type="Self.VALES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="VALES">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VALES__ID_EMPLEA__45BE5BA9">
+        <Association Name="FK__VALES__ID_EMPLEA__7F2BE32F">
           <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
           <End Role="VALES" Type="Self.VALES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1550,15 +902,7 @@
           <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VALES" EntityType="Self.VALES" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BITACORA___ID_BO__2CF2ADDF" Association="Self.FK__BITACORA___ID_BO__2CF2ADDF">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BITACORA___ID_BO__6754599E" Association="Self.FK__BITACORA___ID_BO__6754599E">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BITACORA___ID_BO__6FB49575" Association="Self.FK__BITACORA___ID_BO__6FB49575">
+          <AssociationSet Name="FK__BITACORA___ID_BO__619B8048" Association="Self.FK__BITACORA___ID_BO__619B8048">
             <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
             <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
           </AssociationSet>
@@ -1566,75 +910,27 @@
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="CLIENTE_DATOS_ADICIONALES" EntitySet="CLIENTE_DATOS_ADICIONALES" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_CORTE__2DE6D218" Association="Self.FK__COBRO__ID_CORTE__2DE6D218">
+          <AssociationSet Name="FK__COBRO__ID_CORTE__1CBC4616" Association="Self.FK__COBRO__ID_CORTE__1CBC4616">
             <End Role="CORTE" EntitySet="CORTE" />
             <End Role="COBRO" EntitySet="COBRO" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_CORTE__693CA210" Association="Self.FK__COBRO__ID_CORTE__693CA210">
-            <End Role="CORTE" EntitySet="CORTE" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_CORTE__70A8B9AE" Association="Self.FK__COBRO__ID_CORTE__70A8B9AE">
-            <End Role="CORTE" EntitySet="CORTE" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_PEDIDO__2EDAF651" Association="Self.FK__COBRO__ID_PEDIDO__2EDAF651">
+          <AssociationSet Name="FK__COBRO__ID_PEDIDO__123EB7A3" Association="Self.FK__COBRO__ID_PEDIDO__123EB7A3">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="COBRO" EntitySet="COBRO" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_PEDIDO__6A30C649" Association="Self.FK__COBRO__ID_PEDIDO__6A30C649">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_PEDIDO__719CDDE7" Association="Self.FK__COBRO__ID_PEDIDO__719CDDE7">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_CO__2FCF1A8A" Association="Self.FK__COBRO_DET__ID_CO__2FCF1A8A">
+          <AssociationSet Name="FK__COBRO_DET__ID_CO__17F790F9" Association="Self.FK__COBRO_DET__ID_CO__17F790F9">
             <End Role="COBRO" EntitySet="COBRO" />
             <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_CO__6B24EA82" Association="Self.FK__COBRO_DET__ID_CO__6B24EA82">
-            <End Role="COBRO" EntitySet="COBRO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_CO__72910220" Association="Self.FK__COBRO_DET__ID_CO__72910220">
-            <End Role="COBRO" EntitySet="COBRO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_PE__30C33EC3" Association="Self.FK__COBRO_DET__ID_PE__30C33EC3">
+          <AssociationSet Name="FK__COBRO_DET__ID_PE__18EBB532" Association="Self.FK__COBRO_DET__ID_PE__18EBB532">
             <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
             <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_PE__6C190EBB" Association="Self.FK__COBRO_DET__ID_PE__6C190EBB">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_PE__73852659" Association="Self.FK__COBRO_DET__ID_PE__73852659">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__31B762FC" Association="Self.FK__EMPLEADO__ID_TIP__31B762FC">
+          <AssociationSet Name="FK__EMPLEADO__ID_TIP__6383C8BA" Association="Self.FK__EMPLEADO__ID_TIP__6383C8BA">
             <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
           </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__6D0D32F4" Association="Self.FK__EMPLEADO__ID_TIP__6D0D32F4">
-            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__74794A92" Association="Self.FK__EMPLEADO__ID_TIP__74794A92">
-            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__32AB8735" Association="Self.FK__FACTURA_D__ID_FA__32AB8735">
-            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
-            <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__6E01572D" Association="Self.FK__FACTURA_D__ID_FA__6E01572D">
-            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
-            <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__756D6ECB" Association="Self.FK__FACTURA_D__ID_FA__756D6ECB">
+          <AssociationSet Name="FK__FACTURA_D__ID_FA__6477ECF3" Association="Self.FK__FACTURA_D__ID_FA__6477ECF3">
             <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
             <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
           </AssociationSet>
@@ -1642,87 +938,31 @@
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_BO__3493CFA7" Association="Self.FK__INVENTARI__ID_BO__3493CFA7">
+          <AssociationSet Name="FK__INVENTARI__ID_BO__6754599E" Association="Self.FK__INVENTARI__ID_BO__6754599E">
             <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
             <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_BO__70DDC3D8" Association="Self.FK__INVENTARI__ID_BO__70DDC3D8">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_BO__7755B73D" Association="Self.FK__INVENTARI__ID_BO__7755B73D">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__339FAB6E" Association="Self.FK__INVENTARI__ID_UN__339FAB6E">
+          <AssociationSet Name="FK__INVENTARI__ID_UN__66603565" Association="Self.FK__INVENTARI__ID_UN__66603565">
             <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
             <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__3587F3E0" Association="Self.FK__INVENTARI__ID_UN__3587F3E0">
+          <AssociationSet Name="FK__INVENTARI__ID_UN__68487DD7" Association="Self.FK__INVENTARI__ID_UN__68487DD7">
             <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
             <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__6FE99F9F" Association="Self.FK__INVENTARI__ID_UN__6FE99F9F">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__71D1E811" Association="Self.FK__INVENTARI__ID_UN__71D1E811">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__76619304" Association="Self.FK__INVENTARI__ID_UN__76619304">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__7849DB76" Association="Self.FK__INVENTARI__ID_UN__7849DB76">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__367C1819" Association="Self.FK__MENU__ID_TIPO_ME__367C1819">
+          <AssociationSet Name="FK__MENU__ID_TIPO_ME__693CA210" Association="Self.FK__MENU__ID_TIPO_ME__693CA210">
             <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
             <End Role="MENU" EntitySet="MENU" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__72C60C4A" Association="Self.FK__MENU__ID_TIPO_ME__72C60C4A">
-            <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
-            <End Role="MENU" EntitySet="MENU" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__793DFFAF" Association="Self.FK__MENU__ID_TIPO_ME__793DFFAF">
-            <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
-            <End Role="MENU" EntitySet="MENU" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_IN__37703C52" Association="Self.FK__MENU_DETA__ID_IN__37703C52">
+          <AssociationSet Name="FK__MENU_DETA__ID_IN__6A30C649" Association="Self.FK__MENU_DETA__ID_IN__6A30C649">
             <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
             <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_IN__73BA3083" Association="Self.FK__MENU_DETA__ID_IN__73BA3083">
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_IN__7A3223E8" Association="Self.FK__MENU_DETA__ID_IN__7A3223E8">
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__3864608B" Association="Self.FK__MENU_DETA__ID_ME__3864608B">
+          <AssociationSet Name="FK__MENU_DETA__ID_ME__6B24EA82" Association="Self.FK__MENU_DETA__ID_ME__6B24EA82">
             <End Role="MENU" EntitySet="MENU" />
             <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__74AE54BC" Association="Self.FK__MENU_DETA__ID_ME__74AE54BC">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__7B264821" Association="Self.FK__MENU_DETA__ID_ME__7B264821">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__395884C4" Association="Self.FK__PAGO_MESA__ID_ME__395884C4">
-            <End Role="MESA" EntitySet="MESA" />
-            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__75A278F5" Association="Self.FK__PAGO_MESA__ID_ME__75A278F5">
-            <End Role="MESA" EntitySet="MESA" />
-            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__7C1A6C5A" Association="Self.FK__PAGO_MESA__ID_ME__7C1A6C5A">
+          <AssociationSet Name="FK__PAGO_MESA__ID_ME__6C190EBB" Association="Self.FK__PAGO_MESA__ID_ME__6C190EBB">
             <End Role="MESA" EntitySet="MESA" />
             <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
           </AssociationSet>
@@ -1730,39 +970,15 @@
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__3A4CA8FD" Association="Self.FK__PAGO_PROV__ID_BA__3A4CA8FD">
+          <AssociationSet Name="FK__PAGO_PROV__ID_BA__6E01572D" Association="Self.FK__PAGO_PROV__ID_BA__6E01572D">
             <End Role="BANCO" EntitySet="BANCO" />
             <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__778AC167" Association="Self.FK__PAGO_PROV__ID_BA__778AC167">
-            <End Role="BANCO" EntitySet="BANCO" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__7D0E9093" Association="Self.FK__PAGO_PROV__ID_BA__7D0E9093">
-            <End Role="BANCO" EntitySet="BANCO" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__3B40CD36" Association="Self.FK__PAGO_PROV__ID_PR__3B40CD36">
+          <AssociationSet Name="FK__PAGO_PROV__ID_PR__6EF57B66" Association="Self.FK__PAGO_PROV__ID_PR__6EF57B66">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__787EE5A0" Association="Self.FK__PAGO_PROV__ID_PR__787EE5A0">
-            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__7E02B4CC" Association="Self.FK__PAGO_PROV__ID_PR__7E02B4CC">
-            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PANTALLA__ID_MOD__3C34F16F" Association="Self.FK__PANTALLA__ID_MOD__3C34F16F">
-            <End Role="MODULO" EntitySet="MODULO" />
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PANTALLA__ID_MOD__797309D9" Association="Self.FK__PANTALLA__ID_MOD__797309D9">
-            <End Role="MODULO" EntitySet="MODULO" />
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PANTALLA__ID_MOD__7EF6D905" Association="Self.FK__PANTALLA__ID_MOD__7EF6D905">
+          <AssociationSet Name="FK__PANTALLA__ID_MOD__6FE99F9F" Association="Self.FK__PANTALLA__ID_MOD__6FE99F9F">
             <End Role="MODULO" EntitySet="MODULO" />
             <End Role="PANTALLA" EntitySet="PANTALLA" />
           </AssociationSet>
@@ -1786,15 +1002,7 @@
             <End Role="TIPO_PEDIDO" EntitySet="TIPO_PEDIDO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__3D2915A8" Association="Self.FK__PEDIDO_DE__ID_ME__3D2915A8">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__7F2BE32F" Association="Self.FK__PEDIDO_DE__ID_ME__7F2BE32F">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__7FEAFD3E" Association="Self.FK__PEDIDO_DE__ID_ME__7FEAFD3E">
+          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__75A278F5" Association="Self.FK__PEDIDO_DE__ID_ME__75A278F5">
             <End Role="MENU" EntitySet="MENU" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
@@ -1802,111 +1010,39 @@
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__00DF2177" Association="Self.FK__PEDIDO_DE__ID_PR__00DF2177">
+          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__778AC167" Association="Self.FK__PEDIDO_DE__ID_PR__778AC167">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__01142BA1" Association="Self.FK__PEDIDO_DE__ID_PR__01142BA1">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__3E1D39E1" Association="Self.FK__PEDIDO_DE__ID_PR__3E1D39E1">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__01D345B0" Association="Self.FK__PEDIDO_FO__ID_PE__01D345B0">
+          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__787EE5A0" Association="Self.FK__PEDIDO_FO__ID_PE__787EE5A0">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02084FDA" Association="Self.FK__PEDIDO_FO__ID_PE__02084FDA">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02C769E9" Association="Self.FK__PEDIDO_FO__ID_PE__02C769E9">
+          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__797309D9" Association="Self.FK__PEDIDO_FO__ID_PE__797309D9">
             <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
             <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02FC7413" Association="Self.FK__PEDIDO_FO__ID_PE__02FC7413">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__3F115E1A" Association="Self.FK__PEDIDO_FO__ID_PE__3F115E1A">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__40058253" Association="Self.FK__PEDIDO_FO__ID_PE__40058253">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_PA__03BB8E22" Association="Self.FK__PERMISO_P__ID_PA__03BB8E22">
+          <AssociationSet Name="FK__PERMISO_P__ID_PA__7A672E12" Association="Self.FK__PERMISO_P__ID_PA__7A672E12">
             <End Role="PANTALLA" EntitySet="PANTALLA" />
             <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_PA__03F0984C" Association="Self.FK__PERMISO_P__ID_PA__03F0984C">
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_PA__40F9A68C" Association="Self.FK__PERMISO_P__ID_PA__40F9A68C">
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_RO__04AFB25B" Association="Self.FK__PERMISO_P__ID_RO__04AFB25B">
+          <AssociationSet Name="FK__PERMISO_P__ID_RO__7B5B524B" Association="Self.FK__PERMISO_P__ID_RO__7B5B524B">
             <End Role="ROL" EntitySet="ROL" />
             <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_RO__04E4BC85" Association="Self.FK__PERMISO_P__ID_RO__04E4BC85">
-            <End Role="ROL" EntitySet="ROL" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_RO__41EDCAC5" Association="Self.FK__PERMISO_P__ID_RO__41EDCAC5">
-            <End Role="ROL" EntitySet="ROL" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__05A3D694" Association="Self.FK__PRODUCTO__ID_TIP__05A3D694">
+          <AssociationSet Name="FK__PRODUCTO__ID_TIP__7C4F7684" Association="Self.FK__PRODUCTO__ID_TIP__7C4F7684">
             <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__05D8E0BE" Association="Self.FK__PRODUCTO__ID_TIP__05D8E0BE">
-            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__42E1EEFE" Association="Self.FK__PRODUCTO__ID_TIP__42E1EEFE">
-            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__0697FACD" Association="Self.FK__PRODUCTO__ID_UNI__0697FACD">
+          <AssociationSet Name="FK__PRODUCTO__ID_UNI__7D439ABD" Association="Self.FK__PRODUCTO__ID_UNI__7D439ABD">
             <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__06CD04F7" Association="Self.FK__PRODUCTO__ID_UNI__06CD04F7">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__43D61337" Association="Self.FK__PRODUCTO__ID_UNI__43D61337">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__078C1F06" Association="Self.FK__USUARIO__ID_EMPL__078C1F06">
+          <AssociationSet Name="FK__USUARIO__ID_EMPL__7E37BEF6" Association="Self.FK__USUARIO__ID_EMPL__7E37BEF6">
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__07C12930" Association="Self.FK__USUARIO__ID_EMPL__07C12930">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__44CA3770" Association="Self.FK__USUARIO__ID_EMPL__44CA3770">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__0880433F" Association="Self.FK__VALES__ID_EMPLEA__0880433F">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="VALES" EntitySet="VALES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__08B54D69" Association="Self.FK__VALES__ID_EMPLEA__08B54D69">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="VALES" EntitySet="VALES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__45BE5BA9" Association="Self.FK__VALES__ID_EMPLEA__45BE5BA9">
+          <AssociationSet Name="FK__VALES__ID_EMPLEA__7F2BE32F" Association="Self.FK__VALES__ID_EMPLEA__7F2BE32F">
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
             <End Role="VALES" EntitySet="VALES" />
           </AssociationSet>
@@ -1952,27 +1088,11 @@
           <EntitySet Name="UNIDAD_MEDIDA" EntityType="Restaurante_BDModel.UNIDAD_MEDIDA" />
           <EntitySet Name="USUARIO" EntityType="Restaurante_BDModel.USUARIO" />
           <EntitySet Name="VALES" EntityType="Restaurante_BDModel.VALES" />
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__3A4CA8FD" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__3A4CA8FD">
+          <AssociationSet Name="FK__PAGO_PROV__ID_BA__6E01572D" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__6E01572D">
             <End Role="BANCO" EntitySet="BANCO" />
             <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__778AC167" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__778AC167">
-            <End Role="BANCO" EntitySet="BANCO" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_BA__7D0E9093" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__7D0E9093">
-            <End Role="BANCO" EntitySet="BANCO" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BITACORA___ID_BO__2CF2ADDF" Association="Restaurante_BDModel.FK__BITACORA___ID_BO__2CF2ADDF">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BITACORA___ID_BO__6754599E" Association="Restaurante_BDModel.FK__BITACORA___ID_BO__6754599E">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BITACORA___ID_BO__6FB49575" Association="Restaurante_BDModel.FK__BITACORA___ID_BO__6FB49575">
+          <AssociationSet Name="FK__BITACORA___ID_BO__619B8048" Association="Restaurante_BDModel.FK__BITACORA___ID_BO__619B8048">
             <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
             <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
           </AssociationSet>
@@ -1988,63 +1108,23 @@
             <End Role="CLIENTE" EntitySet="CLIENTE" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_CORTE__2DE6D218" Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__2DE6D218">
+          <AssociationSet Name="FK__COBRO__ID_CORTE__1CBC4616" Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616">
             <End Role="CORTE" EntitySet="CORTE" />
             <End Role="COBRO" EntitySet="COBRO" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_CORTE__693CA210" Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__693CA210">
-            <End Role="CORTE" EntitySet="CORTE" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_CORTE__70A8B9AE" Association="Restaurante_BDModel.FK__COBRO__ID_CORTE__70A8B9AE">
-            <End Role="CORTE" EntitySet="CORTE" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_PEDIDO__2EDAF651" Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__2EDAF651">
+          <AssociationSet Name="FK__COBRO__ID_PEDIDO__123EB7A3" Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="COBRO" EntitySet="COBRO" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_PEDIDO__6A30C649" Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__6A30C649">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO__ID_PEDIDO__719CDDE7" Association="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__719CDDE7">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="COBRO" EntitySet="COBRO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_CO__2FCF1A8A" Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__2FCF1A8A">
+          <AssociationSet Name="FK__COBRO_DET__ID_CO__17F790F9" Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9">
             <End Role="COBRO" EntitySet="COBRO" />
             <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_CO__6B24EA82" Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__6B24EA82">
-            <End Role="COBRO" EntitySet="COBRO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_CO__72910220" Association="Restaurante_BDModel.FK__COBRO_DET__ID_CO__72910220">
-            <End Role="COBRO" EntitySet="COBRO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_PE__30C33EC3" Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__30C33EC3">
+          <AssociationSet Name="FK__COBRO_DET__ID_PE__18EBB532" Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532">
             <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
             <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_PE__6C190EBB" Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__6C190EBB">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COBRO_DET__ID_PE__73852659" Association="Restaurante_BDModel.FK__COBRO_DET__ID_PE__73852659">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__31B762FC" Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__31B762FC">
-            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__6D0D32F4" Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6D0D32F4">
-            <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__EMPLEADO__ID_TIP__74794A92" Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__74794A92">
+          <AssociationSet Name="FK__EMPLEADO__ID_TIP__6383C8BA" Association="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6383C8BA">
             <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
           </AssociationSet>
@@ -2052,27 +1132,11 @@
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__078C1F06" Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__078C1F06">
+          <AssociationSet Name="FK__USUARIO__ID_EMPL__7E37BEF6" Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__7E37BEF6">
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__07C12930" Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__07C12930">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USUARIO__ID_EMPL__44CA3770" Association="Restaurante_BDModel.FK__USUARIO__ID_EMPL__44CA3770">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="USUARIO" EntitySet="USUARIO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__0880433F" Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__0880433F">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="VALES" EntitySet="VALES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__08B54D69" Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__08B54D69">
-            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
-            <End Role="VALES" EntitySet="VALES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VALES__ID_EMPLEA__45BE5BA9" Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__45BE5BA9">
+          <AssociationSet Name="FK__VALES__ID_EMPLEA__7F2BE32F" Association="Restaurante_BDModel.FK__VALES__ID_EMPLEA__7F2BE32F">
             <End Role="EMPLEADO" EntitySet="EMPLEADO" />
             <End Role="VALES" EntitySet="VALES" />
           </AssociationSet>
@@ -2080,111 +1144,39 @@
             <End Role="ESTADO_PEDIDO" EntitySet="ESTADO_PEDIDO" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__32AB8735" Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__32AB8735">
+          <AssociationSet Name="FK__FACTURA_D__ID_FA__6477ECF3" Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6477ECF3">
             <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
             <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__6E01572D" Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6E01572D">
-            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
-            <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FACTURA_D__ID_FA__756D6ECB" Association="Restaurante_BDModel.FK__FACTURA_D__ID_FA__756D6ECB">
-            <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
-            <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_BO__3493CFA7" Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__3493CFA7">
+          <AssociationSet Name="FK__INVENTARI__ID_BO__6754599E" Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__6754599E">
             <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
             <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_BO__70DDC3D8" Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__70DDC3D8">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_BO__7755B73D" Association="Restaurante_BDModel.FK__INVENTARI__ID_BO__7755B73D">
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__339FAB6E" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__339FAB6E">
+          <AssociationSet Name="FK__INVENTARI__ID_UN__66603565" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__66603565">
             <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
             <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__6FE99F9F" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__6FE99F9F">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__76619304" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__76619304">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__3587F3E0" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__3587F3E0">
+          <AssociationSet Name="FK__INVENTARI__ID_UN__68487DD7" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__68487DD7">
             <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
             <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__71D1E811" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__71D1E811">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__INVENTARI__ID_UN__7849DB76" Association="Restaurante_BDModel.FK__INVENTARI__ID_UN__7849DB76">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_IN__37703C52" Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__37703C52">
+          <AssociationSet Name="FK__MENU_DETA__ID_IN__6A30C649" Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__6A30C649">
             <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
             <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_IN__73BA3083" Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__73BA3083">
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_IN__7A3223E8" Association="Restaurante_BDModel.FK__MENU_DETA__ID_IN__7A3223E8">
-            <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__367C1819" Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__367C1819">
+          <AssociationSet Name="FK__MENU__ID_TIPO_ME__693CA210" Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__693CA210">
             <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
             <End Role="MENU" EntitySet="MENU" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__72C60C4A" Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__72C60C4A">
-            <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
-            <End Role="MENU" EntitySet="MENU" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU__ID_TIPO_ME__793DFFAF" Association="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__793DFFAF">
-            <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
-            <End Role="MENU" EntitySet="MENU" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__3864608B" Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__3864608B">
+          <AssociationSet Name="FK__MENU_DETA__ID_ME__6B24EA82" Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__6B24EA82">
             <End Role="MENU" EntitySet="MENU" />
             <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__74AE54BC" Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__74AE54BC">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MENU_DETA__ID_ME__7B264821" Association="Restaurante_BDModel.FK__MENU_DETA__ID_ME__7B264821">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__3D2915A8" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__3D2915A8">
+          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__75A278F5" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__75A278F5">
             <End Role="MENU" EntitySet="MENU" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__7F2BE32F" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7F2BE32F">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_ME__7FEAFD3E" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7FEAFD3E">
-            <End Role="MENU" EntitySet="MENU" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__395884C4" Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__395884C4">
-            <End Role="MESA" EntitySet="MESA" />
-            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__75A278F5" Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__75A278F5">
-            <End Role="MESA" EntitySet="MESA" />
-            <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_MESA__ID_ME__7C1A6C5A" Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__7C1A6C5A">
+          <AssociationSet Name="FK__PAGO_MESA__ID_ME__6C190EBB" Association="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__6C190EBB">
             <End Role="MESA" EntitySet="MESA" />
             <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
           </AssociationSet>
@@ -2192,15 +1184,7 @@
             <End Role="MESA" EntitySet="MESA" />
             <End Role="PEDIDO" EntitySet="PEDIDO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PANTALLA__ID_MOD__3C34F16F" Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__3C34F16F">
-            <End Role="MODULO" EntitySet="MODULO" />
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PANTALLA__ID_MOD__797309D9" Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__797309D9">
-            <End Role="MODULO" EntitySet="MODULO" />
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PANTALLA__ID_MOD__7EF6D905" Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__7EF6D905">
+          <AssociationSet Name="FK__PANTALLA__ID_MOD__6FE99F9F" Association="Restaurante_BDModel.FK__PANTALLA__ID_MOD__6FE99F9F">
             <End Role="MODULO" EntitySet="MODULO" />
             <End Role="PANTALLA" EntitySet="PANTALLA" />
           </AssociationSet>
@@ -2208,27 +1192,11 @@
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__3B40CD36" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__3B40CD36">
+          <AssociationSet Name="FK__PAGO_PROV__ID_PR__6EF57B66" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__6EF57B66">
             <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
             <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__787EE5A0" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__787EE5A0">
-            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAGO_PROV__ID_PR__7E02B4CC" Association="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__7E02B4CC">
-            <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
-            <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_PA__03BB8E22" Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03BB8E22">
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_PA__03F0984C" Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03F0984C">
-            <End Role="PANTALLA" EntitySet="PANTALLA" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_PA__40F9A68C" Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__40F9A68C">
+          <AssociationSet Name="FK__PERMISO_P__ID_PA__7A672E12" Association="Restaurante_BDModel.FK__PERMISO_P__ID_PA__7A672E12">
             <End Role="PANTALLA" EntitySet="PANTALLA" />
             <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
           </AssociationSet>
@@ -2240,75 +1208,27 @@
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__01D345B0" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__01D345B0">
+          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__787EE5A0" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__787EE5A0">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02084FDA" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02084FDA">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__3F115E1A" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__3F115E1A">
-            <End Role="PEDIDO" EntitySet="PEDIDO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__00DF2177" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__00DF2177">
+          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__778AC167" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__778AC167">
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__01142BA1" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__01142BA1">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_DE__ID_PR__3E1D39E1" Association="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__3E1D39E1">
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-            <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02C769E9" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02C769E9">
+          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__797309D9" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__797309D9">
             <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
             <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
           </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02FC7413" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02FC7413">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PEDIDO_FO__ID_PE__40058253" Association="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__40058253">
-            <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
-            <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_RO__04AFB25B" Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04AFB25B">
+          <AssociationSet Name="FK__PERMISO_P__ID_RO__7B5B524B" Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__7B5B524B">
             <End Role="ROL" EntitySet="ROL" />
             <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
           </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_RO__04E4BC85" Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04E4BC85">
-            <End Role="ROL" EntitySet="ROL" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PERMISO_P__ID_RO__41EDCAC5" Association="Restaurante_BDModel.FK__PERMISO_P__ID_RO__41EDCAC5">
-            <End Role="ROL" EntitySet="ROL" />
-            <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__05A3D694" Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05A3D694">
+          <AssociationSet Name="FK__PRODUCTO__ID_TIP__7C4F7684" Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__7C4F7684">
             <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__05D8E0BE" Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05D8E0BE">
-            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_TIP__42E1EEFE" Association="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__42E1EEFE">
-            <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__0697FACD" Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__0697FACD">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__06CD04F7" Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__06CD04F7">
-            <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
-            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PRODUCTO__ID_UNI__43D61337" Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__43D61337">
+          <AssociationSet Name="FK__PRODUCTO__ID_UNI__7D439ABD" Association="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__7D439ABD">
             <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
@@ -2322,9 +1242,7 @@
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__3A4CA8FD" FromRole="BANCO" ToRole="PAGO_PROVEEDOR" />
-          <NavigationProperty Name="PAGO_PROVEEDOR1" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__778AC167" FromRole="BANCO" ToRole="PAGO_PROVEEDOR" />
-          <NavigationProperty Name="PAGO_PROVEEDOR2" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__7D0E9093" FromRole="BANCO" ToRole="PAGO_PROVEEDOR" />
+          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__6E01572D" FromRole="BANCO" ToRole="PAGO_PROVEEDOR" />
         </EntityType>
         <EntityType Name="BITACORA_COCINA">
           <Key>
@@ -2335,9 +1253,7 @@
           <Property Name="FECHA_SALIDA" Type="DateTime" Precision="0" />
           <Property Name="USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ID_BODEGA_GENERAL" Type="Int32" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__2CF2ADDF" FromRole="BITACORA_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL1" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__6754599E" FromRole="BITACORA_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL2" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__6FB49575" FromRole="BITACORA_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
+          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__619B8048" FromRole="BITACORA_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
         </EntityType>
         <EntityType Name="CAJA">
           <Key>
@@ -2385,15 +1301,9 @@
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="3" />
           <Property Name="CREADO_POR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ID_CORTE" Type="Int32" />
-          <NavigationProperty Name="CORTE" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__2DE6D218" FromRole="COBRO" ToRole="CORTE" />
-          <NavigationProperty Name="CORTE1" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__693CA210" FromRole="COBRO" ToRole="CORTE" />
-          <NavigationProperty Name="CORTE2" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__70A8B9AE" FromRole="COBRO" ToRole="CORTE" />
-          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__2EDAF651" FromRole="COBRO" ToRole="PEDIDO" />
-          <NavigationProperty Name="PEDIDO1" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__6A30C649" FromRole="COBRO" ToRole="PEDIDO" />
-          <NavigationProperty Name="PEDIDO2" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__719CDDE7" FromRole="COBRO" ToRole="PEDIDO" />
-          <NavigationProperty Name="COBRO_DETALLE" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__2FCF1A8A" FromRole="COBRO" ToRole="COBRO_DETALLE" />
-          <NavigationProperty Name="COBRO_DETALLE1" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__6B24EA82" FromRole="COBRO" ToRole="COBRO_DETALLE" />
-          <NavigationProperty Name="COBRO_DETALLE2" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__72910220" FromRole="COBRO" ToRole="COBRO_DETALLE" />
+          <NavigationProperty Name="CORTE" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616" FromRole="COBRO" ToRole="CORTE" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3" FromRole="COBRO" ToRole="PEDIDO" />
+          <NavigationProperty Name="COBRO_DETALLE" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9" FromRole="COBRO" ToRole="COBRO_DETALLE" />
         </EntityType>
         <EntityType Name="COBRO_DETALLE">
           <Key>
@@ -2404,12 +1314,8 @@
           <Property Name="ID_PEDIDO_FORMA_PAGO" Type="Int32" />
           <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="DOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__2FCF1A8A" FromRole="COBRO_DETALLE" ToRole="COBRO" />
-          <NavigationProperty Name="COBRO1" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__6B24EA82" FromRole="COBRO_DETALLE" ToRole="COBRO" />
-          <NavigationProperty Name="COBRO2" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__72910220" FromRole="COBRO_DETALLE" ToRole="COBRO" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__30C33EC3" FromRole="COBRO_DETALLE" ToRole="PEDIDO_FORMA_PAGO" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO1" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__6C190EBB" FromRole="COBRO_DETALLE" ToRole="PEDIDO_FORMA_PAGO" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO2" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__73852659" FromRole="COBRO_DETALLE" ToRole="PEDIDO_FORMA_PAGO" />
+          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_CO__17F790F9" FromRole="COBRO_DETALLE" ToRole="COBRO" />
+          <NavigationProperty Name="PEDIDO_FORMA_PAGO" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532" FromRole="COBRO_DETALLE" ToRole="PEDIDO_FORMA_PAGO" />
         </EntityType>
         <EntityType Name="CORTE">
           <Key>
@@ -2419,9 +1325,7 @@
           <Property Name="TOTAL" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="3" />
           <Property Name="CREADO_POR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__2DE6D218" FromRole="CORTE" ToRole="COBRO" />
-          <NavigationProperty Name="COBRO1" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__693CA210" FromRole="CORTE" ToRole="COBRO" />
-          <NavigationProperty Name="COBRO2" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__70A8B9AE" FromRole="CORTE" ToRole="COBRO" />
+          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO__ID_CORTE__1CBC4616" FromRole="CORTE" ToRole="COBRO" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
@@ -2437,16 +1341,10 @@
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="TIPO_EMPLEADO" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__31B762FC" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
-          <NavigationProperty Name="TIPO_EMPLEADO1" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6D0D32F4" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
-          <NavigationProperty Name="TIPO_EMPLEADO2" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__74794A92" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
+          <NavigationProperty Name="TIPO_EMPLEADO" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6383C8BA" FromRole="EMPLEADO" ToRole="TIPO_EMPLEADO" />
           <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="EMPLEADO" ToRole="PEDIDO" />
-          <NavigationProperty Name="USUARIO" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__078C1F06" FromRole="EMPLEADO" ToRole="USUARIO" />
-          <NavigationProperty Name="USUARIO1" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__07C12930" FromRole="EMPLEADO" ToRole="USUARIO" />
-          <NavigationProperty Name="USUARIO2" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__44CA3770" FromRole="EMPLEADO" ToRole="USUARIO" />
-          <NavigationProperty Name="VALES" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__0880433F" FromRole="EMPLEADO" ToRole="VALES" />
-          <NavigationProperty Name="VALES1" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__08B54D69" FromRole="EMPLEADO" ToRole="VALES" />
-          <NavigationProperty Name="VALES2" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__45BE5BA9" FromRole="EMPLEADO" ToRole="VALES" />
+          <NavigationProperty Name="USUARIO" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__7E37BEF6" FromRole="EMPLEADO" ToRole="USUARIO" />
+          <NavigationProperty Name="VALES" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__7F2BE32F" FromRole="EMPLEADO" ToRole="VALES" />
         </EntityType>
         <EntityType Name="ESTADO_PEDIDO">
           <Key>
@@ -2471,9 +1369,7 @@
           <Property Name="SUBTOTAL_DETALLE" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CONCEPTO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ID_FACTURA_DETALLE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FACTURA_ENCABEZADO" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__32AB8735" FromRole="FACTURA_DETALLE" ToRole="FACTURA_ENCABEZADO" />
-          <NavigationProperty Name="FACTURA_ENCABEZADO1" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6E01572D" FromRole="FACTURA_DETALLE" ToRole="FACTURA_ENCABEZADO" />
-          <NavigationProperty Name="FACTURA_ENCABEZADO2" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__756D6ECB" FromRole="FACTURA_DETALLE" ToRole="FACTURA_ENCABEZADO" />
+          <NavigationProperty Name="FACTURA_ENCABEZADO" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6477ECF3" FromRole="FACTURA_DETALLE" ToRole="FACTURA_ENCABEZADO" />
         </EntityType>
         <EntityType Name="FACTURA_ENCABEZADO">
           <Key>
@@ -2495,9 +1391,7 @@
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CLIENTE" Relationship="Restaurante_BDModel.FK__FACTURA_E__ID_CL__656C112C" FromRole="FACTURA_ENCABEZADO" ToRole="CLIENTE" />
-          <NavigationProperty Name="FACTURA_DETALLE" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__32AB8735" FromRole="FACTURA_ENCABEZADO" ToRole="FACTURA_DETALLE" />
-          <NavigationProperty Name="FACTURA_DETALLE1" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6E01572D" FromRole="FACTURA_ENCABEZADO" ToRole="FACTURA_DETALLE" />
-          <NavigationProperty Name="FACTURA_DETALLE2" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__756D6ECB" FromRole="FACTURA_ENCABEZADO" ToRole="FACTURA_DETALLE" />
+          <NavigationProperty Name="FACTURA_DETALLE" Relationship="Restaurante_BDModel.FK__FACTURA_D__ID_FA__6477ECF3" FromRole="FACTURA_ENCABEZADO" ToRole="FACTURA_DETALLE" />
         </EntityType>
         <EntityType Name="INVENTARIO_BODEGA_GENERAL">
           <Key>
@@ -2513,15 +1407,9 @@
           <Property Name="SUBTOTAL" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="CREADO_POR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="BITACORA_COCINA" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__2CF2ADDF" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="BITACORA_COCINA" />
-          <NavigationProperty Name="BITACORA_COCINA1" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__6754599E" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="BITACORA_COCINA" />
-          <NavigationProperty Name="BITACORA_COCINA2" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__6FB49575" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="BITACORA_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__3493CFA7" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA1" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__70DDC3D8" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA2" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__7755B73D" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__339FAB6E" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA1" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__6FE99F9F" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA2" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__76619304" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="UNIDAD_MEDIDA" />
+          <NavigationProperty Name="BITACORA_COCINA" Relationship="Restaurante_BDModel.FK__BITACORA___ID_BO__619B8048" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="BITACORA_COCINA" />
+          <NavigationProperty Name="INVENTARIO_COCINA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__6754599E" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="INVENTARIO_COCINA" />
+          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__66603565" FromRole="INVENTARIO_BODEGA_GENERAL" ToRole="UNIDAD_MEDIDA" />
         </EntityType>
         <EntityType Name="INVENTARIO_COCINA">
           <Key>
@@ -2536,15 +1424,9 @@
           <Property Name="CANTIDAD_CONVERSION" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ID_UNIDAD_MEDIDA" Type="Int32" />
           <Property Name="ID_BODEGA_GENERAL" Type="Int32" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__3493CFA7" FromRole="INVENTARIO_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL1" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__70DDC3D8" FromRole="INVENTARIO_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL2" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__7755B73D" FromRole="INVENTARIO_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__3587F3E0" FromRole="INVENTARIO_COCINA" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA1" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__71D1E811" FromRole="INVENTARIO_COCINA" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA2" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__7849DB76" FromRole="INVENTARIO_COCINA" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="MENU_DETALLE" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__37703C52" FromRole="INVENTARIO_COCINA" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="MENU_DETALLE1" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__73BA3083" FromRole="INVENTARIO_COCINA" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="MENU_DETALLE2" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__7A3223E8" FromRole="INVENTARIO_COCINA" ToRole="MENU_DETALLE" />
+          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_BO__6754599E" FromRole="INVENTARIO_COCINA" ToRole="INVENTARIO_BODEGA_GENERAL" />
+          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__68487DD7" FromRole="INVENTARIO_COCINA" ToRole="UNIDAD_MEDIDA" />
+          <NavigationProperty Name="MENU_DETALLE" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__6A30C649" FromRole="INVENTARIO_COCINA" ToRole="MENU_DETALLE" />
         </EntityType>
         <EntityType Name="MENU">
           <Key>
@@ -2558,15 +1440,9 @@
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="PRECIO_COSTO" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="TIPO_MENU" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__367C1819" FromRole="MENU" ToRole="TIPO_MENU" />
-          <NavigationProperty Name="TIPO_MENU1" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__72C60C4A" FromRole="MENU" ToRole="TIPO_MENU" />
-          <NavigationProperty Name="TIPO_MENU2" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__793DFFAF" FromRole="MENU" ToRole="TIPO_MENU" />
-          <NavigationProperty Name="MENU_DETALLE" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__3864608B" FromRole="MENU" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="MENU_DETALLE1" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__74AE54BC" FromRole="MENU" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="MENU_DETALLE2" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__7B264821" FromRole="MENU" ToRole="MENU_DETALLE" />
-          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__3D2915A8" FromRole="MENU" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="PEDIDO_DETALLE1" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7F2BE32F" FromRole="MENU" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="PEDIDO_DETALLE2" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7FEAFD3E" FromRole="MENU" ToRole="PEDIDO_DETALLE" />
+          <NavigationProperty Name="TIPO_MENU" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__693CA210" FromRole="MENU" ToRole="TIPO_MENU" />
+          <NavigationProperty Name="MENU_DETALLE" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__6B24EA82" FromRole="MENU" ToRole="MENU_DETALLE" />
+          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__75A278F5" FromRole="MENU" ToRole="PEDIDO_DETALLE" />
         </EntityType>
         <EntityType Name="MENU_DETALLE">
           <Key>
@@ -2579,12 +1455,8 @@
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="INVENTARIO_COCINA" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__37703C52" FromRole="MENU_DETALLE" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA1" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__73BA3083" FromRole="MENU_DETALLE" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA2" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__7A3223E8" FromRole="MENU_DETALLE" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__3864608B" FromRole="MENU_DETALLE" ToRole="MENU" />
-          <NavigationProperty Name="MENU1" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__74AE54BC" FromRole="MENU_DETALLE" ToRole="MENU" />
-          <NavigationProperty Name="MENU2" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__7B264821" FromRole="MENU_DETALLE" ToRole="MENU" />
+          <NavigationProperty Name="INVENTARIO_COCINA" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_IN__6A30C649" FromRole="MENU_DETALLE" ToRole="INVENTARIO_COCINA" />
+          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__MENU_DETA__ID_ME__6B24EA82" FromRole="MENU_DETALLE" ToRole="MENU" />
         </EntityType>
         <EntityType Name="MESA">
           <Key>
@@ -2595,9 +1467,7 @@
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PAGO_MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__395884C4" FromRole="MESA" ToRole="PAGO_MESA" />
-          <NavigationProperty Name="PAGO_MESA1" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__75A278F5" FromRole="MESA" ToRole="PAGO_MESA" />
-          <NavigationProperty Name="PAGO_MESA2" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__7C1A6C5A" FromRole="MESA" ToRole="PAGO_MESA" />
+          <NavigationProperty Name="PAGO_MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__6C190EBB" FromRole="MESA" ToRole="PAGO_MESA" />
           <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="MESA" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="MODULO">
@@ -2610,9 +1480,7 @@
           <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PANTALLA" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__3C34F16F" FromRole="MODULO" ToRole="PANTALLA" />
-          <NavigationProperty Name="PANTALLA1" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__797309D9" FromRole="MODULO" ToRole="PANTALLA" />
-          <NavigationProperty Name="PANTALLA2" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__7EF6D905" FromRole="MODULO" ToRole="PANTALLA" />
+          <NavigationProperty Name="PANTALLA" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__6FE99F9F" FromRole="MODULO" ToRole="PANTALLA" />
         </EntityType>
         <EntityType Name="PAGO_MESA">
           <Key>
@@ -2622,9 +1490,7 @@
           <Property Name="ID_MESA" Type="Int32" Nullable="false" />
           <Property Name="MONTO" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ID_PEDIDO" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__395884C4" FromRole="PAGO_MESA" ToRole="MESA" />
-          <NavigationProperty Name="MESA1" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__75A278F5" FromRole="PAGO_MESA" ToRole="MESA" />
-          <NavigationProperty Name="MESA2" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__7C1A6C5A" FromRole="PAGO_MESA" ToRole="MESA" />
+          <NavigationProperty Name="MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_ME__6C190EBB" FromRole="PAGO_MESA" ToRole="MESA" />
           <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_PE__52593CB8" FromRole="PAGO_MESA" ToRole="PEDIDO" />
         </EntityType>
         <EntityType Name="PAGO_PROVEEDOR">
@@ -2641,12 +1507,8 @@
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="BANCO" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__3A4CA8FD" FromRole="PAGO_PROVEEDOR" ToRole="BANCO" />
-          <NavigationProperty Name="BANCO1" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__778AC167" FromRole="PAGO_PROVEEDOR" ToRole="BANCO" />
-          <NavigationProperty Name="BANCO2" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__7D0E9093" FromRole="PAGO_PROVEEDOR" ToRole="BANCO" />
-          <NavigationProperty Name="PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__3B40CD36" FromRole="PAGO_PROVEEDOR" ToRole="PROVEEDOR" />
-          <NavigationProperty Name="PROVEEDOR1" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__787EE5A0" FromRole="PAGO_PROVEEDOR" ToRole="PROVEEDOR" />
-          <NavigationProperty Name="PROVEEDOR2" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__7E02B4CC" FromRole="PAGO_PROVEEDOR" ToRole="PROVEEDOR" />
+          <NavigationProperty Name="BANCO" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_BA__6E01572D" FromRole="PAGO_PROVEEDOR" ToRole="BANCO" />
+          <NavigationProperty Name="PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__6EF57B66" FromRole="PAGO_PROVEEDOR" ToRole="PROVEEDOR" />
         </EntityType>
         <EntityType Name="PANTALLA">
           <Key>
@@ -2663,12 +1525,8 @@
           <Property Name="ICONO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="PRINCIPAL" Type="Int32" />
-          <NavigationProperty Name="MODULO" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__3C34F16F" FromRole="PANTALLA" ToRole="MODULO" />
-          <NavigationProperty Name="MODULO1" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__797309D9" FromRole="PANTALLA" ToRole="MODULO" />
-          <NavigationProperty Name="MODULO2" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__7EF6D905" FromRole="PANTALLA" ToRole="MODULO" />
-          <NavigationProperty Name="PERMISO_PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03BB8E22" FromRole="PANTALLA" ToRole="PERMISO_PANTALLA" />
-          <NavigationProperty Name="PERMISO_PANTALLA1" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03F0984C" FromRole="PANTALLA" ToRole="PERMISO_PANTALLA" />
-          <NavigationProperty Name="PERMISO_PANTALLA2" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__40F9A68C" FromRole="PANTALLA" ToRole="PERMISO_PANTALLA" />
+          <NavigationProperty Name="MODULO" Relationship="Restaurante_BDModel.FK__PANTALLA__ID_MOD__6FE99F9F" FromRole="PANTALLA" ToRole="MODULO" />
+          <NavigationProperty Name="PERMISO_PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__7A672E12" FromRole="PANTALLA" ToRole="PERMISO_PANTALLA" />
         </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
@@ -2691,18 +1549,14 @@
           <Property Name="NOMBRE_RECIBE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CLIENTE" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_CLIEN__5535A963" FromRole="PEDIDO" ToRole="CLIENTE" />
-          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__2EDAF651" FromRole="PEDIDO" ToRole="COBRO" />
-          <NavigationProperty Name="COBRO1" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__6A30C649" FromRole="PEDIDO" ToRole="COBRO" />
-          <NavigationProperty Name="COBRO2" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__719CDDE7" FromRole="PEDIDO" ToRole="COBRO" />
+          <NavigationProperty Name="COBRO" Relationship="Restaurante_BDModel.FK__COBRO__ID_PEDIDO__123EB7A3" FromRole="PEDIDO" ToRole="COBRO" />
           <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_EMPLE__5629CD9C" FromRole="PEDIDO" ToRole="EMPLEADO" />
           <NavigationProperty Name="ESTADO_PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_ESTAD__02FC7413" FromRole="PEDIDO" ToRole="ESTADO_PEDIDO" />
           <NavigationProperty Name="MESA" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_MESA__571DF1D5" FromRole="PEDIDO" ToRole="MESA" />
           <NavigationProperty Name="PAGO_MESA" Relationship="Restaurante_BDModel.FK__PAGO_MESA__ID_PE__52593CB8" FromRole="PEDIDO" ToRole="PAGO_MESA" />
           <NavigationProperty Name="TIPO_PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO__ID_TIPO___160F4887" FromRole="PEDIDO" ToRole="TIPO_PEDIDO" />
           <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PE__59FA5E80" FromRole="PEDIDO" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__01D345B0" FromRole="PEDIDO" ToRole="PEDIDO_FORMA_PAGO_DET" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET1" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02084FDA" FromRole="PEDIDO" ToRole="PEDIDO_FORMA_PAGO_DET" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET2" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__3F115E1A" FromRole="PEDIDO" ToRole="PEDIDO_FORMA_PAGO_DET" />
+          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__787EE5A0" FromRole="PEDIDO" ToRole="PEDIDO_FORMA_PAGO_DET" />
         </EntityType>
         <EntityType Name="PEDIDO_DETALLE">
           <Key>
@@ -2719,13 +1573,9 @@
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="SUBTOTAL" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__3D2915A8" FromRole="PEDIDO_DETALLE" ToRole="MENU" />
-          <NavigationProperty Name="MENU1" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7F2BE32F" FromRole="PEDIDO_DETALLE" ToRole="MENU" />
-          <NavigationProperty Name="MENU2" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__7FEAFD3E" FromRole="PEDIDO_DETALLE" ToRole="MENU" />
+          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_ME__75A278F5" FromRole="PEDIDO_DETALLE" ToRole="MENU" />
           <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PE__59FA5E80" FromRole="PEDIDO_DETALLE" ToRole="PEDIDO" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__00DF2177" FromRole="PEDIDO_DETALLE" ToRole="PRODUCTO" />
-          <NavigationProperty Name="PRODUCTO1" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__01142BA1" FromRole="PEDIDO_DETALLE" ToRole="PRODUCTO" />
-          <NavigationProperty Name="PRODUCTO2" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__3E1D39E1" FromRole="PEDIDO_DETALLE" ToRole="PRODUCTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__778AC167" FromRole="PEDIDO_DETALLE" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="PEDIDO_FORMA_PAGO">
           <Key>
@@ -2734,12 +1584,8 @@
           <Property Name="ID_PEDIDO_FORMA_PAGO" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="COBRO_DETALLE" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__30C33EC3" FromRole="PEDIDO_FORMA_PAGO" ToRole="COBRO_DETALLE" />
-          <NavigationProperty Name="COBRO_DETALLE1" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__6C190EBB" FromRole="PEDIDO_FORMA_PAGO" ToRole="COBRO_DETALLE" />
-          <NavigationProperty Name="COBRO_DETALLE2" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__73852659" FromRole="PEDIDO_FORMA_PAGO" ToRole="COBRO_DETALLE" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02C769E9" FromRole="PEDIDO_FORMA_PAGO" ToRole="PEDIDO_FORMA_PAGO_DET" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET1" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02FC7413" FromRole="PEDIDO_FORMA_PAGO" ToRole="PEDIDO_FORMA_PAGO_DET" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET2" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__40058253" FromRole="PEDIDO_FORMA_PAGO" ToRole="PEDIDO_FORMA_PAGO_DET" />
+          <NavigationProperty Name="COBRO_DETALLE" Relationship="Restaurante_BDModel.FK__COBRO_DET__ID_PE__18EBB532" FromRole="PEDIDO_FORMA_PAGO" ToRole="COBRO_DETALLE" />
+          <NavigationProperty Name="PEDIDO_FORMA_PAGO_DET" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__797309D9" FromRole="PEDIDO_FORMA_PAGO" ToRole="PEDIDO_FORMA_PAGO_DET" />
         </EntityType>
         <EntityType Name="PEDIDO_FORMA_PAGO_DET">
           <Key>
@@ -2751,12 +1597,8 @@
           <Property Name="MONTO" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="REFERENCIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AUTORIZACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__01D345B0" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO" />
-          <NavigationProperty Name="PEDIDO1" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02084FDA" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO" />
-          <NavigationProperty Name="PEDIDO2" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__3F115E1A" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02C769E9" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO_FORMA_PAGO" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO1" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__02FC7413" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO_FORMA_PAGO" />
-          <NavigationProperty Name="PEDIDO_FORMA_PAGO2" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__40058253" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO_FORMA_PAGO" />
+          <NavigationProperty Name="PEDIDO" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__787EE5A0" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO" />
+          <NavigationProperty Name="PEDIDO_FORMA_PAGO" Relationship="Restaurante_BDModel.FK__PEDIDO_FO__ID_PE__797309D9" FromRole="PEDIDO_FORMA_PAGO_DET" ToRole="PEDIDO_FORMA_PAGO" />
         </EntityType>
         <EntityType Name="PERMISO_PANTALLA">
           <Key>
@@ -2766,12 +1608,8 @@
           <Property Name="ID_ROL" Type="Int32" />
           <Property Name="ID_PANTALLA" Type="Int32" />
           <Property Name="USUARIO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03BB8E22" FromRole="PERMISO_PANTALLA" ToRole="PANTALLA" />
-          <NavigationProperty Name="PANTALLA1" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__03F0984C" FromRole="PERMISO_PANTALLA" ToRole="PANTALLA" />
-          <NavigationProperty Name="PANTALLA2" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__40F9A68C" FromRole="PERMISO_PANTALLA" ToRole="PANTALLA" />
-          <NavigationProperty Name="ROL" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04AFB25B" FromRole="PERMISO_PANTALLA" ToRole="ROL" />
-          <NavigationProperty Name="ROL1" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04E4BC85" FromRole="PERMISO_PANTALLA" ToRole="ROL" />
-          <NavigationProperty Name="ROL2" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__41EDCAC5" FromRole="PERMISO_PANTALLA" ToRole="ROL" />
+          <NavigationProperty Name="PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_PA__7A672E12" FromRole="PERMISO_PANTALLA" ToRole="PANTALLA" />
+          <NavigationProperty Name="ROL" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__7B5B524B" FromRole="PERMISO_PANTALLA" ToRole="ROL" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -2785,15 +1623,9 @@
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__00DF2177" FromRole="PRODUCTO" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="PEDIDO_DETALLE1" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__01142BA1" FromRole="PRODUCTO" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="PEDIDO_DETALLE2" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__3E1D39E1" FromRole="PRODUCTO" ToRole="PEDIDO_DETALLE" />
-          <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05A3D694" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
-          <NavigationProperty Name="TIPO_PRODUCTO1" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05D8E0BE" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
-          <NavigationProperty Name="TIPO_PRODUCTO2" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__42E1EEFE" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
-          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__0697FACD" FromRole="PRODUCTO" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA1" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__06CD04F7" FromRole="PRODUCTO" ToRole="UNIDAD_MEDIDA" />
-          <NavigationProperty Name="UNIDAD_MEDIDA2" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__43D61337" FromRole="PRODUCTO" ToRole="UNIDAD_MEDIDA" />
+          <NavigationProperty Name="PEDIDO_DETALLE" Relationship="Restaurante_BDModel.FK__PEDIDO_DE__ID_PR__778AC167" FromRole="PRODUCTO" ToRole="PEDIDO_DETALLE" />
+          <NavigationProperty Name="TIPO_PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__7C4F7684" FromRole="PRODUCTO" ToRole="TIPO_PRODUCTO" />
+          <NavigationProperty Name="UNIDAD_MEDIDA" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__7D439ABD" FromRole="PRODUCTO" ToRole="UNIDAD_MEDIDA" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -2807,9 +1639,7 @@
           <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__3B40CD36" FromRole="PROVEEDOR" ToRole="PAGO_PROVEEDOR" />
-          <NavigationProperty Name="PAGO_PROVEEDOR1" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__787EE5A0" FromRole="PROVEEDOR" ToRole="PAGO_PROVEEDOR" />
-          <NavigationProperty Name="PAGO_PROVEEDOR2" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__7E02B4CC" FromRole="PROVEEDOR" ToRole="PAGO_PROVEEDOR" />
+          <NavigationProperty Name="PAGO_PROVEEDOR" Relationship="Restaurante_BDModel.FK__PAGO_PROV__ID_PR__6EF57B66" FromRole="PROVEEDOR" ToRole="PAGO_PROVEEDOR" />
         </EntityType>
         <EntityType Name="ROL">
           <Key>
@@ -2820,9 +1650,7 @@
           <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PERMISO_PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04AFB25B" FromRole="ROL" ToRole="PERMISO_PANTALLA" />
-          <NavigationProperty Name="PERMISO_PANTALLA1" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__04E4BC85" FromRole="ROL" ToRole="PERMISO_PANTALLA" />
-          <NavigationProperty Name="PERMISO_PANTALLA2" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__41EDCAC5" FromRole="ROL" ToRole="PERMISO_PANTALLA" />
+          <NavigationProperty Name="PERMISO_PANTALLA" Relationship="Restaurante_BDModel.FK__PERMISO_P__ID_RO__7B5B524B" FromRole="ROL" ToRole="PERMISO_PANTALLA" />
         </EntityType>
         <EntityType Name="TIPO_EMPLEADO">
           <Key>
@@ -2834,9 +1662,7 @@
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__31B762FC" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
-          <NavigationProperty Name="EMPLEADO1" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6D0D32F4" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
-          <NavigationProperty Name="EMPLEADO2" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__74794A92" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__EMPLEADO__ID_TIP__6383C8BA" FromRole="TIPO_EMPLEADO" ToRole="EMPLEADO" />
         </EntityType>
         <EntityType Name="TIPO_MENU">
           <Key>
@@ -2847,9 +1673,7 @@
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__367C1819" FromRole="TIPO_MENU" ToRole="MENU" />
-          <NavigationProperty Name="MENU1" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__72C60C4A" FromRole="TIPO_MENU" ToRole="MENU" />
-          <NavigationProperty Name="MENU2" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__793DFFAF" FromRole="TIPO_MENU" ToRole="MENU" />
+          <NavigationProperty Name="MENU" Relationship="Restaurante_BDModel.FK__MENU__ID_TIPO_ME__693CA210" FromRole="TIPO_MENU" ToRole="MENU" />
         </EntityType>
         <EntityType Name="TIPO_PEDIDO">
           <Key>
@@ -2869,9 +1693,7 @@
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05A3D694" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
-          <NavigationProperty Name="PRODUCTO1" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__05D8E0BE" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
-          <NavigationProperty Name="PRODUCTO2" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__42E1EEFE" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_TIP__7C4F7684" FromRole="TIPO_PRODUCTO" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="UNIDAD_MEDIDA">
           <Key>
@@ -2881,15 +1703,9 @@
           <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="ABREVIATURA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__339FAB6E" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL1" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__6FE99F9F" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL2" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__76619304" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_BODEGA_GENERAL" />
-          <NavigationProperty Name="INVENTARIO_COCINA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__3587F3E0" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA1" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__71D1E811" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="INVENTARIO_COCINA2" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__7849DB76" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_COCINA" />
-          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__0697FACD" FromRole="UNIDAD_MEDIDA" ToRole="PRODUCTO" />
-          <NavigationProperty Name="PRODUCTO1" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__06CD04F7" FromRole="UNIDAD_MEDIDA" ToRole="PRODUCTO" />
-          <NavigationProperty Name="PRODUCTO2" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__43D61337" FromRole="UNIDAD_MEDIDA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="INVENTARIO_BODEGA_GENERAL" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__66603565" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_BODEGA_GENERAL" />
+          <NavigationProperty Name="INVENTARIO_COCINA" Relationship="Restaurante_BDModel.FK__INVENTARI__ID_UN__68487DD7" FromRole="UNIDAD_MEDIDA" ToRole="INVENTARIO_COCINA" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Restaurante_BDModel.FK__PRODUCTO__ID_UNI__7D439ABD" FromRole="UNIDAD_MEDIDA" ToRole="PRODUCTO" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -2902,9 +1718,7 @@
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ID_MODULO" Type="Int32" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__078C1F06" FromRole="USUARIO" ToRole="EMPLEADO" />
-          <NavigationProperty Name="EMPLEADO1" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__07C12930" FromRole="USUARIO" ToRole="EMPLEADO" />
-          <NavigationProperty Name="EMPLEADO2" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__44CA3770" FromRole="USUARIO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__USUARIO__ID_EMPL__7E37BEF6" FromRole="USUARIO" ToRole="EMPLEADO" />
         </EntityType>
         <EntityType Name="VALES">
           <Key>
@@ -2917,11 +1731,9 @@
           <Property Name="FECHA_CREACION" Type="DateTime" Precision="0" />
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CREADO_POR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__0880433F" FromRole="VALES" ToRole="EMPLEADO" />
-          <NavigationProperty Name="EMPLEADO1" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__08B54D69" FromRole="VALES" ToRole="EMPLEADO" />
-          <NavigationProperty Name="EMPLEADO2" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__45BE5BA9" FromRole="VALES" ToRole="EMPLEADO" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Restaurante_BDModel.FK__VALES__ID_EMPLEA__7F2BE32F" FromRole="VALES" ToRole="EMPLEADO" />
         </EntityType>
-        <Association Name="FK__PAGO_PROV__ID_BA__3A4CA8FD">
+        <Association Name="FK__PAGO_PROV__ID_BA__6E01572D">
           <End Type="Restaurante_BDModel.BANCO" Role="BANCO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2933,55 +1745,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PAGO_PROV__ID_BA__778AC167">
-          <End Type="Restaurante_BDModel.BANCO" Role="BANCO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANCO">
-              <PropertyRef Name="ID_BANCO" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_BANCO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_PROV__ID_BA__7D0E9093">
-          <End Type="Restaurante_BDModel.BANCO" Role="BANCO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANCO">
-              <PropertyRef Name="ID_BANCO" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_BANCO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BITACORA___ID_BO__2CF2ADDF">
-          <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.BITACORA_COCINA" Role="BITACORA_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="BITACORA_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BITACORA___ID_BO__6754599E">
-          <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.BITACORA_COCINA" Role="BITACORA_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="BITACORA_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BITACORA___ID_BO__6FB49575">
+        <Association Name="FK__BITACORA___ID_BO__619B8048">
           <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.BITACORA_COCINA" Role="BITACORA_COCINA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3029,7 +1793,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO__ID_CORTE__2DE6D218">
+        <Association Name="FK__COBRO__ID_CORTE__1CBC4616">
           <End Type="Restaurante_BDModel.CORTE" Role="CORTE" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3041,31 +1805,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO__ID_CORTE__693CA210">
-          <End Type="Restaurante_BDModel.CORTE" Role="CORTE" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CORTE">
-              <PropertyRef Name="ID_CORTE" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_CORTE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO__ID_CORTE__70A8B9AE">
-          <End Type="Restaurante_BDModel.CORTE" Role="CORTE" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CORTE">
-              <PropertyRef Name="ID_CORTE" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_CORTE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO__ID_PEDIDO__2EDAF651">
+        <Association Name="FK__COBRO__ID_PEDIDO__123EB7A3">
           <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3077,31 +1817,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO__ID_PEDIDO__6A30C649">
-          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO__ID_PEDIDO__719CDDE7">
-          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="COBRO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_CO__2FCF1A8A">
+        <Association Name="FK__COBRO_DET__ID_CO__17F790F9">
           <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3113,31 +1829,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO_DET__ID_CO__6B24EA82">
-          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COBRO">
-              <PropertyRef Name="ID_COBRO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_COBRO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_CO__72910220">
-          <End Type="Restaurante_BDModel.COBRO" Role="COBRO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COBRO">
-              <PropertyRef Name="ID_COBRO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_COBRO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_PE__30C33EC3">
+        <Association Name="FK__COBRO_DET__ID_PE__18EBB532">
           <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3149,55 +1841,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COBRO_DET__ID_PE__6C190EBB">
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COBRO_DET__ID_PE__73852659">
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.COBRO_DETALLE" Role="COBRO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="COBRO_DETALLE">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EMPLEADO__ID_TIP__31B762FC">
-          <End Type="Restaurante_BDModel.TIPO_EMPLEADO" Role="TIPO_EMPLEADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Principal>
-            <Dependent Role="EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EMPLEADO__ID_TIP__6D0D32F4">
-          <End Type="Restaurante_BDModel.TIPO_EMPLEADO" Role="TIPO_EMPLEADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Principal>
-            <Dependent Role="EMPLEADO">
-              <PropertyRef Name="ID_TIPO_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__EMPLEADO__ID_TIP__74794A92">
+        <Association Name="FK__EMPLEADO__ID_TIP__6383C8BA">
           <End Type="Restaurante_BDModel.TIPO_EMPLEADO" Role="TIPO_EMPLEADO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3221,7 +1865,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIO__ID_EMPL__078C1F06">
+        <Association Name="FK__USUARIO__ID_EMPL__7E37BEF6">
           <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.USUARIO" Role="USUARIO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3233,55 +1877,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USUARIO__ID_EMPL__07C12930">
-          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USUARIO__ID_EMPL__44CA3770">
-          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.USUARIO" Role="USUARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="USUARIO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VALES__ID_EMPLEA__0880433F">
-          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.VALES" Role="VALES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="VALES">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VALES__ID_EMPLEA__08B54D69">
-          <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.VALES" Role="VALES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPLEADO">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Principal>
-            <Dependent Role="VALES">
-              <PropertyRef Name="ID_EMPLEADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VALES__ID_EMPLEA__45BE5BA9">
+        <Association Name="FK__VALES__ID_EMPLEA__7F2BE32F">
           <End Type="Restaurante_BDModel.EMPLEADO" Role="EMPLEADO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.VALES" Role="VALES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3305,7 +1901,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FACTURA_D__ID_FA__32AB8735">
+        <Association Name="FK__FACTURA_D__ID_FA__6477ECF3">
           <End Type="Restaurante_BDModel.FACTURA_ENCABEZADO" Role="FACTURA_ENCABEZADO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.FACTURA_DETALLE" Role="FACTURA_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3317,31 +1913,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FACTURA_D__ID_FA__6E01572D">
-          <End Type="Restaurante_BDModel.FACTURA_ENCABEZADO" Role="FACTURA_ENCABEZADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.FACTURA_DETALLE" Role="FACTURA_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FACTURA_ENCABEZADO">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Principal>
-            <Dependent Role="FACTURA_DETALLE">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FACTURA_D__ID_FA__756D6ECB">
-          <End Type="Restaurante_BDModel.FACTURA_ENCABEZADO" Role="FACTURA_ENCABEZADO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.FACTURA_DETALLE" Role="FACTURA_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FACTURA_ENCABEZADO">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Principal>
-            <Dependent Role="FACTURA_DETALLE">
-              <PropertyRef Name="ID_FACTURA_ENCABEZADO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_BO__3493CFA7">
+        <Association Name="FK__INVENTARI__ID_BO__6754599E">
           <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3353,31 +1925,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_BO__70DDC3D8">
-          <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_BO__7755B73D">
-          <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_BODEGA_GENERAL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__339FAB6E">
+        <Association Name="FK__INVENTARI__ID_UN__66603565">
           <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3389,31 +1937,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_UN__6FE99F9F">
-          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__76619304">
-          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.INVENTARIO_BODEGA_GENERAL" Role="INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_BODEGA_GENERAL">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__3587F3E0">
+        <Association Name="FK__INVENTARI__ID_UN__68487DD7">
           <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3425,31 +1949,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVENTARI__ID_UN__71D1E811">
-          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__INVENTARI__ID_UN__7849DB76">
-          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_IN__37703C52">
+        <Association Name="FK__MENU_DETA__ID_IN__6A30C649">
           <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3461,31 +1961,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU_DETA__ID_IN__73BA3083">
-          <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_IN__7A3223E8">
-          <End Type="Restaurante_BDModel.INVENTARIO_COCINA" Role="INVENTARIO_COCINA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVENTARIO_COCINA">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_INVENTARIO_COCINA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU__ID_TIPO_ME__367C1819">
+        <Association Name="FK__MENU__ID_TIPO_ME__693CA210">
           <End Type="Restaurante_BDModel.TIPO_MENU" Role="TIPO_MENU" Multiplicity="1" />
           <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3497,31 +1973,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU__ID_TIPO_ME__72C60C4A">
-          <End Type="Restaurante_BDModel.TIPO_MENU" Role="TIPO_MENU" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Principal>
-            <Dependent Role="MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU__ID_TIPO_ME__793DFFAF">
-          <End Type="Restaurante_BDModel.TIPO_MENU" Role="TIPO_MENU" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Principal>
-            <Dependent Role="MENU">
-              <PropertyRef Name="ID_TIPO_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_ME__3864608B">
+        <Association Name="FK__MENU_DETA__ID_ME__6B24EA82">
           <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3533,31 +1985,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MENU_DETA__ID_ME__74AE54BC">
-          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MENU_DETA__ID_ME__7B264821">
-          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.MENU_DETALLE" Role="MENU_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="MENU_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_ME__3D2915A8">
+        <Association Name="FK__PEDIDO_DE__ID_ME__75A278F5">
           <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3569,55 +1997,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_DE__ID_ME__7F2BE32F">
-          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_ME__7FEAFD3E">
-          <End Type="Restaurante_BDModel.MENU" Role="MENU" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MENU">
-              <PropertyRef Name="ID_MENU" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_MENU" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_MESA__ID_ME__395884C4">
-          <End Type="Restaurante_BDModel.MESA" Role="MESA" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PAGO_MESA" Role="PAGO_MESA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Principal>
-            <Dependent Role="PAGO_MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_MESA__ID_ME__75A278F5">
-          <End Type="Restaurante_BDModel.MESA" Role="MESA" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PAGO_MESA" Role="PAGO_MESA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Principal>
-            <Dependent Role="PAGO_MESA">
-              <PropertyRef Name="ID_MESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_MESA__ID_ME__7C1A6C5A">
+        <Association Name="FK__PAGO_MESA__ID_ME__6C190EBB">
           <End Type="Restaurante_BDModel.MESA" Role="MESA" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PAGO_MESA" Role="PAGO_MESA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3641,31 +2021,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PANTALLA__ID_MOD__3C34F16F">
-          <End Type="Restaurante_BDModel.MODULO" Role="MODULO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MODULO">
-              <PropertyRef Name="ID_MODULO" />
-            </Principal>
-            <Dependent Role="PANTALLA">
-              <PropertyRef Name="ID_MODULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PANTALLA__ID_MOD__797309D9">
-          <End Type="Restaurante_BDModel.MODULO" Role="MODULO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MODULO">
-              <PropertyRef Name="ID_MODULO" />
-            </Principal>
-            <Dependent Role="PANTALLA">
-              <PropertyRef Name="ID_MODULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PANTALLA__ID_MOD__7EF6D905">
+        <Association Name="FK__PANTALLA__ID_MOD__6FE99F9F">
           <End Type="Restaurante_BDModel.MODULO" Role="MODULO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3689,7 +2045,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PAGO_PROV__ID_PR__3B40CD36">
+        <Association Name="FK__PAGO_PROV__ID_PR__6EF57B66">
           <End Type="Restaurante_BDModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3701,55 +2057,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PAGO_PROV__ID_PR__787EE5A0">
-          <End Type="Restaurante_BDModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAGO_PROV__ID_PR__7E02B4CC">
-          <End Type="Restaurante_BDModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PAGO_PROVEEDOR" Role="PAGO_PROVEEDOR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Principal>
-            <Dependent Role="PAGO_PROVEEDOR">
-              <PropertyRef Name="ID_PROVEEDOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_PA__03BB8E22">
-          <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_PA__03F0984C">
-          <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_PANTALLA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_PA__40F9A68C">
+        <Association Name="FK__PERMISO_P__ID_PA__7A672E12">
           <End Type="Restaurante_BDModel.PANTALLA" Role="PANTALLA" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3785,7 +2093,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__01D345B0">
+        <Association Name="FK__PEDIDO_FO__ID_PE__787EE5A0">
           <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Role="PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3797,31 +2105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__02084FDA">
-          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Role="PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__3F115E1A">
-          <End Type="Restaurante_BDModel.PEDIDO" Role="PEDIDO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Role="PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_PR__00DF2177">
+        <Association Name="FK__PEDIDO_DE__ID_PR__778AC167">
           <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3833,31 +2117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_DE__ID_PR__01142BA1">
-          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_DE__ID_PR__3E1D39E1">
-          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PEDIDO_DETALLE" Role="PEDIDO_DETALLE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTO">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PEDIDO_DETALLE">
-              <PropertyRef Name="ID_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__02C769E9">
+        <Association Name="FK__PEDIDO_FO__ID_PE__797309D9">
           <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Role="PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3869,31 +2129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__02FC7413">
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Role="PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PEDIDO_FO__ID_PE__40058253">
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO" Role="PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PEDIDO_FORMA_PAGO_DET" Role="PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PEDIDO_FORMA_PAGO">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Principal>
-            <Dependent Role="PEDIDO_FORMA_PAGO_DET">
-              <PropertyRef Name="ID_PEDIDO_FORMA_PAGO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_RO__04AFB25B">
+        <Association Name="FK__PERMISO_P__ID_RO__7B5B524B">
           <End Type="Restaurante_BDModel.ROL" Role="ROL" Multiplicity="0..1" />
           <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3905,31 +2141,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PERMISO_P__ID_RO__04E4BC85">
-          <End Type="Restaurante_BDModel.ROL" Role="ROL" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ROL">
-              <PropertyRef Name="ID_ROL" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_ROL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PERMISO_P__ID_RO__41EDCAC5">
-          <End Type="Restaurante_BDModel.ROL" Role="ROL" Multiplicity="0..1" />
-          <End Type="Restaurante_BDModel.PERMISO_PANTALLA" Role="PERMISO_PANTALLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ROL">
-              <PropertyRef Name="ID_ROL" />
-            </Principal>
-            <Dependent Role="PERMISO_PANTALLA">
-              <PropertyRef Name="ID_ROL" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_TIP__05A3D694">
+        <Association Name="FK__PRODUCTO__ID_TIP__7C4F7684">
           <End Type="Restaurante_BDModel.TIPO_PRODUCTO" Role="TIPO_PRODUCTO" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3941,55 +2153,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCTO__ID_TIP__05D8E0BE">
-          <End Type="Restaurante_BDModel.TIPO_PRODUCTO" Role="TIPO_PRODUCTO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_TIP__42E1EEFE">
-          <End Type="Restaurante_BDModel.TIPO_PRODUCTO" Role="TIPO_PRODUCTO" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_TIPO_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_UNI__0697FACD">
-          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_UNI__06CD04F7">
-          <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="1" />
-          <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIDAD_MEDIDA">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Principal>
-            <Dependent Role="PRODUCTO">
-              <PropertyRef Name="ID_UNIDAD_MEDIDA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PRODUCTO__ID_UNI__43D61337">
+        <Association Name="FK__PRODUCTO__ID_UNI__7D439ABD">
           <End Type="Restaurante_BDModel.UNIDAD_MEDIDA" Role="UNIDAD_MEDIDA" Multiplicity="1" />
           <End Type="Restaurante_BDModel.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
           <ReferentialConstraint>

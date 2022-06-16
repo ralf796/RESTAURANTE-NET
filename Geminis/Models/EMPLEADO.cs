@@ -19,11 +19,7 @@ namespace Geminis.Models
         {
             this.PEDIDO = new HashSet<PEDIDO>();
             this.USUARIO = new HashSet<USUARIO>();
-            this.USUARIO1 = new HashSet<USUARIO>();
-            this.USUARIO2 = new HashSet<USUARIO>();
             this.VALES = new HashSet<VALES>();
-            this.VALES1 = new HashSet<VALES>();
-            this.VALES2 = new HashSet<VALES>();
         }
     
         public int ID_EMPLEADO { get; set; }
@@ -38,21 +34,11 @@ namespace Geminis.Models
         public Nullable<System.DateTime> FECHA_CREACION { get; set; }
     
         public virtual TIPO_EMPLEADO TIPO_EMPLEADO { get; set; }
-        public virtual TIPO_EMPLEADO TIPO_EMPLEADO1 { get; set; }
-        public virtual TIPO_EMPLEADO TIPO_EMPLEADO2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO> USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VALES> VALES { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VALES> VALES1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VALES> VALES2 { get; set; }
     }
 }

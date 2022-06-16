@@ -21,7 +21,5 @@ namespace Geminis.Models
         public Nullable<int> ID_BODEGA_GENERAL { get; set; }
     
         public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL { get; set; }
-        public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL1 { get; set; }
-        public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL2 { get; set; }
     }
 }

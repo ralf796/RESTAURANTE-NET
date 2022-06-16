@@ -18,8 +18,6 @@ namespace Geminis.Models
         public TIPO_EMPLEADO()
         {
             this.EMPLEADO = new HashSet<EMPLEADO>();
-            this.EMPLEADO1 = new HashSet<EMPLEADO>();
-            this.EMPLEADO2 = new HashSet<EMPLEADO>();
         }
     
         public int ID_TIPO_EMPLEADO { get; set; }
@@ -31,9 +29,5 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMPLEADO> EMPLEADO1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMPLEADO> EMPLEADO2 { get; set; }
     }
 }

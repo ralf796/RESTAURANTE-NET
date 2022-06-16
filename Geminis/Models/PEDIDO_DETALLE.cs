@@ -27,11 +27,7 @@ namespace Geminis.Models
         public Nullable<decimal> PRECIO { get; set; }
     
         public virtual MENU MENU { get; set; }
-        public virtual MENU MENU1 { get; set; }
-        public virtual MENU MENU2 { get; set; }
         public virtual PEDIDO PEDIDO { get; set; }
         public virtual PRODUCTO PRODUCTO { get; set; }
-        public virtual PRODUCTO PRODUCTO1 { get; set; }
-        public virtual PRODUCTO PRODUCTO2 { get; set; }
     }
 }

@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section scripts{
+    <script src="~/Scripts/Administracion/ADMTipoEmpleado.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
+    <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="margin-top:-20px!important;">
+
+            <div class="card-header card-header-deep-orange card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">CLIENTE</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="toolbar ml-4">
+                        <a id="btnCrear" class="btn btn-link btn-info btn-just-icon add" title="CREAR CLIENTE"><i class="material-icons">add</i></a>
+                    </div>
+                </div>
+                @* TABLA*@
+                <div class="row">
+                    <div class="demo-container col-md-12">
+                        <div id="gridContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* MODAL CREAR*@
+<div class="modal fade" id="modalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">CREAR CLIENTE</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="formCrearBanco" class="formValida">
+                    <div class="row">
+                        <div class="col-6 col-md-5 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtNombre" class="bmd-label-floating">NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                            </div>
+                        </div>
+
+                        <div class="col-3 col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtNit" class="bmd-label-floating">NIT</label>
+                                <input type="text" class="form-control" id="txtNit" name="txtNit" required>
+                            </div>
+                        </div>
+
+                        <div class="col-3 col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtTelefono" class="bmd-label-floating">TELEFONO</label>
+                                <input type="text" class="form-control" id="txtTelefono" name="txtTelefono" required>
+                            </div>
+                        </div>
+
+                        <div class="col-3 col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtDireccion" class="bmd-label-floating">DIRECCIÓN</label>
+                                <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" required>
+                            </div>
+                        </div>
+
+                        <div class="col-3 col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtCorreo" class="bmd-label-floating">CORREO ELECTRÓNICO</label>
+                                <input type="text" class="form-control" id="txtCorreo" name="txtCorreo" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-link btn-deep-orange">Guardar</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

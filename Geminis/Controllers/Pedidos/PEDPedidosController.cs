@@ -60,7 +60,7 @@ namespace Geminis.Controllers.Pedidos
                 if (telefono != "")
                     condicion = " TELEFONO = '" + telefono + "'";
                 if (nit != "")
-                    condicion = " NIT = '" + nit + "'";
+                    condicion = " REPLACE(NIT,'-','') = '" + nit + "'";
 
                 string query = @"SELECT ID_CLIENTE, TELEFONO,NIT,NOMBRE_CLIENTE as nombre,DIRECCION FROM CLIENTE 
                                 WHERE " + condicion;
@@ -130,7 +130,7 @@ namespace Geminis.Controllers.Pedidos
 
                     obtenerDatos.ID_PEDIDO = siguientePedido;
                     obtenerDatos.ESTADO = "A";
-                    obtenerDatos.ID_ESTADO_PEDIDO = 2;
+                    obtenerDatos.ID_ESTADO_PEDIDO = 1;
                     obtenerDatos.FECHA_CREACION = Utils.ObtenerFechaServidor();
                     obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     obtenerDatos.ID_EMPLEADO = idEmpleado;

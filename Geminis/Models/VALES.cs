@@ -23,7 +23,5 @@ namespace Geminis.Models
         public string CREADO_POR { get; set; }
     
         public virtual EMPLEADO EMPLEADO { get; set; }
-        public virtual EMPLEADO EMPLEADO1 { get; set; }
-        public virtual EMPLEADO EMPLEADO2 { get; set; }
     }
 }

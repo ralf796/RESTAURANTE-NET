@@ -18,8 +18,6 @@ namespace Geminis.Models
         public PROVEEDOR()
         {
             this.PAGO_PROVEEDOR = new HashSet<PAGO_PROVEEDOR>();
-            this.PAGO_PROVEEDOR1 = new HashSet<PAGO_PROVEEDOR>();
-            this.PAGO_PROVEEDOR2 = new HashSet<PAGO_PROVEEDOR>();
         }
     
         public int ID_PROVEEDOR { get; set; }
@@ -33,9 +31,5 @@ namespace Geminis.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PAGO_PROVEEDOR> PAGO_PROVEEDOR { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PAGO_PROVEEDOR> PAGO_PROVEEDOR1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PAGO_PROVEEDOR> PAGO_PROVEEDOR2 { get; set; }
     }
 }

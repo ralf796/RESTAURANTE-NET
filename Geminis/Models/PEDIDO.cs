@@ -18,13 +18,9 @@ namespace Geminis.Models
         public PEDIDO()
         {
             this.COBRO = new HashSet<COBRO>();
-            this.COBRO1 = new HashSet<COBRO>();
-            this.COBRO2 = new HashSet<COBRO>();
             this.PAGO_MESA = new HashSet<PAGO_MESA>();
             this.PEDIDO_DETALLE = new HashSet<PEDIDO_DETALLE>();
             this.PEDIDO_FORMA_PAGO_DET = new HashSet<PEDIDO_FORMA_PAGO_DET>();
-            this.PEDIDO_FORMA_PAGO_DET1 = new HashSet<PEDIDO_FORMA_PAGO_DET>();
-            this.PEDIDO_FORMA_PAGO_DET2 = new HashSet<PEDIDO_FORMA_PAGO_DET>();
         }
     
         public int ID_PEDIDO { get; set; }
@@ -47,10 +43,6 @@ namespace Geminis.Models
         public virtual CLIENTE CLIENTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COBRO> COBRO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COBRO> COBRO1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COBRO> COBRO2 { get; set; }
         public virtual EMPLEADO EMPLEADO { get; set; }
         public virtual ESTADO_PEDIDO ESTADO_PEDIDO { get; set; }
         public virtual MESA MESA { get; set; }
@@ -61,9 +53,5 @@ namespace Geminis.Models
         public virtual ICollection<PEDIDO_DETALLE> PEDIDO_DETALLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PEDIDO_FORMA_PAGO_DET> PEDIDO_FORMA_PAGO_DET2 { get; set; }
     }
 }

@@ -18,8 +18,6 @@ namespace Geminis.Models
         public INVENTARIO_COCINA()
         {
             this.MENU_DETALLE = new HashSet<MENU_DETALLE>();
-            this.MENU_DETALLE1 = new HashSet<MENU_DETALLE>();
-            this.MENU_DETALLE2 = new HashSet<MENU_DETALLE>();
         }
     
         public int ID_INVENTARIO_COCINA { get; set; }
@@ -33,16 +31,8 @@ namespace Geminis.Models
         public Nullable<int> ID_BODEGA_GENERAL { get; set; }
     
         public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL { get; set; }
-        public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL1 { get; set; }
-        public virtual INVENTARIO_BODEGA_GENERAL INVENTARIO_BODEGA_GENERAL2 { get; set; }
         public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA { get; set; }
-        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA1 { get; set; }
-        public virtual UNIDAD_MEDIDA UNIDAD_MEDIDA2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MENU_DETALLE> MENU_DETALLE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU_DETALLE> MENU_DETALLE1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MENU_DETALLE> MENU_DETALLE2 { get; set; }
     }
 }

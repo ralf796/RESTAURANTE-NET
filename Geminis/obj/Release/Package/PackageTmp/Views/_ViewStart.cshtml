@@ -1,3 +1,17 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    string controllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+    string actionName = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    string url = "/" + controllerName + "/" + actionName;
+
+    if (url.ToLower() != "/Home/Index".ToLower() && url.ToLower() != "/Home/PageNotFound".ToLower())
+    {
+        var modulo = Geminis.Clases.Home.Instance.ObtenerModuloPorURL(url);
+        long? codigoModulo = null;
+        if (modulo != null)
+        {
+            codigoModulo = modulo.ID_MODULO;
+        }
+        Session["CodigoModulo"] = codigoModulo;
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }

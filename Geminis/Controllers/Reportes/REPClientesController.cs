@@ -16,7 +16,7 @@ namespace Geminis.Controllers.Reportes
             return View();
         }
 
-        public JsonResult GenerarReporte(int anio, int mes)
+        public JsonResult GenerarReporte(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido a
                                        INNER JOIN cliente b
                                                ON a.id_cliente = b.id_cliente
-                                WHERE  Year(a.fecha_creacion) * 100 + Month(a.fecha_creacion) = " + anio + @" * 100 + " + mes + @"
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
                                 GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                           a.id_cliente,
                                           a.nombre,
@@ -48,8 +48,8 @@ namespace Geminis.Controllers.Reportes
                 return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
-        
-        public JsonResult GenerarGrafica(int anio, int mes)
+
+        public JsonResult GenerarGrafica(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM pedido a
                                 INNER JOIN cliente b
                                   ON a.id_cliente = b.id_cliente
-                                WHERE YEAR(a.fecha_creacion) * 100 + MONTH(a.fecha_creacion) = 2022 * 100 + 5
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
                                 GROUP BY a.nombre,
                                          b.telefono,
                                          b.nit,
