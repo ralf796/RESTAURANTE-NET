@@ -139,7 +139,7 @@ namespace Geminis.Controllers.Pedidos
         {
             try
             {
-                string query = "SELECT ID_TIPO_MENU, NOMBRE FROM TIPO_MENU WHERE ESTADO='A'";
+                string query = "SELECT ID_TIPO_MENU, NOMBRE FROM TIPO_MENU WHERE ESTADO='A' AND ID_TIPO_MENU != 11";
                 var lista = db.Database.SqlQuery<TIPO_MENU>(query).ToList();
                 return Json(new { ESTADO = 1, DATA = lista }, JsonRequestBehavior.AllowGet);
             }
@@ -163,6 +163,20 @@ namespace Geminis.Controllers.Pedidos
                 return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
+        public JsonResult GetBebidas()
+        {
+            try
+            {
+                string query = @"SELECT ID_MENU, NOMBRE,PRECIO FROM MENU WHERE ESTADO = 'A' AND ID_TIPO_MENU = 11";
+                var lista = db.Database.SqlQuery<MENU>(query).ToList();
+                return Json(new { ESTADO = 1, DATA = lista }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         public JsonResult GetPedidos()
         {
             try

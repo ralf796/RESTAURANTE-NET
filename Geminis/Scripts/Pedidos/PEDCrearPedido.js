@@ -5,10 +5,12 @@
 
     $('#btnAbrirModalCrearPedido').on('click', function (e) {
         e.preventDefault();
+        //$('#modalXL').modal('show');
         AbrirModalPedido();
     });
 
     function fillAllInputs() {
+        selBebidas
         $(".formValida .bmd-form-group").each(function () {
             $(this).addClass("is-filled");
         });
@@ -132,6 +134,33 @@
             });
         });
     }
+    function GetBebidas() {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'GET',
+                url: '/PEDCrearPedido/GetBebidas',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: {},
+                cache: false,
+                success: function (data) {
+                    var traerDatos = data["DATA"];
+                    $('#selBebidas').empty();
+                    traerDatos.forEach(function (dato) {
+                        $('#selBebidas').append('<option data-precio="' + dato.PRECIO + '" value="' + dato.ID_MENU + '">' + dato.NOMBRE + ' - Q.' + dato.PRECIO + '</option>');
+                    });
+                    $('#selBebidas').selectpicker();
+                    $('#selBebidas').selectpicker('refresh');
+
+                    resolve(1);
+                },
+                error: function (jqXHR, ex) {
+                    getErrorMessage(jqXHR, ex);
+                    reject(ex);
+                }
+            });
+        });
+    }
     function GetMenuEditar(idTipoMenu) {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -164,6 +193,15 @@
         var subtotal = parseFloat(cantidad) * parseFloat(precio);
         var eliminarDetalle = '<a title="Eliminar detalle" class="btn btn-link btn-danger QuitarDetalle" style="margin: 0 0 !important"><i class="material-icons">close</i></a>';
 
+        if (idproducto == 0 || idproducto == '' || precio == '' || precio == 0) {
+            ShowShortMessage('warning', '', 'Debe seleccionar un producto.');
+            return;
+        }
+        else if (cantidad == 0 || cantidad == '') {
+            ShowShortMessage('warning', '', 'Debe ingresar cantidad.');
+            return;
+        }
+
         tableDetalles.row.add([
             cantidad,
             idproducto,
@@ -176,10 +214,16 @@
         $('#txtProductoCantidad').val('');
         $('#txtProductoPrecio').val('');
         $('#txtObservaciones').val('');
-        $('#selMenu').empty();
+        $('#selMenu').val(0);
         $('#selMenu').selectpicker();
         $('#selMenu').selectpicker('refresh');
+        $('#selBebidas').val(0);
+        $('#selBebidas').selectpicker();
+        $('#selBebidas').selectpicker('refresh');
+
         GetTipoMenu();
+        $('#modalCrearDetalleProducto').modal('hide');
+        ActualizarTotalPedido();
     }
     function AgregarProductoEditar(cantidad, idproducto, producto, precio, observaciones) {
         var subtotal = parseFloat(cantidad) * parseFloat(precio);
@@ -226,6 +270,7 @@
                         GetMesas();
                         $('#modalCrearRefactura').modal('show');
                         GetTipoMenu();
+                        GetBebidas();
                     }
                     else {
                         showNotification('top', 'right', 'warning', 'No hay mesas disponibles para crear un pedido.', 'warning');
@@ -267,9 +312,7 @@
 
     $('#btnBuscarProducto').on('click', function (e) {
         e.preventDefault();
-        if ($('#formRefactura').valid()) {
-            GetTipoMenu();
-        }
+        GetTipoMenu();
     });
     $('#selCategoria').on('change', function (e) {
         e.preventDefault();
@@ -280,14 +323,36 @@
         e.preventDefault();
         var precio = $('#selMenu option:selected').attr('data-precio');
         $("#txtProductoPrecio").val(precio);
+        $("#selBebidas").val(0);
+        $('#selBebidas').selectpicker();
+        $('#selBebidas').selectpicker('refresh');
+    });
+    $('#selBebidas').on('change', function (e) {
+        e.preventDefault();
+        var precio = $('#selBebidas option:selected').attr('data-precio');
+        $("#txtProductoPrecio").val(precio);
+        $("#selMenu").val(-0);
+        $('#selMenu').selectpicker();
+        $('#selMenu').selectpicker('refresh');
     });
     $('#btnAgregarProducto').on('click', function (e) {
         e.preventDefault();
-        //if ($('#formProducto').valid()) {
-            AgregarProducto($('#txtProductoCantidad').val(), $('#selMenu').val(), $("#selMenu option:selected").text(), $('#txtProductoPrecio').val().replace(",", ""), $('#txtObservaciones').val())
-            $('#modalCrearDetalleProducto').modal('hide');
-            ActualizarTotalPedido();
-        //}
+        var cantidad = $('#txtProductoCantidad').val();
+        var idMenu = $('#selMenu').val();
+        var nombreMenu = $("#selMenu option:selected").text();
+        var precio = $('#txtProductoPrecio').val().replace(",", "");
+        var observaciones = $('#txtObservaciones').val();
+
+        if ($('#selBebidas').val() != '' && $('#selBebidas').val() != '0')
+            idMenu = $('#selBebidas').val();
+
+        AgregarProducto(
+            cantidad,
+            idMenu,
+            nombreMenu,
+            precio,
+            observaciones
+        );
     });
 
     var tableDetalles = $('#tblDetallesPedido').DataTable({
@@ -708,7 +773,7 @@
                             icon: "food",
                             onClick: function (e) {
                                 var valor = e.row.data['ID_PEDIDO'];
-                                
+
                             }
                         }
                     ]
@@ -788,7 +853,7 @@
                 }
             }
         });
-    
+
     }
 
 
