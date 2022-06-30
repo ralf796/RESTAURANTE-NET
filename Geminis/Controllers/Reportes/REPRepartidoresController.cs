@@ -17,7 +17,7 @@ namespace Geminis.Controllers.Reportes
             return View();
         }
 
-        public JsonResult GenerarReporte(DateTime fechaInicial, DateTime fechaFinal)
+        public JsonResult GenerarReporte(string fechaInicial, string fechaFinal)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN empleado B
                                                ON A.repartidor = B.id_empleado
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal + @"'
                                 GROUP  BY A.id_empleado,
                                           B.nombre,
                                           Format(A.fecha_creacion, 'dd/MM/yyyy')
@@ -40,7 +40,7 @@ namespace Geminis.Controllers.Reportes
                 return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
-        public JsonResult GenerarGrafica(DateTime fechaInicial, DateTime fechaFinal)
+        public JsonResult GenerarGrafica(string fechaInicial, string fechaFinal)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN empleado B
                                                ON A.repartidor = B.id_empleado
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial+ "' and '" + fechaFinal+ @"'
                                 GROUP  BY B.nombre
                                 ORDER  BY b.nombre ASC ";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();

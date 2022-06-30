@@ -16,7 +16,7 @@ namespace Geminis.Controllers.Reportes
             return View();
         }
 
-        public JsonResult GenerarReporte(DateTime fechaInicial, DateTime fechaFinal)
+        public JsonResult GenerarReporte(string fechaInicial, string fechaFinal)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido a
                                        INNER JOIN cliente b
                                                ON a.id_cliente = b.id_cliente
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal + @"'
                                 GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                           a.id_cliente,
                                           a.nombre,
@@ -49,7 +49,7 @@ namespace Geminis.Controllers.Reportes
             }
         }
 
-        public JsonResult GenerarGrafica(DateTime fechaInicial, DateTime fechaFinal)
+        public JsonResult GenerarGrafica(string fechaInicial, string fechaFinal)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace Geminis.Controllers.Reportes
                                 FROM pedido a
                                 INNER JOIN cliente b
                                   ON a.id_cliente = b.id_cliente
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal+ @"'
                                 GROUP BY a.nombre,
                                          b.telefono,
                                          b.nit,

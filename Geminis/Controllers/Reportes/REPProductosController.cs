@@ -17,7 +17,7 @@ namespace Geminis.Controllers.Reportes
             return View();
         }
 
-        public JsonResult GenerarReporte(DateTime fechaInicial, DateTime fechaFinal)
+        public JsonResult GenerarReporte(string fechaInicial, string fechaFinal)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Geminis.Controllers.Reportes
                                                    ON c.id_menu = b.id_menu
                                            INNER JOIN tipo_menu D
                                                    ON D.id_tipo_menu = C.id_tipo_menu
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial+ "' and '" + fechaFinal + @"'
                                     GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                               D.nombre,
                                               C.nombre  
@@ -47,7 +47,7 @@ namespace Geminis.Controllers.Reportes
             }
         }
 
-        public JsonResult GenerarGrafica(DateTime fechaInicial, DateTime fechaFinal)
+        public JsonResult GenerarGrafica(string fechaInicial, string fechaFinal)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Geminis.Controllers.Reportes
                                                ON c.id_menu = b.id_menu
                                        INNER JOIN tipo_menu D
                                                ON D.id_tipo_menu = C.id_tipo_menu
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial.ToString("yyyy-MM-dd") + "' and '" + fechaFinal.ToString("yyyy-MM-dd") + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal + @"'
                                 GROUP  BY C.nombre
                                 ORDER  BY 3";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
