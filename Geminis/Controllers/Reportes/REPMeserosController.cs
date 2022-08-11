@@ -20,6 +20,9 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
+
                 string query = @" SELECT A.id_empleado ID_EMPLEADO,
                                        Count(*)                               PEDIDOS,
                                        B.nombre NOMBRE,
@@ -27,7 +30,8 @@ namespace Geminis.Controllers.Reportes
                                 FROM   pedido A
                                        INNER JOIN empleado B
                                                ON A.id_empleado = B.id_empleado
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial+ "' and '" + fechaFinal+ @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
                                 GROUP BY A.id_empleado,
                                           B.nombre,
                                           Format(A.fecha_creacion, 'dd/MM/yyyy')
@@ -46,12 +50,15 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
                 string query = @"SELECT Count(*) PEDIDOS,
                                        B.nombre NOMBRE
                                 FROM   pedido A
                                        INNER JOIN empleado B
                                                ON A.id_empleado = B.id_empleado
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal+ @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
                                 GROUP  BY B.nombre
                                 ORDER  BY b.nombre DESC  ";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();

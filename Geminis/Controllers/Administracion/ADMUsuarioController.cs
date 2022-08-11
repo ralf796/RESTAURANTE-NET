@@ -109,7 +109,18 @@ namespace Geminis.Controllers.Administracion
                     obtenerDatos.USUARIO1 = obtenerDatos.USUARIO1;
                     db.USUARIO.Add(obtenerDatos);
                     db.SaveChanges();
+
+
+                    string query5 = @"INSERT INTO PERMISO_PANTALLA
+                                        select 1,id_pantalla,'" + obtenerDatos.USUARIO1 + @"'
+                                        FROM PANTALLA
+                                        WHERE ID_MODULO = " + obtenerDatos.ID_MODULO;
+                    db.Database.ExecuteSqlCommand(query5);
+
                     transaccion.Commit();
+
+
+
                     return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception ex)
@@ -126,7 +137,7 @@ namespace Geminis.Controllers.Administracion
             {
                 try
                 {
-                    string query = @"UPDATE USUARIO SET CONTRASEÑA='"+ new Encrypt().EncryptString(contra) + "' WHERE USUARIO='"+usuario+"'";
+                    string query = @"UPDATE USUARIO SET CONTRASEÑA='" + new Encrypt().EncryptString(contra) + "' WHERE USUARIO='" + usuario + "'";
                     db.Database.ExecuteSqlCommand(query);
                     db.SaveChanges();
                     transaccion.Commit();

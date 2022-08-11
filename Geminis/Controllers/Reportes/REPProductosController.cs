@@ -21,6 +21,8 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
                 string query = @"  SELECT Format(A.fecha_creacion, 'dd/MM/yyyy') AS FECHA,
                                            D.nombre                               AS CATEGORIA,
                                            C.nombre                               NOMBRE,
@@ -33,7 +35,8 @@ namespace Geminis.Controllers.Reportes
                                                    ON c.id_menu = b.id_menu
                                            INNER JOIN tipo_menu D
                                                    ON D.id_tipo_menu = C.id_tipo_menu
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial+ "' and '" + fechaFinal + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
                                     GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                               D.nombre,
                                               C.nombre  
@@ -51,6 +54,8 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
                 string query = @" SELECT C.nombre        NOMBRE,
                                        Sum(b.cantidad) AS CANTIDAD,
                                        Sum(b.subtotal) AS TOTAL
@@ -61,7 +66,8 @@ namespace Geminis.Controllers.Reportes
                                                ON c.id_menu = b.id_menu
                                        INNER JOIN tipo_menu D
                                                ON D.id_tipo_menu = C.id_tipo_menu
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
                                 GROUP  BY C.nombre
                                 ORDER  BY 3";
                 var lista = db.Database.SqlQuery<REPORTE>(query).ToList();

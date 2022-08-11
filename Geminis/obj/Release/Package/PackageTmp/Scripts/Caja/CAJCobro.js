@@ -182,7 +182,7 @@
                     buttons: [
                         {
                             icon: "money",
-                            hint:"Cobrar",
+                            hint:"Ingresar dinero",
                             onClick: function (e) {
                                 $('#modalCobro').modal('show');
                                 $('#hfIdCobro').val((e.row.data['ID_PEDIDO']));
@@ -191,13 +191,13 @@
                             }
                         },
                         {
-                            icon: "todo",
-                            hint: "Aceptar pedido",
-                            onClick: function (e) {
-                                $('#hfIdCobro').val((e.row.data['ID_PEDIDO']));
-                                $('#txtTotalPedido').val((e.row.data['TOTAL']).toFixed(2));
-                                GetFormaPago();
-                            }
+                            //icon: "todo",
+                            //hint: "Aceptar pedido",
+                            //onClick: function (e) {
+                            //    $('#hfIdCobro').val((e.row.data['ID_PEDIDO']));
+                            //    $('#txtTotalPedido').val((e.row.data['TOTAL']).toFixed(2));
+                            //    GetFormaPago();
+                            //}
                         }
                     ]
                 }

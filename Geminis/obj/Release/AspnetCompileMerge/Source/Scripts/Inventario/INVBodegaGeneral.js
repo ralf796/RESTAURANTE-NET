@@ -128,7 +128,7 @@
                 // botones editar, eliminar cargar producto
                 {
                     type: "buttons",
-                    width: 100,
+                    width: 150,
                     alignment: "center",
                     buttons: [
                         {

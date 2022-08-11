@@ -21,13 +21,16 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
                 string query = @"SELECT Format(A.fecha_creacion, 'dd/MM/yyyy') FECHA,
                                        B.nombre TIPO_PEDIDO,
                                        Sum(A.total) TOTAL
                                 FROM   pedido A
                                        INNER JOIN tipo_pedido B
                                                ON A.id_tipo_pedido = B.id_tipo_pedido
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
                                 GROUP  BY Format(A.fecha_creacion, 'dd/MM/yyyy'),
                                           A.id_tipo_pedido,
                                           B.nombre 
@@ -44,12 +47,15 @@ namespace Geminis.Controllers.Reportes
         {
             try
             {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
                 string query = @"SELECT B.nombre                               TIPO_PEDIDO,
                                        Sum(A.total)                           TOTAL
                                 FROM   pedido A
                                        INNER JOIN tipo_pedido B
                                                ON A.id_tipo_pedido = B.id_tipo_pedido
-                                WHERE CONVERT(varchar,a.fecha_creacion,21) between  '" + fechaInicial + "' and '" + fechaFinal + @"'
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
                                 GROUP  BY A.id_tipo_pedido,
                                           B.nombre
                                 ORDER  BY 1 ";

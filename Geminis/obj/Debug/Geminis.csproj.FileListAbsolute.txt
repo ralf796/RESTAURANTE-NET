@@ -259,8 +259,8 @@ C:\RESTAURANTE-NET\Geminis\bin\es\System.Web.Webpages.Deployment.resources.dll
 C:\RESTAURANTE-NET\Geminis\bin\es\System.Web.Webpages.Razor.resources.dll
 C:\RESTAURANTE-NET\Geminis\bin\es\System.Web.Helpers.resources.dll
 C:\RESTAURANTE-NET\Geminis\bin\es\System.Web.Mvc.resources.dll
+C:\RESTAURANTE-NET\Geminis\obj\Debug\Geminis.csproj.AssemblyReference.cache
 C:\RESTAURANTE-NET\Geminis\obj\Debug\Geminis.csproj.CoreCompileInputs.cache
 C:\RESTAURANTE-NET\Geminis\obj\Debug\Geminis.csproj.CopyComplete
 C:\RESTAURANTE-NET\Geminis\obj\Debug\Geminis.dll
 C:\RESTAURANTE-NET\Geminis\obj\Debug\Geminis.pdb
-C:\RESTAURANTE-NET\Geminis\obj\Debug\Geminis.csproj.AssemblyReference.cache

@@ -428,7 +428,7 @@
     <Property Name="ESTADO" Type="char" MaxLength="1" />
     <Property Name="CREADO_POR" Type="varchar" MaxLength="25" />
   </EntityType>
-  <Association Name="FK__BITACORA___ID_BO__619B8048">
+  <Association Name="FK__BITACORA___ID_BO__6754599E">
     <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
     <End Role="BITACORA_COCINA" Type="Self.BITACORA_COCINA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -452,7 +452,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__COBRO__ID_CORTE__1CBC4616">
+  <Association Name="FK__COBRO__ID_CORTE__693CA210">
     <End Role="CORTE" Type="Self.CORTE" Multiplicity="0..1" />
     <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -464,7 +464,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__COBRO__ID_PEDIDO__123EB7A3">
+  <Association Name="FK__COBRO__ID_PEDIDO__6A30C649">
     <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
     <End Role="COBRO" Type="Self.COBRO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -476,7 +476,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__COBRO_DET__ID_CO__17F790F9">
+  <Association Name="FK__COBRO_DET__ID_CO__6B24EA82">
     <End Role="COBRO" Type="Self.COBRO" Multiplicity="0..1" />
     <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -488,7 +488,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__COBRO_DET__ID_PE__18EBB532">
+  <Association Name="FK__COBRO_DET__ID_PE__6C190EBB">
     <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
     <End Role="COBRO_DETALLE" Type="Self.COBRO_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -500,7 +500,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__EMPLEADO__ID_TIP__6383C8BA">
+  <Association Name="FK__EMPLEADO__ID_TIP__6D0D32F4">
     <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
     <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -512,7 +512,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FACTURA_D__ID_FA__6477ECF3">
+  <Association Name="FK__FACTURA_D__ID_FA__6E01572D">
     <End Role="FACTURA_ENCABEZADO" Type="Self.FACTURA_ENCABEZADO" Multiplicity="1" />
     <End Role="FACTURA_DETALLE" Type="Self.FACTURA_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -536,7 +536,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__INVENTARI__ID_BO__6754599E">
+  <Association Name="FK__INVENTARI__ID_BO__70DDC3D8">
     <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="0..1" />
     <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -548,7 +548,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__INVENTARI__ID_UN__66603565">
+  <Association Name="FK__INVENTARI__ID_UN__6FE99F9F">
     <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
     <End Role="INVENTARIO_BODEGA_GENERAL" Type="Self.INVENTARIO_BODEGA_GENERAL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -560,7 +560,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__INVENTARI__ID_UN__68487DD7">
+  <Association Name="FK__INVENTARI__ID_UN__71D1E811">
     <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="0..1" />
     <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -572,7 +572,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MENU__ID_TIPO_ME__693CA210">
+  <Association Name="FK__MENU__ID_TIPO_ME__72C60C4A">
     <End Role="TIPO_MENU" Type="Self.TIPO_MENU" Multiplicity="1" />
     <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
     <ReferentialConstraint>
@@ -584,7 +584,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MENU_DETA__ID_IN__6A30C649">
+  <Association Name="FK__MENU_DETA__ID_IN__73BA3083">
     <End Role="INVENTARIO_COCINA" Type="Self.INVENTARIO_COCINA" Multiplicity="0..1" />
     <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -596,7 +596,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MENU_DETA__ID_ME__6B24EA82">
+  <Association Name="FK__MENU_DETA__ID_ME__74AE54BC">
     <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
     <End Role="MENU_DETALLE" Type="Self.MENU_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -608,7 +608,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PAGO_MESA__ID_ME__6C190EBB">
+  <Association Name="FK__PAGO_MESA__ID_ME__75A278F5">
     <End Role="MESA" Type="Self.MESA" Multiplicity="1" />
     <End Role="PAGO_MESA" Type="Self.PAGO_MESA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -632,7 +632,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PAGO_PROV__ID_BA__6E01572D">
+  <Association Name="FK__PAGO_PROV__ID_BA__778AC167">
     <End Role="BANCO" Type="Self.BANCO" Multiplicity="1" />
     <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
     <ReferentialConstraint>
@@ -644,7 +644,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PAGO_PROV__ID_PR__6EF57B66">
+  <Association Name="FK__PAGO_PROV__ID_PR__787EE5A0">
     <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="1" />
     <End Role="PAGO_PROVEEDOR" Type="Self.PAGO_PROVEEDOR" Multiplicity="*" />
     <ReferentialConstraint>
@@ -656,7 +656,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PANTALLA__ID_MOD__6FE99F9F">
+  <Association Name="FK__PANTALLA__ID_MOD__797309D9">
     <End Role="MODULO" Type="Self.MODULO" Multiplicity="1" />
     <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -728,7 +728,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PEDIDO_DE__ID_ME__75A278F5">
+  <Association Name="FK__PEDIDO_DE__ID_ME__7F2BE32F">
     <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
     <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -752,7 +752,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PEDIDO_DE__ID_PR__778AC167">
+  <Association Name="FK__PEDIDO_DE__ID_PR__01142BA1">
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
     <End Role="PEDIDO_DETALLE" Type="Self.PEDIDO_DETALLE" Multiplicity="*" />
     <ReferentialConstraint>
@@ -764,7 +764,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PEDIDO_FO__ID_PE__787EE5A0">
+  <Association Name="FK__PEDIDO_FO__ID_PE__02084FDA">
     <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="0..1" />
     <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
     <ReferentialConstraint>
@@ -776,7 +776,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PEDIDO_FO__ID_PE__797309D9">
+  <Association Name="FK__PEDIDO_FO__ID_PE__02FC7413">
     <End Role="PEDIDO_FORMA_PAGO" Type="Self.PEDIDO_FORMA_PAGO" Multiplicity="0..1" />
     <End Role="PEDIDO_FORMA_PAGO_DET" Type="Self.PEDIDO_FORMA_PAGO_DET" Multiplicity="*" />
     <ReferentialConstraint>
@@ -788,7 +788,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PERMISO_P__ID_PA__7A672E12">
+  <Association Name="FK__PERMISO_P__ID_PA__03F0984C">
     <End Role="PANTALLA" Type="Self.PANTALLA" Multiplicity="0..1" />
     <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -800,7 +800,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PERMISO_P__ID_RO__7B5B524B">
+  <Association Name="FK__PERMISO_P__ID_RO__04E4BC85">
     <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
     <End Role="PERMISO_PANTALLA" Type="Self.PERMISO_PANTALLA" Multiplicity="*" />
     <ReferentialConstraint>
@@ -812,7 +812,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PRODUCTO__ID_TIP__7C4F7684">
+  <Association Name="FK__PRODUCTO__ID_TIP__05D8E0BE">
     <End Role="TIPO_PRODUCTO" Type="Self.TIPO_PRODUCTO" Multiplicity="1" />
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -824,7 +824,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__PRODUCTO__ID_UNI__7D439ABD">
+  <Association Name="FK__PRODUCTO__ID_UNI__06CD04F7">
     <End Role="UNIDAD_MEDIDA" Type="Self.UNIDAD_MEDIDA" Multiplicity="1" />
     <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -836,7 +836,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__USUARIO__ID_EMPL__7E37BEF6">
+  <Association Name="FK__USUARIO__ID_EMPL__07C12930">
     <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
     <ReferentialConstraint>
@@ -848,7 +848,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VALES__ID_EMPLEA__7F2BE32F">
+  <Association Name="FK__VALES__ID_EMPLEA__08B54D69">
     <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
     <End Role="VALES" Type="Self.VALES" Multiplicity="*" />
     <ReferentialConstraint>
@@ -897,7 +897,7 @@
     <EntitySet Name="UNIDAD_MEDIDA" EntityType="Self.UNIDAD_MEDIDA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VALES" EntityType="Self.VALES" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BITACORA___ID_BO__619B8048" Association="Self.FK__BITACORA___ID_BO__619B8048">
+    <AssociationSet Name="FK__BITACORA___ID_BO__6754599E" Association="Self.FK__BITACORA___ID_BO__6754599E">
       <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
       <End Role="BITACORA_COCINA" EntitySet="BITACORA_COCINA" />
     </AssociationSet>
@@ -905,27 +905,27 @@
       <End Role="CLIENTE" EntitySet="CLIENTE" />
       <End Role="CLIENTE_DATOS_ADICIONALES" EntitySet="CLIENTE_DATOS_ADICIONALES" />
     </AssociationSet>
-    <AssociationSet Name="FK__COBRO__ID_CORTE__1CBC4616" Association="Self.FK__COBRO__ID_CORTE__1CBC4616">
+    <AssociationSet Name="FK__COBRO__ID_CORTE__693CA210" Association="Self.FK__COBRO__ID_CORTE__693CA210">
       <End Role="CORTE" EntitySet="CORTE" />
       <End Role="COBRO" EntitySet="COBRO" />
     </AssociationSet>
-    <AssociationSet Name="FK__COBRO__ID_PEDIDO__123EB7A3" Association="Self.FK__COBRO__ID_PEDIDO__123EB7A3">
+    <AssociationSet Name="FK__COBRO__ID_PEDIDO__6A30C649" Association="Self.FK__COBRO__ID_PEDIDO__6A30C649">
       <End Role="PEDIDO" EntitySet="PEDIDO" />
       <End Role="COBRO" EntitySet="COBRO" />
     </AssociationSet>
-    <AssociationSet Name="FK__COBRO_DET__ID_CO__17F790F9" Association="Self.FK__COBRO_DET__ID_CO__17F790F9">
+    <AssociationSet Name="FK__COBRO_DET__ID_CO__6B24EA82" Association="Self.FK__COBRO_DET__ID_CO__6B24EA82">
       <End Role="COBRO" EntitySet="COBRO" />
       <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__COBRO_DET__ID_PE__18EBB532" Association="Self.FK__COBRO_DET__ID_PE__18EBB532">
+    <AssociationSet Name="FK__COBRO_DET__ID_PE__6C190EBB" Association="Self.FK__COBRO_DET__ID_PE__6C190EBB">
       <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
       <End Role="COBRO_DETALLE" EntitySet="COBRO_DETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__EMPLEADO__ID_TIP__6383C8BA" Association="Self.FK__EMPLEADO__ID_TIP__6383C8BA">
+    <AssociationSet Name="FK__EMPLEADO__ID_TIP__6D0D32F4" Association="Self.FK__EMPLEADO__ID_TIP__6D0D32F4">
       <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
       <End Role="EMPLEADO" EntitySet="EMPLEADO" />
     </AssociationSet>
-    <AssociationSet Name="FK__FACTURA_D__ID_FA__6477ECF3" Association="Self.FK__FACTURA_D__ID_FA__6477ECF3">
+    <AssociationSet Name="FK__FACTURA_D__ID_FA__6E01572D" Association="Self.FK__FACTURA_D__ID_FA__6E01572D">
       <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
       <End Role="FACTURA_DETALLE" EntitySet="FACTURA_DETALLE" />
     </AssociationSet>
@@ -933,31 +933,31 @@
       <End Role="CLIENTE" EntitySet="CLIENTE" />
       <End Role="FACTURA_ENCABEZADO" EntitySet="FACTURA_ENCABEZADO" />
     </AssociationSet>
-    <AssociationSet Name="FK__INVENTARI__ID_BO__6754599E" Association="Self.FK__INVENTARI__ID_BO__6754599E">
+    <AssociationSet Name="FK__INVENTARI__ID_BO__70DDC3D8" Association="Self.FK__INVENTARI__ID_BO__70DDC3D8">
       <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
       <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
     </AssociationSet>
-    <AssociationSet Name="FK__INVENTARI__ID_UN__66603565" Association="Self.FK__INVENTARI__ID_UN__66603565">
+    <AssociationSet Name="FK__INVENTARI__ID_UN__6FE99F9F" Association="Self.FK__INVENTARI__ID_UN__6FE99F9F">
       <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
       <End Role="INVENTARIO_BODEGA_GENERAL" EntitySet="INVENTARIO_BODEGA_GENERAL" />
     </AssociationSet>
-    <AssociationSet Name="FK__INVENTARI__ID_UN__68487DD7" Association="Self.FK__INVENTARI__ID_UN__68487DD7">
+    <AssociationSet Name="FK__INVENTARI__ID_UN__71D1E811" Association="Self.FK__INVENTARI__ID_UN__71D1E811">
       <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
       <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
     </AssociationSet>
-    <AssociationSet Name="FK__MENU__ID_TIPO_ME__693CA210" Association="Self.FK__MENU__ID_TIPO_ME__693CA210">
+    <AssociationSet Name="FK__MENU__ID_TIPO_ME__72C60C4A" Association="Self.FK__MENU__ID_TIPO_ME__72C60C4A">
       <End Role="TIPO_MENU" EntitySet="TIPO_MENU" />
       <End Role="MENU" EntitySet="MENU" />
     </AssociationSet>
-    <AssociationSet Name="FK__MENU_DETA__ID_IN__6A30C649" Association="Self.FK__MENU_DETA__ID_IN__6A30C649">
+    <AssociationSet Name="FK__MENU_DETA__ID_IN__73BA3083" Association="Self.FK__MENU_DETA__ID_IN__73BA3083">
       <End Role="INVENTARIO_COCINA" EntitySet="INVENTARIO_COCINA" />
       <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__MENU_DETA__ID_ME__6B24EA82" Association="Self.FK__MENU_DETA__ID_ME__6B24EA82">
+    <AssociationSet Name="FK__MENU_DETA__ID_ME__74AE54BC" Association="Self.FK__MENU_DETA__ID_ME__74AE54BC">
       <End Role="MENU" EntitySet="MENU" />
       <End Role="MENU_DETALLE" EntitySet="MENU_DETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__PAGO_MESA__ID_ME__6C190EBB" Association="Self.FK__PAGO_MESA__ID_ME__6C190EBB">
+    <AssociationSet Name="FK__PAGO_MESA__ID_ME__75A278F5" Association="Self.FK__PAGO_MESA__ID_ME__75A278F5">
       <End Role="MESA" EntitySet="MESA" />
       <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
     </AssociationSet>
@@ -965,15 +965,15 @@
       <End Role="PEDIDO" EntitySet="PEDIDO" />
       <End Role="PAGO_MESA" EntitySet="PAGO_MESA" />
     </AssociationSet>
-    <AssociationSet Name="FK__PAGO_PROV__ID_BA__6E01572D" Association="Self.FK__PAGO_PROV__ID_BA__6E01572D">
+    <AssociationSet Name="FK__PAGO_PROV__ID_BA__778AC167" Association="Self.FK__PAGO_PROV__ID_BA__778AC167">
       <End Role="BANCO" EntitySet="BANCO" />
       <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
     </AssociationSet>
-    <AssociationSet Name="FK__PAGO_PROV__ID_PR__6EF57B66" Association="Self.FK__PAGO_PROV__ID_PR__6EF57B66">
+    <AssociationSet Name="FK__PAGO_PROV__ID_PR__787EE5A0" Association="Self.FK__PAGO_PROV__ID_PR__787EE5A0">
       <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
       <End Role="PAGO_PROVEEDOR" EntitySet="PAGO_PROVEEDOR" />
     </AssociationSet>
-    <AssociationSet Name="FK__PANTALLA__ID_MOD__6FE99F9F" Association="Self.FK__PANTALLA__ID_MOD__6FE99F9F">
+    <AssociationSet Name="FK__PANTALLA__ID_MOD__797309D9" Association="Self.FK__PANTALLA__ID_MOD__797309D9">
       <End Role="MODULO" EntitySet="MODULO" />
       <End Role="PANTALLA" EntitySet="PANTALLA" />
     </AssociationSet>
@@ -997,7 +997,7 @@
       <End Role="TIPO_PEDIDO" EntitySet="TIPO_PEDIDO" />
       <End Role="PEDIDO" EntitySet="PEDIDO" />
     </AssociationSet>
-    <AssociationSet Name="FK__PEDIDO_DE__ID_ME__75A278F5" Association="Self.FK__PEDIDO_DE__ID_ME__75A278F5">
+    <AssociationSet Name="FK__PEDIDO_DE__ID_ME__7F2BE32F" Association="Self.FK__PEDIDO_DE__ID_ME__7F2BE32F">
       <End Role="MENU" EntitySet="MENU" />
       <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
     </AssociationSet>
@@ -1005,39 +1005,39 @@
       <End Role="PEDIDO" EntitySet="PEDIDO" />
       <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__PEDIDO_DE__ID_PR__778AC167" Association="Self.FK__PEDIDO_DE__ID_PR__778AC167">
+    <AssociationSet Name="FK__PEDIDO_DE__ID_PR__01142BA1" Association="Self.FK__PEDIDO_DE__ID_PR__01142BA1">
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
       <End Role="PEDIDO_DETALLE" EntitySet="PEDIDO_DETALLE" />
     </AssociationSet>
-    <AssociationSet Name="FK__PEDIDO_FO__ID_PE__787EE5A0" Association="Self.FK__PEDIDO_FO__ID_PE__787EE5A0">
+    <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02084FDA" Association="Self.FK__PEDIDO_FO__ID_PE__02084FDA">
       <End Role="PEDIDO" EntitySet="PEDIDO" />
       <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
     </AssociationSet>
-    <AssociationSet Name="FK__PEDIDO_FO__ID_PE__797309D9" Association="Self.FK__PEDIDO_FO__ID_PE__797309D9">
+    <AssociationSet Name="FK__PEDIDO_FO__ID_PE__02FC7413" Association="Self.FK__PEDIDO_FO__ID_PE__02FC7413">
       <End Role="PEDIDO_FORMA_PAGO" EntitySet="PEDIDO_FORMA_PAGO" />
       <End Role="PEDIDO_FORMA_PAGO_DET" EntitySet="PEDIDO_FORMA_PAGO_DET" />
     </AssociationSet>
-    <AssociationSet Name="FK__PERMISO_P__ID_PA__7A672E12" Association="Self.FK__PERMISO_P__ID_PA__7A672E12">
+    <AssociationSet Name="FK__PERMISO_P__ID_PA__03F0984C" Association="Self.FK__PERMISO_P__ID_PA__03F0984C">
       <End Role="PANTALLA" EntitySet="PANTALLA" />
       <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
     </AssociationSet>
-    <AssociationSet Name="FK__PERMISO_P__ID_RO__7B5B524B" Association="Self.FK__PERMISO_P__ID_RO__7B5B524B">
+    <AssociationSet Name="FK__PERMISO_P__ID_RO__04E4BC85" Association="Self.FK__PERMISO_P__ID_RO__04E4BC85">
       <End Role="ROL" EntitySet="ROL" />
       <End Role="PERMISO_PANTALLA" EntitySet="PERMISO_PANTALLA" />
     </AssociationSet>
-    <AssociationSet Name="FK__PRODUCTO__ID_TIP__7C4F7684" Association="Self.FK__PRODUCTO__ID_TIP__7C4F7684">
+    <AssociationSet Name="FK__PRODUCTO__ID_TIP__05D8E0BE" Association="Self.FK__PRODUCTO__ID_TIP__05D8E0BE">
       <End Role="TIPO_PRODUCTO" EntitySet="TIPO_PRODUCTO" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK__PRODUCTO__ID_UNI__7D439ABD" Association="Self.FK__PRODUCTO__ID_UNI__7D439ABD">
+    <AssociationSet Name="FK__PRODUCTO__ID_UNI__06CD04F7" Association="Self.FK__PRODUCTO__ID_UNI__06CD04F7">
       <End Role="UNIDAD_MEDIDA" EntitySet="UNIDAD_MEDIDA" />
       <End Role="PRODUCTO" EntitySet="PRODUCTO" />
     </AssociationSet>
-    <AssociationSet Name="FK__USUARIO__ID_EMPL__7E37BEF6" Association="Self.FK__USUARIO__ID_EMPL__7E37BEF6">
+    <AssociationSet Name="FK__USUARIO__ID_EMPL__07C12930" Association="Self.FK__USUARIO__ID_EMPL__07C12930">
       <End Role="EMPLEADO" EntitySet="EMPLEADO" />
       <End Role="USUARIO" EntitySet="USUARIO" />
     </AssociationSet>
-    <AssociationSet Name="FK__VALES__ID_EMPLEA__7F2BE32F" Association="Self.FK__VALES__ID_EMPLEA__7F2BE32F">
+    <AssociationSet Name="FK__VALES__ID_EMPLEA__08B54D69" Association="Self.FK__VALES__ID_EMPLEA__08B54D69">
       <End Role="EMPLEADO" EntitySet="EMPLEADO" />
       <End Role="VALES" EntitySet="VALES" />
     </AssociationSet>

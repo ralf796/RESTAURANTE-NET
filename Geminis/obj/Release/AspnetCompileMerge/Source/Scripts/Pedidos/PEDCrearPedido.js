@@ -284,9 +284,9 @@
     $('#btnAgregarProducto').on('click', function (e) {
         e.preventDefault();
         //if ($('#formProducto').valid()) {
-            AgregarProducto($('#txtProductoCantidad').val(), $('#selMenu').val(), $("#selMenu option:selected").text(), $('#txtProductoPrecio').val().replace(",", ""), $('#txtObservaciones').val())
-            $('#modalCrearDetalleProducto').modal('hide');
-            ActualizarTotalPedido();
+        AgregarProducto($('#txtProductoCantidad').val(), $('#selMenu').val(), $("#selMenu option:selected").text(), $('#txtProductoPrecio').val().replace(",", ""), $('#txtObservaciones').val())
+        $('#modalCrearDetalleProducto').modal('hide');
+        ActualizarTotalPedido();
         //}
     });
 
@@ -614,8 +614,15 @@
         });
         var salesPivotGrid = $("#gridContainer").dxDataGrid({
             dataSource: new DevExpress.data.DataSource(customStore),
+            columnAutoWidth: true,
+            wordWrapEnabled: true,
             showBorders: true,
             rowAlternationEnabled: true,
+            searchPanel: {
+                visible: true,
+                width: 240,
+                placeholder: "Buscar..."
+            },
             pager: {
                 showPageSizeSelector: true,
                 allowedPageSizes: [10, 20, 50, 100],
@@ -666,9 +673,9 @@
                 },
                 {
                     type: "buttons",
-                    width: 50,
                     buttons: [{
                         icon: "add",
+                        hint:'Agregar menu al pedido',
                         onClick: function (e) {
                             idPedidoEditar = e.row.data['ID_PEDIDO'];
                             $('#ModalEditarPedido').modal('show');
@@ -678,9 +685,9 @@
                 },
                 {
                     type: "buttons",
-                    width: 50,
                     buttons: [{
                         icon: "todo",
+                        hint: 'Enviar a caja el pedido',
                         onClick: function (e) {
                             var valor = e.row.data['ID_PEDIDO'];
                             EntregarPedido(valor);
@@ -689,10 +696,10 @@
                 },
                 {
                     type: "buttons",
-                    width: 50,
                     buttons: [
                         {
                             icon: "trash",
+                            hint: 'Anular pedido',
                             onClick: function (e) {
                                 var valor = e.row.data['ID_PEDIDO'];
                                 AnularPedido(valor);
@@ -701,36 +708,18 @@
                     ]
                 },
                 {
-                    type: "buttons",
-                    width: 50,
-                    buttons: [
-                        {
-                            icon: "food",
-                            onClick: function (e) {
-                                var valor = e.row.data['ID_PEDIDO'];
-                                
-                            }
-                        }
-                    ]
+                    //type: "buttons",
+                    //buttons: [
+                    //    {
+                    //        icon: "food",
+                    //        onClick: function (e) {
+                    //            var valor = e.row.data['ID_PEDIDO'];
+
+                    //        }
+                    //    }
+                    //]
                 }
             ],
-            /*
-            onToolbarPreparing: function (e) {
-                var dataGrid = e.component;
-                e.toolbarOptions.items.unshift(
-                    {
-                        location: "after",
-                        widget: "dxButton",
-                        options: {
-                            icon: "add",
-                            text: "",
-                            onClick: function (e) {
-                                AbrirModalPedido();
-                            }
-                        }
-                    })
-            },
-            */
             masterDetail: {
                 enabled: true,
                 template: function (container, options) {
@@ -788,7 +777,7 @@
                 }
             }
         });
-    
+
     }
 
 
