@@ -1,0 +1,8 @@
+﻿@font-face {
+    font-family: 'IOSSansPrint-Bold';
+    src: url('../lib/fonts/IOSSansPrint-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'IOSSansPrint-Regular';
+    src: url('../lib/fonts/IOSSansPrint-Regular.ttf') format('truetype');
+}

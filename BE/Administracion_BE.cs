@@ -21,5 +21,7 @@ namespace BE
         public string CREADO_POR { set; get; }
         public int? ID_PROVEEDOR { set; get; }
         public string REFERENCIA { set; get; }
+        public string NIT { set; get; }
+        public int MTIPO { set; get; }
     }
 }

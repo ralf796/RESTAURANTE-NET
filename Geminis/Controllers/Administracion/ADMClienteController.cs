@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BE;
 using Geminis.Models;
 using Newtonsoft.Json;
 
@@ -22,7 +23,7 @@ namespace Geminis.Controllers.Administracion
             {
                 try
                 {
-                    var obtenerDatos = JsonConvert.DeserializeObject<CLIENTE>(datos);
+                    var obtenerDatos = JsonConvert.DeserializeObject<Administracion_BE>(datos);
                     obtenerDatos.ESTADO = "A";
                     obtenerDatos.FECHA_CREACION= DateTime.Now;
                     obtenerDatos.CREADO_POR = Session["usuario"].ToString();

@@ -1,5 +1,6 @@
-﻿using Geminis.Clases;
-using Geminis.Models;
+﻿using BE;
+using BLL;
+using Geminis.Clases;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,156 +13,59 @@ namespace Geminis.Scripts.Administracion
 {
     public class ADMEmpleadoController : Controller
     {
-        readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
         // GET: ADMEmpleado
         public ActionResult Index()
         {
             return View();
         }
 
-        /// <summary>
-        /// LLENAR SELECTS TIPO_EMPLEADO
-        /// </summary>
-        /// <returns></returns>
-        public JsonResult ObtenerTipoEmpleadoSelect()
+        public PartialViewResult Listar()
         {
-            try
-            {
-                string query = "SELECT * FROM tipo_empleado WHERE estado = 'A' ";
-                var lista = db.Database.SqlQuery<TIPO_EMPLEADO>(query).ToList();
-                return Json(new { ESTADO = 1, DATA = lista }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
-            }
+            Administracion_BE item = new Administracion_BE { MTIPO = 6 };
+            List<Administracion_BE> lst = new List<Administracion_BE>();
+            lst = BackTools.Administracion_store_procedure(item);
+            ViewBag.data = lst;
+            return PartialView();
         }
 
         [SessionExpireFilter]
-        public JsonResult Guardar(string datos)
+        public JsonResult Guardar(int id_tipo_empleado = 0, string nombre = "", decimal salario = 0, string telefono = "", string correo = "", string direccion = "")
         {
-            using (var transaccion = db.Database.BeginTransaction())
-            {
-                try
-                {
-                    var obtenerDatos = JsonConvert.DeserializeObject<EMPLEADO>(datos);
-                    obtenerDatos.ESTADO = "A";
-                    obtenerDatos.FECHA_CREACION = Utils.ObtenerFechaServidor();
-                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
-                    db.EMPLEADO.Add(obtenerDatos);
-                    db.SaveChanges();
-                    transaccion.Commit();
-                    return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
-                }
-                catch (Exception ex)
-                {
-                    transaccion.Rollback();
-                    return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
-                }
-            }
-        }
-
-        /// <summary>
-        /// EDITAR TABLA
-        /// </summary>
-        /// <param name="datos"></param>
-        /// <returns></returns>
-        public JsonResult Editar(string datos)
-        {
-            using (var transaccion = db.Database.BeginTransaction())
-            {
-                try
-                {
-                    var obtenerDatos = JsonConvert.DeserializeObject<EMPLEADO>(datos);
-
-                    string query = "SELECT * FROM EMPLEADO WHERE ID_EMPLEADO = " + obtenerDatos.ID_EMPLEADO;
-                    var editarTabla = db.Database.SqlQuery<EMPLEADO>(query).SingleOrDefault();
-                    editarTabla.ID_TIPO_EMPLEADO = obtenerDatos.ID_TIPO_EMPLEADO;
-                    editarTabla.NOMBRE = obtenerDatos.NOMBRE;
-                    editarTabla.DIRECCION = obtenerDatos.DIRECCION;
-                    editarTabla.TELEFONO = obtenerDatos.TELEFONO;
-                    editarTabla.SALARIO = obtenerDatos.SALARIO;
-                    editarTabla.DIRECCION = obtenerDatos.DIRECCION;
-                    editarTabla.CORREO_ELECTRONICO = obtenerDatos.CORREO_ELECTRONICO;
-                    db.Entry(editarTabla).State = EntityState.Modified;
-                    db.SaveChanges();
-                    transaccion.Commit();
-                    return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
-                }
-                catch (Exception ex)
-                {
-                    transaccion.Rollback();
-                    return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
-                }
-            }
-        }
-
-        public JsonResult Eliminar(string id)
-        {
-            using (var transaccion = db.Database.BeginTransaction())
-            {
-                try
-                {
-                    string query = "SELECT * FROM EMPLEADO WHERE ID_EMPLEADO = " + id;
-                    var editarTabla = db.Database.SqlQuery<EMPLEADO>(query).SingleOrDefault();
-                    editarTabla.ESTADO = "I";
-                    db.Entry(editarTabla).State = EntityState.Modified;
-                    db.SaveChanges();
-                    transaccion.Commit();
-                    return Json(new { Estado = 1 }, JsonRequestBehavior.AllowGet);
-                }
-                catch (Exception ex)
-                {
-                    transaccion.Rollback();
-                    return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
-                }
-            }
-        }
-
-        /// <summary>
-        /// CARGAR DATOS DE EMPLEADOS EN DEVEXTREME
-        /// </summary>
-        /// <returns></returns>
-        public JsonResult CargarTablaEmpleado()
-        {
+            var respuesta = new Respuesta();
             try
             {
-                string query = @"SELECT 
-                                A.ID_EMPLEADO,
-	                            B.ID_TIPO_EMPLEADO,
-                                B.NOMBRE AS TIPO_EMPLEADO, 
-	                            A.NOMBRE,A.TELEFONO, 
-	                            A.DIRECCION, A.SALARIO, 
-	                            A.CORREO_ELECTRONICO,
-	                            A.ESTADO,
-	                            CONVERT(VARCHAR(20),
-                                A.FECHA_CREACION) AS FECHA_CREACION, 
-	                            A.CREADO_POR 
-                            FROM EMPLEADO A 
-                            INNER JOIN TIPO_EMPLEADO B ON A.ID_TIPO_EMPLEADO=B.ID_TIPO_EMPLEADO";
-                var lista = db.Database.SqlQuery<TABLA_EMPLEADO_>(query).ToList();
-                return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
+                List<Administracion_BE> RESULT_SP = new List<Administracion_BE>();
+                Administracion_BE item = new Administracion_BE
+                {
+                    MTIPO = 3,
+                    ID_TIPO_EMPLEADO = id_tipo_empleado,
+                    NOMBRE = nombre,
+                    SALARIO = salario,
+                    TELEFONO = telefono,
+                    CORREO_ELECTRONICO = correo,
+                    DIRECCION = direccion,
+                    CREADO_POR = Session["usuario"].ToString()
+                };
+                RESULT_SP = BackTools.Administracion_store_procedure(item);
+
+                if (RESULT_SP.Count() == 0)
+                {
+                    respuesta.Codigo = 2;
+                    respuesta.Descripcion = "No se ha podido guardar el Empleado.";
+                }
+                else
+                {
+                    respuesta.Codigo = 1;
+                    respuesta.Descripcion = "Empleado creado correctamente";
+                }
             }
             catch (Exception ex)
             {
-                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+                respuesta.Codigo = -1;
+                respuesta.Descripcion = $"Mensaje: {ex.Message}";
             }
+            return Json(respuesta);
         }
-
-
-        public class TABLA_EMPLEADO_
-        {
-            public int? ID_EMPLEADO { set; get; }
-            public int? ID_TIPO_EMPLEADO { set; get; }
-            public string TIPO_EMPLEADO { set; get; }
-            public string NOMBRE { set; get; }
-            public string TELEFONO { set; get; }
-            public string DIRECCION { set; get; }
-            public decimal? SALARIO { set; get; }
-            public string CORREO_ELECTRONICO { set; get; }
-            public string ESTADO { set; get; }
-            public string FECHA_CREACION { set; get; }
-            public string CREADO_POR { set; get; }
-        }
+        
     }
 }

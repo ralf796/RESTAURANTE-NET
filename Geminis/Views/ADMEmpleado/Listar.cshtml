@@ -1,0 +1,86 @@
+﻿
+@{
+    //Layout = "_Layout";
+    List<BE.Administracion_BE> data = ViewBag.data;
+}
+
+<div class="row text-center">
+    <h4 class="fw-bold m-0 p-0">LISTADO DE EMPLEADOS </h4>
+</div>
+
+@*<table class="table table-bordered table-hover table-sm table-striped" id="tableData">*@
+<table class="table table-striped display nowrap table table-hover table-sm" style="width:100%" width="100%" id="tableData">
+    <thead>
+        <tr>
+            <th style="width:60px" class="text-center">CUENTA</th>
+            <th style="width:85px" class="text-center">COD EMPLEADO</th>
+            <th style="width:220px" class="text-center">NOMBRE EMPLEADO</th>
+            <th class="text-center">DESCRIPCIÓN</th>
+            <th style="width:40px" class="text-center">DÍAS</th>
+            <th style="width:63px" class="text-center">MONTO DÍA</th>
+            <th style="width:63px" class="text-center">HORAS</th>
+            <th style="width:63px" class="text-center">SUBTOTAL</th>
+            <th style="width:63px" class="text-center">SUBTOTAL</th>
+            <th style="width:63px" class="text-center">SUBTOTAL</th>
+            <th style="width:63px" class="text-center">SUBTOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in data)
+        {
+            <tr>
+                <td>@row.ID_EMPLEADO</td>
+                <td>@row.ID_TIPO_EMPLEADO</td>
+                <td>@row.NOMBRE</td>
+                <td>@row.TELEFONO</td>
+                <td>@row.DIRECCION</td>
+                <td>@row.SALARIO</td>
+                <td>@row.CORREO_ELECTRONICO</td>
+                <td>@row.CORREO_ELECTRONICO</td>
+                <td>@row.ESTADO</td>
+                <td>@row.FECHA_CREACION</td>
+                <td>@row.CREADO_POR</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#tableData").dataTable({
+            scrollY: (window.innerHeight - 300) + 'px',
+            scrollX: true,
+            scrollCollapse: true,
+            fixedHeader: true,
+            language: {
+                "lengthMenu": "Registros por pagina _MENU_",
+                "zeroRecords": "No existen registros",
+                "info": "Pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "No existen registros",
+                "search": "<strong>Buscar por nombre de cliente</strong>",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+            },
+            "lengthMenu": [[20, 25, 50, -1], [20, 25, 50, "Todos"]],
+            ordering: false,
+            info: false,
+            paginate: false,
+            searching: false
+        });
+
+        $("#txtFiltro").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbodyListado tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+
+    });
+</script>
