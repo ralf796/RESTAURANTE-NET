@@ -367,16 +367,6 @@
     <Content Include="Content\DevExtreme\21.1.5\icons\xlsx.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Restaurante.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Restaurante.edmx</DependentUpon>
-      <LastGenOutput>Restaurante.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Restaurante.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Restaurante.edmx</DependentUpon>
-      <LastGenOutput>Restaurante.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\Administracion\ADMCliente.js" />
     <Content Include="Scripts\Administracion\ADMEmpleado.js" />
     <Content Include="Scripts\Administracion\ADMMovimiento.js" />
@@ -419,168 +409,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Clases\BackTools.cs" />
     <Compile Include="Clases\Encrypt.cs" />
-    <Compile Include="Clases\Home.cs" />
     <Compile Include="Clases\SessionExpireFilterAttribute.cs" />
-    <Compile Include="Clases\Utils.cs" />
-    <Compile Include="Controllers\Administracion\ADMClienteController.cs" />
-    <Compile Include="Controllers\Administracion\ADMDefaultController.cs" />
-    <Compile Include="Controllers\Administracion\ADMMovimientoController.cs" />
-    <Compile Include="Controllers\Administracion\ADMProveedorController.cs" />
-    <Compile Include="Controllers\Administracion\ADMTipoEmpleadoController.cs" />
-    <Compile Include="Controllers\Administracion\ADMUsuarioController.cs" />
-    <Compile Include="Controllers\Caja\CAJCobroController.cs" />
-    <Compile Include="Controllers\Caja\CAJCorteController.cs" />
-    <Compile Include="Controllers\Caja\CAJDefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Inventario\INVBodegaCocinaController.cs" />
-    <Compile Include="Controllers\Inventario\INVBodegaController.cs" />
-    <Compile Include="Controllers\Inventario\INVBodegaGeneralController.cs" />
-    <Compile Include="Controllers\Inventario\INVDefaultController.cs" />
-    <Compile Include="Controllers\Inventario\INVDetalleMenuController.cs" />
-    <Compile Include="Controllers\Inventario\INVMenuController.cs" />
-    <Compile Include="Controllers\Inventario\INVTipoMenuController.cs" />
-    <Compile Include="Controllers\Pedidos\PEDClienteController.cs" />
     <Compile Include="Controllers\Pedidos\PEDCrearPedidoController.cs" />
     <Compile Include="Controllers\Pedidos\PEDDefaultController.cs" />
-    <Compile Include="Controllers\Pedidos\PEDPedidosController.cs" />
-    <Compile Include="Controllers\Reportes\REPClientesController.cs" />
-    <Compile Include="Controllers\Reportes\REPDefaultController.cs" />
-    <Compile Include="Controllers\Reportes\REPGananciasController.cs" />
-    <Compile Include="Controllers\Reportes\REPGastosController.cs" />
-    <Compile Include="Controllers\Reportes\REPMeserosController.cs" />
-    <Compile Include="Controllers\Reportes\REPProductosController.cs" />
-    <Compile Include="Controllers\Reportes\REPProveedoresController.cs" />
-    <Compile Include="Controllers\Reportes\REPRepartidoresController.cs" />
-    <Compile Include="Controllers\Reportes\REPVentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BANCO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BITACORA_COCINA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CAJA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CLIENTE.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CLIENTE_DATOS_ADICIONALES.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\COBRO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\COBRO_DETALLE.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CORTE.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EMPLEADO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ESTADO_PEDIDO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FACTURA_DETALLE.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FACTURA_ENCABEZADO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\INVENTARIO_BODEGA_GENERAL.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\INVENTARIO_COCINA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MENU.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MENU_DETALLE.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MESA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MODULO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PAGO_MESA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PAGO_PROVEEDOR.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PANTALLA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PEDIDO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PEDIDO_DETALLE.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PEDIDO_FORMA_PAGO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PEDIDO_FORMA_PAGO_DET.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PERMISO_PANTALLA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PRODUCTO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PROVEEDOR.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Restaurante.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurante.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Restaurante.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Restaurante.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Restaurante.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ROL.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TIPO_EMPLEADO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TIPO_MENU.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TIPO_PEDIDO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TIPO_PRODUCTO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UNIDAD_MEDIDA.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\USUARIO.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VALES.cs">
-      <DependentUpon>Restaurante.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\Administracion\ADMEmpleadoController.cs" />
     <Content Include="Scripts\Pedidos\PEDCrearPedido.js" />
   </ItemGroup>
   <ItemGroup>
@@ -594,13 +432,6 @@
     <Content Include="assets\css\partials\kit\core\bootstrap\scss\bootstrap.css.map" />
     <Content Include="assets\datatable-spanish.json" />
     <Content Include="assets\js\material-dashboard.js.map" />
-    <EntityDeploy Include="Models\Restaurante.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Restaurante.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Restaurante.edmx.diagram">
-      <DependentUpon>Restaurante.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-300.ttf" />
     <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-300.woff" />
     <Content Include="Content\DevExtreme\21.1.5\fonts\Roboto-300.woff2" />
@@ -659,11 +490,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\ADMTipoProveedor\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{47AA1A70-3032-4067-9B14-7759CBF0B234}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{872BE785-A7C6-4BBA-A42C-43C647F5F1DD}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

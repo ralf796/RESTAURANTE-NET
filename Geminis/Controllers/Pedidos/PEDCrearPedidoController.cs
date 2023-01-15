@@ -1,5 +1,4 @@
 ﻿using Geminis.Clases;
-using Geminis.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,13 +10,13 @@ namespace Geminis.Controllers.Pedidos
 {
     public class PEDCrearPedidoController : Controller
     {
-        readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
+        //readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
         // GET: PEDCrearPedido
         public ActionResult Index()
         {
             return View();
         }
-
+        /*
         [SessionExpireFilter]
         public JsonResult GuardarPedido(string encabezadoPedido, string detallePedido)
         {
@@ -337,7 +336,7 @@ namespace Geminis.Controllers.Pedidos
                 return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
             }
         }
-
+        */
         public class MESAS
         {
             public int? ID_MESA { set; get; }

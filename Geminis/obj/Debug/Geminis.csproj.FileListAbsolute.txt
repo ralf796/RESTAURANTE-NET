@@ -361,3 +361,9 @@ C:\Development\Geminis\Geminis\obj\Debug\Geminis.csproj.CoreCompileInputs.cache
 C:\Development\Geminis\Geminis\obj\Debug\Geminis.csproj.CopyComplete
 C:\Development\Geminis\Geminis\obj\Debug\Geminis.dll
 C:\Development\Geminis\Geminis\obj\Debug\Geminis.pdb
+C:\Development\Geminis\Geminis\bin\BE.dll
+C:\Development\Geminis\Geminis\bin\BLL.dll
+C:\Development\Geminis\Geminis\bin\DAL.dll
+C:\Development\Geminis\Geminis\bin\BE.pdb
+C:\Development\Geminis\Geminis\bin\BLL.pdb
+C:\Development\Geminis\Geminis\bin\DAL.pdb
