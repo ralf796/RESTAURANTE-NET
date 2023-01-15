@@ -1,0 +1,82 @@
+﻿using Geminis.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Geminis.Controllers.Reportes
+{
+    public class REPMeserosController : Controller
+    {
+        readonly Restaurante_BDEntities db = new Restaurante_BDEntities();
+        // GET: REPMeseros
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public JsonResult GenerarReporte(string fechaInicial, string fechaFinal)
+        {
+            try
+            {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
+
+                string query = @" SELECT A.id_empleado ID_EMPLEADO,
+                                       Count(*)                               PEDIDOS,
+                                       B.nombre NOMBRE,
+                                       Format(A.fecha_creacion, 'dd/MM/yyyy') AS FECHA
+                                FROM   pedido A
+                                       INNER JOIN empleado B
+                                               ON A.id_empleado = B.id_empleado
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
+                                GROUP BY A.id_empleado,
+                                          B.nombre,
+                                          Format(A.fecha_creacion, 'dd/MM/yyyy')
+                                ORDER BY Format(A.fecha_creacion, 'dd/MM/yyyy') DESC  ";
+                var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
+                return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        public JsonResult GenerarGrafica(string fechaInicial, string fechaFinal)
+        {
+            try
+            {
+                DateTime FECHA1 = Convert.ToDateTime(fechaInicial);
+                DateTime FECHA2 = Convert.ToDateTime(fechaFinal);
+                string query = @"SELECT Count(*) PEDIDOS,
+                                       B.nombre NOMBRE
+                                FROM   pedido A
+                                       INNER JOIN empleado B
+                                               ON A.id_empleado = B.id_empleado
+                                WHERE CONVERT(varchar,a.fecha_creacion,23) between  '" + FECHA1.ToString("yyyy-MM-dd") + "' and '" + FECHA2.ToString("yyyy-MM-dd") + @"'
+                                    and A.id_estado_pedido = 5
+                                GROUP  BY B.nombre
+                                ORDER  BY b.nombre DESC  ";
+                var lista = db.Database.SqlQuery<REPORTE>(query).ToList();
+                return Json(new { ESTADO = 1, data = lista }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Estado = -1, Mensaje = ex.Message.ToString() }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public class REPORTE
+        {
+            public int? ID_EMPLEADO { set; get; }
+            public int? PEDIDOS { set; get; }
+            public string NOMBRE { set; get; }
+            public string FECHA { set; get; }
+        }
+
+    }
+}

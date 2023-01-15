@@ -1,0 +1,289 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section scripts{
+    <script src="~/Scripts/Pedidos/PEDCrearPedido.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/dx.all.js"></script>
+    <script src="~/Scripts/DevExtreme/21.1.5/localization/dx.messages.es.js"></script>
+    <link rel="stylesheet" href="~/Content/DevExtreme/21.1.5/dx.material.orange.light.css">
+    <script>
+
+
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="margin-top:-20px!important;">
+            <div class="card-header card-header-danger card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">PEDIDOS</h4>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 float-lg-right justify-content-end text-right">
+                        <button id="btnAbrirModalCrearPedido" type="submit" class="btn btn-primary float-right"><i class="material-icons">add</i>  Crear pedido</button>
+                    </div>
+                    <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id="gridContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*----------------------------------MODAL DE CREACIÓN DE PEDIDO----------------------------------*@
+<div class="modal fade" id="modalCrearRefactura" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">DATOS PEDIDO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida" id="formRefactura">
+                    <div class="row">
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-4 col-lg-2 col-xl-2">
+                            <div class="form-group">
+                                <label class="bmd-label-floating label-with-selectpicker">MESA</label>
+                                <select id="selMesa" name="selMesa" class="selectpicker text-center" data-style="select-with-transition" title="SELECCIONE MESA" data-live-search="true" required></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <div class="form-group">
+                                <label class="bmd-label-floating label-with-selectpicker">CATEGORIA</label>
+                                <select id="selCategoria" name="selCategoria" class="selectpicker" data-live-search="true" data-style="select-with-transition" title="SELECCIONE"></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                            <div class="form-group">
+                                <label class="bmd-label-floating label-with-selectpicker">MENU/PRODUCTO</label>
+                                <select id="selMenu" name="selMenu" class="selectpicker" data-live-search="true" data-style="select-with-transition" title="SELECCIONE"></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                            <input type="hidden" id="hfProducto">
+                            <input type="hidden" id="hfSubsidioAplica">
+                            <div class="form-group">
+                                <label for="txtProductoCantidad" class="bmd-label-floating"> CANTIDAD</label>
+                                <input type="number" class="form-control validarNumeros text-center" id="txtProductoCantidad" name="txtProductoCantidad">
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+                            <div class="form-group">
+                                <label for="txtProductoPrecio" class="bmd-label-floating"> PRECIO</label>
+                                <input type="number" class="form-control .input-number text-center" id="txtProductoPrecio" disabled name="txtProductoPrecio">
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-10 col-md-10 col-lg-11 col-xl-11">
+                            <div class="form-group">
+                                <label for="txtObservaciones" class="bmd-label-floating"> OBSERVACIONES</label>
+                                <input type="text" class="form-control" id="txtObservaciones" name="txtObservaciones">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+                            <button id="btnAgregarProducto" class="btn btn-primary btn-round btn-fab" title="AGREGAR" formnovalidate>
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 d-none">
+                            <div class="form-group text-right">
+                                <button id="btnBuscarProducto" type="submit" class="btn btn-primary float-right"><i class="material-icons">add</i> Agregar menu</button>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 d-none">
+                            <div class="form-group">
+                                <label for="txtTotalPedido" class="bmd-label-floating">TOTAL PEDIDO</label>
+                                <input type="text" class="form-control" id="txtTotalPedido" name="txtTotalPedido" text-align:center" disabled>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:-5px;">
+                            <div class="material-datatables">
+                                <table id="tblDetallesPedido" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="font-weight-bold" style="text-align:center">CANTIDAD</th>
+                                            <th class="font-weight-bold" style="text-align:center">PRODUCTO</th>
+                                            <th class="font-weight-bold" style="text-align:center">DESCRIPCIÓN</th>
+                                            <th class="font-weight-bold" style="text-align:center">PRECIO</th>
+                                            <th class="font-weight-bold" style="text-align:center">SUBTOTAL</th>
+                                            <th class="font-weight-bold" style="text-align:center">OBSERVACIONES</th>
+                                            <th class="font-weight-bold" style="text-align:center"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDatosDetalleProductos"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnCrearPedido" class="btn btn-link btn-deep-orange">Crear</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="modal fade modal-mini modal-primary" id="modalCrearDetalleProducto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-small">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="modalTitle" class="modal-title">AGREGAR DETALLE</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="material-icons">clear</i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="formValida" id="formProducto">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating label-with-selectpicker">CATEGORIA</label>
+                                    <select id="selCategoria" name="selCategoria" class="selectpicker" data-live-search="true" data-style="select-with-transition" title="SELECCIONE" required></select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating label-with-selectpicker">MENU/PRODUCTO</label>
+                                    <select id="selMenu" name="selMenu" class="selectpicker" data-live-search="true" data-style="select-with-transition" title="SELECCIONE" required></select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <input type="hidden" id="hfProducto">
+                                <input type="hidden" id="hfSubsidioAplica">
+                                <div class="form-group">
+                                    <label for="txtProductoCantidad" class="bmd-label-floating"> CANTIDAD</label>
+                                    <input type="number" class="form-control validarNumeros text-center" id="txtProductoCantidad" name="txtProductoCantidad" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label for="txtProductoPrecio" class="bmd-label-floating"> PRECIO</label>
+                                    <input type="number" class="form-control .input-number text-center" id="txtProductoPrecio" disabled name="txtProductoPrecio" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label for="txtObservaciones" class="bmd-label-floating"> OBSERVACIONES</label>
+                                    <input type="text" class="form-control" id="txtObservaciones" name="txtObservaciones">
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-around">
+                                <button type="button" id="btnAgregarProducto" class="btn btn-link btn-deep-orange">Agregar</button>
+                                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+<div class="modal fade" id="ModalEditarPedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">EDITAR PEDIDO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="toolbar" style="margin-top:-15px">
+                                <a id="btnBuscarMenuEditar" class="btn btn-link btn-info btn-just-icon add" title="Agregar"><i class="material-icons">add</i></a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" style="margin-top:-23px;">
+                            <div class="material-datatables">
+                                <table id="tblDetallesPedidoEditar" class="table table-striped table-no-bordered table-hover pagination-success" width="100%" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="font-weight-bold" style="text-align:center">CANTIDAD</th>
+                                            <th class="font-weight-bold" style="text-align:center">PRODUCTO</th>
+                                            <th class="font-weight-bold" style="text-align:center">DESCRIPCIÓN</th>
+                                            <th class="font-weight-bold" style="text-align:center">PRECIO</th>
+                                            <th class="font-weight-bold" style="text-align:center">SUBTOTAL</th>
+                                            <th class="font-weight-bold" style="text-align:center">OBSERVACIONES</th>
+                                            <th class="font-weight-bold" style="text-align:center"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyDatosDetalleMenuEditar"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnEditarPedido" class="btn btn-link btn-deep-orange">MODIFICAR</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-mini modal-primary" id="ModalMenuEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-small">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">AGREGAR DETALLE</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="material-icons">clear</i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida" id="formProductoEditar">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating label-with-selectpicker">CATEGORIA</label>
+                                <select id="selCategoriaEditar" name="selCategoria" class="selectpicker" data-live-search="true" data-style="select-with-transition" title="SELECCIONE" required></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating label-with-selectpicker">MENU/PRODUCTO</label>
+                                <select id="selMenuEditar" name="selMenuEditar" class="selectpicker" data-live-search="true" data-style="select-with-transition" title="SELECCIONE" required></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <input type="hidden" id="hfProducto">
+                            <input type="hidden" id="hfSubsidioAplica">
+                            <div class="form-group">
+                                <label for="txtCantidadEditar" class="bmd-label-floating"> CANTIDAD</label>
+                                <input type="number" class="form-control validarNumeros text-center" id="txtCantidadEditar" name="txtCantidadEditar" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtPrecioEditar" class="bmd-label-floating"> PRECIO</label>
+                                <input type="number" class="form-control .input-number text-center" id="txtPrecioEditar" disabled name="txtPrecioEditar" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label for="txtObservacionesEditar" class="bmd-label-floating"> OBSERVACIONES</label>
+                                <input type="text" class="form-control" id="txtObservacionesEditar" name="txtObservacionesEditar">
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-around">
+                            <button type="button" id="btnAgregarMenuEditar" class="btn btn-link btn-deep-orange">Agregar</button>
+                            <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

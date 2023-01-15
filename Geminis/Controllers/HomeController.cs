@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using BE;
+using BLL;
 using Geminis.Clases;
 
 namespace Geminis.Controllers
@@ -15,12 +17,16 @@ namespace Geminis.Controllers
         {
             return View();
         }
+
         public JsonResult IniciarSesion(string usuario, string password)
         {
             try
             {
-                password = Encrypt.Instance.EncryptString(password.Trim().ToUpper());
-                var catUsuario = Home.Instance.IniciarSesion(usuario.ToUpper(), password);
+                Login_BE item = new Login_BE();
+                item.USUARIO = usuario;
+                item.PASSWORD = Encrypt.Instance.EncryptString(password.Trim().ToUpper());
+                item.MTIPO = 1;
+                var catUsuario = BackTools.Login_store_procedure(item).FirstOrDefault();
                 if (catUsuario != null)
                 {
                     Session["id_usuario"] = catUsuario.ID_USUARIO;
@@ -29,9 +35,17 @@ namespace Geminis.Controllers
                     Session["nombre_restaurante"] = catUsuario.RESTAURANTE.ToString().ToUpper();
                     Session["CodigoModulo"] = catUsuario.MODULO;
                     string urlDefault = "";
-                    var modulos = Home.Instance.ListarModulos(catUsuario.USUARIO);
+                    //var modulos = Home.Instance.ListarModulos(catUsuario.USUARIO);
+
+                    item.MTIPO = 2;
+                    item.ID_MODULO = catUsuario.MODULO;
+                    var modulos = BackTools.Login_store_procedure(item);
                     if (modulos.Count > 0)
-                        urlDefault = Home.Instance.ObtenerModulo(Convert.ToInt32(modulos[0].ID_MODULO)).URL;
+                    {
+                        item.MTIPO = 3;
+                        urlDefault = BackTools.Login_store_procedure(item).FirstOrDefault().URL;
+                        //urlDefault = Home.Instance.ObtenerModulo(Convert.ToInt32(catUsuario.MODULO)).URL;
+                    }
                     else
                     {
                         urlDefault = "/Home/Index";
@@ -49,10 +63,6 @@ namespace Geminis.Controllers
             }
         }
 
-        /// <summary>
-        /// Método para obtener la lista de menu por módulo
-        /// </summary>
-        [SessionExpireFilter]
         public JsonResult ListarMenu()
         {
             var usuario = "";
@@ -61,8 +71,18 @@ namespace Geminis.Controllers
             var codigoModulo = 0L;
             if (Session["CodigoModulo"] != null)
                 codigoModulo = Convert.ToInt64(Session["CodigoModulo"]);
-            var mod = Home.Instance.ObtenerModulo(codigoModulo);
-            var listadoMenu = Home.Instance.ListarMenu(usuario, codigoModulo);
+
+            var item = new Login_BE();
+            item.ID_MODULO = Convert.ToInt32(codigoModulo);
+            item.MTIPO = 3;
+            var mod = BackTools.Login_store_procedure(item);
+            //var mod = Home.Instance.ObtenerModulo(Convert.ToInt32(codigoModulo));
+
+            item.ID_MODULO = Convert.ToInt32(codigoModulo);
+            item.USUARIO = usuario;
+            item.MTIPO = 2;
+            var listadoMenu = BackTools.Login_store_procedure(item);
+            //var listadoMenu = Home.Instance.ListarMenu(usuario, codigoModulo);
             return Json(new
             {
                 Modulo = mod,
@@ -70,28 +90,32 @@ namespace Geminis.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        /// <summary>
-        /// Método para obtener lista de módulos asignados al usuario
-        /// </summary>
-        /// <returns>Lista serializada a json de módulos asignados</returns>
-        [SessionExpireFilter]
         public JsonResult ListarModulos()
         {
             var usuario = "";
             if (Session["usuario"] != null)
                 usuario = Convert.ToString(Session["usuario"]);
-            var modulos = Home.Instance.ListarModulos(usuario);
+
+            var item = new Login_BE();
+            item.USUARIO = usuario;
+            item.MTIPO = 5;
+            var modulos = BackTools.Login_store_procedure(item);
+            //var modulos = Home.Instance.ListarModulos(usuario);
             return Json(new { ListadoModulos = modulos }, JsonRequestBehavior.AllowGet);
         }
 
-        [SessionExpireFilter]
         public JsonResult ListarPantallas(string pantalla)
         {
             var usuario = "";
             if (Session["usuario"] != null)
                 usuario = Convert.ToString(Session["usuario"]);
 
-            var pantallas = Home.Instance.ListarPantallas(pantalla, usuario);
+            var item = new Login_BE();
+            item.PANTALLA = pantalla;
+            item.USUARIO = usuario;
+            item.MTIPO = 6;
+            var pantallas = BackTools.Login_store_procedure(item);
+            //var pantallas = Home.Instance.ListarPantallas(pantalla, usuario);
 
             return Json(new { ListadoPantallas = pantallas }, JsonRequestBehavior.AllowGet);
         }

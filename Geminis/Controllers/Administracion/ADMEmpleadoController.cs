@@ -1,4 +1,5 @@
-﻿using Geminis.Models;
+﻿using Geminis.Clases;
+using Geminis.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -36,11 +37,7 @@ namespace Geminis.Scripts.Administracion
             }
         }
 
-        /// <summary>
-        /// GUARDAR EN TABLA EMPLEADO
-        /// </summary>
-        /// <param name="datos"> DEVUELVE EL JSON DESDE EL JS</param>
-        /// <returns></returns>
+        [SessionExpireFilter]
         public JsonResult Guardar(string datos)
         {
             using (var transaccion = db.Database.BeginTransaction())
@@ -49,8 +46,8 @@ namespace Geminis.Scripts.Administracion
                 {
                     var obtenerDatos = JsonConvert.DeserializeObject<EMPLEADO>(datos);
                     obtenerDatos.ESTADO = "A";
-                    obtenerDatos.FECHA_CREACION = DateTime.Now;
-                    obtenerDatos.CREADO_POR = "RALOPEZ";
+                    obtenerDatos.FECHA_CREACION = Utils.ObtenerFechaServidor();
+                    obtenerDatos.CREADO_POR = Session["usuario"].ToString();
                     db.EMPLEADO.Add(obtenerDatos);
                     db.SaveChanges();
                     transaccion.Commit();

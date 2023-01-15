@@ -27,7 +27,8 @@ namespace Geminis.Clases
                                     INNER JOIN USUARIO B
                                       ON A.ID_EMPLEADO = B.ID_EMPLEADO
                                     WHERE USUARIO = '" + usuario + @"'
-                                    AND CONTRASEÑA = '" + password + "'";
+                                    AND CONTRASEÑA = '" + password + "'" +
+                                    "AND A.ESTADO='A'";
 
             return db.Database.SqlQuery<USUARIO_>(queryUsuario).FirstOrDefault();
         }
@@ -56,7 +57,7 @@ namespace Geminis.Clases
             return db.Database.SqlQuery<Menu>(queryMenu).ToList();
         }
 
-        public Modulo ObtenerModulo(long modulo)
+        public Modulo ObtenerModulo(int modulo)
         {
             // string cosito = null;
 
@@ -69,7 +70,7 @@ namespace Geminis.Clases
                               me.url_PANTALLA AS url
                             FROM modulo mo
                             LEFT JOIN PANTALLA me
-                              ON mo.id_modulo = me.id_PANTALLA
+                              ON mo.id_modulo = me.id_modulo
                               AND me.principal = 1
                               AND me.estado = 'A'
                             WHERE mo.id_modulo = " + modulo;

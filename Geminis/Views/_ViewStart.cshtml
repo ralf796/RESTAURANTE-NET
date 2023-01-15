@@ -5,7 +5,13 @@
 
     if (url.ToLower() != "/Home/Index".ToLower() && url.ToLower() != "/Home/PageNotFound".ToLower())
     {
-        var modulo = Geminis.Clases.Home.Instance.ObtenerModuloPorURL(url);
+        //var modulo = Geminis.Clases.Home.Instance.ObtenerModuloPorURL(url);
+
+        var item = new BE.Login_BE();
+        item.MTIPO = 4;
+        item.URL = url;
+        var modulo = Geminis.Clases.BackTools.Login_store_procedure(item).FirstOrDefault();
+
         long? codigoModulo = null;
         if (modulo != null)
         {

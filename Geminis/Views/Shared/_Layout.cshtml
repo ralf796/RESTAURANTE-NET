@@ -113,10 +113,10 @@
 <body onload="startclock()">
     <div class="wrapper ">
         <div class="sidebar" data-color="danger" data-background-color="black" data-image="../assets/img/imgs1.jpg">
-            <div class="logo">
-                <a class="simple-text logo-mini">
+            <div class="logo text-center">
+                @*<a class="simple-text logo-mini">
                     <img src="~/assets/img/favicon.png" alt="GN" style="max-width:32px;" />
-                </a>
+                </a>*@
                 <a class="simple-text logo-normal" style="letter-spacing:6px;">
                     RESTAURANTE
                 </a>
@@ -180,9 +180,9 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <a class="dropdown-item disabled text-gray">NOMBRES Y APELLIDOS</a>
+                                    <a class="dropdown-item disabled text-gray">@Session["nombre_usuario"].ToString()</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" id="lblCambiarContrasena" name="lblCambiarContrasena"><i class="material-icons d-lg-none d-md-block">autorenew</i>Cambiar Contraseña</a>
+                                    <a class="dropdown-item d-none" href="#" id="lblCambiarContrasena" name="lblCambiarContrasena"><i class="material-icons d-lg-none d-md-block">autorenew</i>Cambiar Contraseña</a>
                                     <a class="dropdown-item" href="/Home/CerrarSesion">
                                         <i class="material-icons d-lg-none d-md-block">exit_to_app</i> Salir
                                     </a>
@@ -227,7 +227,7 @@
                             <label class="text-secondary">FECHA:</label>
                         </li>
                         <li>
-                            <label class="text-danger">@Geminis.Clases.Utils.ObtenerFecha() </label>
+                            <label class="text-danger">@DateTime.Now.ToString("dd/MM/yyyy") </label>
                         </li>
                         <li>
                             <label class="text-danger" id="lblHora"></label>
@@ -235,7 +235,7 @@
                     </ul>
                 </div>
             </footer>
-            
+
         </div>
     </div>
     <!--   Core JS Files   -->
