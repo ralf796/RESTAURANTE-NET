@@ -9,12 +9,12 @@
 
 <body onload="startclock()">
     <div class="wrapper ">
-        <div class="sidebar" data-color="danger" data-background-color="black" data-image="../assets/img/imgs1.jpg">
+        <div class="sidebar d-none" data-color="danger" data-background-color="black" data-image="../assets/img/imgs1.jpg">
             <div class="logo text-center">
                 @*<a class="simple-text logo-mini">
                         <img src="~/assets/img/favicon.png" alt="GN" style="max-width:32px;" />
                     </a>*@
-                <a class="simple-text logo-normal" style="letter-spacing:6px;">
+                <a class="simple-text logo-normal d-none" style="letter-spacing:6px;">
                     RESTAURANTE
                 </a>
                 <a class="simple-text logo-normal text-danger" style="letter-spacing:4px; font-size:14px; ">
@@ -30,7 +30,7 @@
         </div>
         <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top d-none">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
                         <div class="navbar-minimize">
@@ -98,7 +98,7 @@
                 </div>
             </div>
 
-            <footer class="footer footer-brand fixed-bottom footer-black  d-none d-xl-block" style="padding: 0 0 !important;">
+            @*<footer class="footer footer-brand fixed-bottom footer-black  d-none d-xl-block" style="padding: 0 0 !important;">
                 <div class="copyright float-left text-danger">
                     &copy;
                     Ingeniería de software (IOS) -
@@ -131,7 +131,7 @@
                         </li>
                     </ul>
                 </div>
-            </footer>
+            </footer>*@
 
         </div>
     </div>

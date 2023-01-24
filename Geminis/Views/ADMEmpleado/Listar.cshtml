@@ -1,31 +1,35 @@
-﻿
-@{
-    //Layout = "_Layout";
+﻿@{
     List<BE.Administracion_BE> data = ViewBag.data;
 }
 
 <div class="row text-center">
     <h4 class="fw-bold m-0 p-0">LISTADO DE EMPLEADOS </h4>
 </div>
-
-@*<table class="table table-bordered table-hover table-sm table-striped" id="tableData">*@
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class='input-group-prepend'>
+        <div class='input-group-text'>
+            <i class='fa fa-search'></i>
+        </div>
+        <input type="text" class="form-control text-left" id="txtFiltro" />
+    </div>
+</div>
 <table class="table table-striped display nowrap table table-hover table-sm" style="width:100%" width="100%" id="tableData">
     <thead>
         <tr>
-            <th style="width:60px" class="text-center">CUENTA</th>
-            <th style="width:85px" class="text-center">COD EMPLEADO</th>
-            <th style="width:220px" class="text-center">NOMBRE EMPLEADO</th>
-            <th class="text-center">DESCRIPCIÓN</th>
-            <th style="width:40px" class="text-center">DÍAS</th>
-            <th style="width:63px" class="text-center">MONTO DÍA</th>
-            <th style="width:63px" class="text-center">HORAS</th>
-            <th style="width:63px" class="text-center">SUBTOTAL</th>
-            <th style="width:63px" class="text-center">SUBTOTAL</th>
-            <th style="width:63px" class="text-center">SUBTOTAL</th>
-            <th style="width:63px" class="text-center">SUBTOTAL</th>
+            <th class="text-center">ID EMPLEADO</th>
+            <th class="text-center">ID TIPO EMPLEADO</th>
+            <th class="text-center">NOMBRE</th>
+            <th class="text-center">TELÉFONO</th>
+            <th class="text-center">DIRECCIÓN</th>
+            <th class="text-center">SALARIO</th>
+            <th class="text-center">CORREO ELECTRÓNICO</th>
+            <th class="text-center">ESTADO</th>
+            <th class="text-center">FECHA CREACIÓN</th>
+            <th class="text-center">CREADO POR</th>
+            <th class="text-center">#</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tBodyData">
         @foreach (var row in data)
         {
             <tr>
@@ -36,10 +40,16 @@
                 <td>@row.DIRECCION</td>
                 <td>@row.SALARIO</td>
                 <td>@row.CORREO_ELECTRONICO</td>
-                <td>@row.CORREO_ELECTRONICO</td>
                 <td>@row.ESTADO</td>
                 <td>@row.FECHA_CREACION</td>
                 <td>@row.CREADO_POR</td>
+                <td class="text-center">
+                    @if (row.ESTADO != "I")
+                    {
+                        <i class="fas fa-edit text-primary hvr-grow btn pr-2" title="Actualizar datos" onclick="GetDatosActualizar(@row.ID_EMPLEADO, @row.ID_TIPO_EMPLEADO, '@row.NOMBRE',@row.SALARIO,'@row.TELEFONO','@row.CORREO_ELECTRONICO','@row.DIRECCION')"></i>
+                        <i class="fas fa-trash-alt text-danger hvr-grow btn" title="Inactivar Item" onclick="Eliminar(@row.ID_EMPLEADO)"></i>
+                    }
+                </td>
             </tr>
         }
     </tbody>
@@ -54,20 +64,6 @@
             scrollX: true,
             scrollCollapse: true,
             fixedHeader: true,
-            language: {
-                "lengthMenu": "Registros por pagina _MENU_",
-                "zeroRecords": "No existen registros",
-                "info": "Pagina _PAGE_ de _PAGES_",
-                "infoEmpty": "No existen registros",
-                "search": "<strong>Buscar por nombre de cliente</strong>",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                },
-            },
-            "lengthMenu": [[20, 25, 50, -1], [20, 25, 50, "Todos"]],
             ordering: false,
             info: false,
             paginate: false,
@@ -76,11 +72,9 @@
 
         $("#txtFiltro").on("keyup", function () {
             var value = $(this).val().toLowerCase();
-            $("#tbodyListado tr").filter(function () {
+            $("#tBodyData tr").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-
-
     });
 </script>

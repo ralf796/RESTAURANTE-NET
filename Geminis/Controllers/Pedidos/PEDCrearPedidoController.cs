@@ -16,6 +16,10 @@ namespace Geminis.Controllers.Pedidos
         {
             return View();
         }
+        public ActionResult Mesas()
+        {
+            return View();
+        }
         /*
         [SessionExpireFilter]
         public JsonResult GuardarPedido(string encabezadoPedido, string detallePedido)

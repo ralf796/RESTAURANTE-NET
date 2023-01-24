@@ -1,0 +1,11 @@
+﻿@{
+    List<BE.Administracion_BE> data = ViewBag.data;
+}
+
+
+
+<option selected disabled>TIPO DE VIATICO</option>
+@foreach (var row in data)
+{
+    <option value="@row.ID_TIPO_EMPLEADO">@row.NOMBRE</option>
+}

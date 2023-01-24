@@ -492,6 +492,8 @@
     <Content Include="Views\Shared\_Scripts.cshtml" />
     <Content Include="Views\ADMEmpleado\Listar.cshtml" />
     <Content Include="Views\Shared\_Partial.cshtml" />
+    <Content Include="Views\ADMEmpleado\Select_TipoEmpleado.cshtml" />
+    <Content Include="Views\PEDCrearPedido\Mesas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

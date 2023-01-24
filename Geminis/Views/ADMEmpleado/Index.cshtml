@@ -5,8 +5,14 @@
 @section scripts{
 
     <script>
-        function Create() {
-            var id_tipo_empleado = 3;   //$('#selTipoEmpleado').val();
+        function Listar() {
+            $('#divData').load('@Url.Action("Listar")', function () {
+                //TableNoSearch('#tableData');
+            });
+        }
+
+        function Guardar() {
+            var id_tipo_empleado = $('#selTipoEmpleado').val();
             var nombre = $('#txtNombre').val();
             var salario = $('#txtSalario').val();
             var telefono = $('#txtTelefono').val();
@@ -24,21 +30,61 @@
             });
         }
 
-        function Listar() {
-            $('#divData').load('@Url.Action("Listar")', function () {
-                //TableNoSearch('#tableData');
+        function Actualizar() {
+            var id_empleado = $('#hfIDEmpleado').val();
+            var id_tipo_empleado = $('#selTipoEmpleado').val();
+            var nombre = $('#txtNombre').val();
+            var salario = $('#txtSalario').val();
+            var telefono = $('#txtTelefono').val();
+            var correo = $('#txtCorreo').val();
+            var direccion = $('#txtDireccion').val();
+
+            $.post('@Url.Action("Actualizar")', { id_empleado, id_tipo_empleado, nombre , salario , telefono , correo , direccion }, function (response) {
+                if (response.Codigo == '1') {
+                    Notify(response.Descripcion, NotifyIcon.success);
+                    Listar()
+                }
+                else {
+                    Alert(response.Descripcion, NotifyIcon.warning);
+                }
+            });
+        }
+
+        function GetDatosActualizar(id_empleado, id_tipo_empleado, nombre, salario, telefono, correo, direccion) {
+            $('#modalEditar').modal('show');
+            $('#txtNombreActualizar').val(id_empleado);
+            $('#txtDireccionActualizar').val(id_tipo_empleado);
+            $('#selTipoEmpleadoActualizar').val(nombre);
+            $('#txtSalarioActualizar').val(salario);
+            $('#txtTelefonoActualizar').val(telefono);
+            $('#txtCorreoActualizar').val(correo);
+            $('#txtCorreoActualizar').val(direccion);
+
+            $('#selTipoEmpleadoGuardar').load('@Url.Action("Listar")', function () { /*TableNoSearch('#tableData');*/ });
+        }
+
+        function Eliminar() {
+            var id_empleado = $('#hfIDEmpleado').val();
+
+            $.post('@Url.Action("Eliminar")', { id_empleado }, function (response) {
+                if (response.Codigo == '1') {
+                    Notify(response.Descripcion, NotifyIcon.success);
+                    Listar()
+                }
+                else {
+                    Alert(response.Descripcion, NotifyIcon.warning);
+                }
             });
         }
 
         $(document).ready(function () {
-            Listar()
-            $('#modalEmpleado').modal('show')
+            Listar();
+            //$('#modalGuardar').modal('show')
         });
     </script>
 }
 
 <input type="hidden" id="hfIDEmpleado">
-<input type="hidden" id="hfControlador">
 
 <div class="row">
     <div class="col-md-12">
@@ -56,34 +102,33 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalEmpleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modalGuardar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 id="modalTitle" class="modal-title">EMPLEADO</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    <i class="material-icons">clear</i>
-                </button>
+                <h4 id="modalTitle" class="modal-title">GUARDAR NUEVO EMPLEADO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
             </div>
             <div class="modal-body">
-                <form id="formCrearTipoEmpleado" class="formValida">
+                <form class="formValida">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
                             <div class="form-group">
-                                <label for="txtNombre" class="bmd-label-floating">NOMBRE</label>
-                                <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                                <label for="txtNombreDireccion" class="bmd-label-floating">NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombreDireccion" name="txtNombreDireccion" required>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
                             <div class="form-group">
-                                <label for="txtDireccion" class="bmd-label-floating">DIRECCION</label>
-                                <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" required>
+                                <label for="txtDireccionGuardar" class="bmd-label-floating">DIRECCION</label>
+                                <input type="text" class="form-control" id="txtDireccionGuardar" name="txtDireccionGuardar" required>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                             <div class="form-group">
-                                <label for="selTipoEmpleado" class="bmd-label-floating label-with-selectpicker">TIPO EMPLEADO</label>
-                                <select id="selTipoEmpleado" name="selTipoEmpleadolTipoGL" class="selectpicker" data-style="select-with-transition" data-live-search="true" title="Seleccione Tipo" required></select>
+                                <label for="selTipoEmpleadoGuardar" class="bmd-label-floating label-with-selectpicker">TIPO EMPLEADO</label>
+                                <select id="selTipoEmpleadoGuardar" name="selTipoEmpleadoGuardar" class="selectpicker" data-style="select-with-transition" data-live-search="true" required>
+                                </select>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
@@ -108,10 +153,66 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-link btn-deep-orange" onclick="Create()">Guardar</button>
+                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-link btn-deep-orange" onclick="Guardar()">Guardar</button>
                 <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title">ACTUALIZAR DATOS EMPLEADO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+            </div>
+            <div class="modal-body">
+                <form class="formValida">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                            <div class="form-group">
+                                <label for="txtNombreActualizar" class="bmd-label-floating">NOMBRE</label>
+                                <input type="text" class="form-control" id="txtNombreActualizar" name="txtNombreActualizar" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                            <div class="form-group">
+                                <label for="txtDireccionActualizar" class="bmd-label-floating">DIRECCION</label>
+                                <input type="text" class="form-control" id="txtDireccionActualizar" name="txtDireccionActualizar" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="form-group">
+                                <label for="selTipoEmpleadoActualizar" class="bmd-label-floating label-with-selectpicker">TIPO EMPLEADO</label>
+                                <select id="selTipoEmpleadoActualizar" name="selTipoEmpleadoActualizar" class="selectpicker" data-style="select-with-transition" data-live-search="true" title="Seleccione Tipo" required></select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="form-group">
+                                <label for="txtSalarioActualizar" class="bmd-label-floating">SALARIO</label>
+                                <input type="text" class="form-control" id="txtSalarioActualizar" name="txtSalarioActualizar" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="form-group">
+                                <label for="txtTelefonoActualizar" class="bmd-label-floating">TELEFONO</label>
+                                <input type="text" class="form-control" id="txtTelefonoActualizar" name="txtTelefonoActualizar" maxlength="8" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <div class="form-group">
+                                <label for="txtCorreoActualizar" class="bmd-label-floating">CORREO ELECTRONICO</label>
+                                <input type="text" class="form-control" id="txtCorreoActualizar" name="txtCorreoActualizar" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="btnActualizar" id="btnActualizar" class="btn btn-link btn-deep-orange" onclick="Actualizar()">Actualizar</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

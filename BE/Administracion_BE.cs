@@ -23,5 +23,6 @@ namespace BE
         public string REFERENCIA { set; get; }
         public string NIT { set; get; }
         public int MTIPO { set; get; }
+        public string RESPUESTA { set; get; }
     }
 }
